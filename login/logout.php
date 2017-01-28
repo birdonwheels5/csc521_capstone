@@ -2,18 +2,11 @@
 <html>
 	<head>
 		<meta charset="ISO-8859-1">
-		<title>User Area</title>
-		<link rel="stylesheet" type="text/css" href="styles.css" title="Default Styles" media="screen"/>
+		<title>Logout</title>
+		<link rel="stylesheet" type="text/css" href="../styles.css" title="Default Styles" media="screen"/>
 		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans" title="Font Styles"/>
-		<?php include "login/CookieHandler.php";
-              include "login/login_functions.php"; ?>
-        <style>
-            footer
-            {
-                position: relative; 
-            }
-            
-        </style>
+        <?php include "CookieHandler.php";
+              include "login_functions.php"; ?>
 	</head>
 	
 	<body>
@@ -32,20 +25,9 @@
                     $uuid = $user_cookie->get_uuid();
                     $session_id = get_session($uuid);
                     $cookie_handler->validate_cookie($user_cookie, $session_id);
-                    
-                    // So we can personalize the page a little for the user
-                    $user_data = get_user_data($uuid);
-                    
-                    update_last_login($uuid);
                 }
-                
                 print_header($cookie_handler, $cookie_name);
             
-            ?>
-            
-            <?php 
-                // Authenticate user
-                authenticate_user(100);
             ?>
 			
 			<article>
@@ -53,15 +35,28 @@
 					<!-- <center><img src="logo_big.png"></center> Insert Main Logo here -->
 					
 					<hr/>
-					<center><h1>Member Area</h1></center>
+					<center><h1>Logout Error</h1></center>
 					<hr/>
 					<p>
 						<div class="box">
 							<p>
-								Hello, <?php print $user_data[0]; ?>! Welcome to the user area of this site.
-                                <br/>
-                                <hr/>
-                                <center><img src="img/greg.jpg"></img></center>
+                                <?php
+                                    
+                                    // Perform logout here
+                                    if($cookie_handler->get_exists())
+                                    {
+                                        $cookie_handler->delete_cookie($cookie_name);
+                                        clear_session($uuid);
+                                        header("location:/index.php");
+                                    }
+                                    else
+                                    {
+                                        print "Unable to log out because user is not logged in!";
+                                    }
+                                ?>
+							</p>
+						</div>
+								
 							</p>
 						</div>
 
@@ -82,3 +77,4 @@
 	</body>
 	
 </html>
+

@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="ISO-8859-1">
-		<title>User Area</title>
+		<title>Admin Area</title>
 		<link rel="stylesheet" type="text/css" href="styles.css" title="Default Styles" media="screen"/>
 		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans" title="Font Styles"/>
 		<?php include "login/CookieHandler.php";
@@ -38,14 +38,13 @@
                     
                     update_last_login($uuid);
                 }
-                
                 print_header($cookie_handler, $cookie_name);
             
             ?>
             
             <?php 
                 // Authenticate user
-                authenticate_user(100);
+                authenticate_user(900);
             ?>
 			
 			<article>
@@ -53,15 +52,15 @@
 					<!-- <center><img src="logo_big.png"></center> Insert Main Logo here -->
 					
 					<hr/>
-					<center><h1>Member Area</h1></center>
+					<center><h1>Admin Lounge</h1></center>
 					<hr/>
 					<p>
 						<div class="box">
 							<p>
-								Hello, <?php print $user_data[0]; ?>! Welcome to the user area of this site.
+								Hello, <?php print $user_data[0] ?>! Welcome to the elite admin area of the site, where no user peasants may roam.
                                 <br/>
                                 <hr/>
-                                <center><img src="img/greg.jpg"></img></center>
+                                <center><img src="img/bird.jpg"></img></center>
 							</p>
 						</div>
 
@@ -76,7 +75,7 @@
 			</div>
 			
 			<footer>
-				2016 Lizard Squad.
+				2015 David Puglisi, Colby Leclerc.
 			</footer>
 		</div>
 	</body>
