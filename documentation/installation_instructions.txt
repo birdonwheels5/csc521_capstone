@@ -23,3 +23,11 @@ At this point it should work, I think. The log file probably won't be writable b
 but for now you don't need to worry about it. I have it working on my end.
 
 Let me know if anything doesn't work.
+
+
+
+Also, some more useful git commands:
+
+    git add -u (adds everything, all additional/renamed/deleted files for commit)
+    git commit -m "[message]" (commits your changes)
+    git push (sends your changes to github)
