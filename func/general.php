@@ -2,7 +2,7 @@
 
 // Toggle switch for using this on my local machine and the weblab server
 // I got sick of commenting things every time I switched...
-$local_filepaths = true;
+$local_filepaths = false;
 
 if($local_filepaths)
 {
@@ -15,8 +15,11 @@ else
     $s_id = "S0276910";
     
     // Weblab configs
-    $GLOBALS['config_dir'] = "/home/student/$s_id/bitquote/config.txt";
-    $GLOBALS['log_dir'] = "/home/student/$s_id/bitquote/log.txt";
+    //$GLOBALS['config_dir'] = "/home/student/$s_id/bitquote/config.txt";
+    //$GLOBALS['log_dir'] = "/home/student/$s_id/bitquote/log.txt";
+    
+    $GLOBALS['config_dir'] = "../../config.txt";
+    $GLOBALS['log_dir'] = "../../log.txt";
 }
 
 // Load database settings from config file
