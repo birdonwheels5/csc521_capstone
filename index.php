@@ -7,7 +7,7 @@
         <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans" title="Font Styles"/>
         <?php 
             include "login/CookieHandler.php";
-            include "login/login_functions.php"; 
+            include "func/login.php";
         ?>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>

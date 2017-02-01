@@ -1,6 +1,6 @@
 <?php
 
-include "btc_helper.php";
+include "func/btc.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") 
 {

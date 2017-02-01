@@ -1,0 +1,33 @@
+To install the application on the weblab server, clone the git repository in your public_html directory with the command:
+
+    cd public_html
+    git clone https://github.com/birdonwheels5/csc521_capstone .
+    cd ..
+
+Change to the dev branch:
+
+    git branch dev
+    git checkout dev
+    git branch --set-upstream-to=origin/dev dev
+    git pull
+
+Now, inside the db+config folder, move the bitquote folder to your home directory:
+
+    mv public_html/db+config/bitquote ~/bitquote
+    // This command might not work, but you can figure it out, right?
+
+Now go to http://weblab.salemstate.edu/phpmyadmin/ and import the file named "btc_buffer.sql" that is in the db+config folder. The other one is for the chart, but since it is a separate database 
+and you are only allowed to have one database on the weblab server, it will not work. I'm not sure if it will mess up the site (it probably will) but we should be able to make it work.
+
+At this point it should work, I think. The log file probably won't be writable by the server but that doesn't really matter for now. Also, you don't have a cronjob set up to fetch data, 
+but for now you don't need to worry about it. I have it working on my end.
+
+Let me know if anything doesn't work.
+
+
+
+Also, some more useful git commands:
+
+    git add -u (adds everything, all additional/renamed/deleted files for commit)
+    git commit -m "[message]" (commits your changes)
+    git push (sends your changes to github)
