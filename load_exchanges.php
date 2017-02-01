@@ -1,6 +1,6 @@
 <?php
     
-    include "btc_helper.php";
+    include "func/btc.php";
     
     // Load database settings from config file
     $settings = array();

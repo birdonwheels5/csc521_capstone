@@ -6,7 +6,7 @@
 		<link rel="stylesheet" type="text/css" href="../styles.css" title="Default Styles" media="screen"/>
 		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans" title="Font Styles"/>
 		<?php include "CookieHandler.php";
-               include "login_functions.php"; ?>
+               include "../func/login.php"; ?>
 	</head>
 	
 	<body>

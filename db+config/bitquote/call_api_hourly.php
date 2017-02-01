@@ -1,6 +1,6 @@
 <?php
     
-    include "/var/www/html/capstone/btc_helper.php";
+    include "/var/www/html/func/btc.php";
     
     // Load database settings from config file
     $settings = array();
