@@ -25,6 +25,15 @@ but for now you don't need to worry about it. I have it working on my end.
 Let me know if anything doesn't work.
 
 
+Edit: In order to get the site working, you will need to edit two files:
+
+The config file in ~/bitquote
+And
+func/general.php
+
+In config.txt you change the mysql login info to match your student ID, and in general.php you change $s_id to your student ID
+
+The only issue with this is that when we commit/pull we may have to change our student ids in general.php all the time, unless we can have that file excluded from commits.
 
 Also, some more useful git commands:
 
