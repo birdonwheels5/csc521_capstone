@@ -15,11 +15,11 @@ else
     $s_id = "S0276910";
     
     // Weblab configs
-    //$GLOBALS['config_dir'] = "/home/student/$s_id/bitquote/config.txt";
-    //$GLOBALS['log_dir'] = "/home/student/$s_id/bitquote/log.txt";
+    $GLOBALS['config_dir'] = "/home/student/$s_id/bitquote/config.txt";
+    $GLOBALS['log_dir'] = "/home/student/$s_id/bitquote/log.txt";
     
-    $GLOBALS['config_dir'] = "../../config.txt";
-    $GLOBALS['log_dir'] = "../../log.txt";
+    //$GLOBALS['config_dir'] = "../../config.txt";
+    //$GLOBALS['log_dir'] = "../../log.txt";
 }
 
 // Load database settings from config file
@@ -41,7 +41,7 @@ $GLOBALS['secret_key'] = "1251577d0b06ceec7bfc27b8309e279306521c16a";
 // Additional config options can be added as functionality expands.
 function load_config()
 {
-    $filename = "/var/bitquote/config.txt";
+    $filename = $GLOBALS['config_dir'];
     $mysql_user = "";
     $mysql_host = "";
     $mysql_pass = "";
