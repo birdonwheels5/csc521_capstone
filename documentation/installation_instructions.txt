@@ -2,7 +2,6 @@ To install the application on the weblab server, clone the git repository in you
 
     cd public_html
     git clone https://github.com/birdonwheels5/csc521_capstone .
-    cd ..
 
 Change to the dev branch:
 
@@ -13,6 +12,7 @@ Change to the dev branch:
 
 Now, inside the db+config folder, move the bitquote folder to your home directory:
 
+    cd ..
     mv public_html/db+config/bitquote ~/bitquote
     // This command might not work, but you can figure it out, right?
 
