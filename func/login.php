@@ -443,8 +443,9 @@ function get_user_id_num_by_email($email)
 
 function send_validation_email($user_id_num, $uuid, $email)
 {
-    $site_web_address = "weblab.salemstate.edu/~S0276910/CSC435/login-project/verification.php?id=$user_id_num&etoken=";
-    $site_name = 'Lizard Squad BB';
+    $s_id = "~S0276910";
+    $site_web_address = "weblab.salemstate.edu/$s_id/verification.php?id=$user_id_num&etoken=";
+    $site_name = 'Bitquote';
     
     $token = sha1($uuid . $user_id_num . $GLOBALS['secret_key']);
     $verification_url = $site_web_address . $token;
@@ -471,15 +472,17 @@ function validate_email_address($user_id_num, $uuid, $url_token)
 
 function send_password_validation_email($user_id_num, $uuid, $email, $new_hashed_password, $reset_pass=false)
 {
+    $s_id = "~S0276910";
+    $site_name = 'Bitquote';
+    
     if($reset_pass == false)
     {
-        $site_web_address = "weblab.salemstate.edu/~S0276910/CSC435/login-project/verification.php?ptoken=";
+        $site_web_address = "weblab.salemstate.edu/$s_id/verification.php?ptoken=";
     }
     else
     {
-        $site_web_address = "weblab.salemstate.edu/~S0276910/CSC435/login-project/verification.php?id=$user_id_num&rptoken=";
+        $site_web_address = "weblab.salemstate.edu/$s_id/verification.php?id=$user_id_num&rptoken=";
     }
-    $site_name = 'Lizard Squad BB';
     
     $token = sha1($uuid . $user_id_num . $new_hashed_password . $GLOBALS['secret_key']);
     $verification_url = $site_web_address . $token;
