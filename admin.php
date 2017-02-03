@@ -75,7 +75,7 @@
 			</div>
 			
 			<footer>
-				2015 David Puglisi, Colby Leclerc.
+				2017 Bitquote.
 			</footer>
 		</div>
 	</body>

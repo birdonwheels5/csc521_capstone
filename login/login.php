@@ -152,7 +152,7 @@
                         
                         <div class="box">
                             <p>
-                                Forgot your password? <a href="/login/reset_pwd.php">Reset your password</a>.
+                                Forgot your password? <a href="./login/reset_pwd.php">Reset your password</a>.
                             </p>
                         </div>
 
@@ -167,7 +167,7 @@
 			</div>
 			
 			<footer>
-				2016 Lizard Squad.
+				2017 Bitquote.
 			</footer>
 		</div>
 	</body>

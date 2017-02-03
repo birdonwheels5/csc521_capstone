@@ -85,7 +85,7 @@
                                         {
                                             set_validate_field($new_user_uuid);
                                             
-                                            print "Success! You can now <a href =\"/login/login.php\">log in</a> with your new account!";
+                                            print "Success! You can now <a href =\"./login/login.php\">log in</a> with your new account!";
                                         }
                                         else
                                         {
@@ -114,7 +114,7 @@
                                         {
                                             update_user_password($uuid);
                                             
-                                            print "Success! You can now <a href =\"/login/login.php\">log in</a> with your new password! Your old password will no longer work.";
+                                            print "Success! You can now <a href =\"./login/login.php\">log in</a> with your new password! Your old password will no longer work.";
                                             print "<br/><br/>";
                                             print "You have been logged out.";
                                             $cookie_handler->delete_cookie($cookie_name);
@@ -164,7 +164,7 @@
                                         {
                                             update_user_password($uuid);
                                             
-                                            print "Success! You can now <a href =\"/login/login.php\">log in</a> with your new password! Your old password will no longer work.";
+                                            print "Success! You can now <a href =\"./login/login.php\">log in</a> with your new password! Your old password will no longer work.";
                                             print "<br/><br/>";
                                             print "You have been logged out if you were logged in.";
                                             $cookie_handler->delete_cookie($cookie_name);
@@ -195,7 +195,7 @@
 			</div>
 			
 			<footer>
-				2016 Lizard Squad.
+				2017 Bitquote.
 			</footer>
 		</div>
 	</body>

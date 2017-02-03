@@ -7,8 +7,8 @@ $local_filepaths = false;
 if($local_filepaths)
 {
     // Local configs
-    $GLOBALS['config_dir'] = "/var/bitquote/config.txt";
-    $GLOBALS['log_dir'] = "/var/bitquote/log.txt";
+    $GLOBALS['config_dir'] = "/var/www/bitquote/config.txt";
+    $GLOBALS['log_dir'] = "/var/www/bitquote/log.txt";
 }
 else
 {
@@ -129,6 +129,8 @@ function print_header($cookie_handler, $cookie_name)
     $cookie_handler->cookie_exists($cookie_name);
     $uuid = $user_cookie->get_uuid();
     
+    $s_id = "S0276910";
+    
     print '<header>
     
         <div class="logoContainer">
@@ -145,18 +147,18 @@ function print_header($cookie_handler, $cookie_name)
                         {
                             if($cookie_handler->get_validity())
                             {
-                                print "<p><a href =\"/login/logout.php\">Logout</a></p>";
+                                print "<p><a href =\"./login/logout.php\">Logout</a></p>";
                             }
                             else
                             {
                                 $cookie_handler->delete_cookie($cookie_name);
                                 clear_session($uuid);
-                                print "<p><a href =\"/login/login.php\">Login</a></p>";
+                                print "<p><a href =\"./login/login.php\">Login</a></p>";
                             }
                         }
                         else
                         {
-                            print "<p><a href =\"/login/login.php\">Login</a></p>";
+                            print "<p><a href =\"./login/login.php\">Login</a></p>";
                         }
                 print '</div>
                 
@@ -165,7 +167,7 @@ function print_header($cookie_handler, $cookie_name)
                         {
                             if($cookie_handler->get_validity())
                             {
-                                print "<p><a href =\"/login/passwd.php\">Change Password</a></p>";
+                                print "<p><a href =\"./login/passwd.php\">Change Password</a></p>";
                             }
                             else
                             {
@@ -180,11 +182,11 @@ function print_header($cookie_handler, $cookie_name)
 				print '</div>
 				
 				<div class="button">
-					<p><a href ="/user.php">Member Area</a></p>
+					<p><a href ="~' . $s_id . '/user.php">Member Area</a></p>
 				</div>
                 
                 <div class="button">
-					<p><a href ="/admin.php">Admin Area</a></p>
+					<p><a href ="~' . $s_id . '/admin.php">Admin Area</a></p>
 				</div>
 				
 			</header>';

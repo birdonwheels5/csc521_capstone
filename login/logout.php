@@ -47,7 +47,7 @@
                                     {
                                         $cookie_handler->delete_cookie($cookie_name);
                                         clear_session($uuid);
-                                        header("location:/index.php");
+                                        header("location:./index.php");
                                     }
                                     else
                                     {
@@ -71,7 +71,7 @@
 			</div>
 			
 			<footer>
-				2016 Lizard Squad.
+				2017 Bitquote.
 			</footer>
 		</div>
 	</body>

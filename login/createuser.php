@@ -299,7 +299,7 @@
 			</div>
 			
 			<footer>
-				2016 Lizard Squad.
+				2017 Bitquote.
 			</footer>
 		</div>
         

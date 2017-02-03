@@ -84,7 +84,7 @@
                                                     
                                                     // Login successful
                                                     update_last_login($uuid);
-                                                    header("location:/index.php");
+                                                    header("location:./index.php");
                                                 }
                                                 else
                                                 {
@@ -116,7 +116,7 @@
 			</div>
 			
 			<footer>
-				2016 Lizard Squad.
+				2017 Bitquote.
 			</footer>
 		</div>
 	</body>
