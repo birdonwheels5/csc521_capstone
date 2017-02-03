@@ -168,8 +168,83 @@ class MyCurl
 				
 			case CURLOPT_TIMEOUT:
 				$this->timeout = ($value >= 0) ? $value : 30;
+                
+            //case CURLOPT_SSL_VERIFYPEER:
+				//$this->timeout = ($value >= 0) ? $value : 30;
 		}
 	}
+    
+    function setopt_array($ch, $option_array)
+    {
+        foreach ($option_array as $key => $value) 
+        {
+            if($key == CURLOPT_URL)
+            {
+                setopt($key, $value);
+            }
+            
+            if($key == CURLOPT_USERAGENT)
+            {
+                setopt($key, $value);
+            }
+            
+            if($key == CURLOPT_POSTFIELDS)
+            {
+                setopt($key, $value);
+            }
+            
+            if($key == CURLOPT_RETURNTRANSFER)
+            {
+                setopt($key, $value);
+            }
+            
+            if($key == CURLOPT_REFERER)
+            {
+                setopt($key, $value);
+            }
+            
+            if($key == CURLOPT_HEADER)
+            {
+                setopt($key, $value);
+            }
+            
+            if($key == CURLOPT_NOBODY)
+            {
+                setopt($key, $value);
+            }
+            
+            if($key == CURLOPT_TIMEOUT)
+            {
+                setopt($key, $value);
+            }
+            
+            if($key == CURLOPT_FOLLOWLOCATION)
+            {
+                setopt($key, $value);
+            }
+            
+            if($key == CURLOPT_AUTOREFERER)
+            {
+                setopt($key, $value);
+            }
+            
+            if($key == CURLOPT_PROXY)
+            {
+                setopt($key, $value);
+            }
+            
+            if($key == CURLOPT_HTTPHEADER)
+            {
+                setopt($key, $value);
+            }
+            
+            if($key == CURLOPT_SSL_VERIFYPEER)
+            {
+                setopt($key, $value);
+            }
+            
+        }
+    }
 	
 	
 	function exec()
