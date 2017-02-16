@@ -84,7 +84,7 @@
                                                     
                                                     // Login successful
                                                     update_last_login($uuid);
-                                                    header("location:./index.php");
+                                                    header("location:./../index.php");
                                                 }
                                                 else
                                                 {

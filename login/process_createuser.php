@@ -108,7 +108,7 @@
                                             
                                             print "Account created successfully!";
                                             print "<br/><br/>";
-                                            print "You must validate your email address before you can <a href =\"./login/login.php\">log in</a>. An email has been sent to $email.";
+                                            print "You must validate your email address before you can <a href =\"./login.php\">log in</a>. An email has been sent to $email.";
                                         }
                                     }
                                     

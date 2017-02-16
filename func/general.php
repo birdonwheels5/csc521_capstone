@@ -129,7 +129,7 @@ function print_header($cookie_handler, $cookie_name)
     $cookie_handler->cookie_exists($cookie_name);
     $uuid = $user_cookie->get_uuid();
     
-    $s_id = "S0276910";
+    $s_id = "~S0276910";
     
     print '<header>
     
@@ -138,7 +138,7 @@ function print_header($cookie_handler, $cookie_name)
         </div>
         
         <div class="button">
-            <p><a href ="/index.php">Index</a></p>
+            <p><a href ="/' . $s_id . '/index.php">Index</a></p>
         </div>
         
         <div class="button">';
@@ -147,18 +147,18 @@ function print_header($cookie_handler, $cookie_name)
                         {
                             if($cookie_handler->get_validity())
                             {
-                                print "<p><a href =\"./login/logout.php\">Logout</a></p>";
+                                print "<p><a href =\"/$s_id/login/logout.php\">Logout</a></p>";
                             }
                             else
                             {
                                 $cookie_handler->delete_cookie($cookie_name);
                                 clear_session($uuid);
-                                print "<p><a href =\"./login/login.php\">Login</a></p>";
+                                print "<p><a href =\"/$s_id/login/login.php\">Login</a></p>";
                             }
                         }
                         else
                         {
-                            print "<p><a href =\"./login/login.php\">Login</a></p>";
+                            print "<p><a href =\"/$s_id/login/login.php\">Login</a></p>";
                         }
                 print '</div>
                 
@@ -167,7 +167,7 @@ function print_header($cookie_handler, $cookie_name)
                         {
                             if($cookie_handler->get_validity())
                             {
-                                print "<p><a href =\"./login/passwd.php\">Change Password</a></p>";
+                                print "<p><a href =\"/$s_id/login/passwd.php\">Change Password</a></p>";
                             }
                             else
                             {
@@ -182,11 +182,11 @@ function print_header($cookie_handler, $cookie_name)
 				print '</div>
 				
 				<div class="button">
-					<p><a href ="~' . $s_id . '/user.php">Member Area</a></p>
+					<p><a href ="/' . $s_id . '/user.php">Member Area</a></p>
 				</div>
                 
                 <div class="button">
-					<p><a href ="~' . $s_id . '/admin.php">Admin Area</a></p>
+					<p><a href ="/' . $s_id . '/admin.php">Admin Area</a></p>
 				</div>
 				
 			</header>';

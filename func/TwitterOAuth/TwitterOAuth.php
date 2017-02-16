@@ -9,6 +9,7 @@
  */
 
 namespace TwitterOAuth;
+include "/home/student/S0276910/public_html/func/mycurl/mycurl.class.php";
 
 use TwitterOAuth\Exception\TwitterException;
 

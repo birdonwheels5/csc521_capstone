@@ -62,6 +62,11 @@ function curl_setopt( &$ch, $name, $value )
 	$ch->setopt($name, $value);
 }
 
+function curl_setopt_array($ch, $option_array)
+{
+	$ch->setopt_array($option_array);
+}
+
 function curl_exec( $ch )
 {
 	return $ch->exec();
@@ -87,6 +92,11 @@ function mycurl_init($url = false)
 function mycurl_setopt(&$ch, $name, $value)
 {
 	$ch->setopt($name, $value);
+}
+
+function mycurl_setopt_array($ch, $option_array)
+{
+	$ch->setopt_array($option_array);
 }
 
 function mycurl_exec($ch)
@@ -174,73 +184,73 @@ class MyCurl
 		}
 	}
     
-    function setopt_array($ch, $option_array)
+    function setopt_array($option_array)
     {
         foreach ($option_array as $key => $value) 
         {
             if($key == CURLOPT_URL)
             {
-                setopt($key, $value);
+               $this->setopt($key, $value);
             }
             
             if($key == CURLOPT_USERAGENT)
             {
-                setopt($key, $value);
+                $this->setopt($key, $value);
             }
             
             if($key == CURLOPT_POSTFIELDS)
             {
-                setopt($key, $value);
+                $this->setopt($key, $value);
             }
             
             if($key == CURLOPT_RETURNTRANSFER)
             {
-                setopt($key, $value);
+                $this->setopt($key, $value);
             }
             
             if($key == CURLOPT_REFERER)
             {
-                setopt($key, $value);
+                $this->setopt($key, $value);
             }
             
             if($key == CURLOPT_HEADER)
             {
-                setopt($key, $value);
+                $this->setopt($key, $value);
             }
             
             if($key == CURLOPT_NOBODY)
             {
-                setopt($key, $value);
+                $this->setopt($key, $value);
             }
             
             if($key == CURLOPT_TIMEOUT)
             {
-                setopt($key, $value);
+                $this->setopt($key, $value);
             }
             
             if($key == CURLOPT_FOLLOWLOCATION)
             {
-                setopt($key, $value);
+                $this->setopt($key, $value);
             }
             
             if($key == CURLOPT_AUTOREFERER)
             {
-                setopt($key, $value);
+                $this->setopt($key, $value);
             }
             
             if($key == CURLOPT_PROXY)
             {
-                setopt($key, $value);
+                $this->setopt($key, $value);
             }
             
             if($key == CURLOPT_HTTPHEADER)
             {
-                setopt($key, $value);
+                $this->setopt($key, $value);
             }
             
             if($key == CURLOPT_SSL_VERIFYPEER)
             {
-                setopt($key, $value);
+                $this->setopt($key, $value);
             }
             
         }
