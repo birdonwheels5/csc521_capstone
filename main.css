@@ -1,0 +1,140 @@
+* {
+	box-sizing: border-box;
+	font-family: sans-serif;
+}
+
+:root {
+	--color-0: #008080;
+	--color-1: #33A0A0;
+	--color-2: #139696;
+	--color-3: #006868;
+	--color-4: #004F4F;
+	--color-5: snow;
+	--shadow: darkslategray;
+}
+
+[class*="row"]::after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+[class*="col-"] {
+	width: 100%;
+    float: left;
+    padding: 15px;
+	text-align: center;
+}
+
+.empty{padding: 0;}
+
+body {
+	margin: 0;
+	padding: 0;
+	background-color: var(--color-0);
+}
+
+.navbar{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	display: block;
+	position: fixed;
+	background-color: var(--color-4);
+}
+
+li.left {
+	width: 100px;
+	float: left;
+}
+
+li.right {
+	width: 100px;
+	float: right;
+}
+
+li.active{
+	background-color: var(--color-3);
+}
+
+li a {
+	margin: 0;
+	padding: 0;
+	font-size: 30px;
+}
+
+li:hover {
+	background-color: snow;
+}
+
+form {
+	background-color: var(--color-5);
+	border-radius: 10px;
+	padding: 20px;
+}
+
+.object {
+	background-color: var(--color-5);
+	border-radius: 10px;
+	padding: 20px;
+}
+
+.shadow {
+	box-shadow: 5px 5px 10px darkslategray;
+}
+
+input {
+	width: 100%;
+	background-color: white;
+	border: 2px solid slategray;
+	border-radius: 6px;
+	margin: 3px;
+	padding: 6px;
+	text-align: center;
+	font-size: 24px;
+}
+
+input[type="submit"] {
+	border: none;
+	background-color: var(--color-1);
+}
+
+.small {font-size: 18px}
+
+form a {
+	text-decoration: none;
+	color: teal;
+}
+
+iframe.full {
+	height: 900px;
+	width: 700px;
+	border: none;
+}
+
+input[type="submit"]:hover {
+	background-color: deepskyblue;
+}
+
+@media only screen and (min-width: 900px){
+	.col-1 {width: 8.33%;}
+	.col-2 {width: 16.66%;}
+	.col-3 {width: 25%;}
+	.col-4 {width: 33.33%;}
+	.col-5 {width: 41.66%;}
+	.col-6 {width: 50%;}
+	.col-7 {width: 58.33%;}
+	.col-8 {width: 66.66%;}
+	.col-9 {width: 75%;}
+	.col-10 {width: 83.33%;}
+	.col-11 {width: 91.66%;}
+	.col-12 {width: 100%;}
+	input{font-size: 18px;}
+	.small{font-size: 12px;}
+	.center {transform: translateY(50vh) translateY(-50%);}
+	.empty{padding: 1px;}
+}
+
+.placeholder {
+	
+}
