@@ -30,25 +30,33 @@
 		    }
 	</script>
 </head>
+
 <body class="color-0">
+	
     <div class="row">
-		<div class="empty col-2">
+		
+		<div class="empty col-2"> <!-- Left Margin -->
 		</div>
-		<div class="col-4">
-			<div class="object shadow" id="BtcPrice">
+		
+		<div class="col-4"> <!-- Column 1 -->
+			<div class="object shadow" id="btcPrice">
 				<script type="text/javascript">
 					$('#btcPrice').load('load_exchanges.php');
 				</script>
 			</div>
 		</div>
-		<div class="col-4">
+		
+		<div class="col-4"> <!-- Column 2 -->
 			<div class="object shadow" id="twitter">
 				<script type="text/javascript">
 					$('#twitter').load('load_tweets.php');
 				</script>
 			</div>
 		</div>
-		<div class="empty col-2">
+		
+		<div class="empty col-2"> <!-- Right Margin -->
 		</div>
+		
 	</div>
+	
 </body>
