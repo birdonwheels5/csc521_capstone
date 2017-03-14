@@ -155,7 +155,6 @@ function get_btc_price_from_database($exchange, $database_connection)
     
     return $rows[0][0]; // btc_price
 }
-
 // $database_connection is the result of the mysqli_connect() function
 // $database_name (string)
 // Returns boolean

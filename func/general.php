@@ -12,7 +12,7 @@ if($local_filepaths)
 }
 else
 {
-    $s_id = "S0276910";
+    $s_id = "S0280512";
     
     // Weblab configs
     $GLOBALS['config_dir'] = "/home/student/$s_id/bitquote/config.txt";
