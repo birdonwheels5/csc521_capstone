@@ -59,6 +59,8 @@ function set_session($uuid)
     $update = "UPDATE  `" . $GLOBALS['mysql_database'] . "`.`users` SET  `session_id` = '$session_id' WHERE `users`.`uuid` = \"" . $uuid . "\";";
     
     $result = mysqli_query($con, $update);
+    
+    return $result;
 }
 
 function clear_session($uuid)
@@ -77,6 +79,8 @@ function clear_session($uuid)
     
     $update = "UPDATE  `" . $GLOBALS['mysql_database'] . "`.`users` SET  `session_id` = '' WHERE `users`.`uuid` = \"" . $uuid . "\";";
     $result = mysqli_query($con, $update);
+    
+    return $result;
 }
 
 // Returns the user's session ID. If they are not logged in or the uuid can not be found, the function returns false.
