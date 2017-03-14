@@ -19,7 +19,7 @@
             
 		    function refreshBtcPrice(seconds) {
 			    setInterval(function() {
-				    $('#btcPrice').load('load_exchanges.php');
+				    $('#BtcPrice').load('load_exchanges.php');
 			    }, seconds * 1000)
 		    }
 		    
@@ -39,9 +39,9 @@
 		</div>
 		
 		<div class="col-4"> <!-- Column 1 -->
-			<div class="object shadow" id="btcPrice">
+			<div class="object shadow" id="BtcPrice">
 				<script type="text/javascript">
-					$('#btcPrice').load('load_exchanges.php');
+					$('#BtcPrice').load('load_exchanges.php');
 				</script>
 			</div>
 		</div>
