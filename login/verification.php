@@ -85,7 +85,7 @@
                                         {
                                             set_validate_field($new_user_uuid);
                                             
-                                            print "Success! You can now <a href =\"./login/login.php\">log in</a> with your new account!";
+                                            print "Success! You can now <a href =\"./login.php\">log in</a> with your new account!";
                                         }
                                         else
                                         {
