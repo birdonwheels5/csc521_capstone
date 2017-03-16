@@ -1,3 +1,4 @@
+<link rel='stylesheet' type="text/css" href="main.css">
 <?php
     
     // When opened, this file will fetch all tweets from the database and print them out to the webpage.
