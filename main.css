@@ -79,8 +79,8 @@ li:hover {
 }
 
 .tweet {
-	border: 2px;
-	border-color: grey;
+	border: 3px;
+	border-color: black;
 	border-radius: 5px;
 }
 
