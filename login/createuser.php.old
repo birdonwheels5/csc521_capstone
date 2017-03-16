@@ -1,14 +1,17 @@
 <!DOCTYPE html>
-<head>
-	<meta charset="ISO-8859-1">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BitQuote</title>
-    <link rel='stylesheet' type="text/css" href="../main.css">
-	<?php include "CookieHandler.php";
-          include "../func/login.php"; ?>
-</head>
-
-		<script>
+<html>
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Create New Account</title>
+		<link rel="stylesheet" type="text/css" href="../styles.css" title="Default Styles" media="screen"/>
+		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans" title="Font Styles"/>
+		<?php include "CookieHandler.php";
+              include "../func/login.php"; ?>
+        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	</head>
+	
+	<body>
+        <script>
             
             function check_username()
             {
@@ -221,8 +224,9 @@
             }
             
         </script>
-
-			<?php 
+		<center><div class="container">
+            
+            <?php 
             
                 $cookie_handler = new CookieHandler();
                 $cookie_name = $cookie_handler->get_cookie_name();
@@ -235,23 +239,70 @@
                     $session_id = get_session($user_cookie->get_uuid());
                     $cookie_handler->validate_cookie($user_cookie, $session_id);
                 }
+                print_header($cookie_handler, $cookie_name);
             
             ?>
+			
+			<article>
+				<p>
+					<!-- <center><img src="logo_big.png"></center> Insert Main Logo here -->
+					
+					<hr/>
+					<center><h1>Create a new Account</h1></center>
+					<hr/>
+					<p>
+						<div class="box">
+							<p>
+								<form name="register" method="post" action="process_createuser.php" onkeyup="check_form()">
+                                    <center><table>
+                                        <tr>
+                                            <td>
+                                                Username: 
+                                            </td>
+                                            <td>
+                                                <input type="text" name="username" size="10">
+                                                <span id="username_status"></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Password: 
+                                            </td>
+                                            <td>
+                                                <input type="password" name="password" size="10">
+                                                <span id="password_status"></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Email: 
+                                            </td>
+                                            <td>
+                                                <input type="text" name="email" size="10">
+                                                <span id="email_status"></span>
+                                            </td>
+                                        </tr>
+                                    </table></center>
+								    <center><input type="button" onclick="submit_form()" value="Create Account"></center>
+								</form>
+							</p>
+						</div>
 
-<body class="color-0">
-	<div class="row center">
-		<div class="empty col-4">
+					</p>
+
+				</p>
+			
+			
+			</article>
+			
+			<div class="paddingBottom">
+			</div>
+			
+			<footer>
+				2017 Bitquote.
+			</footer>
 		</div>
-		<div class="col-4">
-    	<form action="process_createuser.php" name="register" method="post" class="object shadow" onkeyup="check_form()">
-        	<input type="text" name="username" placeholder="Username" required>
-        	<input type="password" name="password" placeholder="Password" required>
-			<input type="email" name="email" placeholder="Email" required>
-			<input type="submit" name="submit" value="Create User" required>
-			<div class="small"><a href="./login/reset_pwd.php">Reset your password</a>, <a href="login.php">Login</a> or <a href="view.php">Continue as Guest</a></div>
-		</form>
-		</div>
-		<div class="col-4 empty">
-		</div>
-	</div>
-</body>
+        
+	</body>
+	
+</html>
