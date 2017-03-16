@@ -3,6 +3,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome</title>
     <link rel='stylesheet' type="text/css" href="main.css">
+	<?php include "CookieHandler.php";
+          include "../func/login.php"; ?>
 </head>
 <body class="color-0">
 	
