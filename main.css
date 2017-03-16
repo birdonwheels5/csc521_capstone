@@ -78,6 +78,12 @@ li:hover {
 	box-shadow: 5px 5px 10px darkslategray;
 }
 
+.tweet {
+	border: 2px;
+	border-color: grey;
+	border-radius: 5px;
+}
+
 input {
 	width: 100%;
 	background-color: white;
