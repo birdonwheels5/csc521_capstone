@@ -3,7 +3,7 @@
 	<meta charset="ISO-8859-1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BitQuote</title>
-    <link rel='stylesheet' type="text/css" href="main.css">
+    <link rel='stylesheet' type="text/css" href="../main.css">
 	<?php include "CookieHandler.php";
           include "../func/login.php"; ?>
 </head>
