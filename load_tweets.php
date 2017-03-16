@@ -76,9 +76,9 @@
         
         
         // Print the rest of the tweet and the time since it was tweeted
-		print "<div class='tweet'>"
+		print "<div class='tweet'>";
         print convert_tweet_to_html(substr($database_tweets[$i], 11) . " - <i>") . $time_since_tweet . " " . $time_unit . " ago </i>";
-		print "</div>"
+		print "</div>";
         print "<br/><br/>";
     }
     
