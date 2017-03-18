@@ -4,7 +4,7 @@ CREATE TABLE  Price_Buffer
 (
 	bitfinex FLOAT,
 	bitstamp FLOAT,
-	btc-e FLOAT,
+	`btc-e` FLOAT,
 	btcchina FLOAT,
 	coinbase FLOAT,
 	huobi FLOAT,
