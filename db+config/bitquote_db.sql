@@ -9,7 +9,8 @@ CREATE TABLE  Price_Buffer
 	coinbase FLOAT,
 	huobi FLOAT,
 	kraken FLOAT,
-	okcoin FLOAT
+	okcoin FLOAT,
+	extra TINYINT NOT NULL PRIMARY KEY
 );
 CREATE TABLE Price_History
 (	
@@ -65,3 +66,6 @@ CREATE TABLE users
 	validate TINYINT NOT NULL,
 	session_id VARCHAR(256)
 );
+
+-- Initialize the Price_Buffer table
+INSERT INTO Price_Buffer (bitfinex, bitstamp, `btc-e`, btcchina, coinbase, huobi, kraken, okcoin, extra) VALUES ('0', '0', '0', '0', '0', '0', '0', '0', '0');
