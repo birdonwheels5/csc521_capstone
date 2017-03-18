@@ -138,34 +138,23 @@ function calculate_cny_exchange_rate()
 // $database_connection is the result of the mysqli_connect() function
 function get_btc_price_from_database($exchange, $database_connection)
 {
-    $result = mysqli_query($database_connection, "SELECT * FROM `" . $exchange . "`");
+    $result = mysqli_query($database_connection, "SELECT `$exchange` FROM Price_Buffer;");
     
-    // num_rows should always be one because we only store one price per exchange
-    $num_rows = 1;
-    
-    // Will be storing all the rows in here
-    // Multidimensional array of form rows[table][row]
-    $rows = array();
-    
-    // Get all the rows
-    for($i = 0; $i < $num_rows; $i++)
-    {
-        $rows[$i] = mysqli_fetch_array($result);
-    }
-    
-    return $rows[0][0]; // btc_price
+    $btc_price = mysqli_fetch_array($result);
+    return $btc_price[0];
 }
+
 // $database_connection is the result of the mysqli_connect() function
 // $database_name (string)
 // Returns boolean
-function add_buffer_exchange_btc_price($exchange, $database_connection, $database_name)
+function add_buffer_exchange_btc_price($exchange, $database_connection)
 {
     
     $btc_price = get_btc_price($exchange);
     if($btc_price > 0)
     {
         // Update old price with the new one.
-        $update = "UPDATE `" . $database_name . "`.`" . $exchange . "` SET `btc_price` = '" . $btc_price . "' WHERE `" . $exchange . "`.`extra` =0;";
+        $update = "UPDATE Price_Buffer SET `$exchange`=$btc_price WHERE extra=0;";
         
         $result = mysqli_query($database_connection, $update);
     }
@@ -181,23 +170,49 @@ function add_buffer_exchange_btc_price($exchange, $database_connection, $databas
 // $database_connection is the result of the mysqli_connect() function
 // $database_name (string)
 // Returns boolean
-function add_chart_exchange_btc_price($exchange, $database_connection)
+function add_chart_exchange_btc_prices($exchanges, $database_connection)
 {
+    $num_exchanges = count($exchanges);
     
-    $btc_price = get_btc_price($exchange);
-    if($btc_price > 0)
+    $time = time();
+    
+    $prices = array();
+    
+    // For use in the insert query
+    $exchanges_list = (string)"`$exchanges[0]`";
+    
+    for($i = 0; $i < $num_exchanges; $i++)
     {
-        $insert = "INSERT INTO `" . $exchange . "` (`btc_price`, `timestamp`) VALUES ('" . $btc_price . "', '" . time() . "');";
+        $prices[$i] = get_btc_price($exchanges[$i]);
         
-        $result = mysqli_query($database_connection, $insert);
-    }
-    else
-    {
-        $result = "NOTICE: Failed to get btc_price from exchange " . $exchange . ". Database was not modified.";
-        log_to_file($result);
+        if($prices[$i] == -1)
+        {
+            $prices[$i] = null;
+            
+            $result = "NOTICE: Failed to get btc_price from exchange " . $exchanges[$i] . ". Database was not modified.";
+            log_to_file($result);
+            
+        }
     }
     
-    var_dump($result);
+    //var_dump($prices);
+    $prices_list = (string)$prices[0];
+    
+    for($k = 1; $k < ($num_exchanges); $k++)
+    {
+        $exchanges_list .= ", `$exchanges[$k]`";
+        
+        $prices_list .= ", $prices[$k]";
+    }
+    
+    //print "\n$exchanges_list\n$prices_list\n\n";
+    
+    $insert = "INSERT INTO Price_History ($exchanges_list, tstamp) VALUES ($prices_list, $time);";
+    
+    $result = mysqli_query($database_connection, $insert);
+    
+    
+    //var_dump($result);
     
     return $result;
 }
