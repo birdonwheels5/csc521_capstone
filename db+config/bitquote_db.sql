@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS Price_Buffer, Price_History, Reddit_Posts, Twitter_Posts, Forum_Posts, Users;
+DROP TABLE IF EXISTS Price_Buffer, Price_History, Reddit_Posts, Twitter_Posts, Forum_Posts, users;
 
 CREATE TABLE  Price_Buffer
 (
