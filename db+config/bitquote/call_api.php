@@ -1,6 +1,7 @@
 <?php
     
-    include "../public_html/func/btc.php";
+    include "/var/www/html/func/btc.php";
+    include "/var/www/html/func/twitter.php";
     
     // Load database settings from config file
     $settings = array();
@@ -42,42 +43,53 @@
     $keyword_list[4] = "digital";
     
     $raw_tweets = array();
-    $raw_tweets = get_tweets($user_list, $con);
+    $raw_tweets = get_tweets($user_list);
     // Debug
+    print "\n Raw Tweets \n";
     var_dump($raw_tweets);
     $processed_tweets = array();
     $processed_tweets = filter_tweets($raw_tweets, $keyword_list);
     // Debug
+    print "\n Processed Tweets \n";
     var_dump($processed_tweets);
     $unique_processed_tweets = array();
     $unique_processed_tweets = compare_tweets($processed_tweets, $con);
     // Debug
-    //var_dump($unique_processed_tweets);
+    print "\n Unique Processed Tweets \n";
+    var_dump($unique_processed_tweets);
+    print "\n";
     
-    add_buffer_exchange_btc_price("bitfinex", $con, $mysql_database);
-    add_buffer_exchange_btc_price("bitstamp", $con, $mysql_database);
-    //add_buffer_exchange_btc_price("cryptsy", $con, $mysql_database);
-    add_buffer_exchange_btc_price("coinbase", $con, $mysql_database);
-    add_buffer_exchange_btc_price("kraken", $con, $mysql_database);
-    add_buffer_exchange_btc_price("okcoin", $con, $mysql_database);
-    add_buffer_exchange_btc_price("btcchina", $con, $mysql_database);
-    add_buffer_exchange_btc_price("huobi", $con, $mysql_database);
-    add_buffer_exchange_btc_price("btc-e", $con, $mysql_database);
-    
-    // Debugging code
-    /*$unique_processed_tweets[0] = "Cats are really nice and stuff";
-    $unique_processed_tweets[1] = mysqli_real_escape_string($database_connection, "Hello world I can't program because");
-    $unique_processed_tweets[2] = "I am writing this debugging code";
-    $unique_processed_tweets[3] = "To test my really bad speghetti code";*/
-    
-    //var_dump($unique_processed_tweets);
-    
-    //add_tweet($unique_processed_tweets[1], $con);
+    add_buffer_exchange_btc_price("bitfinex", $con);
+    add_buffer_exchange_btc_price("bitstamp", $con);
+    //add_buffer_exchange_btc_price("cryptsy", $con);
+    add_buffer_exchange_btc_price("coinbase", $con);
+    add_buffer_exchange_btc_price("kraken", $con);
+    add_buffer_exchange_btc_price("okcoin", $con);
+    add_buffer_exchange_btc_price("btcchina", $con);
+    add_buffer_exchange_btc_price("huobi", $con);
+    add_buffer_exchange_btc_price("btc-e", $con);
     
     // add new tweets to database
     for($i = 0; $i < count($unique_processed_tweets); $i++)
     {
-        add_tweet($unique_processed_tweets[$i], $con, $mysql_database);
+        // Get the tweet timestamp from the username
+        $tweet_timestamp = substr($unique_processed_tweets[$i][0], 0, 9);
+        
+        // Get rid of the timestamp from the username
+        $unique_processed_tweets[$i][0] = substr($unique_processed_tweets[$i][0], 11);
+        
+        for($t = 1; $t < (count($unique_processed_tweets[$i])); $t++) // $t is for tweets
+        {
+            $escaped_username = mysqli_real_escape_string($con, $unique_processed_tweets[$i][0]);
+            $escaped_tweet = mysqli_real_escape_string($con, $unique_processed_tweets[$i][$t]);
+            
+            var_dump($escaped_username);
+            var_dump($escaped_tweet);
+            
+            var_dump(add_tweet($escaped_username, $escaped_tweet, $tweet_timestamp, $con));
+            
+            //print "\n" . $escaped_username . " " . $escaped_tweet . " " . $tweet_timestamp . " " . $con . "\n";
+        }
     }
     
     mysqli_close($con);
