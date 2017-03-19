@@ -14,7 +14,7 @@ $number_of_tweets = 1;
 // Parameter is of type array, and can contain a maximum of 12 string values, due to the rate limits of the Twitter API
 // $database_connection is the result of the mysqli_connect() function
 // (assuming this method gets called exactly once per minute. Should go with 11 max to be safe).
-function get_tweets($user_list, $database_connection)
+function get_tweets($user_list)
 {
     global $number_of_tweets;
     
@@ -81,7 +81,7 @@ function get_tweets($user_list, $database_connection)
         
         // Timestamp will always be 10 characters long
         $user_array[0] = $timestamp . " <b>" . $user_list[$i] . "</b>";
-                    
+        
         for($t = 0; $t < $number_of_tweets; $t++)
         {
             // Store tweets with username who tweeted it in the user array.
@@ -103,14 +103,17 @@ function filter_tweets($raw_search_data, $keyword_list)
 {
     global $number_of_tweets;
     
-    $processed_tweets = array();
     $keyword_list_length = count($keyword_list);
     $raw_search_data_length = count($raw_search_data);
     $tweet_counter = 0;
     
+    $results = array();
+    
     // Loop through users
     for($i = 0; $i < $raw_search_data_length; $i++)
     {
+        $user_array = array();
+        
         // Loop through tweets within users
         for($t = 1; $t <= $number_of_tweets; $t++)
         {
@@ -120,42 +123,64 @@ function filter_tweets($raw_search_data, $keyword_list)
                 // Search tweet for keywords
                 if(stristr($raw_search_data[$i][$t], $keyword_list[$k]) != false)
                 {
-                    //                              username                            tweet
-                    $processed_tweets[$tweet_counter] = $raw_search_data[$i][0] . ": " . $raw_search_data[$i][$t];
+                    // Store the usernames and tweets similar to how we did in the get_tweets function
+                    $user_array[0] = $raw_search_data[$i][0]; //username
+                    $user_array[$t] = $raw_search_data[$i][$t]; // tweet
+                    $results[$i] = $user_array;
+                    
                     $tweet_counter++;
                     break;
                 }
             }
         }
+        
+        // Reset tweet_counter to 0 since we are beginning a new user
     }
     
-    return $processed_tweets;
+    // reset all indexes
+    $results = array_values($results);
+    for($i = 0; $i < count($results); $i++)
+    {
+        $results[$i] = array_values($results[$i]);
+    }
+    
+    return $results;
 }
 
-// $processed_tweets is of type array. 
+// $processed_tweets is a multimensional array containing usernames and all tweets found by the search.
+// Eg: $results[0][0] returns the username of the first user in the array
+// Eg: $results[0][3] returns their third tweet 
 // $database_connection is the result of the mysqli_connect() function
 // This method compares relevant tweets from our search and compares them to the tweets in the database
 // to find the set of all new tweets that are not currently in the database, and discards the others.
 function compare_tweets($processed_tweets, $database_connection)
 {
+    global $number_of_tweets;
     
-    $database_tweets = get_database_tweets($database_connection);
-    var_dump($database_tweets);
+    $number_of_users = count($processed_tweets);
     
-    //for($i = 0; $i < count($database_tweets) - 1; $i++)
-    //{
-    //    $database_tweets[$i] = clean_input($database_tweets[$i]);
-    //}
+    $results = array();
     
-    // We use the array_values function to reset the index of the resulting array (ie. start at 0)
-    $results = array_values(array_diff($processed_tweets, $database_tweets));
+    for($i = 0; $i < $number_of_users; $i++)
+    {
+        $user_array = array();
+        $result = mysqli_query($database_connection, "SELECT post_text FROM Twitter_Posts WHERE post_text='$processed_tweets[$i][$t]' AND username='$processed_tweets[$i][0]'");
+        for($t = 1; $t < (count($processed_tweets[$i])); $t++) // $t is for tweets
+        {
+            if(mysqli_fetch_array($result) == null)
+            {
+                $user_array[0] = $processed_tweets[$i][0]; //username
+                $user_array[$t] = $processed_tweets[$i][$t]; // tweet
+                $results[$i] = $user_array;
+            }
+        }
+    }
     
-    var_dump($results);
-    
-    // Use mysqli_real_escape_string on the tweets after comparison to fix the issue with special characters during comparison.
+    // reset all indexes
+    $results = array_values($results);
     for($i = 0; $i < count($results); $i++)
     {
-        $results[$i] = mysqli_real_escape_string($database_connection, $results[$i]);
+        $results[$i] = array_values($results[$i]);
     }
     
     return $results;
@@ -163,9 +188,9 @@ function compare_tweets($processed_tweets, $database_connection)
 
 // $database_connection is the result of the mysqli_connect() function
 // Returns an array with all the tweets from the database
-function get_database_tweets($database_connection)
+function get_database_tweets($database_connection, $limit)
 {
-    $result = mysqli_query($database_connection, "SELECT * FROM `tweets`");
+    $result = mysqli_query($database_connection, "SELECT * FROM Twitter_Posts");
     
     // Obtain the number of rows from the result of the query
     $num_rows = mysqli_num_rows($result);
@@ -203,45 +228,11 @@ function get_database_tweets($database_connection)
 // $database_connection is the result of the mysqli_connect() function
 // $database_name (string)
 // Returns boolean
-function add_tweet($new_tweet, $database_connection, $database_name)
+function add_tweet($username, $new_tweet, $tweet_timestamp, $database_connection)
 {
+    $insert = "INSERT INTO Twitter_Posts (username, post_text, tstamp) VALUES ('$username', '$new_tweet', $tweet_timestamp);";
     
-    $result = mysqli_query($database_connection, "SELECT * FROM `tweets`");
-    
-    // Obtain the number of rows from the result of the query
-    $num_rows = mysqli_num_rows($result);
-    // Obtain number of columns
-    $num_columns = mysqli_field_count($database_connection);
-    
-    // Will be storing all the rows in here
-    // Multidimensional array of form rows[table][row]
-    $rows = array();
-    
-    // Get all the rows
-    for($i = 0; $i < $num_rows; $i++)
-    {
-        $rows[$i] = mysqli_fetch_array($result);
-    }
-    
-    //var_dump($rows[0][7]);
-    
-    // Update rows in the database, starting from the bottom, with the tweet above it. Eg tweet0 becomes tweet1, tweet1 becomes tweet2, ect.
-    for($i = 0; $i <= ($num_columns - 2); $i++) // the 2 is to offset the extra column, normally would be 1
-    {
-        if($i == ($num_columns - 2))
-        {
-            // Insert new tweet into last position in the database.
-            $update = "UPDATE `" . $database_name . "`.`tweets` SET `tweet" . $i . "` = '" . $new_tweet . "' WHERE `tweets`.`extra` =0;";
-        }
-        else
-        {
-            // Have to escape again because the text becomes unescaped when we take it out of the database, aka our little array
-            $update = "UPDATE `" . $database_name . "`.`tweets` SET `tweet" . $i . "` = '" . mysqli_real_escape_string($database_connection, $rows[0]["tweet" . ($i + 1)]) . "' WHERE `tweets`.`extra` =0;";
-        }
-        
-        $result = mysqli_query($database_connection, $update);
-    }
-    
+    $result = mysqli_query($database_connection, $insert);
     return $result;
 }
 

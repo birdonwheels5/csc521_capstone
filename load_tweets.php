@@ -31,6 +31,7 @@
     {
         $time_unit = "minutes";
         
+        //TODO
         // This grabs the timestamp from the beginning of the tweet
         $create_time = substr($database_tweets[$i], 0, 10);
         // Get time since tweeted in minutes
