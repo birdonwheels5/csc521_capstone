@@ -39,7 +39,7 @@ CREATE TABLE Twitter_Posts
 	tstamp BIGINT,
 	tp_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	username VARCHAR(15),
-	post_text VARCHAR(140)
+	post_text VARCHAR(280) UNIQUE -- Doubled because we're storing html safe tweets
 );
 
 CREATE TABLE Forum_Posts
