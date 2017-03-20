@@ -2,7 +2,7 @@
 
 // Toggle switch for using this on my local machine and the weblab server
 // I got sick of commenting things every time I switched...
-$local_filepaths = true;
+$local_filepaths = false;
 
 if($local_filepaths)
 {

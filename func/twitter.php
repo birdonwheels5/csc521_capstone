@@ -164,9 +164,15 @@ function compare_tweets($processed_tweets, $database_connection)
     for($i = 0; $i < $number_of_users; $i++)
     {
         $user_array = array();
-        $result = mysqli_query($database_connection, "SELECT post_text FROM Twitter_Posts WHERE post_text='$processed_tweets[$i][$t]' AND username='$processed_tweets[$i][0]'");
+        
         for($t = 1; $t < (count($processed_tweets[$i])); $t++) // $t is for tweets
         {
+            $post_text = $processed_tweets[$i][$t];
+            $username = $processed_tweets[$i][0];
+            $timestamp = substr($processed_tweets[$i][0], 0, 10); // First 10 chars are the timestamp
+            
+            $result = mysqli_query($database_connection, "SELECT post_text FROM Twitter_Posts WHERE (post_text='$post_text' AND tstamp=$timestamp)");
+            
             if(mysqli_fetch_array($result) == null)
             {
                 $user_array[0] = $processed_tweets[$i][0]; //username
@@ -188,9 +194,9 @@ function compare_tweets($processed_tweets, $database_connection)
 
 // $database_connection is the result of the mysqli_connect() function
 // Returns an array with all the tweets from the database
-function get_database_tweets($database_connection, $limit)
+function get_database_tweets($database_connection, $tweet_limit)
 {
-    $result = mysqli_query($database_connection, "SELECT * FROM Twitter_Posts");
+    /*$result = mysqli_query($database_connection, "SELECT * FROM Twitter_Posts");
     
     // Obtain the number of rows from the result of the query
     $num_rows = mysqli_num_rows($result);
@@ -221,6 +227,42 @@ function get_database_tweets($database_connection, $limit)
         
     }
     //var_dump($database_tweets);
+    
+    return $database_tweets;*/
+    
+    $result = mysqli_query($database_connection, "SELECT username, post_text, tstamp FROM Twitter_Posts ORDER BY tstamp DESC LIMIT $tweet_limit");
+    
+    // Obtain the number of rows from the result of the query
+    $num_rows = mysqli_num_rows($result);
+            
+    // Will be storing all the rows in here
+    $array_of_rows = array();
+                            
+    // Get all the rows
+    for($i = 0; $i < $num_rows; $i++)
+    {
+        $array_of_rows[$i] = mysqli_fetch_array($result);
+    }
+    $size_of_array_of_rows = $num_rows;
+                            
+    $usernames = array();
+    $post_texts = array();
+    $timestamps = array();
+    
+    // Get an array of all values for each field
+    for($i = 0; $i < $size_of_array_of_rows; $i++)
+    {
+        $usernames[$i] = $array_of_rows[$i]["username"];
+        $post_texts[$i] = $array_of_rows[$i]["post_text"];
+        $timestamps[$i] = $array_of_rows[$i]["tstamp"];
+    }
+    
+    // Package all user data and return as an array
+    $database_tweets = array();
+    
+    $database_tweets[0] = $usernames;
+    $database_tweets[1] = $post_texts;
+    $database_tweets[2] = $timestamps;
     
     return $database_tweets;
 }

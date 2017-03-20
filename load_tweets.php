@@ -15,6 +15,9 @@
     $mysql_pass = $settings[2];
     $mysql_database = $settings[3];
     
+    // This is also the size of the array
+    $num_tweets = 8;
+    
     // Establish connection to the database
     $con = mysqli_connect($mysql_host, $mysql_user, $mysql_pass, $mysql_database);
     
@@ -23,17 +26,16 @@
         echo "Failed to connect to MySQL: " . mysqli_connect_error();
     }
     
-    $database_tweets = get_database_tweets($con);
-    $database_tweets_count = count($database_tweets) - 1;
+    $database_tweets = get_database_tweets($con, $num_tweets);
     
-    // List the tweets in reverse order, so they appear from approximately latest first
-    for($i = $database_tweets_count; $i >= 0; $i--)
+    // List the tweets. The order is taken care of by the database.
+    for($i = 0; $i < $num_tweets; $i++)
     {
         $time_unit = "minutes";
         
-        //TODO
-        // This grabs the timestamp from the beginning of the tweet
-        $create_time = substr($database_tweets[$i], 0, 10);
+        // Position [2] is the timestamp
+        $create_time = $database_tweets[2][$i];
+        
         // Get time since tweeted in minutes
         $time_since_tweet = round((time() - $create_time) / 60, 0);
         
@@ -76,11 +78,14 @@
             }
         }
         
+        // Position [0] is the username, and position [1] is the tweet text
+        $username = $database_tweets[0][$i];
+        $html_converted_tweet = convert_tweet_to_html($database_tweets[1][$i]);
         
         // Print the rest of the tweet and the time since it was tweeted
-		print "<div class='tweet'>";
-        print convert_tweet_to_html(substr($database_tweets[$i], 11) . " - <i>") . $time_since_tweet . " " . $time_unit . " ago </i>";
-		print "</div>";
+        print "<div class='tweet'>";
+        print "$username: $html_converted_tweet \n<br/><i> $time_since_tweet $time_unit ago </i>";
+        print "</div>";
         print "<br/><br/>";
     }
     

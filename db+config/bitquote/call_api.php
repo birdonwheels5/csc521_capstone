@@ -73,7 +73,7 @@
     for($i = 0; $i < count($unique_processed_tweets); $i++)
     {
         // Get the tweet timestamp from the username
-        $tweet_timestamp = substr($unique_processed_tweets[$i][0], 0, 9);
+        $tweet_timestamp = substr($unique_processed_tweets[$i][0], 0, 10);
         
         // Get rid of the timestamp from the username
         $unique_processed_tweets[$i][0] = substr($unique_processed_tweets[$i][0], 11);

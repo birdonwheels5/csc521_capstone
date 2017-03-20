@@ -27,28 +27,27 @@ CREATE TABLE Price_History
 
 CREATE TABLE Reddit_Posts
 (
-	tstamp BIGINT,
+	tstamp BIGINT NOT NULL,
 	rp_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	OP VARCHAR(20),
-	post_text VARCHAR(65536)
-	
+	OP VARCHAR(20) NOT NULL,
+	post_text VARCHAR(65536) NOT NULL
 );
 
 CREATE TABLE Twitter_Posts
 (
-	tstamp BIGINT,
+	tstamp BIGINT NOT NULL,
 	tp_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	username VARCHAR(15),
-	post_text VARCHAR(280) UNIQUE -- Doubled because we're storing html safe tweets
+	username VARCHAR(22) NOT NULL, -- 22 characters instead of the 15 that twitter allows, because we store 7 characters of html formatting
+	post_text VARCHAR(280) NOT NULL -- Doubled because we're storing html safe tweets
 );
 
 CREATE TABLE Forum_Posts
 (
-	tstamp BIGINT,
+	tstamp BIGINT NOT NULL,
 	fp_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	username VARCHAR(15),
-	post_text VARCHAR(65536),
-	forum_name VARCHAR(256)
+	username VARCHAR(22) NOT NULL,
+	post_text VARCHAR(65536) NOT NULL,
+	forum_name VARCHAR(256) NOT NULL
 );
 
 CREATE TABLE users
@@ -66,6 +65,8 @@ CREATE TABLE users
 	validate TINYINT NOT NULL,
 	session_id VARCHAR(256)
 );
+
+-- ALTER TABLE Twitter_Posts ADD UNIQUE(post_text);
 
 -- Initialize the Price_Buffer table
 INSERT INTO Price_Buffer (bitfinex, bitstamp, `btc-e`, btcchina, coinbase, huobi, kraken, okcoin, extra) VALUES ('0', '0', '0', '0', '0', '0', '0', '0', '0');
