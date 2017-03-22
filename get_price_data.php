@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET")
     $mysql_user = $settings[0];
     $mysql_host = $settings[1];
     $mysql_pass = $settings[2];
-    $mysql_database = "btc_quotation";
+    $mysql_database = $settings[3];
     
     
     $timespan = $_GET["span"];
@@ -71,7 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET")
 function get_price_data($con, $exchange, $timespan)
 {
     // Query database for exchange prices
-    $result = mysqli_query($con, "SELECT * FROM `" . $exchange . "`");
+    $result = mysqli_query($con, "SELECT `$exchange`, tstamp FROM Price_History");
     
     // Obtain the number of rows from the result of the query
     $num_rows = mysqli_num_rows($result);
@@ -94,13 +94,13 @@ function get_price_data($con, $exchange, $timespan)
     // Get an array of the past N prices for each exchange
     for($i = ($size_of_rows); $i > ($size_of_rows - $timespan); $i--)
     {
-        $prices[$i] = $rows[$i]["btc_price"];
-        $timestamps[$i] = $rows[$i]["timestamp"];
+        $prices[$i] = $rows[$i][$exchange];
+        $timestamps[$i] = $rows[$i]["tstamp"];
     }
     
     // Query database for min exchange price. The queries are structured this way because MYSQL orders then limits the results, but we need to limit then order, and limit again.
-    $min_result = mysqli_query($con, "SELECT * FROM (SELECT * FROM `" . $exchange . "` LIMIT " . ($size_of_rows - $timespan) . "," . $timespan . ") `" . $exchange . "` ORDER BY `btc_price` ASC LIMIT 1;");
-    $max_result = mysqli_query($con, "SELECT * FROM (SELECT * FROM `" . $exchange . "` LIMIT 16,8) `" . $exchange . "` ORDER BY `btc_price` DESC LIMIT 1;");
+    $min_result = mysqli_query($con, "SELECT `$exchange` FROM (SELECT `$exchange` FROM Price_History LIMIT " . ($size_of_rows - $timespan) . ", $timespan) `$exchange` ORDER BY `$exchange` ASC LIMIT 1;");
+    $max_result = mysqli_query($con, "SELECT `$exchange` FROM (SELECT `$exchange` FROM Price_History LIMIT 16,8) `$exchange` ORDER BY `$exchange` DESC LIMIT 1;");
     
     $min_array = mysqli_fetch_array($min_result);
     $max_array = mysqli_fetch_array($max_result);
