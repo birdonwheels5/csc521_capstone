@@ -22,7 +22,7 @@ CREATE TABLE Price_History
 	huobi FLOAT,
 	kraken FLOAT,
 	okcoin FLOAT,
-	tstamp BIGINT
+	tstamp BIGINT NOT NULL PRIMARY KEY
 );
 
 CREATE TABLE Reddit_Posts
