@@ -3,8 +3,8 @@
 	<head>
 		<meta charset="ISO-8859-1">
 		<title>Reset Password</title>
-		<link rel="stylesheet" type="text/css" href="../styles.css" title="Default Styles" media="screen"/>
-		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans" title="Font Styles"/>
+	    <link rel='stylesheet' type="text/css" href="../main.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<?php include "CookieHandler.php";
               include "../func/login.php"; ?>
 	</head>
