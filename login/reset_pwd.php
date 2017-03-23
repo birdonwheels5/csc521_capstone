@@ -28,71 +28,21 @@
                 print_header($cookie_handler, $cookie_name);
             
             ?>
-			
-			<article>
-				<p>
-					<!-- <center><img src="logo_big.png"></center> Insert Main Logo here -->
-					
-					<hr/>
-					<center><h1>Reset Password</h1></center>
-					<hr/>
-					<p>
-						<div class="box">
-							<p>
-								<form method="post" action="process_reset_pwd.php">
-                                    <center><table>
-                                        <tr>
-                                            <td>
-                                                Forgot password? 
-                                            </td>
-                                            <td>
-                                                
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                New Password: 
-                                            </td>
-                                            <td>
-                                                <input type="password" name="new_password" size="10">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                Repeat New Password: 
-                                            </td>
-                                            <td>
-                                                <input type="password" name="new_password_repeat" size="10">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                Email: 
-                                            </td>
-                                            <td>
-                                                <input type="text" name="email" size="10">
-                                            </td>
-                                        </tr>
-                                    </table></center>
-								    <center><input type="submit" name="submit" value="Change Password"></center>
-								</form>
-							</p>
-						</div>
-
-					</p>
-
-				</p>
-			
-			
-			</article>
-			
-			<div class="paddingBottom">
-			</div>
-			
-			<footer>
-				2017 Bitquote.
-			</footer>
+	<div class="row center">
+		<div class="empty col-4">
 		</div>
+		<div class="col-4">
+    	<form action="process_reset_pwd.php" name="reset_pwd" method="post" class="object shadow" onkeyup="check_form()">
+        	<input type="password" name="new_password" placeholder="New Password" required>
+        	<input type="password" name="new_password_repeat" placeholder="Repeat New Password" required>
+			<input type="email" name="email" placeholder="Email" required>
+			<input type="submit" name="submit" value="Reset Password" required>
+			<div class="small"><a href="./login/reset_pwd.php">Reset your password</a>, <a href="login.php">Login</a> or <a href="view.php">Continue as Guest</a></div>
+		</form>
+		</div>
+		<div class="col-4 empty">
+		</div>
+	</div>
 	</body>
 	
 </html>
