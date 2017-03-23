@@ -10,7 +10,7 @@
 	</head>
 	
 	<body>
-		<center><div class="container">
+		<div class="Object Shadow">
             
             <?php 
             
@@ -29,7 +29,6 @@
             
             ?>
 			
-			<article>
 				<p>
 					<!-- <center><img src="logo_big.png"></center> Insert Main Logo here -->
 					
@@ -119,17 +118,7 @@
 
 					</p>
 
-				</p>
-			
-			
-			</article>
-			
-			<div class="paddingBottom">
-			</div>
-			
-			<footer>
-				2017 Bitquote.
-			</footer>
+				</p>			
 		</div>
 	</body>
 	
