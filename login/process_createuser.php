@@ -29,7 +29,7 @@
 			
 					<!-- <center><img src="logo_big.png"></center> Insert Main Logo here -->
 					
-						<div class="object shadow">
+						<div class="col-6 object shadow">
 							<center><h1>Account Creation Results</h1></center>
 
 								<?php
