@@ -10,7 +10,6 @@
 	</head>
 	
 	<body>
-		<center><div class="container">
             
             <?php 
             
@@ -28,17 +27,12 @@
                 print_header($cookie_handler, $cookie_name);
             
             ?>
-			
-			<article>
+
+		<div class="row center">
+			<div class="col-3 empty"></div>
+			<div class="col-6 object shadow">
+				<center><h1>Login Error</h1></center>
 				<p>
-					<!-- <center><img src="logo_big.png"></center> Insert Main Logo here -->
-					
-					<hr/>
-					<center><h1>Login Error</h1></center>
-					<hr/>
-					<p>
-						<div class="box">
-							<p>
 								<?php
                                     $username = trim(htmlspecialchars($_POST["username"]));
                                     $password = trim(htmlspecialchars($_POST["password"]));
@@ -103,22 +97,9 @@
                                     }
                                 ?>
 							</p>
-						</div>
-
-					</p>
-
-				</p>
-			
-			
-			</article>
-			
-			<div class="paddingBottom">
 			</div>
-			
-			<footer>
-				2017 Bitquote.
-			</footer>
+			<div class="col-3 empty">	</div>
 		</div>
+
 	</body>
-	
 </html>
