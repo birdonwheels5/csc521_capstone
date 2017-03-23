@@ -10,10 +10,7 @@
 	</head>
 	
 	<body>
-		<center><div class="container">
-            
-            <?php 
-            
+            <?php
                 $cookie_handler = new CookieHandler();
                 $cookie_name = $cookie_handler->get_cookie_name();
                 $cookie_handler->cookie_exists($cookie_name);
@@ -26,24 +23,15 @@
                     $session_id = get_session($uuid);
                     $cookie_handler->validate_cookie($user_cookie, $session_id);
                     
-                    // So we can get the current user's user_id_num to use for the "from" field of the message
                     $user_data = get_user_data($uuid);
-                }
-                print_header($cookie_handler, $cookie_name);
-            
+                }            
             ?>
-			
-			<article>
-				<p>
-					<!-- <center><img src="logo_big.png"></center> Insert Main Logo here -->
-					
-					<hr/>
-					<center><h1>Verification Results</h1></center>
-					<hr/>
-					<p>
-						<div class="box">
-							<p>
-                                <?php
+		
+		<div class="row center">
+			<div class="col-3 empty"></div>
+			<div class="col-6 object shadow">
+				<center><h1>Verification Results</h1></center>
+				<?php
                                     
                                     $user_id_num = $user_data[9];
                                     $new_hashed_password = $user_data[10];
@@ -181,23 +169,11 @@
                                     }
                                     
                                 ?>
-							</p>
-						</div>
 
-					</p>
-
-				</p>
-			
-			
-			</article>
-			
-			<div class="paddingBottom">
 			</div>
-			
-			<footer>
-				2017 Bitquote.
-			</footer>
+			<div class="col-3 empty"></div>
 		</div>
+
 	</body>
 	
 </html>
