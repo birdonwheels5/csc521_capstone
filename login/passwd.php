@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-	<head>
-		<meta charset="ISO-8859-1">
-		<title>Change Password</title>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Change Password</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' type="text/css" href="../main.css">
-		<?php include "CookieHandler.php";
-              include "../func/login.php"; ?>
-	</head>
+	<?php include "CookieHandler.php";
+		  include "../func/login.php"; ?>
+</head>
 <body class="color-0">
             <?php 
             
@@ -20,9 +20,7 @@
                     $user_cookie = $cookie_handler->get_cookie($cookie_name);
                     $session_id = get_session($user_cookie->get_uuid());
                     $cookie_handler->validate_cookie($user_cookie, $session_id);
-                }
-                print_header($cookie_handler, $cookie_name);
-            
+                }            
             ?>
 	<div class="row center">
 		<div class="empty col-4">
@@ -40,4 +38,3 @@
 		</div>
 	</div>
 </body>
-
