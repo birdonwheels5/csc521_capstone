@@ -30,9 +30,9 @@
 					<!-- <center><img src="logo_big.png"></center> Insert Main Logo here -->
 		<div class="row center">
 			<div class="col-3 empty"></div>
-				<div class="col-6 object shadow">
-					<center><h1>Account Creation Results</h1></center>
-
+			<div class="col-6 object shadow">
+				<center><h1>Account Creation Results</h1></center>
+				<p>
 								<?php
                                     $username = trim(htmlspecialchars($_POST["username"]));
                                     $password = trim(htmlspecialchars($_POST["password"]));
@@ -108,7 +108,8 @@
                                     
                                     
                                 ?>
-				</div>
+				</p>
+			</div>
 			<div class="col-3 empty">	</div>
 		</div>
 	</body>
