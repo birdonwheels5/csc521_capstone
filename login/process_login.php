@@ -3,16 +3,15 @@
 	<head>
 		<meta charset="ISO-8859-1">
 		<title>Login</title>
-		<link rel="stylesheet" type="text/css" href="../styles.css" title="Default Styles" media="screen"/>
-		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans" title="Font Styles"/>
+	    <link rel='stylesheet' type="text/css" href="../main.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<?php include "CookieHandler.php"; 
               include "../func/login.php"; ?>
 	</head>
 	
 	<body>
             
-            <?php 
-            
+            <?php
                 $cookie_handler = new CookieHandler();
                 $cookie_name = $cookie_handler->get_cookie_name();
                 $cookie_handler->cookie_exists($cookie_name);
@@ -23,9 +22,7 @@
                     $user_cookie = $cookie_handler->get_cookie($cookie_name);
                     $session_id = get_session($user_cookie->get_uuid());
                     $cookie_handler->validate_cookie($user_cookie, $session_id);
-                }
-                print_header($cookie_handler, $cookie_name);
-            
+                }            
             ?>
 
 		<div class="row center">
