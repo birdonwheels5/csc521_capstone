@@ -27,7 +27,8 @@
 					<!-- <center><img src="logo_big.png"></center> Insert Main Logo here -->
 		<div class="row center">
 			<div class="col-3 empty"></div>
-			<div class="col-6 object shadow">
+			<div class="col-6">
+				<div class="object shadow">
 				<center><h1>Account Creation Results</h1></center>
 				<p>
 								<?php
@@ -106,6 +107,7 @@
                                     
                                 ?>
 				</p>
+				</div>
 			</div>
 			<div class="col-3 empty">	</div>
 		</div>

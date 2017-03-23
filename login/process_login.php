@@ -27,7 +27,8 @@
 
 		<div class="row center">
 			<div class="col-3 empty"></div>
-			<div class="col-6 object shadow">
+			<div class="col-6">
+				<div class="object shadow">
 				<center><h1>Login Error</h1></center>
 				<p>
 								<?php
@@ -94,6 +95,7 @@
                                     }
                                 ?>
 							</p>
+				</div>
 			</div>
 			<div class="col-3 empty">	</div>
 		</div>

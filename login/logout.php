@@ -27,9 +27,10 @@
 		
 		<div class="row center">
 			<div class="col-3 empty"></div>
-			<div class="col-6 object shadow">
-				<center><h1>Logout Error</h1></center>
-				<p>
+			<div class="col-6">
+				<div class="object shadow">
+					<center><h1>Logout Error</h1></center>
+					<p>
 					<?php
                                     
                                     // Perform logout here
@@ -44,7 +45,8 @@
                                         print "Unable to log out because user is not logged in!";
                                     }
 					?>
-				</p>
+					</p>
+				</div>
 			</div>
 			<div class="col-3 empty">	</div>
 		</div>
