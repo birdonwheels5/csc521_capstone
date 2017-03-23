@@ -26,7 +26,7 @@
 		<div class="empty col-4">
 		</div>
 		<div class="col-4">
-    	<form action="process_createuser.php" name="register" method="post" class="object shadow" onkeyup="check_form()">
+    	<form action="process_passwd.php" name="register" method="post" class="object shadow" onkeyup="check_form()">
         	<input type="password" name="old_password" placeholder="Old Password" required>
         	<input type="password" name="new_password" placeholder="New Password" required>
         	<input type="password" name="new_password_repeat" placeholder="Repeat New Password" required>
