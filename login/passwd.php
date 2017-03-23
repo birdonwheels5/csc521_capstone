@@ -1,17 +1,13 @@
 <!DOCTYPE html>
-<html>
 	<head>
 		<meta charset="ISO-8859-1">
 		<title>Change Password</title>
-		<link rel="stylesheet" type="text/css" href="../styles.css" title="Default Styles" media="screen"/>
-		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans" title="Font Styles"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' type="text/css" href="../main.css">
 		<?php include "CookieHandler.php";
               include "../func/login.php"; ?>
 	</head>
-	
-	<body>
-		<center><div class="container">
-            
+<body class="color-0">
             <?php 
             
                 $cookie_handler = new CookieHandler();
@@ -28,63 +24,20 @@
                 print_header($cookie_handler, $cookie_name);
             
             ?>
-			
-			<article>
-				<p>
-					<!-- <center><img src="logo_big.png"></center> Insert Main Logo here -->
-					
-					<hr/>
-					<center><h1>Change Password</h1></center>
-					<hr/>
-					<p>
-						<div class="box">
-							<p>
-								<form method="post" action="process_passwd.php">
-                                    <center><table>
-                                        <tr>
-                                            <td>
-                                                Old Password: 
-                                            </td>
-                                            <td>
-                                                <input type="password" name="old_password" size="10">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                New Password: 
-                                            </td>
-                                            <td>
-                                                <input type="password" name="new_password" size="10">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                Repeat New Password: 
-                                            </td>
-                                            <td>
-                                                <input type="password" name="new_password_repeat" size="10">
-                                            </td>
-                                        </tr>
-                                    </table></center>
-								    <center><input type="submit" name="submit" value="Change Password"></center>
-								</form>
-							</p>
-						</div>
-
-					</p>
-
-				</p>
-			
-			
-			</article>
-			
-			<div class="paddingBottom">
-			</div>
-			
-			<footer>
-				2017 Bitquote.
-			</footer>
+	<div class="row center">
+		<div class="empty col-4">
 		</div>
-	</body>
-	
-</html>
+		<div class="col-4">
+    	<form action="process_createuser.php" name="register" method="post" class="object shadow" onkeyup="check_form()">
+        	<input type="password" name="old_password" placeholder="Old Password" required>
+        	<input type="password" name="new_password" placeholder="New Password" required>
+        	<input type="password" name="new_password_repeat" placeholder="Repeat New Password" required>
+			<input type="submit" name="submit" value="Change Password" required>
+			<div class="small"><a href="./login/reset_pwd.php">Reset your password</a>, <a href="login.php">Login</a> or <a href="view.php">Continue as Guest</a></div>
+		</form>
+		</div>
+		<div class="col-4 empty">
+		</div>
+	</div>
+</body>
+
