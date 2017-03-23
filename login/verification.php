@@ -31,6 +31,7 @@
 			<div class="col-3 empty"></div>
 			<div class="col-6 object shadow">
 				<center><h1>Verification Results</h1></center>
+				<p>
 				<?php
                                     
                                     $user_id_num = $user_data[9];
@@ -169,7 +170,7 @@
                                     }
                                     
                                 ?>
-
+					</p>
 			</div>
 			<div class="col-3 empty"></div>
 		</div>
