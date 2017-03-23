@@ -26,7 +26,7 @@
             ?>
             
             <?php
-                //authenticate_user(100);
+                authenticate_user(100);
             ?>
 		
 		<div class="row center">
