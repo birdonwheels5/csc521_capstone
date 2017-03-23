@@ -9,9 +9,7 @@
               include "../func/login.php"; ?>
 	</head>
 	
-	<body>
-		<div class="Object Shadow">
-            
+	<body>            
             <?php 
             
                 $cookie_handler = new CookieHandler();
@@ -29,15 +27,11 @@
             
             ?>
 			
-				<p>
 					<!-- <center><img src="logo_big.png"></center> Insert Main Logo here -->
 					
-					<hr/>
-					<center><h1>Account Creation Results</h1></center>
-					<hr/>
-					<p>
-						<div class="box">
-							<p>
+						<div class="object shadow">
+							<center><h1>Account Creation Results</h1></center>
+
 								<?php
                                     $username = trim(htmlspecialchars($_POST["username"]));
                                     $password = trim(htmlspecialchars($_POST["password"]));
@@ -113,13 +107,8 @@
                                     
                                     
                                 ?>
-							</p>
 						</div>
 
-					</p>
-
-				</p>			
-		</div>
 	</body>
 	
 </html>
