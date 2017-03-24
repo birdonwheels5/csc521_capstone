@@ -167,7 +167,8 @@ function compare_tweets($processed_tweets, $database_connection)
         
         for($t = 1; $t < (count($processed_tweets[$i])); $t++) // $t is for tweets
         {
-            $post_text = $processed_tweets[$i][$t];
+            // Escaped because the tweets in the database are escaped, and we will be comparing to those
+            $post_text = mysqli_real_escape_string($database_connection, $processed_tweets[$i][$t]);
             $username = $processed_tweets[$i][0];
             $timestamp = substr($processed_tweets[$i][0], 0, 10); // First 10 chars are the timestamp
             
