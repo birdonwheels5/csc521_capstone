@@ -57,7 +57,7 @@ CREATE TABLE users
 	uuid VARCHAR(256) NOT NULL,
 	hashed_password VARCHAR(512) NOT NULL,
 	new_hashed_pasword VARCHAR(512),
-	salt VARCHAR(32) NOT NULL,
+	salt BLOB NOT NULL,
 	authority_level INT NOT NULL,
 	creation_time BIGINT NOT NULL,
 	last_login BIGINT,
