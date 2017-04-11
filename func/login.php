@@ -28,7 +28,7 @@ function create_user($username, $password, $email, $authority_level)
     $hashed_password = hash("sha512", $password . $salt);
     
     // For some reason this doesn't work after adding the email to the end
-    $insert = "INSERT INTO `" . $GLOBALS['mysql_database'] . "`.`users` (`user_id_num`, `username`, `uuid`, `hashed_password`, `new_hashed_password`, `salt`, `authority_level`, `creation_time`, `last_login`, `email`, `validate`, `session_id`) VALUES (NULL, '$username', '$uuid', '$hashed_password', NULL, '$salt', '$authority_level', '$creation_time', '0', '$email', '0', NULL);";
+    $insert = "INSERT INTO `" . $GLOBALS['mysql_database'] . "`.`users` (`user_id_num`, `username`, `uuid`, `hashed_password`, `new_hashed_password`, `salt`, `authority_level`, `creation_time`, `last_login`, `email`, `validate`, `session_id`) VALUES (0, '$username', '$uuid', '$hashed_password', NULL, '$salt', '$authority_level', '$creation_time', '0', '$email', '0', NULL);";
     
     // Add user to the database
     $result = mysqli_query($con, $insert);
