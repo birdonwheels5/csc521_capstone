@@ -21,8 +21,8 @@ else
 	
     
     
-    $GLOBALS['config_dir'] = "../../bitquote/config.txt";
-    $GLOBALS['log_dir'] = "../../bitquote/log.txt";
+    $GLOBALS['config_dir'] = "__DIR__/../../bitquote/config.txt";
+    $GLOBALS['log_dir'] = "__DIR__/../../bitquote/log.txt";
 }
 
 // Load database settings from config file
