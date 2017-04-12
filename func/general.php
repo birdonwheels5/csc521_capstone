@@ -13,8 +13,8 @@ if($local_filepaths)
 else
 {   
     // Weblab configs
-    $GLOBALS['config_dir'] = __DIR__ . "/../../bitquote/config.txt";
-    $GLOBALS['log_dir'] = __DIR__ . "/../../bitquote/log.txt";
+    $GLOBALS['config_dir'] = __DIR__ . "../../bitquote/config.txt";
+    $GLOBALS['log_dir'] = __DIR__ . "../../bitquote/log.txt";
 }
 
 // Load database settings from config file
