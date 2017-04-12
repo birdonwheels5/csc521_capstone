@@ -77,8 +77,8 @@
 			    json_data.okcoin[2].max
 			];
 
-			var min_price = Math.min.apply(Math, min_array);
-			var max_price = Math.max.apply(Math, max_array);
+			var min_price = Math.min.apply(Math, min_array) * 1.1; // Give a little wiggle room
+			var max_price = Math.max.apply(Math, max_array) * 0.9;
 
 			var options = {
 		    hAxis: {
