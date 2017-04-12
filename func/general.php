@@ -33,6 +33,9 @@ $GLOBALS['secret_key'] = "1251577d0b06ceec7bfc27b8309e279306521c16a";
 // Load student ID, if there is any
 $GLOBALS['student_id'] = $settings[6];
 
+// Name of the website for use in sending mail
+$GLOBALS['website_name'] = $settings[7];
+
 
 
 // Returns an array of all settings from the config file
@@ -47,6 +50,7 @@ function load_config()
     $twitter_public_key = "";
     $twitter_secret_key = "";
     $student_id = "";
+    $website_name = "";
 
     $settings = array();
     
@@ -87,6 +91,10 @@ function load_config()
         {
             $student_id = trim(str_ireplace("student_id:", "", $line));
         }
+	if (strcmp(stristr($line, "$website_name:"), $line) == 0)
+        {
+            $website_name = trim(str_ireplace("website_name:", "", $line));
+        }
         
     }
     
@@ -99,6 +107,8 @@ function load_config()
     $settings[3] = $mysql_database;
     $settings[4] = $twitter_public_key;
     $settings[5] = $twitter_secret_key;
+    // $settings[6] is added after the empty check
+    $settings[7] = $website_name;
     
     // Check to see if any of the settings are empty. If they are, 
     // that means that there is a typo in one of the settings
