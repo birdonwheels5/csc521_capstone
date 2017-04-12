@@ -13,8 +13,8 @@ if($local_filepaths)
 else
 {   
     // Weblab configs
-    $GLOBALS['config_dir'] = __DIR__ . "/../bitquote/config.txt";
-    $GLOBALS['log_dir'] = __DIR__ . "/../bitquote/log.txt";
+    $GLOBALS['config_dir'] = __DIR__ . "/../../bitquote/config.txt";
+    $GLOBALS['log_dir'] = __DIR__ . "/../../bitquote/log.txt";
 }
 
 // Load database settings from config file
@@ -59,6 +59,7 @@ function load_config()
         $log_message = "CRITICAL: Unable to load config file! Webpages will not load at all without it.";
         log_to_file($log_message);
     }
+	print $GLOBALS['config_dir'];
     $handle = fopen($filename, "r") or die ("Error loading config file! Please contact a system administrator to get this fixed! Webservices are non-functional without it.");
     while (($line = fgets($handle)) !== false)
     {
