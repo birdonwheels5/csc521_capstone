@@ -184,7 +184,7 @@ function print_header($cookie_handler, $cookie_name)
                         {
                             if($cookie_handler->get_validity())
                             {
-                                print "<p><a href =\"$GLOBALS['student_id']/login/passwd.php\">Change Password</a></p>";
+                                print '<p><a href ="' . $GLOBALS['student_id'] . '/login/passwd.php">Change Password</a></p>';
                             }
                             else
                             {
