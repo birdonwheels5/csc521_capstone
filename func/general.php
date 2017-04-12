@@ -18,6 +18,8 @@ else
     // Weblab configs
     //$GLOBALS['config_dir'] = "/home/student/$s_id/bitquote/config.txt";
     //$GLOBALS['log_dir'] = "/home/student/$s_id/bitquote/log.txt";
+	
+	print $_SERVER['DOCUMENT_ROOT'];
     
     $GLOBALS['config_dir'] = "$_SERVER['DOCUMENT_ROOT']../bitquote/config.txt";
     $GLOBALS['log_dir'] = "$_SERVER['DOCUMENT_ROOT']../bitquote/log.txt";
