@@ -14,7 +14,9 @@ else
 {   
     // Weblab configs
     
-    $s_id = substr(__DIR__, 14, 6);
+    // Cheap work around because I could not get __DIR__ . "/../../bitquote/config.txt" to play nicely.
+    // It did for a short time but no longer.
+    $s_id = substr(__DIR__, 14, 8);
     
     $GLOBALS['config_dir'] = "/home/student/$s_id/bitquote/config.txt";
     $GLOBALS['log_dir'] = "/home/student/$s_id/bitquote/log.txt";
