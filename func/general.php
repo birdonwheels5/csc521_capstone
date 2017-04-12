@@ -11,16 +11,8 @@ if($local_filepaths)
     $GLOBALS['log_dir'] = "/var/www/bitquote/log.txt";
 }
 else
-{
-    // Athough the student ID is in the config, this is necessary to find that config.
-    $s_id = "S0280512";
-    
+{   
     // Weblab configs
-    //$GLOBALS['config_dir'] = "/home/student/$s_id/bitquote/config.txt";
-    //$GLOBALS['log_dir'] = "/home/student/$s_id/bitquote/log.txt";
-	
-    
-    
     $GLOBALS['config_dir'] = __DIR__ . "/../../bitquote/config.txt";
     $GLOBALS['log_dir'] = __DIR__ . "/../../bitquote/log.txt";
 }
