@@ -1,6 +1,6 @@
 <?php
     
-    include(dirname(__FILE__) . "func/btc.php");
+    include "func/btc.php";
     
     // Load database settings from config file
     $settings = array();
