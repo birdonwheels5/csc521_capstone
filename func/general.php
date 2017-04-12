@@ -35,6 +35,9 @@ $GLOBALS['mysql_database'] = $settings[3];
 // Different from the secret key in cookie_handler
 $GLOBALS['secret_key'] = "1251577d0b06ceec7bfc27b8309e279306521c16a";
 
+// Load student ID, if there is any
+$GLOBALS['student{id'] = $settings[6];
+
 
 
 // Returns an array of all settings from the config file
