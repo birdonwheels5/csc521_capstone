@@ -170,12 +170,12 @@ function print_header($cookie_handler, $cookie_name)
                             {
                                 $cookie_handler->delete_cookie($cookie_name);
                                 clear_session($uuid);
-                                print "<p><a href =\"$GLOBALS['student_id']/login/login.php\">Login</a></p>";
+                                print '<p><a href ="' . $GLOBALS['student_id'] . '/login/login.php">Login</a></p>';
                             }
                         }
                         else
                         {
-                            print "<p><a href =\"$GLOBALS['student_id']/login/login.php\">Login</a></p>";
+                            print '<p><a href ="' . $GLOBALS['student_id'] . '/login/login.php">Login</a></p>';
                         }
                 print '</div>
                 
