@@ -16,11 +16,11 @@ else
     $s_id = "S0280512";
     
     // Weblab configs
-    $GLOBALS['config_dir'] = "../../bitquote/config.txt";
-    $GLOBALS['log_dir'] = "/home/student/$s_id/bitquote/log.txt";
+    //$GLOBALS['config_dir'] = "/home/student/$s_id/bitquote/config.txt";
+    //$GLOBALS['log_dir'] = "/home/student/$s_id/bitquote/log.txt";
     
-    //$GLOBALS['config_dir'] = "../../config.txt";
-    //$GLOBALS['log_dir'] = "../../log.txt";
+    $GLOBALS['config_dir'] = "../../bitquote/config.txt";
+    $GLOBALS['log_dir'] = "../../bitquote/log.txt";
 }
 
 // Load database settings from config file
