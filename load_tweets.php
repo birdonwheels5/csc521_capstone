@@ -4,7 +4,7 @@
     // When opened, this file will fetch all tweets from the database and print them out to the webpage.
     // The output is HTML formatted.
     
-    include "func/twitter.php";
+    include(dirname(__FILE__) . "func/twitter.php");
     
     // Load database settings from config file
     $settings = array();
