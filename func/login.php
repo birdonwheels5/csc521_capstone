@@ -34,7 +34,7 @@ function create_user($username, $password, $email, $authority_level)
     
     // Add user to the database
     $result = mysqli_query($con, $insert);
-    print $username . "<br/>" . $password . "<br/>" . $email . "<br/>" . $salt . "<br/>" . $creation_time . "<br/>" . $uuid . "<br/>" . $hashed_password;
+    
     return $result;
     
 }
