@@ -446,9 +446,9 @@ function get_user_id_num_by_email($email)
 
 function send_validation_email($user_id_num, $uuid, $email)
 {
-    $s_id = "~S0280512";
-    $site_web_address = "weblab.salemstate.edu/$s_id/login/verification.php?id=$user_id_num&etoken=";
-    $site_name = 'Bitquote';
+    $s_id = substr($GLOBALS['student_id']);
+    $site_web_address = "weblab.salemstate.edu" . "$s_id/login/verification.php?id=$user_id_num&etoken=";
+    $site_name = $GLOBALS['website_name'];
     
     $token = sha1($uuid . $user_id_num . $GLOBALS['secret_key']);
     $verification_url = $site_web_address . $token;
@@ -475,16 +475,16 @@ function validate_email_address($user_id_num, $uuid, $url_token)
 
 function send_password_validation_email($user_id_num, $uuid, $email, $new_hashed_password, $reset_pass=false)
 {
-    $s_id = "~S0280512";
-    $site_name = 'Bitquote';
+    $s_id = substr($GLOBALS['student_id']);
+    $site_name = $GLOBALS['website_name'];
     
     if($reset_pass == false)
     {
-        $site_web_address = "weblab.salemstate.edu/$s_id/login/verification.php?ptoken=";
+        $site_web_address = "weblab.salemstate.edu" . "$s_id/login/verification.php?ptoken=";
     }
     else
     {
-        $site_web_address = "weblab.salemstate.edu/$s_id/login/verification.php?id=$user_id_num&rptoken=";
+        $site_web_address = "weblab.salemstate.edu" . "$s_id/login/verification.php?id=$user_id_num&rptoken=";
     }
     
     $token = sha1($uuid . $user_id_num . $new_hashed_password . $GLOBALS['secret_key']);
