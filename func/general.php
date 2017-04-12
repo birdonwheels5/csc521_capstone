@@ -48,6 +48,7 @@ function load_config()
     $mysql_database = "";
     $twitter_public_key = "";
     $twitter_secret_key = "";
+    $student_id = "";
 
     $settings = array();
     
@@ -84,6 +85,10 @@ function load_config()
         {
             $twitter_secret_key = trim(str_ireplace("twitter_secret_key:", "", $line));
         }
+        if (strcmp(stristr($line, "student_id:"), $line) == 0)
+        {
+            $student_id = trim(str_ireplace("student_id:", "", $line));
+        }
         
     }
     
@@ -109,6 +114,16 @@ function load_config()
             
             die ("Error loading config file! Please contact a system administrator to get this fixed! Webservices are non-functional without it.");
         }
+    }
+	
+    // Leave blank if no student id is present
+    if(empty($student_id))
+    {
+        $settings[6] = "";
+    }
+    else
+    {
+        $settings[6] = "/" . $student_id; // The / is for the directory structure
     }
     
     return $settings;
