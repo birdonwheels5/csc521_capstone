@@ -115,7 +115,7 @@
                                             print "Invalid Token!";
                                         }
                                     }
-                                    if(!empty($_GET["rptoken"]))
+                                    else if(!empty($_GET["rptoken"]))
                                     {
                                         
                                         $match_result = preg_match('/^[A-Za-z0-9\d]*$/i', $_GET["rptoken"]);
