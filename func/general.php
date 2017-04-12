@@ -12,6 +12,7 @@ if($local_filepaths)
 }
 else
 {
+    // Athough the student ID is in the config, this is necessary to find that config.
     $s_id = "S0280512";
     
     // Weblab configs
@@ -36,7 +37,7 @@ $GLOBALS['mysql_database'] = $settings[3];
 $GLOBALS['secret_key'] = "1251577d0b06ceec7bfc27b8309e279306521c16a";
 
 // Load student ID, if there is any
-$GLOBALS['student{id'] = $settings[6];
+$GLOBALS['student_id'] = $settings[6];
 
 
 
@@ -147,8 +148,6 @@ function print_header($cookie_handler, $cookie_name)
     $cookie_handler->cookie_exists($cookie_name);
     $uuid = $user_cookie->get_uuid();
     
-    $s_id = "~S0276910";
-    
     print '<header>
     
         <div class="logoContainer">
@@ -156,7 +155,7 @@ function print_header($cookie_handler, $cookie_name)
         </div>
         
         <div class="button">
-            <p><a href ="/' . $s_id . '/index.php">Index</a></p>
+            <p><a href ="$GLOBALS['student_id'] . '/index.php">Index</a></p>
         </div>
         
         <div class="button">';
@@ -171,12 +170,12 @@ function print_header($cookie_handler, $cookie_name)
                             {
                                 $cookie_handler->delete_cookie($cookie_name);
                                 clear_session($uuid);
-                                print "<p><a href =\"/$s_id/login/login.php\">Login</a></p>";
+                                print "<p><a href =\"$GLOBALS['student_id']/login/login.php\">Login</a></p>";
                             }
                         }
                         else
                         {
-                            print "<p><a href =\"/$s_id/login/login.php\">Login</a></p>";
+                            print "<p><a href =\"$GLOBALS['student_id']/login/login.php\">Login</a></p>";
                         }
                 print '</div>
                 
@@ -185,7 +184,7 @@ function print_header($cookie_handler, $cookie_name)
                         {
                             if($cookie_handler->get_validity())
                             {
-                                print "<p><a href =\"/$s_id/login/passwd.php\">Change Password</a></p>";
+                                print "<p><a href =\"$GLOBALS['student_id']/login/passwd.php\">Change Password</a></p>";
                             }
                             else
                             {
@@ -200,11 +199,11 @@ function print_header($cookie_handler, $cookie_name)
 				print '</div>
 				
 				<div class="button">
-					<p><a href ="/' . $s_id . '/user.php">Member Area</a></p>
+					<p><a href ="$GLOBALS['student_id'] . '/user.php">Member Area</a></p>
 				</div>
                 
                 <div class="button">
-					<p><a href ="/' . $s_id . '/admin.php">Admin Area</a></p>
+					<p><a href ="$GLOBALS['student_id'] . '/admin.php">Admin Area</a></p>
 				</div>
 				
 			</header>';
