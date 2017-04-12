@@ -13,11 +13,6 @@ if($local_filepaths)
 else
 {   
     // Weblab configs
-    
-    // Cheap work around because I could not get __DIR__ . "/../../bitquote/config.txt" to play nicely.
-    // It did for a short time but no longer.
-    //$s_id = substr(__DIR__, 14, 8);
-    
     $GLOBALS['config_dir'] = __DIR__ . "/../../bitquote/config.txt";
     $GLOBALS['log_dir'] = __DIR__ . "/../../bitquote/log.txt";
 }
