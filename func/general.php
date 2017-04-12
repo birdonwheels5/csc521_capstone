@@ -16,10 +16,10 @@ else
     
     // Cheap work around because I could not get __DIR__ . "/../../bitquote/config.txt" to play nicely.
     // It did for a short time but no longer.
-    $s_id = substr(__DIR__, 14, 8);
+    //$s_id = substr(__DIR__, 14, 8);
     
-    $GLOBALS['config_dir'] = '/home/student/' . $s_id . '/bitquote/config.txt';
-    $GLOBALS['log_dir'] = '/home/student/' . $s_id . '/bitquote/log.txt';
+    $GLOBALS['config_dir'] = __DIR__ . "/../../bitquote/config.txt";
+    $GLOBALS['log_dir'] = __DIR__ . "/../../bitquote/log.txt";
 }
 
 // Load database settings from config file
@@ -114,6 +114,8 @@ function load_config()
     $settings[4] = $twitter_public_key;
     $settings[5] = $twitter_secret_key;
     // $settings[6] is added after the empty check
+    // But this is just a place holder to get past the check
+    $settings[6] = "Placeholder";
     $settings[7] = $website_name;
     
     // Check to see if any of the settings are empty. If they are, 
