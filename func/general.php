@@ -155,7 +155,7 @@ function print_header($cookie_handler, $cookie_name)
         </div>
         
         <div class="button">
-            <p><a href ="$GLOBALS['student_id']/index.php">Index</a></p>
+            <p><a href ="' . $GLOBALS['student_id']' . '/index.php">Index</a></p>
         </div>
         
         <div class="button">';
@@ -199,11 +199,11 @@ function print_header($cookie_handler, $cookie_name)
 				print '</div>
 				
 				<div class="button">
-					<p><a href ="$GLOBALS['student_id']/user.php">Member Area</a></p>
+					<p><a href ="' . $GLOBALS['student_id'] . '/user.php">Member Area</a></p>
 				</div>
                 
                 <div class="button">
-					<p><a href ="$GLOBALS['student_id'] . '/admin.php">Admin Area</a></p>
+					<p><a href ="' . $GLOBALS['student_id'] . '/admin.php">Admin Area</a></p>
 				</div>
 				
 			</header>';
