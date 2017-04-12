@@ -16,7 +16,7 @@ else
     $s_id = "S0280512";
     
     // Weblab configs
-    $GLOBALS['config_dir'] = "/home/student/$s_id/bitquote/config.txt";
+    $GLOBALS['config_dir'] = "../../bitquote/config.txt";
     $GLOBALS['log_dir'] = "/home/student/$s_id/bitquote/log.txt";
     
     //$GLOBALS['config_dir'] = "../../config.txt";
