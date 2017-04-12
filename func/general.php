@@ -18,8 +18,8 @@ else
     // It did for a short time but no longer.
     $s_id = substr(__DIR__, 14, 8);
     
-    $GLOBALS['config_dir'] = "/home/student/S0280512/bitquote/config.txt";
-    $GLOBALS['log_dir'] = "/home/student/S0280512/bitquote/log.txt";
+    $GLOBALS['config_dir'] = '/home/student/' . $s_id . '/bitquote/config.txt';
+    $GLOBALS['log_dir'] = '/home/student/' . $s_id . '/bitquote/log.txt';
 }
 
 // Load database settings from config file
