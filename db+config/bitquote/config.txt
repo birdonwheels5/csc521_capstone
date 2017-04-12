@@ -5,3 +5,4 @@ mysql_database: S0280512
 twitter_public_key: sRjpLz87ccYob4xUJ1ofCu2o5
 twitter_secret_key: GKZiq02gcHCCnQwy3pFazgZqJKww7cEh3s73F9Wjk6TftcsPJE
 student_id: S0280512
+website_name: Bitquote
