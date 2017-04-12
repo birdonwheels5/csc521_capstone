@@ -127,7 +127,7 @@ function load_config()
     }
     else
     {
-        $settings[6] = "/" . $student_id; // The / is for the directory structure
+        $settings[6] = "/~" . $student_id; // The / is for the directory structure
     }
     
     return $settings;
