@@ -91,7 +91,7 @@ function load_config()
         {
             $student_id = trim(str_ireplace("student_id:", "", $line));
         }
-	if (strcmp(stristr($line, "$website_name:"), $line) == 0)
+	if (strcmp(stristr($line, "website_name:"), $line) == 0)
         {
             $website_name = trim(str_ireplace("website_name:", "", $line));
         }
