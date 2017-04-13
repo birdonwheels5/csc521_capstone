@@ -17,12 +17,15 @@
     content: "";
     clear: both;
     display: block;
+	padding-top: 15px;
+	padding-bottom: 15px;
 }
 
 [class*="col-"] {
 	width: 100%;
     float: left;
-    padding: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
 	text-align: center;
 }
 
