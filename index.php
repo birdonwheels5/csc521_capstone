@@ -120,26 +120,20 @@
 </head>
 
 <body class="color-0">
-	
-	<div class="row"></div>
-		
+			
 		<div class="empty col-2"> <!-- Left Margin -->
 		</div>
 		
 		<div class="col-4"> <!-- Column 1 -->
 			
-			<div class="row">
-				<div class="object shadow" id="BtcPrice">
-					<script type="text/javascript">
-						$('#BtcPrice').load('load_exchanges.php');
-					</script>
-				</div>
+			<div class="object shadow row" id="BtcPrice">
+				<script type="text/javascript">
+					$('#BtcPrice').load('load_exchanges.php');
+				</script>
 			</div>
 			
-			<div class="row">
-				<div class="object shadow" id="chart_div">
-				
-				</div>
+			<div class="object shadow row" id="chart_div">
+			
 			</div>
 			
 		</div>
