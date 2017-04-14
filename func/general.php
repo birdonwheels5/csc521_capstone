@@ -155,43 +155,37 @@ function print_header($cookie_handler, $cookie_name)
     $cookie_handler->cookie_exists($cookie_name);
     $uuid = $user_cookie->get_uuid();
     
+	// TODO
     print '<header>
     
-        <div class="logoContainer">
-            <!-- <img src="logo-bar.png"> -->
-        </div>
         
-        <div class="button">
-            <p><a href ="' . $GLOBALS['student_id'] . '/index.php">Index</a></p>
-        </div>
-        
-        <div class="button">';
+        <ul class="topnav">
+            <li><a href ="' . $GLOBALS['student_id'] . '/index.php">Index</a></li>'
                 
+		if($cookie_handler->get_exists())
+		{
+		    if($cookie_handler->get_validity())
+		    {
+			print "<li><a href =\"/$s_id/login/logout.php\">Logout</a></li>";
+		    }
+		    else
+		    {
+			$cookie_handler->delete_cookie($cookie_name);
+			clear_session($uuid);
+			print '<li><a href ="' . $GLOBALS['student_id'] . '/login/login.php">Login</a></li>';
+		    }
+		}
+		else
+		{
+		    print '<li><a href ="' . $GLOBALS['student_id'] . '/login/login.php">Login</a></li>';
+		}
+ 
+
                         if($cookie_handler->get_exists())
                         {
                             if($cookie_handler->get_validity())
                             {
-                                print "<p><a href =\"/$s_id/login/logout.php\">Logout</a></p>";
-                            }
-                            else
-                            {
-                                $cookie_handler->delete_cookie($cookie_name);
-                                clear_session($uuid);
-                                print '<p><a href ="' . $GLOBALS['student_id'] . '/login/login.php">Login</a></p>';
-                            }
-                        }
-                        else
-                        {
-                            print '<p><a href ="' . $GLOBALS['student_id'] . '/login/login.php">Login</a></p>';
-                        }
-                print '</div>
-                
-                <div class="button">';
-                        if($cookie_handler->get_exists())
-                        {
-                            if($cookie_handler->get_validity())
-                            {
-                                print '<p><a href ="' . $GLOBALS['student_id'] . '/login/passwd.php">Change Password</a></p>';
+                                print '<li><a href ="' . $GLOBALS['student_id'] . '/login/passwd.php">Change Password</a></li>';
                             }
                             else
                             {
@@ -203,17 +197,10 @@ function print_header($cookie_handler, $cookie_name)
                         {
                             
                         }
-				print '</div>
+
+		print '<li><a href ="' . $GLOBALS['student_id'] . '/user.php">Search</a></li>
 				
-				<div class="button">
-					<p><a href ="' . $GLOBALS['student_id'] . '/user.php">Member Area</a></p>
-				</div>
-                
-                <div class="button">
-					<p><a href ="' . $GLOBALS['student_id'] . '/admin.php">Admin Area</a></p>
-				</div>
-				
-			</header>';
+	</header>';
 }
 
 // Cleans a given input to prevent cross-site scripting attacks
