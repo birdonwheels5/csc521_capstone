@@ -126,13 +126,15 @@
 		
 		<div class="col-4"> <!-- Column 1 -->
 			
-			<div class="object shadow row" id="BtcPrice">
-				<script type="text/javascript">
-					$('#BtcPrice').load('load_exchanges.php');
-				</script>
-			</div>
+			<div class="object shadow">
 			
-			<div class="object shadow row" id="chart_div">
+				<div id="BtcPrice">
+					<script type="text/javascript">
+						$('#BtcPrice').load('load_exchanges.php');
+					</script>
+				</div>
+			
+				<div id="chart_div"></div>
 			
 			</div>
 			
