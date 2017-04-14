@@ -154,14 +154,14 @@
 			
 			<div class="object shadow">
 			
+				<div id="chart_div"></div>
+
 				<div id="BtcPrice">
 					<script type="text/javascript">
 						$('#BtcPrice').load('load_exchanges.php');
 					</script>
 				</div>
-			
-				<div id="chart_div"></div>
-			
+						
 			</div>
 			
 		</div>
