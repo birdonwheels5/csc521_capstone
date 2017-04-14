@@ -156,11 +156,11 @@
 			
 				<div id="chart_div"></div>
 				
-				<form action="process_login.php" name="login" method="post" class="object shadow" onkeyup="check_form()">
-        			<input type="text" name="username" placeholder="Username" required>
-        			<input type="password" name="password" placeholder="Password" required>
-					<input type="submit" name="submit" value="Login" required>
-					<div class="small"><a href="./login/reset_pwd.php">Reset your password</a>, <a href="createuser.php">Register</a> or <a href="view.php">Continue as Guest</a></div>
+				<form action="" name="chart" method="get" onkeyup="">
+					<input type="number" name="x-axis" min="1">
+					<input type="radio" name="unit" value="1" checked> Hours <br>
+					<input type="radio" name="unit" value="24" checked> Days <br>
+					
 				</form>
 
 				<div id="BtcPrice">
