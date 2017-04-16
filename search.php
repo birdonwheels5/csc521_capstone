@@ -51,13 +51,15 @@
 			<article>
 				<div class="row center">
 					<div class="col-4">
-						<center><div class="object shadow">
-							<b>Search the Database</b>
-							</div></center>
+						<div class="object shadow">
+							<-- <b>Search the Database</b> -->
+							</div>
 					</div>
 					<div class="col-4">
 						<form action="process_search.php" name="search" method="get" onkeyup="" class="object shadow">
-							<input type="text" name="search_term">
+							Search the Database
+							Search term: <input type="text" name="search_term">
+							Data select:
 							Twitter <input type="radio" name="twitter" value="1"><br>
 							Reddit <input type="radio" name="reddit" value="1"><br>
 							Bitcointalk.org <input type="radio" name="forum" value="1"><br>
