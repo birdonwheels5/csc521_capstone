@@ -50,7 +50,7 @@
 			
 			<article>
 				<div class="row center">
-		<div class="empty col-4">
+		<div class="col-4">
 			<div class="object shadow">
 				<b>Search the Database</b>
 			</div>
