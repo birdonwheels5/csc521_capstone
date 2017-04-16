@@ -53,29 +53,18 @@
 		<div class="empty col-4">
 		</div>
 		<div class="col-4">
-		
-		<div class="col-4"> <!-- Column 1 -->
-			
-			<div class="object shadow">
-			
-				<div id="search_div"></div>
-				
-				<form action="process_search.php" name="search" method="post" onkeyup="" class="row">
-					<input type="text" name="search_term">
-					<input type="radio" name="twitter" value="Tweets"><br>
-					<input type="radio" name="reddit" value="Reddit"><br>
-					<input type="radio" name="forum" value="Bitcointalk.org"><br>
-					<input type="submit" name="submit_search" value="Search"><br>
-					
-				</form>
+			<form action="process_search.php" name="search" method="post" onkeyup="" class="row">
+				<input type="text" name="search_term">
+				<input type="radio" name="twitter" value="Tweets"><br>
+				<input type="radio" name="reddit" value="Reddit"><br>
+				<input type="radio" name="forum" value="Bitcointalk.org"><br>
+				<input type="submit" name="submit_search" value="Search"><br>
 
-				<div class="col-4 empty">
+			</form>
 		</div>
-						
-			</div>
-			
+		<div class="col-4 empty">
 		</div>
-			
+	</div>	
 			
 			</article>
 			
