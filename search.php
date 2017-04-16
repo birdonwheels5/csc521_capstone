@@ -51,9 +51,12 @@
 			<article>
 				<div class="row center">
 		<div class="empty col-4">
+			<div class="object shadow">
+				<b>Search the Database</b>
+			</div>
 		</div>
 		<div class="col-4">
-			<form action="process_search.php" name="search" method="post" onkeyup="" class="row">
+			<form action="process_search.php" name="search" method="post" onkeyup="" class="object shadow">
 				<input type="text" name="search_term">
 				<input type="radio" name="twitter" value="Tweets"><br>
 				<input type="radio" name="reddit" value="Reddit"><br>
