@@ -58,9 +58,9 @@
 		<div class="col-4">
 			<form action="process_search.php" name="search" method="get" onkeyup="" class="object shadow">
 				<input type="text" name="search_term">
-				<input type="radio" name="twitter" value="Tweets"><br>
-				<input type="radio" name="reddit" value="Reddit"><br>
-				<input type="radio" name="forum" value="Bitcointalk.org"><br>
+				Twitter: <input type="radio" name="twitter" value="1"><br>
+				Reddit: <input type="radio" name="reddit" value="1"><br>
+				Bitcointalk.org: <input type="forum" name="forum" value="1"><br>
 				<input type="submit" name="submit_search" value="Search"><br>
 
 			</form>
