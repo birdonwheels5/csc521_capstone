@@ -160,7 +160,7 @@ function print_header($cookie_handler, $cookie_name)
     
         
         <ul class="topnav">
-            <li><class ="active" a href ="' . $GLOBALS['student_id'] . '/index.php">Home</a></li>';
+            <li class ="active"><a href ="' . $GLOBALS['student_id'] . '/index.php">Home</a></li>';
                 
 		if($cookie_handler->get_exists())
 		{
