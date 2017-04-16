@@ -166,7 +166,7 @@ function print_header($cookie_handler, $cookie_name)
 		{
 		    if($cookie_handler->get_validity())
 		    {
-			print "<li><a href =\"/" . $GLOBALS['student_id'] . "/login/logout.php\">Logout</a></li>";
+			print '<li><a href ="' . $GLOBALS['student_id'] . '/login/logout.php">Logout</a></li>';
 		    }
 		    else
 		    {
