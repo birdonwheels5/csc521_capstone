@@ -49,34 +49,36 @@
             ?>
 			
 			<article>
-				<p>
-					<!-- <center><img src="logo_big.png"></center> Insert Main Logo here -->
+				<div class="empty col-2"> <!-- Left Margin -->
+		</div>
+		
+		<div class="col-4"> <!-- Column 1 -->
+			
+			<div class="object shadow">
+			
+				<div id="search_div"></div>
+				
+				<form action="process_search.php" name="search" method="post" onkeyup="" class="row">
+					<input type="text" name="search_term">
+					<input type="radio" name="twitter" value="Tweets"><br>
+					<input type="radio" name="reddit" value="Reddit"><br>
+					<input type="radio" name="forum" value="Bitcointalk.org"><br>
+					<input type="submit" name="submit_search" value="Search"><br>
 					
-					<hr/>
-					<center><h1>Search the Database</h1></center>
-					<hr/>
-					<p>
-						<div class="box">
-							<p>
-								Hello, <?php print $user_data[0]; ?>! Welcome to the user area of this site.
-                                <br/>
-                                <hr/>
-							</p>
-						</div>
+				</form>
 
-					</p>
-
-				</p>
+				
+						
+			</div>
+			
+		</div>
+		
+		<div class="empty col-2"> <!-- Right Margin -->
+		</div>
 			
 			
 			</article>
 			
-			<div class="paddingBottom">
-			</div>
-			
-			<footer>
-				2017 Bitquote.
-			</footer>
 		</div>
 	</body>
 	
