@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="ISO-8859-1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>User Area</title>
-		<link rel="stylesheet" type="text/css" href="styles.css" title="Default Styles" media="screen"/>
+		<link rel="stylesheet" type="text/css" href="main.css" title="Default Styles" media="screen"/>
 		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans" title="Font Styles"/>
 		<?php include "login/CookieHandler.php";
               include "func/login.php"; ?>
@@ -53,7 +53,7 @@
 					<!-- <center><img src="logo_big.png"></center> Insert Main Logo here -->
 					
 					<hr/>
-					<center><h1>Member Area</h1></center>
+					<center><h1>Search the Database</h1></center>
 					<hr/>
 					<p>
 						<div class="box">
@@ -61,7 +61,6 @@
 								Hello, <?php print $user_data[0]; ?>! Welcome to the user area of this site.
                                 <br/>
                                 <hr/>
-                                <center><img src="img/greg.jpg"></img></center>
 							</p>
 						</div>
 
