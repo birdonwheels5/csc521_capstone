@@ -52,7 +52,7 @@
 				<div class="row center">
 					<div class="col-4">
 						<div class="object shadow">
-							<-- <b>Search the Database</b> -->
+							<!-- <b>Search the Database</b> -->
 							</div>
 					</div>
 					<div class="col-4">
