@@ -199,6 +199,7 @@ function print_header($cookie_handler, $cookie_name)
                         }
 
 		print '<li><a href ="' . $GLOBALS['student_id'] . '/user.php">Search</a></li>
+	</ul>
 				
 	</header>';
 }
