@@ -49,8 +49,10 @@
             ?>
 			
 			<article>
-				<div class="empty col-2"> <!-- Left Margin -->
+				<div class="row center">
+		<div class="empty col-4">
 		</div>
+		<div class="col-4">
 		
 		<div class="col-4"> <!-- Column 1 -->
 			
@@ -67,13 +69,11 @@
 					
 				</form>
 
-				
+				<div class="col-4 empty">
+		</div>
 						
 			</div>
 			
-		</div>
-		
-		<div class="empty col-2"> <!-- Right Margin -->
 		</div>
 			
 			
