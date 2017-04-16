@@ -56,7 +56,7 @@
 			</div>
 		</div>
 		<div class="col-4">
-			<form action="process_search.php" name="search" method="post" onkeyup="" class="object shadow">
+			<form action="process_search.php" name="search" method="get" onkeyup="" class="object shadow">
 				<input type="text" name="search_term">
 				<input type="radio" name="twitter" value="Tweets"><br>
 				<input type="radio" name="reddit" value="Reddit"><br>
