@@ -161,6 +161,8 @@ ul.topnav li.right {float: right;}
 	.small{font-size: 12px;}
 	.center {transform: translateY(50vh) translateY(-50%);}
 	.empty{padding: 1px;}
+	ul.topnav li.right, 
+	ul.topnav li {float: none;}
 }
 
 .placeholder {
