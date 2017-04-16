@@ -179,6 +179,8 @@ function print_header($cookie_handler, $cookie_name)
 		{
 		    print '<li><a href ="' . $GLOBALS['student_id'] . '/login/login.php">Login</a></li>';
 		}
+		
+		print '<li><a href ="' . $GLOBALS['student_id'] . '/search.php">Search</a></li>';
  
 
                         if($cookie_handler->get_exists())
@@ -198,8 +200,7 @@ function print_header($cookie_handler, $cookie_name)
                             
                         }
 
-		print '<li><a href ="' . $GLOBALS['student_id'] . '/user.php">Search</a></li>
-	</ul>
+		print '</ul>
 				
 	</header>';
 }
