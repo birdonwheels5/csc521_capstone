@@ -56,13 +56,13 @@
 							</div>
 					</div>
 					<div class="col-4">
-						<form action="process_search.php" name="search" method="get" onkeyup="" class="object shadow">
+						<form action="process_search.php" name="search" method="post" onkeyup="" class="object shadow">
 							Search the Database
 							Search term: <input type="text" name="search_term">
 							Data select:
-							Twitter <input type="radio" name="twitter" value="1"><br>
-							Reddit <input type="radio" name="reddit" value="1"><br>
-							Bitcointalk.org <input type="radio" name="forum" value="1"><br>
+							Twitter <input type="checkbox" name="twitter" value="1"><br>
+							Reddit <input type="checkbox" name="reddit" value="1"><br>
+							Bitcointalk.org <input type="checkbox" name="forum" value="1"><br>
 							<input type="submit" name="submit_search" value="Search"><br>
 
 						</form>
