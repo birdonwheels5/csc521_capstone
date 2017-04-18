@@ -7,4 +7,4 @@ $data = curl_exec($ch);
 var_dump($data);
   
 curl_close($ch);
->
+?>
