@@ -77,3 +77,5 @@ class Cookie
         return $this->hmac_hash;
     }
 }
+
+?>

@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<head>
-	<meta charset="ISO-8859-1">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BitQuote</title>
-    <link rel='stylesheet' type="text/css" href="../main.css">
-	<?php include "CookieHandler.php";
-          include "../func/login.php"; ?>
-</head>
-<body class="color-0">
+<html>
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Login</title>
+		<link rel="stylesheet" type="text/css" href="../styles.css" title="Default Styles" media="screen"/>
+		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans" title="Font Styles"/>
+		<?php include "CookieHandler.php";
+               include "../func/login.php"; ?>
+	</head>
 	
+	<body>
         <script>
             
             function check_username()
@@ -96,35 +97,79 @@
             }
             
         </script>
-	
-		<?php 
-           
-            $cookie_handler = new CookieHandler();
-            $cookie_name = $cookie_handler->get_cookie_name();
-            $cookie_handler->cookie_exists($cookie_name);
+		<center><div class="container">
             
-            // Check to see if the cookie exists
-            if($cookie_handler->get_exists())
-            {
-                $user_cookie = $cookie_handler->get_cookie($cookie_name);
-                $session_id = get_session($user_cookie->get_uuid());
-                $cookie_handler->validate_cookie($user_cookie, $session_id);
-            }
-           
-        ?>
+            <?php 
+            
+                $cookie_handler = new CookieHandler();
+                $cookie_name = $cookie_handler->get_cookie_name();
+                $cookie_handler->cookie_exists($cookie_name);
+                
+                // Check to see if the cookie exists
+                if($cookie_handler->get_exists())
+                {
+                    $user_cookie = $cookie_handler->get_cookie($cookie_name);
+                    $session_id = get_session($user_cookie->get_uuid());
+                    $cookie_handler->validate_cookie($user_cookie, $session_id);
+                }
+                print_header($cookie_handler, $cookie_name);
+            
+            ?>
+			
+			<article>
+				<p>
+					<!-- <center><img src="logo_big.png"></center> Insert Main Logo here -->
+					
+					<hr/>
+					<center><h1>User Login</h1></center>
+					<hr/>
+					<p>
+						<div class="box">
+							<p>
+								<form name="login" method="post" action="process_login.php" onkeyup="check_form()">
+                                    <center><table>
+                                        <tr>
+                                            <td>
+                                                Username: 
+                                            </td>
+                                            <td>
+                                                <input type="text" name="username" size="10">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Password: 
+                                            </td>
+                                            <td>
+                                                <input type="password" name="password" size="10">
+                                            </td>
+                                        </tr>
+                                    </table></center>
+								    <center><input type="submit" name="submit" value="Login"></center>
+								</form>
+							</p>
+						</div>
+                        
+                        <div class="box">
+                            <p>
+                                Forgot your password? <a href="./login/reset_pwd.php">Reset your password</a>.
+                            </p>
+                        </div>
+
+					</p>
+
+				</p>
+			
+			
+			</article>
+			
+			<div class="paddingBottom">
+			</div>
+			
+			<footer>
+				2017 Bitquote.
+			</footer>
+		</div>
+	</body>
 	
-    <div class="row center">
-		<div class="empty col-4">
-		</div>
-		<div class="col-4">
-    	<form action="process_login.php" name="login" method="post" class="object shadow" onkeyup="check_form()">
-        	<input type="text" name="username" placeholder="Username" required>
-        	<input type="password" name="password" placeholder="Password" required>
-			<input type="submit" name="submit" value="Login" required>
-			<div class="small"><a href="./login/reset_pwd.php">Reset your password</a>, <a href="createuser.php">Register</a> or <a href="view.php">Continue as Guest</a></div>
-		</form>
-		</div>
-		<div class="col-4 empty">
-		</div>
-	</div>
-</body>
+</html>

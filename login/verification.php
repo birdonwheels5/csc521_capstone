@@ -3,17 +3,14 @@
 	<head>
 		<meta charset="ISO-8859-1">
 		<title>Verification Results</title>
-		<link rel="stylesheet" type="text/css" href="../styles.css" title="Default Styles" media="screen"/>
-		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans" title="Font Styles"/>
+	    <link rel='stylesheet' type="text/css" href="../main.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<?php include "CookieHandler.php"; 
               include "../func/login.php"; ?>
 	</head>
 	
 	<body>
-		<center><div class="container">
-            
-            <?php 
-            
+            <?php
                 $cookie_handler = new CookieHandler();
                 $cookie_name = $cookie_handler->get_cookie_name();
                 $cookie_handler->cookie_exists($cookie_name);
@@ -26,24 +23,17 @@
                     $session_id = get_session($uuid);
                     $cookie_handler->validate_cookie($user_cookie, $session_id);
                     
-                    // So we can get the current user's user_id_num to use for the "from" field of the message
                     $user_data = get_user_data($uuid);
-                }
-                print_header($cookie_handler, $cookie_name);
-            
+                }            
             ?>
-			
-			<article>
+		
+		<div class="row center">
+			<div class="col-3 empty"></div>
+			<div class="col-6">
+				<div class="object shadow">
+				<center><h1>Verification Results</h1></center>
 				<p>
-					<!-- <center><img src="logo_big.png"></center> Insert Main Logo here -->
-					
-					<hr/>
-					<center><h1>Verification Results</h1></center>
-					<hr/>
-					<p>
-						<div class="box">
-							<p>
-                                <?php
+				<?php
                                     
                                     $user_id_num = $user_data[9];
                                     $new_hashed_password = $user_data[10];
@@ -85,7 +75,7 @@
                                         {
                                             set_validate_field($new_user_uuid);
                                             
-                                            print "Success! You can now <a href =\"/login/login.php\">log in</a> with your new account!";
+                                            print "Success! You can now <a href =\"./login.php\">log in</a> with your new account!";
                                         }
                                         else
                                         {
@@ -114,7 +104,7 @@
                                         {
                                             update_user_password($uuid);
                                             
-                                            print "Success! You can now <a href =\"/login/login.php\">log in</a> with your new password! Your old password will no longer work.";
+                                            print "Success! You can now <a href =\"./login.php\">log in</a> with your new password! Your old password will no longer work.";
                                             print "<br/><br/>";
                                             print "You have been logged out.";
                                             $cookie_handler->delete_cookie($cookie_name);
@@ -125,7 +115,7 @@
                                             print "Invalid Token!";
                                         }
                                     }
-                                    if(!empty($_GET["rptoken"]))
+                                    else if(!empty($_GET["rptoken"]))
                                     {
                                         
                                         $match_result = preg_match('/^[A-Za-z0-9\d]*$/i', $_GET["rptoken"]);
@@ -164,7 +154,7 @@
                                         {
                                             update_user_password($uuid);
                                             
-                                            print "Success! You can now <a href =\"/login/login.php\">log in</a> with your new password! Your old password will no longer work.";
+                                            print "Success! You can now <a href =\"./login.php\">log in</a> with your new password! Your old password will no longer work.";
                                             print "<br/><br/>";
                                             print "You have been logged out if you were logged in.";
                                             $cookie_handler->delete_cookie($cookie_name);
@@ -181,23 +171,12 @@
                                     }
                                     
                                 ?>
-							</p>
-						</div>
-
 					</p>
-
-				</p>
-			
-			
-			</article>
-			
-			<div class="paddingBottom">
+				</div>
 			</div>
-			
-			<footer>
-				2016 Lizard Squad.
-			</footer>
+			<div class="col-3 empty"></div>
 		</div>
+
 	</body>
 	
 </html>

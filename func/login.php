@@ -26,12 +26,11 @@ function create_user($username, $password, $email, $authority_level)
     $creation_time = time();
     $uuid = hash("sha256", $username);
     $hashed_password = hash("sha512", $password . $salt);
-    // For future password resets
-    $new_hashed_password = "";
     
     // For some reason this doesn't work after adding the email to the end
-    $insert = "INSERT INTO `" .  $GLOBALS['mysql_database'] . "`.`users` (`username`, `uuid`, `hashed_password`, `new_hashed_password`, `salt`, `authority_level`, `creation_time`, `last_login`, `email`, `validate`, `session_id`) 
-    VALUES (\"" . $username . "\", \"" . $uuid . "\", \"" . $hashed_password . "\", \"" . $new_hashed_password . "\", \"" . $salt . "\", " . $authority_level . ", " . $creation_time . ", 0, \"" . $email . "\", 0, '')";
+    //$insert = "INSERT INTO `" . $GLOBALS['mysql_database'] . "`.`users` (`user_id_num`, `username`, `uuid`, `hashed_password`, `new_hashed_password`, `salt`, `authority_level`, `creation_time`, `last_login`, `email`, `validate`, `session_id`) VALUES (0, '$username', '$uuid', '$hashed_password', NULL, '$salt', '$authority_level', '$creation_time', '0', '$email', '0', NULL);";
+    
+    $insert = "INSERT INTO `users` (`user_id_num`, `username`, `uuid`, `hashed_password`, `new_hashed_pasword`, `salt`, `authority_level`, `creation_time`, `last_login`, `email`, `validate`, `session_id`) VALUES ('0', '$username', '$uuid', '$hashed_password', NULL, '$salt', '100', '$creation_time', NULL, '$email', '0', NULL);";
     
     // Add user to the database
     $result = mysqli_query($con, $insert);
@@ -59,6 +58,8 @@ function set_session($uuid)
     $update = "UPDATE  `" . $GLOBALS['mysql_database'] . "`.`users` SET  `session_id` = '$session_id' WHERE `users`.`uuid` = \"" . $uuid . "\";";
     
     $result = mysqli_query($con, $update);
+    
+    return $result;
 }
 
 function clear_session($uuid)
@@ -77,6 +78,8 @@ function clear_session($uuid)
     
     $update = "UPDATE  `" . $GLOBALS['mysql_database'] . "`.`users` SET  `session_id` = '' WHERE `users`.`uuid` = \"" . $uuid . "\";";
     $result = mysqli_query($con, $update);
+    
+    return $result;
 }
 
 // Returns the user's session ID. If they are not logged in or the uuid can not be found, the function returns false.
@@ -443,8 +446,9 @@ function get_user_id_num_by_email($email)
 
 function send_validation_email($user_id_num, $uuid, $email)
 {
-    $site_web_address = "weblab.salemstate.edu/~S0276910/CSC435/login-project/verification.php?id=$user_id_num&etoken=";
-    $site_name = 'Lizard Squad BB';
+    $s_id = $GLOBALS['student_id'];
+    $site_web_address = "weblab.salemstate.edu" . "$s_id/login/verification.php?id=$user_id_num&etoken=";
+    $site_name = $GLOBALS['website_name'];
     
     $token = sha1($uuid . $user_id_num . $GLOBALS['secret_key']);
     $verification_url = $site_web_address . $token;
@@ -471,15 +475,17 @@ function validate_email_address($user_id_num, $uuid, $url_token)
 
 function send_password_validation_email($user_id_num, $uuid, $email, $new_hashed_password, $reset_pass=false)
 {
+    $s_id = $GLOBALS['student_id'];
+    $site_name = $GLOBALS['website_name'];
+    
     if($reset_pass == false)
     {
-        $site_web_address = "weblab.salemstate.edu/~S0276910/CSC435/login-project/verification.php?ptoken=";
+        $site_web_address = "weblab.salemstate.edu" . "$s_id/login/verification.php?ptoken=";
     }
     else
     {
-        $site_web_address = "weblab.salemstate.edu/~S0276910/CSC435/login-project/verification.php?id=$user_id_num&rptoken=";
+        $site_web_address = "weblab.salemstate.edu" . "$s_id/login/verification.php?id=$user_id_num&rptoken=";
     }
-    $site_name = 'Lizard Squad BB';
     
     $token = sha1($uuid . $user_id_num . $new_hashed_password . $GLOBALS['secret_key']);
     $verification_url = $site_web_address . $token;

@@ -1,6 +1,8 @@
-mysql_user: phpmyadmin
-mysql_host: 127.0.0.1
-mysql_pass: mysql
-mysql_database: btc_buffer
+mysql_user: S0280512
+mysql_host: weblab.salemstate.edu
+mysql_pass: New2017
+mysql_database: S0280512
 twitter_public_key: sRjpLz87ccYob4xUJ1ofCu2o5
 twitter_secret_key: GKZiq02gcHCCnQwy3pFazgZqJKww7cEh3s73F9Wjk6TftcsPJE
+student_id: S0280512
+website_name: Bitquote

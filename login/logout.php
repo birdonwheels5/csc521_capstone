@@ -3,17 +3,14 @@
 	<head>
 		<meta charset="ISO-8859-1">
 		<title>Logout</title>
-		<link rel="stylesheet" type="text/css" href="../styles.css" title="Default Styles" media="screen"/>
-		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans" title="Font Styles"/>
+	    <link rel='stylesheet' type="text/css" href="../main.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
         <?php include "CookieHandler.php";
               include "../func/login.php"; ?>
 	</head>
 	
 	<body>
-		<center><div class="container">
-            
-            <?php 
-            
+			<?php
                 $cookie_handler = new CookieHandler();
                 $cookie_name = $cookie_handler->get_cookie_name();
                 $cookie_handler->cookie_exists($cookie_name);
@@ -25,56 +22,35 @@
                     $uuid = $user_cookie->get_uuid();
                     $session_id = get_session($uuid);
                     $cookie_handler->validate_cookie($user_cookie, $session_id);
-                }
-                print_header($cookie_handler, $cookie_name);
-            
+                }            
             ?>
-			
-			<article>
-				<p>
-					<!-- <center><img src="logo_big.png"></center> Insert Main Logo here -->
-					
-					<hr/>
+		
+		<div class="row center">
+			<div class="col-3 empty"></div>
+			<div class="col-6">
+				<div class="object shadow">
 					<center><h1>Logout Error</h1></center>
-					<hr/>
 					<p>
-						<div class="box">
-							<p>
-                                <?php
+					<?php
                                     
                                     // Perform logout here
                                     if($cookie_handler->get_exists())
                                     {
                                         $cookie_handler->delete_cookie($cookie_name);
                                         clear_session($uuid);
-                                        header("location:/index.php");
+                                        header("location:./../index.php");
                                     }
                                     else
                                     {
                                         print "Unable to log out because user is not logged in!";
                                     }
-                                ?>
-							</p>
-						</div>
-								
-							</p>
-						</div>
-
+					?>
 					</p>
-
-				</p>
-			
-			
-			</article>
-			
-			<div class="paddingBottom">
+				</div>
 			</div>
-			
-			<footer>
-				2016 Lizard Squad.
-			</footer>
+			<div class="col-3 empty">	</div>
 		</div>
+		
 	</body>
 	
 </html>
-

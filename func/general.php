@@ -7,19 +7,14 @@ $local_filepaths = false;
 if($local_filepaths)
 {
     // Local configs
-    $GLOBALS['config_dir'] = "/var/bitquote/config.txt";
-    $GLOBALS['log_dir'] = "/var/bitquote/log.txt";
+    $GLOBALS['config_dir'] = "/var/www/bitquote/config.txt";
+    $GLOBALS['log_dir'] = "/var/www/bitquote/log.txt";
 }
 else
-{
-    $s_id = "S0276910";
-    
+{   
     // Weblab configs
-    //$GLOBALS['config_dir'] = "/home/student/$s_id/bitquote/config.txt";
-    //$GLOBALS['log_dir'] = "/home/student/$s_id/bitquote/log.txt";
-    
-    $GLOBALS['config_dir'] = "../../config.txt";
-    $GLOBALS['log_dir'] = "../../log.txt";
+    $GLOBALS['config_dir'] = __DIR__ . "/../../bitquote/config.txt";
+    $GLOBALS['log_dir'] = __DIR__ . "/../../bitquote/log.txt";
 }
 
 // Load database settings from config file
@@ -35,19 +30,27 @@ $GLOBALS['mysql_database'] = $settings[3];
 // Different from the secret key in cookie_handler
 $GLOBALS['secret_key'] = "1251577d0b06ceec7bfc27b8309e279306521c16a";
 
+// Load student ID, if there is any
+$GLOBALS['student_id'] = $settings[6];
+
+// Name of the website for use in sending mail
+$GLOBALS['website_name'] = $settings[7];
+
 
 
 // Returns an array of all settings from the config file
 // Additional config options can be added as functionality expands.
 function load_config()
 {
-    $filename = "/var/bitquote/config.txt";
+    $filename = $GLOBALS['config_dir'];
     $mysql_user = "";
     $mysql_host = "";
     $mysql_pass = "";
     $mysql_database = "";
     $twitter_public_key = "";
     $twitter_secret_key = "";
+    $student_id = "";
+    $website_name = "";
 
     $settings = array();
     
@@ -56,6 +59,7 @@ function load_config()
         $log_message = "CRITICAL: Unable to load config file! Webpages will not load at all without it.";
         log_to_file($log_message);
     }
+    
     $handle = fopen($filename, "r") or die ("Error loading config file! Please contact a system administrator to get this fixed! Webservices are non-functional without it.");
     while (($line = fgets($handle)) !== false)
     {
@@ -84,6 +88,14 @@ function load_config()
         {
             $twitter_secret_key = trim(str_ireplace("twitter_secret_key:", "", $line));
         }
+        if (strcmp(stristr($line, "student_id:"), $line) == 0)
+        {
+            $student_id = trim(str_ireplace("student_id:", "", $line));
+        }
+	if (strcmp(stristr($line, "website_name:"), $line) == 0)
+        {
+            $website_name = trim(str_ireplace("website_name:", "", $line));
+        }
         
     }
     
@@ -96,6 +108,10 @@ function load_config()
     $settings[3] = $mysql_database;
     $settings[4] = $twitter_public_key;
     $settings[5] = $twitter_secret_key;
+    // $settings[6] is added after the empty check
+    // But this is just a place holder to get past the check
+    $settings[6] = "Placeholder";
+    $settings[7] = $website_name;
     
     // Check to see if any of the settings are empty. If they are, 
     // that means that there is a typo in one of the settings
@@ -109,6 +125,16 @@ function load_config()
             
             die ("Error loading config file! Please contact a system administrator to get this fixed! Webservices are non-functional without it.");
         }
+    }
+	
+    // Leave blank if no student id is present
+    if(empty($student_id))
+    {
+        $settings[6] = "";
+    }
+    else
+    {
+        $settings[6] = "/~" . $student_id; // The / is for the directory structure
     }
     
     return $settings;
@@ -129,43 +155,39 @@ function print_header($cookie_handler, $cookie_name)
     $cookie_handler->cookie_exists($cookie_name);
     $uuid = $user_cookie->get_uuid();
     
+	// TODO
     print '<header>
     
-        <div class="logoContainer">
-            <!-- <img src="logo-bar.png"> -->
-        </div>
         
-        <div class="button">
-            <p><a href ="/index.php">Index</a></p>
-        </div>
-        
-        <div class="button">';
+        <ul class="topnav">
+            <li class ="active"><a href ="' . $GLOBALS['student_id'] . '/index.php">Home</a></li>';
                 
+		if($cookie_handler->get_exists())
+		{
+		    if($cookie_handler->get_validity())
+		    {
+			print '<li><a href ="' . $GLOBALS['student_id'] . '/login/logout.php">Logout</a></li>';
+		    }
+		    else
+		    {
+			$cookie_handler->delete_cookie($cookie_name);
+			clear_session($uuid);
+			print '<li><a href ="' . $GLOBALS['student_id'] . '/login/login.php">Login</a></li>';
+		    }
+		}
+		else
+		{
+		    print '<li><a href ="' . $GLOBALS['student_id'] . '/login/login.php">Login</a></li>';
+		}
+		
+		print '<li><a href ="' . $GLOBALS['student_id'] . '/search.php">Search</a></li>';
+ 
+
                         if($cookie_handler->get_exists())
                         {
                             if($cookie_handler->get_validity())
                             {
-                                print "<p><a href =\"/login/logout.php\">Logout</a></p>";
-                            }
-                            else
-                            {
-                                $cookie_handler->delete_cookie($cookie_name);
-                                clear_session($uuid);
-                                print "<p><a href =\"/login/login.php\">Login</a></p>";
-                            }
-                        }
-                        else
-                        {
-                            print "<p><a href =\"/login/login.php\">Login</a></p>";
-                        }
-                print '</div>
-                
-                <div class="button">';
-                        if($cookie_handler->get_exists())
-                        {
-                            if($cookie_handler->get_validity())
-                            {
-                                print "<p><a href =\"/login/passwd.php\">Change Password</a></p>";
+                                print '<li><a href ="' . $GLOBALS['student_id'] . '/login/passwd.php">Change Password</a></li>';
                             }
                             else
                             {
@@ -177,17 +199,10 @@ function print_header($cookie_handler, $cookie_name)
                         {
                             
                         }
-				print '</div>
+
+		print '</ul>
 				
-				<div class="button">
-					<p><a href ="/user.php">Member Area</a></p>
-				</div>
-                
-                <div class="button">
-					<p><a href ="/admin.php">Admin Area</a></p>
-				</div>
-				
-			</header>';
+	</header>';
 }
 
 // Cleans a given input to prevent cross-site scripting attacks

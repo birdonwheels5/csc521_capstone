@@ -22,7 +22,7 @@
         $log_message = "CRITICAL: Failed to connect to database while attempting to load exchanges! Please check your database and database settings!";
         log_to_file($log_message);
     }
-    
+ 
     $exchanges = array();
     $exchanges[0] = "BTCChina";
     $exchanges[1] = "BTC-e";

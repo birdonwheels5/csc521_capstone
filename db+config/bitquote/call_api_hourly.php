@@ -9,7 +9,7 @@
     $mysql_user = $settings[0];
     $mysql_host = $settings[1];
     $mysql_pass = $settings[2];
-    $mysql_database = "btc_quotation";
+    $mysql_database = $settings[3];
     
     // Establish connection to the database
     $con = mysqli_connect($mysql_host, $mysql_user, $mysql_pass, $mysql_database);
@@ -20,15 +20,19 @@
         $log_message = "CRITICAL: Failed to connect to database while attempting to update the database tables! Please check your database and database settings!";
         log_to_file($log_message);
     }
-    add_chart_exchange_btc_price("bitfinex", $con);
-    add_chart_exchange_btc_price("bitstamp", $con);
-    //add_chart_exchange_btc_price("cryptsy", $con);
-    add_chart_exchange_btc_price("coinbase", $con);
-    add_chart_exchange_btc_price("kraken", $con);
-    add_chart_exchange_btc_price("okcoin", $con);
-    add_chart_exchange_btc_price("btcchina", $con);
-    add_chart_exchange_btc_price("huobi", $con);
-    add_chart_exchange_btc_price("btc-e", $con);
+    
+    $exchanges = array();
+    $exchanges[0] = "btcchina";
+    $exchanges[1] = "btc-e";
+    $exchanges[2] = "bitfinex";
+    $exchanges[3] = "bitstamp";
+    $exchanges[4] = "coinbase";
+    //$exchanges[5] = "cryptsy";
+    $exchanges[5] = "huobi";
+    $exchanges[6] = "kraken";
+    $exchanges[7] = "okcoin";
+    
+    print add_chart_exchange_btc_prices($exchanges, $con);
     
     mysqli_close($con);
     

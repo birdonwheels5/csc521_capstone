@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="ISO-8859-1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>User Area</title>
-		<link rel="stylesheet" type="text/css" href="styles.css" title="Default Styles" media="screen"/>
+		<link rel="stylesheet" type="text/css" href="main.css" title="Default Styles" media="screen"/>
 		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans" title="Font Styles"/>
 		<?php include "login/CookieHandler.php";
               include "func/login.php"; ?>
@@ -49,35 +49,30 @@
             ?>
 			
 			<article>
-				<p>
-					<!-- <center><img src="logo_big.png"></center> Insert Main Logo here -->
-					
-					<hr/>
-					<center><h1>Member Area</h1></center>
-					<hr/>
-					<p>
-						<div class="box">
-							<p>
-								Hello, <?php print $user_data[0]; ?>! Welcome to the user area of this site.
-                                <br/>
-                                <hr/>
-                                <center><img src="img/greg.jpg"></img></center>
-							</p>
-						</div>
+				<div class="row center">
+					<div class="col-4">
+						<div class="object shadow">
+							<!-- <b>Search the Database</b> -->
+							</div>
+					</div>
+					<div class="col-4">
+						<form action="process_search.php" name="search" method="post" onkeyup="" class="object shadow">
+							Search the Database
+							Search term: <input type="text" name="search_term">
+							Data select:
+							Twitter <input type="checkbox" name="twitter" value="1"><br>
+							Reddit <input type="checkbox" name="reddit" value="1"><br>
+							Bitcointalk.org <input type="checkbox" name="forum" value="1"><br>
+							<input type="submit" name="submit_search" value="Search"><br>
 
-					</p>
-
-				</p>
-			
+						</form>
+					</div>
+					<div class="col-4 empty">
+					</div>
+				</div>	
 			
 			</article>
 			
-			<div class="paddingBottom">
-			</div>
-			
-			<footer>
-				2016 Lizard Squad.
-			</footer>
 		</div>
 	</body>
 	

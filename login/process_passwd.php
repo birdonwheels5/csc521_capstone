@@ -3,15 +3,13 @@
 	<head>
 		<meta charset="ISO-8859-1">
 		<title>Password Change Results</title>
-		<link rel="stylesheet" type="text/css" href="../styles.css" title="Default Styles" media="screen"/>
-		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans" title="Font Styles"/>
+	    <link rel='stylesheet' type="text/css" href="../main.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<?php include "CookieHandler.php"; 
               include "../func/login.php"; ?>
 	</head>
 	
-	<body>
-		<center><div class="container">
-            
+	<body>  
             <?php 
             
                 $cookie_handler = new CookieHandler();
@@ -24,26 +22,20 @@
                     $user_cookie = $cookie_handler->get_cookie($cookie_name);
                     $session_id = get_session($user_cookie->get_uuid());
                     $cookie_handler->validate_cookie($user_cookie, $session_id);
-                }
-                print_header($cookie_handler, $cookie_name);
-            
+                }            
             ?>
             
             <?php
                 authenticate_user(100);
             ?>
-			
-			<article>
+		
+		<div class="row center">
+			<div class="col-3 empty"></div>
+			<div class="col-6">
+				<div class="object shadow">
+				<center><h1>Password Change Error</h1></center>
 				<p>
-					<!-- <center><img src="logo_big.png"></center> Insert Main Logo here -->
-					
-					<hr/>
-					<center><h1>Password Change Results</h1></center>
-					<hr/>
-					<p>
-						<div class="box">
-							<p>
-                                <?php
+					<?php
                                     $old_password = trim(htmlspecialchars($_POST["old_password"]));
                                     $new_password = trim(htmlspecialchars($_POST["new_password"]));
                                     $new_password_repeat = trim(htmlspecialchars($_POST["new_password_repeat"]));
@@ -99,22 +91,10 @@
                                         }
                                     }
                                 ?>
-							</p>
-						</div>
-
-					</p>
-
 				</p>
-			
-			
-			</article>
-			
-			<div class="paddingBottom">
+				</div>
 			</div>
-			
-			<footer>
-				2016 Lizard Squad.
-			</footer>
+			<div class="col-3 empty">	</div>
 		</div>
 	</body>
 	
