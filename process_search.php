@@ -63,147 +63,42 @@
                             $reddit_flag = $_POST["reddit"];
                             $forum_flag = $_POST["forum"];
                             
-                            
                             $search_results = search_database_posts($search_term, $twitter_flag, $reddit_flag, $forum_flag);
                             
-                            var_dump($search_results);
+                            $twitter_search_results_length = count($search_results[0][0]); // We care about the length of the third (last array) in the package of arrays
                             
+                            print "Twitter Results";
                             
-                            // Returns array in format:
-                            // [0][1][x] = twitter results
-                            // [1][[1][x] = reddit results
-                            // [2][1][x] = forum results
-                            // [x][0][x] is the user's name who made the post
-                            function search_database_posts($search_term, $twitter_flag, $reddit_flag, $forum_flag)
+                            if($twitter_search_results_length == 0)
                             {
-                                $twitter_posts = array();
-                                $reddit_posts = array();
-                                $forum_posts = array();
+                                print '<div class="row center">
+                                                <div class="object shadow">
+                                                    <p>';
+                                                    
+                                print "No results found for query '$search_term'.";
                                 
-                                // Establish connection to the database
-                                $con = mysqli_connect($GLOBALS['mysql_host'], $GLOBALS['mysql_user'], $GLOBALS['mysql_pass'], $GLOBALS['mysql_database']);
-                                
-                                if (mysqli_connect_errno()) 
+                                print '</p>
+                                                </div>
+                                            </div>';
+                            }
+                            else
+                            {
+                                for($i = 0; $i < $twitter_search_results_length; $i++)
                                 {
-                                    echo "Failed to connect to MySQL: " . mysqli_connect_error();
-                                    $log_message = "CRITICAL: Failed to connect to database! Please check your database and database settings!";
-                                    log_to_file($log_message);
+                                    $time_since_post = time_since_post($search_results[0][2][$i]);
+                                                                    
+                                    print '<div class="row center">
+                                                <div class="object shadow">
+                                                    <p>';
+                                    
+                                    print "Username: " . $search_results[0][0][$i] . " <br/><br/>\n
+                                           Post: " . $search_results[0][1][$i] . " <br/><br/>\n
+                                           Posted $time_since_post ago. <br/><br/>\n";
+                                    
+                                    print '</p>
+                                                </div>
+                                            </div>';
                                 }
-                                
-                                $search_term = mysqli_real_escape_string($con, $search_term);
-                                
-                                $results = array();
-                                
-                                if($twitter_flag == 1)
-                                {
-                                    $query = "SELECT username, post_text FROM Twitter_Posts WHERE post_text LIKE '%$search_term%' OR username='$search_term'";
-                                    
-                                    $result = mysqli_query($con, $query);
-                                    
-                                    // Obtain the number of rows from the result of the query
-                                    $num_rows = mysqli_num_rows($result);
-                                            
-                                    // Will be storing all the rows in here
-                                    $array_of_rows = array();
-                                                            
-                                    // Get all the rows
-                                    for($i = 0; $i < $num_rows; $i++)
-                                    {
-                                        $array_of_rows[$i] = mysqli_fetch_array($result);
-                                    }
-                                    $size_of_array_of_rows = $num_rows;
-                                                            
-                                    $usernames = array();
-                                    $post_texts = array();
-                                    
-                                    // Get an array of all values for each field
-                                    for($i = 0; $i < $size_of_array_of_rows; $i++)
-                                    {
-                                        $usernames[$i] = $array_of_rows[$i]["username"];
-                                        $post_texts[$i] = $array_of_rows[$i]["post_text"];
-                                    }
-
-                                        
-                                        // Package the data in an array
-                                        $twitter_posts[0] = $usernames[$result];
-                                        $twitter_posts[1] = $post_texts[$result];
-                                }
-                                    
-                                if($reddit_flag == 1)
-                                {
-                                    $query = "SELECT OP, post_text FROM Reddit_Posts WHERE post_text LIKE '%$search_term%'";
-                                    
-                                    $result = mysqli_query($con, $query);
-                                    
-                                    // Obtain the number of rows from the result of the query
-                                    $num_rows = mysqli_num_rows($result);
-                                            
-                                    // Will be storing all the rows in here
-                                    $array_of_rows = array();
-                                                            
-                                    // Get all the rows
-                                    for($i = 0; $i < $num_rows; $i++)
-                                    {
-                                        $array_of_rows[$i] = mysqli_fetch_array($result);
-                                    }
-                                    $size_of_array_of_rows = $num_rows;
-                                                            
-                                    $usernames = array();
-                                    $post_texts = array();
-                                    
-                                    // Get an array of all values for each field
-                                    for($i = 0; $i < $size_of_array_of_rows; $i++)
-                                    {
-                                        $usernames[$i] = $array_of_rows[$i]["OP"];
-                                        $post_texts[$i] = $array_of_rows[$i]["post_text"];
-                                    }
-
-                                        
-                                        // Package the data in an array
-                                        $reddit_posts[0] = $usernames[$result];
-                                        $reddit_posts[1] = $post_texts[$result];
-                                }
-                                
-                                if($forum_flag == 1)
-                                {
-                                    $query = "SELECT username, post_text FROM Forum_Posts WHERE post_text LIKE '%$search_term%'";
-                                    
-                                    $result = mysqli_query($con, $query);
-                                    
-                                    // Obtain the number of rows from the result of the query
-                                    $num_rows = mysqli_num_rows($result);
-                                            
-                                    // Will be storing all the rows in here
-                                    $array_of_rows = array();
-                                                            
-                                    // Get all the rows
-                                    for($i = 0; $i < $num_rows; $i++)
-                                    {
-                                        $array_of_rows[$i] = mysqli_fetch_array($result);
-                                    }
-                                    $size_of_array_of_rows = $num_rows;
-                                                            
-                                    $usernames = array();
-                                    $post_texts = array();
-                                    
-                                    // Get an array of all values for each field
-                                    for($i = 0; $i < $size_of_array_of_rows; $i++)
-                                    {
-                                        $usernames[$i] = $array_of_rows[$i]["username"];
-                                        $post_texts[$i] = $array_of_rows[$i]["post_text"];
-                                    }
-
-                                        
-                                        // Package the data in an array
-                                        $forum_posts[0] = $usernames[$result];
-                                        $forum_posts[1] = $post_texts[$result];
-                                }
-                                
-                                $results[0] = $twitter_posts;
-                                $results[1] = $reddit_posts;
-                                $results[2] = $forum_posts;
-                                
-                                return $results;
                             }
                             
                         ?>
