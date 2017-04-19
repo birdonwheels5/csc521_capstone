@@ -9,7 +9,7 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 $data = curl_exec($ch);
 // ~https://bitcointalk.org/index.php?topic=~
 $match = preg_match('~(https:\/\/bitcointalk\.org\/index\.php\?topic=\d\d\d\d\d\d\d)\.0..(\[\d\d\d\d-\d\d-\d\d\])~', $data);
-var_dump($match[0]);
+var_dump($match[1]);
   
 curl_close($ch);
 ?>
