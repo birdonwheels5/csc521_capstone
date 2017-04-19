@@ -8,7 +8,7 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
 $data = curl_exec($ch);
 // ~https://bitcointalk.org/index.php?topic=~
-$match = preg_match('~(https:\/\/bitcointalk\.org\/index\.php\?topic=\d\d\d\d\d\d\d)\.0..(\[\d\d\d\d-\d\d-\d\d\])~', $data);
+preg_match_all('~(https:\/\/bitcointalk\.org\/index\.php\?topic=\d\d\d\d\d\d\d)\.0..(\[\d\d\d\d-\d\d-\d\d\])~', $data, $match);
 $threads['url'] = $match[1];
 print_r($threads['url']);
   
