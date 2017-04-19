@@ -3,7 +3,9 @@ $ch = curl_init();
 $threads = array();
 
 curl_setopt($ch, CURLOPT_URL, "https://bitcointalk.org/index.php?board=77.0");
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+echo "hi";
 
 $data = curl_exec($ch);
 // ~https://bitcointalk.org/index.php?topic=~
