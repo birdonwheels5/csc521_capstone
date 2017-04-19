@@ -8,7 +8,7 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
 $data = curl_exec($ch);
 // ~https://bitcointalk.org/index.php?topic=~
-preg_match_all('~<a href="https://bitcointalk.org/index.php?topic=~', $data, $match);
+$match = preg_match_all('~<a href="https://bitcointalk.org/index.php?topic=~', $data, $match);
 var_dump($match);
 
   
