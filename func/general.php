@@ -238,203 +238,76 @@ function get_string_between($string, $start, $end)
 
 // TODO Documentation
 
-// Returns array in format:
-// [0][1][x] = twitter results
-// [1][[1][x] = reddit results
-// [2][1][x] = forum results
-// [x][0][x] is the user's name who made the post
-// [x][3][x] is the time the post was made
-function search_database_posts($search_term, $twitter_flag, $reddit_flag, $forum_flag)
-{
-    $twitter_posts = array();
-    $reddit_posts = array();
-    $forum_posts = array();
-    
-    // Establish connection to the database
-    $con = mysqli_connect($GLOBALS['mysql_host'], $GLOBALS['mysql_user'], $GLOBALS['mysql_pass'], $GLOBALS['mysql_database']);
-    
-    if (mysqli_connect_errno()) 
-    {
-        echo "Failed to connect to MySQL: " . mysqli_connect_error();
-        $log_message = "CRITICAL: Failed to connect to database! Please check your database and database settings!";
-        log_to_file($log_message);
-    }
-    
-    $search_term = mysqli_real_escape_string($con, $search_term);
-    
-    $results = array();
-    
-    if($twitter_flag == 1)
-    {
-        $query = "SELECT username, post_text, tstamp FROM Twitter_Posts WHERE (post_text LIKE '%$search_term%') OR (username='<b>$search_term</b>') ORDER BY tstamp DESC";
-        
-        $result = mysqli_query($con, $query);
-        
-        // Obtain the number of rows from the result of the query
-        $num_rows = mysqli_num_rows($result);
-                
-        // Will be storing all the rows in here
-        $array_of_rows = array();
-                                
-        // Get all the rows
-        for($i = 0; $i < $num_rows; $i++)
-        {
-            $array_of_rows[$i] = mysqli_fetch_array($result);
-        }
-        $size_of_array_of_rows = $num_rows;
-                                
-        $usernames = array();
-        $post_texts = array();
-        $tstamps = array();
-        
-        // Get an array of all values for each field
-        for($i = 0; $i < $size_of_array_of_rows; $i++)
-        {
-            $usernames[$i] = $array_of_rows[$i]["username"];
-            $post_texts[$i] = $array_of_rows[$i]["post_text"];
-            $tstamps[$i] = $array_of_rows[$i]["tstamp"];
-        }
-
-            
-            // Package the data in an array
-            $twitter_posts[0] = $usernames;
-            $twitter_posts[1] = $post_texts;
-            $twitter_posts[2] = $tstamps;
-    }
-        
-    if($reddit_flag == 1)
-    {
-        $query = "SELECT OP, post_text, tstamp FROM Reddit_Posts WHERE (post_text LIKE '%$search_term%') OR (OP='<b>$search_term</b>') ORDER BY tstamp DESC";
-        
-        $result = mysqli_query($con, $query);
-        
-        // Obtain the number of rows from the result of the query
-        $num_rows = mysqli_num_rows($result);
-                
-        // Will be storing all the rows in here
-        $array_of_rows = array();
-                                
-        // Get all the rows
-        for($i = 0; $i < $num_rows; $i++)
-        {
-            $array_of_rows[$i] = mysqli_fetch_array($result);
-        }
-        $size_of_array_of_rows = $num_rows;
-                                
-        $usernames = array();
-        $post_texts = array();
-        $tstamps = array();
-        
-        // Get an array of all values for each field
-        for($i = 0; $i < $size_of_array_of_rows; $i++)
-        {
-            $usernames[$i] = $array_of_rows[$i]["OP"];
-            $post_texts[$i] = $array_of_rows[$i]["post_text"];
-            $tstamps[$i] = $array_of_rows[$i]["tstamp"];
-        }
-
-            
-            // Package the data in an array
-            $reddit_posts[0] = $usernames;
-            $reddit_posts[1] = $post_texts;
-            $reddit_posts[2] = $tstamps;
-    }
-    
-    if($forum_flag == 1)
-    {
-        $query = "SELECT username, post_text, tstamp FROM Forum_Posts WHERE (post_text LIKE '%$search_term%') OR (username='<b>$search_term</b>') ORDER BY tstamp DESC";
-        
-        $result = mysqli_query($con, $query);
-        
-        // Obtain the number of rows from the result of the query
-        $num_rows = mysqli_num_rows($result);
-                
-        // Will be storing all the rows in here
-        $array_of_rows = array();
-                                
-        // Get all the rows
-        for($i = 0; $i < $num_rows; $i++)
-        {
-            $array_of_rows[$i] = mysqli_fetch_array($result);
-        }
-        $size_of_array_of_rows = $num_rows;
-                                
-        $usernames = array();
-        $post_texts = array();
-        $tstamps = array();
-        
-        // Get an array of all values for each field
-        for($i = 0; $i < $size_of_array_of_rows; $i++)
-        {
-            $usernames[$i] = $array_of_rows[$i]["username"];
-            $post_texts[$i] = $array_of_rows[$i]["post_text"];
-            $tstamps[$i] = $array_of_rows[$i]["tstamp"];
-        }
-            
-            // Package the data in an array
-            $forum_posts[0] = $usernames;
-            $forum_posts[1] = $post_texts;
-            $forum_posts[2] = $tstamps;
-    }
-    
-    $results[0] = $twitter_posts;
-    $results[1] = $reddit_posts;
-    $results[2] = $forum_posts;
-    
-    return $results;
-}
-
-// TODO Documentation
-// Computes the time difference between a given timestamp and the current time
-function time_since_post($post_create_time)
+// Computes the time difference between a given timestamp and the current time.
+// Returns a string with the time difference in units of minutes, hours, days or months.
+function time_since($create_time)
 {
     $time_unit = "minutes";
     
     // Get time since posted in minutes
-    $time_since_post = round((time() - $post_create_time) / 60, 0);
+    $time_since = round((time() - $create_time) / 60, 0);
     
-    if($time_since_post == 1)
+    if($time_since == 1)
     {
         $time_unit = "minute";
     }
     
     // Change unit from minutes to hours
-    if($time_since_post >= 60 and $time_since_post < 1440)
+    if($time_since >= 60 and $time_since < 1440)
     {
         $time_unit = "hours";
-        $time_since_post = round($time_since_post / 60);
+        $time_since = round($time_since / 60);
         
-        if($time_since_post == 1)
+        if($time_since == 1)
         {
             $time_unit = "hour";
         }
     }
     // Change unit from minutes to days
-    else if($time_since_post >= 1440 and $time_since_post < 43805)
+    else if($time_since >= 1440 and $time_since < 43805)
     {
         $time_unit = "days";
-        $time_since_post = round($time_since_post / 1440);
+        $time_since = round($time_since / 1440);
         
-        if($time_since_post == 1)
+        if($time_since == 1)
         {
             $time_unit = "day";
         }
     }
     // Change unit from minutes to months
-    else if($time_since_post >= 43805)
+    else if($time_since >= 43805)
     {
         $time_unit = "months";
-        $time_since_post = round($time_since_post / 43805);
+        $time_since = round($time_since / 43805);
         
-        if($time_since_post == 1)
+        if($time_since == 1)
         {
             $time_unit = "month";
         }
     }
     
-    $time_string = $time_since_post . " " . $time_unit;
+    $time_string = $time_since . " " . $time_unit;
     
     return $time_string;
+}
+
+// TODO Documentation
+
+// Separates a string of multiple words into their individual words. Strings are split on commas and spaces.
+// For example, "Hello, world foo" would return "Hello", "world" and "foo".
+function split_string($string)
+{
+    $results = array();
+    
+    //if(stristr(",", $string) != false)
+    {
+        // Remove commas, they just complicate things
+        $string = str_replace(",", "", $string);
+    }
+    
+    $results = explode(" ", $string);
+    
+    return $results;
 }
 
 ?>

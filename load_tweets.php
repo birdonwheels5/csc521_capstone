@@ -32,7 +32,7 @@
     for($i = 0; $i < $num_tweets; $i++)
     {
         // Position [2] is the timestamp
-        $time_since_post = time_since_post($database_tweets[2][$i]);
+        $time_since_post = time_since($database_tweets[2][$i]);
         
         // Position [0] is the username, and position [1] is the tweet text
         $username = $database_tweets[0][$i];
