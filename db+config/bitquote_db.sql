@@ -29,6 +29,7 @@ CREATE TABLE Reddit_Posts
 (
 	tstamp BIGINT NOT NULL,
 	rp_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	post_url VARCHAR(2085) NOT NULL, -- 2085 characters because IE can only only handle URLS with max 2083 characters
 	OP VARCHAR(20) NOT NULL,
 	post_text VARCHAR(65536) NOT NULL
 );
@@ -45,7 +46,7 @@ CREATE TABLE Forum_Posts
 (
 	tstamp BIGINT NOT NULL,
 	fp_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	forum_url VARCHAR(2085) NOT NULL, -- 2085 characters because IE can only only handle URLS with max 2083 characters
+	post_url VARCHAR(2085) NOT NULL, -- 2085 characters because IE can only only handle URLS with max 2083 characters
 	username VARCHAR(2) NOT NULL,
 	post_text VARCHAR(65536) NOT NULL,
 	forum_name VARCHAR(256) NOT NULL
