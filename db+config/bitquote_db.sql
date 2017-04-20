@@ -45,7 +45,8 @@ CREATE TABLE Forum_Posts
 (
 	tstamp BIGINT NOT NULL,
 	fp_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	username VARCHAR(22) NOT NULL,
+	forum_url VARCHAR(2085) NOT NULL, -- 2085 characters because IE can only only handle URLS with max 2083 characters
+	username VARCHAR(2) NOT NULL,
 	post_text VARCHAR(65536) NOT NULL,
 	forum_name VARCHAR(256) NOT NULL
 );
