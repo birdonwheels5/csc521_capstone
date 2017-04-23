@@ -29,7 +29,7 @@ function scrape_bitcointalk()
   
   for ($i = 0; $i < $number_of_threads; $i++)
   {
-    $thread = make_curl(threads['url'][$i]);
+    $thread = make_curl($threads['url'][$i]);
     print $thread;
     
   }
