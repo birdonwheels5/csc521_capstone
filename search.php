@@ -17,7 +17,7 @@
 	</head>
 	
 	<body>
-		<center><div class="container">
+		<div class="container">
             
             <?php 
             
@@ -50,12 +50,11 @@
 			
 			<article>
 				<div class="row center">
+					
+					<div class="col-4 empty"></div>
+					
 					<div class="col-4">
-						<div class="object shadow">
-							<!-- <b>Search the Database</b> -->
-							</div>
-					</div>
-					<div class="col-4">
+						
 						<form action="process_search.php" name="search" method="post" onkeyup="" class="object shadow">
 							Search the Database
 							Search term: <input type="text" name="search_term">
@@ -65,11 +64,11 @@
 							Bitcointalk.org <input type="checkbox" name="forum" value="1"><br>
                             Search by username? <input type="checkbox" name="user" value="1"><br>
 							<input type="submit" name="submit_search" value="Search"><br>
-
 						</form>
+						
 					</div>
-					<div class="col-4 empty">
-					</div>
+					
+					<div class="col-4 empty"></div>
 				</div>	
 			
 			</article>
