@@ -60,13 +60,13 @@ function make_timestamp($timestamp)
     $hours += 12;
     $new_time = $hours . $time[1] . $time[2];
   }
-  if ($hours == '12' && $pieces[3] == 'AM')
+  if ($hours == '12' && $timestamp[3] == 'AM')
   {
     $new_time = '00' . $time[1] . $time[2];
   }
   else
   {
-    $new_time = $pieces[2];
+    $new_time = $timestamp[2];
   }
   (string)$new_time;
   return $new_time;
