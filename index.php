@@ -35,31 +35,27 @@
 			var refresh_link = "load_tweets.php"; // For loading the twitter news
 			
 			// Make the active news tab a different color than the rest
-			var li_twitter = document.getElementById('li_twitter');
-			var li_reddit = document.getElementById('li_reddit');
-			var li_bitcointalk = document.getElementById('li_bitcointalk');
-			
 			// Twitter is the default selection
-			li_twitter.setAttribute('background-color', 'SeaShell');
-			li_reddit.setAttribute('background-color', 'Snow');
-			li_bitcointalk.setAttribute('background-color', 'Snow');
+			$("#li_twitter").css('background-color', 'SeaShell');
+			$("#li_twitter").css('background-color', 'Snow');
+			$("#li_twitter").css('background-color', 'Snow');
 			
 			if(news_flag == "reddit")
 			{
 				refresh_link = "load_reddit.php"; // For loading Reddit news
 				
-				li_twitter.setAttribute('background-color', 'Snow');
-				li_reddit.setAttribute('background-color', 'SeaShell');
-				li_bitcointalk.setAttribute('background-color', 'Snow');
+				$("#li_twitter").css('background-color', 'Snow');
+				$("#li_twitter").css('background-color', 'SeaShell');
+				$("#li_twitter").css('background-color', 'Snow');
 			}
 			
 			if(news_flag == "bitcointalk")
 		 	{
 				refresh_link = "load_bitcointalk.php"; // For loading Bitcointalk news
 				
-				li_twitter.setAttribute('background-color', 'Snow');
-				li_reddit.setAttribute('background-color', 'Snow');
-				li_bitcointalk.setAttribute('background-color', 'SeaShell');
+				$("#li_twitter").css('background-color', 'Snow');
+				$("#li_twitter").css('background-color', 'Snow');
+				$("#li_twitter").css('background-color', 'SeaShell');
 			}
 			
 			$('#newsFeed').load(refresh_link);
