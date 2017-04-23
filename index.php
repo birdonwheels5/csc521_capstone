@@ -207,6 +207,9 @@
 						<li><a onclick="$('#newsFeed').load('load_bitcointalk.php');
 							news_flag = 'bitcointalk';">Bitcointalk</a></li>
 					</ul>
+					
+				<hr/>
+				
 				</div>
 				
 				<div class="row">
