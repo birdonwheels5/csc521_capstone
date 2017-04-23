@@ -33,7 +33,9 @@ function scrape_bitcointalk()
   preg_match('~<div class="smalltext">(.*)</div></td>~', $thread, $match2);
   $threads['time'] = $match2[1];
   print_r($threads['time']);
-  
+  $length = strlen($threads['time']);
+  $time = substr($threads['time'], $length);
+  print($time)
   
   //for ($i = 0; $i < $number_of_threads; $i++)
   //{
