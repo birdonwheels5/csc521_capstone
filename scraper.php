@@ -2,9 +2,7 @@
 
 scrape_bitcointalk();
 print make_timestamp("today at 12:01:01 AM");
-echo '\n';
 print make_timestamp("april 21, 2017, 2:30:57 PM");
-echo '\n';
 
 function make_curl($url)
 {
@@ -39,7 +37,6 @@ function scrape_bitcointalk()
   //print_r($threads['time']);
   $time = make_timestamp($threads['time']);
   print $time;
-  echo '\n';
   
   //for ($i = 0; $i < $number_of_threads; $i++)
   //{
