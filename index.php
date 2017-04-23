@@ -37,16 +37,16 @@
 			// Make the active news tab a different color than the rest
 			// Twitter is the default selection
 			$("#li_twitter").css('background-color', 'SeaShell');
-			$("#li_twitter").css('background-color', 'Snow');
-			$("#li_twitter").css('background-color', 'Snow');
+			$("#li_reddit").css('background-color', 'Snow');
+			$("#li_bitcointalk").css('background-color', 'Snow');
 			
 			if(news_flag == "reddit")
 			{
 				refresh_link = "load_reddit.php"; // For loading Reddit news
 				
 				$("#li_twitter").css('background-color', 'Snow');
-				$("#li_twitter").css('background-color', 'SeaShell');
-				$("#li_twitter").css('background-color', 'Snow');
+				$("#li_reddit").css('background-color', 'SeaShell');
+				$("#li_bitcointalk").css('background-color', 'Snow');
 			}
 			
 			if(news_flag == "bitcointalk")
@@ -54,8 +54,8 @@
 				refresh_link = "load_bitcointalk.php"; // For loading Bitcointalk news
 				
 				$("#li_twitter").css('background-color', 'Snow');
-				$("#li_twitter").css('background-color', 'Snow');
-				$("#li_twitter").css('background-color', 'SeaShell');
+				$("#li_reddit").css('background-color', 'Snow');
+				$("#li_bitcointalk").css('background-color', 'SeaShell');
 			}
 			
 			$('#newsFeed').load(refresh_link);
