@@ -17,7 +17,7 @@
 	</head>
 	
 	<body>
-		<center><div class="container">
+		<div class="container">
             
             <?php 
             
@@ -49,11 +49,8 @@
             ?>
 			
 			<article>
-				<div class="row center">
-					<div class="col-4">
-						<div class="object shadow">
-							<!-- <b>Search the Database</b> -->
-							</div>
+				<div class="row">
+					<div class="col-4 empty">
 					</div>
 					<div class="col-4">
 						<?php
