@@ -16,7 +16,7 @@
 		var news_flag = "twitter";
 		
 		// Colors
-		var active_color = "SeaShell";
+		var active_color = "SlateGrey";
 		var passive_color = "Snow";
 		    
 		// Make it a different color
