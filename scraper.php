@@ -16,7 +16,7 @@ function scrape_bitcointalk()
 {
   $threads = array();
   $match = array();
-  $data = make_curl("https://bitcointalk.org/index.php?board=77.0")
+  $data = make_curl("https://bitcointalk.org/index.php?board=77.0");
   preg_match_all('~(https:\/\/bitcointalk\.org\/index\.php\?topic=.*)\.0..(\[\d\d\d\d-\d\d-\d\d\])(.*)</a>~', $data, $match);
   $threads['url'] = $match[1];
   $threads['date'] = $match[2];
