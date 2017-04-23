@@ -55,7 +55,7 @@ function make_timestamp($timestamp)
   $time = explode(":", $timestamp);
   //print($hours);
   $hours = (int)$time[0];
-  if ($pieces[3] == 'PM')
+  if ($timestamp[3] == 'PM')
   {
     $hours += 12;
     $new_time = $hours . $time[1] . $time[2];
