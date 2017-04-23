@@ -164,6 +164,7 @@
 
 <body class="color-0">
 			
+	<div class="row"></div>
 		<div class="empty col-2"> <!-- Left Margin -->
 		</div>
 		
@@ -190,7 +191,7 @@
 			
 		</div>
 		
-		<div class="row">
+		
 			<div id="news_nav">
 				<ul class="topnav">
 					<!-- Select twitter and set the news flag so that twitter will be refreshed every x seconds -->
@@ -205,7 +206,6 @@
 						news_flag = 'bitcointalk';">Bitcointalk</a></li>
 				</ul>
 			</div>
-		</div>
 		<div class="col-4"> <!-- Column 2 -->
 			<div class="object shadow" id="newsFeed">
 				<script type="text/javascript">
