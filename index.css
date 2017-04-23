@@ -87,15 +87,7 @@ li:hover {
 	border-radius: 5px;
 }
 
-
-
-
 .small {font-size: 18px}
-
-form a {
-	text-decoration: none;
-	color: teal;
-}
 
 iframe.full {
 	height: 900px;
@@ -135,12 +127,12 @@ ul.topnav li a.active {background-color: #4CAF50;}
 
 ul.topnav li.right {float: right;}
 
-@media screen and (max-width: 600px){
+@media screen and (max-width: 900px){
     ul.topnav li.right, 
     ul.topnav li {float: none;}
 }
 
-@media only screen and (min-width: 900px){
+@media only screen and (min-width: 901px){
 	.col-1 {width: 8.33%;}
 	.col-2 {width: 16.66%;}
 	.col-3 {width: 25%;}
