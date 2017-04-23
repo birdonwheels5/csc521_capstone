@@ -33,7 +33,7 @@
 			<div class="col-3 empty"></div>
 			<div class="col-6">
 				<div class="object shadow">
-				<center><h1>Password Change Error</h1></center>
+				<center><h1>Password Change Results</h1></center>
 				<p>
 					<?php
                                     $old_password = trim(htmlspecialchars($_POST["old_password"]));
@@ -77,7 +77,7 @@
                                             // New password
                                             $hashed_new_password = hash("sha512", $new_password . $salt);
                                             
-                                            set_new_hashed_password($uuid, $hashed_new_password);
+                                            print set_new_hashed_password($uuid, $hashed_new_password);
                                             
                                             $user_id_num = $results[9];
                                             
