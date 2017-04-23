@@ -27,7 +27,12 @@ function scrape_bitcointalk()
   print_r($threads['title']);
   print($number_of_threads);
   
-  //for ($i = 0; $i < 
+  for ($i = 0; $i < $number_of_threads; $i++)
+  {
+    $thread = make_curl(threads['url'][$i]);
+    print $thread;
+    
+  }
 }
 
 function compare_threads($processed_tweets, $database_connection)
