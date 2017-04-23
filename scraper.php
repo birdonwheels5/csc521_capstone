@@ -34,7 +34,7 @@ function scrape_bitcointalk()
   $threads['time'] = $match2[1];
   print_r($threads['time']);
   $length = strlen($threads['time']);
-  $time = substr($threads['time'], $length);
+  $time = substr($threads['time'], $length - 1);
   print($time);
   
   //for ($i = 0; $i < $number_of_threads; $i++)
