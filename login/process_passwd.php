@@ -77,7 +77,7 @@
                                             // New password
                                             $hashed_new_password = hash("sha512", $new_password . $salt);
                                             
-                                            var_dump)set_new_hashed_password($uuid, $hashed_new_password));
+                                            var_dump(set_new_hashed_password($uuid, $hashed_new_password));
                                             
                                             $user_id_num = $results[9];
                                             
