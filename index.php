@@ -34,14 +34,32 @@
 		    {
 			var refresh_link = "load_tweets.php"; // For loading the twitter news
 			
+			// Make the active news tab a different color than the rest
+			var li_twitter = document.getElementById('li_twitter');
+			var li_reddit = document.getElementById('li_reddit');
+			var li_bitcointalk = document.getElementById('li_bitcointalk');
+			
+			// Twitter is the default selection
+			li_twitter.setAttribute('background-color', 'SeaShell');
+			li_reddit.setAttribute('background-color', 'Snow');
+			li_bitcointalk.setAttribute('background-color', 'Snow');
+			
 			if(news_flag == "reddit")
 			{
 				refresh_link = "load_reddit.php"; // For loading Reddit news
+				
+				li_twitter.setAttribute('background-color', 'Snow');
+				li_reddit.setAttribute('background-color', 'SeaShell');
+				li_bitcointalk.setAttribute('background-color', 'Snow');
 			}
 			
 			if(news_flag == "bitcointalk")
 		 	{
 				refresh_link = "load_bitcointalk.php"; // For loading Bitcointalk news
+				
+				li_twitter.setAttribute('background-color', 'Snow');
+				li_reddit.setAttribute('background-color', 'Snow');
+				li_bitcointalk.setAttribute('background-color', 'SeaShell');
 			}
 			
 			$('#newsFeed').load(refresh_link);
@@ -197,14 +215,14 @@
 				<div id="news_nav">
 					<ul class="topnav" id="newsnav">
 						<!-- Select twitter and set the news flag so that twitter will be refreshed every x seconds -->
-						<li><a onclick="
+						<li id="li_twitter"><a onclick="
 							$('#newsFeed').load('load_tweets.php');
 							news_flag = 'twitter';">Twitter</a></li>
 						<!-- Select Reddit and set the news flag so that Reddit will be refreshed every x seconds -->
-						<li><a onclick="$('#newsFeed').load('load_reddit.php');
+						<li id="li_reddit"><a onclick="$('#newsFeed').load('load_reddit.php');
 							news_flag = 'reddit';">Reddit</a></li>
 						<!-- Select Bitcointalk and set the news flag so that Bitcointalk will be refreshed every x seconds -->
-						<li><a onclick="$('#newsFeed').load('load_bitcointalk.php');
+						<li id="li_bitcointalk"><a onclick="$('#newsFeed').load('load_bitcointalk.php');
 							news_flag = 'bitcointalk';">Bitcointalk</a></li>
 					</ul>
 					
