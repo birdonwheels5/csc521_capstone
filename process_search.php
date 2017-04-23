@@ -63,7 +63,9 @@
                             
                             if($twitter_flag == 0 && $reddit_flag == 0 && $forum_flag == 0 && $user_flag == 0)
                             {
-                                print "Please check a box to search. Press the back button to try again.";
+                                print '<div class="object shadow center">
+					Please check a box to search. Press the back button to try again.
+				    </div>';
                             }
                             else
                             {
