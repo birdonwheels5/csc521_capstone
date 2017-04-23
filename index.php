@@ -11,14 +11,17 @@
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	    <script type="text/javascript">
 
-		// Refresh all Bitcoin prices and the Twitter feed
+		// Refresh all Bitcoin prices and the News feed
+		
+		// Defaults to twitter on page load
+		var news_flag = "twitter";
 
 		$(function() {
 		    refreshBtcPrice(30);
 		});
 
 		$(function() {
-		    refreshTwitter(30);
+		    refreshNewsFeed(30);
 		});
 
 		function refreshBtcPrice(seconds) {
@@ -27,9 +30,22 @@
 		    }, seconds * 1000)
 		}
 
-		function refreshTwitter(seconds) {
-		    setInterval(function() {
-			    $('#twitter').load('load_tweets.php');
+		function refreshNewsFeed(seconds) {
+		    setInterval(function() 
+		    {
+			var refresh_link = "load_tweets.php"; // For loading the twitter news
+			
+			if(news_flag == "reddit")
+			{
+				refresh_link = "load_reddit.php"; // For loading Reddit news
+			}
+			
+			if(news_flag == "bitcointalk")
+		 	{
+				refresh_link = "load_bitcointalk.php"; // For loading Bitcointalk news
+			}
+			
+			$('#newsFeed').load(refresh_link);
 		    }, seconds * 1000)
 		}
 
@@ -103,8 +119,8 @@
 			title: 'Bitcoin Price',
 			viewWindowMode: 'explicit',
 			viewWindow: {
-				min: (Math.floor(min_price) - 5),
-				max: (Math.ceil(max_price) + 5)
+				min: Math.floor(min_price),
+				max: Math.ceil(max_price)
 			    }
 		    },
 		    colors: ['#AB0D06', '#007329'],
@@ -146,8 +162,6 @@
 </head>
 
 <body class="color-0">
-	
-	<div class="row"></div>
 			
 		<div class="empty col-2"> <!-- Left Margin -->
 		</div>
@@ -164,7 +178,7 @@
 					<input type="radio" name="unit" value="24" checked> Days <br>
 					
 				</form>
-
+				
 				<div id="BtcPrice">
 					<script type="text/javascript">
 						$('#BtcPrice').load('load_exchanges.php');
@@ -175,10 +189,26 @@
 			
 		</div>
 		
+		<div class="row">
+			<div id="news_nav">
+				<ul class="topnav">
+					<!-- Select twitter and set the news flag so that twitter will be refreshed every x seconds -->
+				 	<li><a script="
+						$('#newsFeed').load('load_tweets.php');
+						news_flag = 'twitter';">Twitter</a></li>';
+					<!-- Select Reddit and set the news flag so that Reddit will be refreshed every x seconds -->
+					<li><a script="$('#newsFeed').load('load_reddit.php');
+						news_flag = 'reddit';">Reddit</a></li>';
+					<!-- Select Bitcointalk and set the news flag so that Bitcointalk will be refreshed every x seconds -->
+					<li><a script="$('#newsFeed').load('load_bitcointalk.php');
+						news_flag = 'bitcointalk';">Bitcointalk</a></li>
+				</ul>
+			</div>
+		</div>
 		<div class="col-4"> <!-- Column 2 -->
-			<div class="object shadow" id="twitter">
+			<div class="object shadow" id="newsFeed">
 				<script type="text/javascript">
-					$('#twitter').load('load_tweets.php');
+					$('#newsFeed').load('load_tweets.php');
 				</script>
 			</div>
 		</div>
