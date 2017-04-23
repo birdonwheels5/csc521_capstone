@@ -18,7 +18,7 @@
     content: "";
     clear: both;
     display: block;
-	margin-top: 250px;
+	margin-top: 15px;
 	margin-bottom: 15px;
 }
 
@@ -148,6 +148,10 @@ ul.topnav li.right {float: right;}
 @media screen and (max-width: 600px){
     ul.topnav li.right, 
     ul.topnav li {float: none;}
+}
+
+.search {
+	text-align: justify;
 }
 
 @media only screen and (min-width: 900px){

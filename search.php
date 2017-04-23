@@ -55,15 +55,15 @@
 					
 					<div class="col-4">
 						
-						<form action="process_search.php" name="search" method="post" onkeyup="" class="object shadow">
+						<form action="process_search.php" name="search" method="post" onkeyup="" class="object shadow search">
 							Search the Database
 							Search term: <input type="text" name="search_term">
 							Data select:<br/>
-							Twitter <input type="checkbox" name="twitter" value="1"><br>
-							Reddit <input type="checkbox" name="reddit" value="1"><br>
-							Bitcointalk.org <input type="checkbox" name="forum" value="1"><br>
-                            Search by username? <input type="checkbox" name="user" value="1"><br>
-							<input type="submit" name="submit_search" value="Search"><br>
+							Twitter <input type="checkbox" name="twitter" value="1">
+							Reddit <input type="checkbox" name="reddit" value="1">
+							Bitcointalk.org <input type="checkbox" name="forum" value="1">
+                            Search by username? <input type="checkbox" name="user" value="1">
+							<input type="submit" name="submit_search" value="Search">
 						</form>
 						
 					</div>
