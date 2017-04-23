@@ -14,6 +14,13 @@
 		
 		// Defaults to twitter on page load
 		var news_flag = "twitter";
+		
+		// Colors
+		var active_color = "SeaShell";
+		var passive_color = "Snow";
+		    
+		// Make it a different color
+		$("#li_twitter").css('background-color', active_color);
 
 		$(function() {
 		    refreshBtcPrice(30);
@@ -34,28 +41,14 @@
 		    {
 			var refresh_link = "load_tweets.php"; // For loading the twitter news
 			
-			// Make the active news tab a different color than the rest
-			// Twitter is the default selection
-			$("#li_twitter").css('background-color', 'SeaShell');
-			$("#li_reddit").css('background-color', 'Snow');
-			$("#li_bitcointalk").css('background-color', 'Snow');
-			
 			if(news_flag == "reddit")
 			{
 				refresh_link = "load_reddit.php"; // For loading Reddit news
-				
-				$("#li_twitter").css('background-color', 'Snow');
-				$("#li_reddit").css('background-color', 'SeaShell');
-				$("#li_bitcointalk").css('background-color', 'Snow');
 			}
 			
 			if(news_flag == "bitcointalk")
 		 	{
 				refresh_link = "load_bitcointalk.php"; // For loading Bitcointalk news
-				
-				$("#li_twitter").css('background-color', 'Snow');
-				$("#li_reddit").css('background-color', 'Snow');
-				$("#li_bitcointalk").css('background-color', 'SeaShell');
 			}
 			
 			$('#newsFeed').load(refresh_link);
@@ -213,13 +206,28 @@
 						<!-- Select twitter and set the news flag so that twitter will be refreshed every x seconds -->
 						<li id="li_twitter"><a onclick="
 							$('#newsFeed').load('load_tweets.php');
-							news_flag = 'twitter';">Twitter</a></li>
+							news_flag = 'twitter';
+							
+							// Make the active news tab a different color than the rest
+							$('#li_twitter').css('background-color', active_color);
+							$('#li_reddit').css('background-color', passive_color);
+							$('#li_bitcointalk').css('background-color', passive_color);">Twitter</a></li>
 						<!-- Select Reddit and set the news flag so that Reddit will be refreshed every x seconds -->
 						<li id="li_reddit"><a onclick="$('#newsFeed').load('load_reddit.php');
-							news_flag = 'reddit';">Reddit</a></li>
+							news_flag = 'reddit';
+							
+							// Make the active news tab a different color than the rest
+							$('#li_twitter').css('background-color', passive_color);
+							$('#li_reddit').css('background-color', active_color);
+							$('#li_bitcointalk').css('background-color', passive_color);">Reddit</a></li>
 						<!-- Select Bitcointalk and set the news flag so that Bitcointalk will be refreshed every x seconds -->
 						<li id="li_bitcointalk"><a onclick="$('#newsFeed').load('load_bitcointalk.php');
-							news_flag = 'bitcointalk';">Bitcointalk</a></li>
+							news_flag = 'bitcointalk';
+							
+							// Make the active news tab a different color than the rest
+							$('#li_twitter').css('background-color', passive_color);
+							$('#li_reddit').css('background-color', passive_color);
+							$('#li_bitcointalk').css('background-color', active_color);">Bitcointalk</a></li>
 					</ul>
 					
 				<hr/>
