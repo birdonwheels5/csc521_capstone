@@ -29,10 +29,10 @@ function scrape_bitcointalk()
   
   
   $thread = make_curl($threads['url'][0]);
-  print($threads['url'][0] . " \n");
+  //print($threads['url'][0] . " \n");
   preg_match('~<div class="smalltext">(.*)</div></td>~', $thread, $match2);
   $threads['time'] = $match2[1];
-  print_r($threads['time']);
+  //print_r($threads['time']);
   $length = strlen($threads['time']);
   $time = substr($threads['time'], $length - 1);
   print($time);
