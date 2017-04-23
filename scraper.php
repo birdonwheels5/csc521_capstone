@@ -35,8 +35,10 @@ function scrape_bitcointalk()
   //print($threads['url'][0] . " \n");
   preg_match('~<div class="smalltext">(.*)</div></td>~', $thread, $match2);
   $threads['time'] = $match2[1];
-  print_r($threads['time']);
-  $time = make_timestamp($threads['time']);
+  //print_r($threads['time']);
+  $pieces = explode( " ", $threads['time']);
+  print_r($pieces)
+  $time = make_timestamp($pieces);
   print $time;
   
   //for ($i = 0; $i < $number_of_threads; $i++)
@@ -49,9 +51,8 @@ function scrape_bitcointalk()
 
 function make_timestamp($timestamp)
 {
-  $pieces = explode( " ", $timestamp);
-  //pieces[2][3] format: 02:19:08 AM"
-  $time = explode(":", $pieces[2]);
+  //timestamp format: 02:19:08 AM"
+  $time = explode(":", $timestamp);
   //print($hours);
   $hours = (int)$time[0];
   if ($pieces[3] == 'PM')
