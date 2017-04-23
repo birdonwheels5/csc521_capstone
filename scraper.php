@@ -1,6 +1,6 @@
 <?php
 
-scrape_bitcointalk()
+scrape_bitcointalk();
 
 function make_curl($url)
 {
