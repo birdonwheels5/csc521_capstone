@@ -120,7 +120,7 @@ ul.topnav li {float: left;}
 
 ul.topnav li a {
     display: block;
-    color: white;
+    color: snow;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -133,12 +133,14 @@ ul.topnav li a.active {background-color: #4CAF50;}
 ul.topnav li.right {float: right;}
 
 #newsnav {
-    background-color: #FFFFFF;
+    background-color: snow;
 }
 
 #newsnav li a {
     color: black;
 }
+
+#newsnav li a:hover:not(.active) {background-color: white;}
 
 @media screen and (max-width: 900px){
     ul.topnav li.right, 
