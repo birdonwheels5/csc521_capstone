@@ -193,7 +193,7 @@
 			
 				
 		<div class="col-4"> <!-- Column 2 -->
-			<div class="object shadow" id="newsFeed">
+			<div class="object shadow">
 				<div id="news_nav">
 					<ul class="topnav">
 						<!-- Select twitter and set the news flag so that twitter will be refreshed every x seconds -->
@@ -208,9 +208,12 @@
 							news_flag = 'bitcointalk';">Bitcointalk</a></li>
 					</ul>
 				</div>
-				<script type="text/javascript">
-					$('#newsFeed').load('load_tweets.php');
-				</script>
+				
+				<div id="newsFeed">
+					<script type="text/javascript">
+						$('#newsFeed').load('load_tweets.php');
+					</script>
+				</div>
 			</div>
 		</div>
 		
