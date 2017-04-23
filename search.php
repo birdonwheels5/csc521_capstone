@@ -53,7 +53,7 @@
 					
 					<div class="col-4 empty"></div>
 					
-					<div class="col-4">
+					<div class="col-4 search">
 						
 						<form action="process_search.php" name="search" method="post" onkeyup="" class="object shadow search">
 							Search the Database
