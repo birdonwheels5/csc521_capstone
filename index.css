@@ -140,7 +140,7 @@ ul.topnav li.right {float: right;}
     color: black;
 }
 
-#newsnav li a:hover:not(.active) {background-color: color-4;}
+#newsnav li a:hover:not(.active) {background-color: color-3;}
 
 @media screen and (max-width: 900px){
     ul.topnav li.right, 
