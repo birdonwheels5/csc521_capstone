@@ -23,6 +23,10 @@
 
 input.chart{
 	width: 50px;
+	text-align: center;
+}
+
+form.chart{
 	text-align: left;
 }
 
