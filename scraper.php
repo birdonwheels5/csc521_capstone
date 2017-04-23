@@ -68,7 +68,6 @@ function make_timestamp($timestamp)
   {
     $new_time = $time;
   }
-  (string)$new_time;
   return $new_time;
 }
 
