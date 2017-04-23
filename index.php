@@ -2,7 +2,6 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     	<title>Welcome</title>
-    	<link rel='stylesheet' type="text/css" href="index.css">
 	<?php
 		include "login/CookieHandler.php";
 		include "func/login.php";
@@ -159,6 +158,8 @@
 		
                 print_header($cookie_handler, $cookie_name);
             ?>
+	    	<link rel='stylesheet' type="text/css" href="index.css">
+
 </head>
 
 <body class="color-0">
