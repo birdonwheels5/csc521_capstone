@@ -7,28 +7,6 @@
 	<?php include "CookieHandler.php";
           include "../func/login.php"; ?>
 	
-	<?php 
-            
-                $cookie_handler = new CookieHandler();
-                $cookie_name = $cookie_handler->get_cookie_name();
-                $cookie_handler->cookie_exists($cookie_name);
-                
-                // Check to see if the cookie exists
-                if($cookie_handler->get_exists())
-                {
-                    $user_cookie = $cookie_handler->get_cookie($cookie_name);
-                    $uuid = $user_cookie->get_uuid();
-                    $session_id = get_session($uuid);
-                    $cookie_handler->validate_cookie($user_cookie, $session_id);
-                    
-                    // So we can personalize the page a little for the user
-                    $user_data = get_user_data($uuid);
-                    
-                    update_last_login($uuid);
-                }
-		
-                print_header($cookie_handler, $cookie_name);
-            ?>
 </head>
 <body class="color-0">
 	
@@ -133,6 +111,8 @@
                 $session_id = get_session($user_cookie->get_uuid());
                 $cookie_handler->validate_cookie($user_cookie, $session_id);
             }
+	    
+	    print_header($cookie_handler, $cookie_name);
            
         ?>
 	
