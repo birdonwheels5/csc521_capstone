@@ -209,6 +209,9 @@
 					</ul>
 				</div>
 				
+				<div class="row">
+				</div>
+				
 				<div id="newsFeed">
 					<script type="text/javascript">
 						$('#newsFeed').load('load_tweets.php');
