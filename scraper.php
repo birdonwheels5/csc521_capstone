@@ -2,7 +2,9 @@
 
 scrape_bitcointalk();
 //print make_timestamp("today at 12:01:01 AM");
+$test1 = explode(" ", "today at 12:01:01 AM");
 //print make_timestamp("april 21, 2017, 2:30:57 PM");
+$test2 = explode(" ", "april 21, 2017, 2:30:57 PM");
 
 
 function make_curl($url)
@@ -52,7 +54,14 @@ function scrape_bitcointalk()
 function make_timestamp($timestamp)
 {
   //timestamp format: 02:19:08 AM"
-  $time = explode(":", $timestamp[2]);
+  if ( count($timestamp) = 4)
+  {
+    $time = explode(":", $timestamp[2]);
+  }
+  else
+  {
+    $time = explode(":", $timestamp[3]);
+  }
   //print($hours);
   $hours = (int)$time[0];
   if ($timestamp[3] == 'PM')
@@ -60,7 +69,7 @@ function make_timestamp($timestamp)
     $hours += 12;
     $new_time = $hours . $time[1] . $time[2];
   }
-  if ($hours == '12' && $timestamp[3] == 'AM')
+  else if ($hours == '12' && $timestamp[3] == 'AM')
   {
     $new_time = '00' . $time[1] . $time[2];
   }
