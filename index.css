@@ -10,7 +10,6 @@
 	--color-3: #006868;
 	--color-4: #004F4F;
 	--color-5: snow;
-	--color-6: #e5e5e5; /* light grey */
 	--shadow: darkslategray;
 }
 
@@ -141,7 +140,7 @@ ul.topnav li.right {float: right;}
     color: black;
 }
 
-#newsnav li a:hover:not(.active) {background-color: grey;}
+#newsnav li a:hover:not(.active) {background-color: gainsboro;}
 
 @media screen and (max-width: 900px){
     ul.topnav li.right, 
