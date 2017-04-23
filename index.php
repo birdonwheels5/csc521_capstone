@@ -192,8 +192,8 @@
 		</div>
 		
 		
-			<div id="news_nav">
-				<ul class="topnav object shadow">
+			<div class="object shadow" id="news_nav">
+				<ul class="topnav">
 					<!-- Select twitter and set the news flag so that twitter will be refreshed every x seconds -->
 				 	<li><a script="
 						$('#newsFeed').load('load_tweets.php');
