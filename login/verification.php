@@ -25,6 +25,8 @@
                     
                     $user_data = get_user_data($uuid);
                 }            
+		
+		print_header($cookie_handler, $cookie_name);
             ?>
 		
 		<div class="row center">
