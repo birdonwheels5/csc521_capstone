@@ -21,6 +21,11 @@
 	margin-bottom: 15px;
 }
 
+form{
+	width: auto;
+	text-align: justify;
+}
+
 [class*="col-"] {
 	width: 100%;
     float: left;
