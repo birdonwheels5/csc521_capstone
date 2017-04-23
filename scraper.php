@@ -67,7 +67,7 @@ function make_timestamp($timestamp)
   $hours = (int)$time[0];
   if ($timestamp[3] == 'PM')
   {
-    $hours .= 12;
+    $hours = $hours + 12;
     $new_time = $hours . $time[1] . $time[2];
   }
   else if ($hours == '12' && $timestamp[3] == 'AM')
