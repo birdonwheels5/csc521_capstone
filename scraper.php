@@ -25,7 +25,6 @@ function scrape_bitcointalk()
   print_r($threads['date']);
   print_r($threads['title']);
 
-  curl_close($ch);
 }
 
 function compare_threads($processed_tweets, $database_connection)
