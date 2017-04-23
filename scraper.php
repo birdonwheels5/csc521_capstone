@@ -58,28 +58,46 @@ function make_timestamp($timestamp)
   if ( count($timestamp) == 4)
   {
     $time = explode(":", $timestamp[2]);
+    $hours = (int)$time[0];
+    print($hours);
+    if ($timestamp[3] == 'PM')
+    {
+      $hours = $hours + 12;
+      $new_time = $hours . $time[1] . $time[2];
+    }
+    else if ($hours == '12' && $timestamp[3] == 'AM')
+    {
+      $new_time = '00' . $time[1] . $time[2];
+    }
+    else
+    {
+      $new_time = $time;
+      $new_time = implode("", $new_time);
+    }
   }
   else
   {
     $time = explode(":", $timestamp[3]);
+    
+    $hours = (int)$time[0];
+    print($hours);
+    if ($timestamp[4] == 'PM')
+    {
+      $hours = $hours + 12;
+      $new_time = $hours . $time[1] . $time[2];
+    }
+    else if ($hours == '12' && $timestamp[4] == 'AM')
+    {
+      $new_time = '00' . $time[1] . $time[2];
+    }
+    else
+    {
+      $new_time = $time;
+      $new_time = implode("", $new_time);
+    }
   }
   
-  $hours = (int)$time[0];
-  print($hours);
-  if ($timestamp[3] == 'PM')
-  {
-    $hours = $hours + 12;
-    $new_time = $hours . $time[1] . $time[2];
-  }
-  else if ($hours == '12' && $timestamp[3] == 'AM')
-  {
-    $new_time = '00' . $time[1] . $time[2];
-  }
-  else
-  {
-    $new_time = $time;
-    $new_time = implode("", $new_time);
-  }
+
 
   return $new_time;
 }
