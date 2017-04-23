@@ -189,11 +189,11 @@
 						
 			</div>
 			
-		</div>
-		
-		
-			<div class="object shadow" id="news_nav">
-				<ul class="topnav">
+				
+		<div class="col-4"> <!-- Column 2 -->
+			<div class="object shadow" id="newsFeed">
+				<div id="news_nav">
+					<ul class="topnav">
 					<!-- Select twitter and set the news flag so that twitter will be refreshed every x seconds -->
 				 	<li><a script="
 						$('#newsFeed').load('load_tweets.php');
@@ -204,10 +204,8 @@
 					<!-- Select Bitcointalk and set the news flag so that Bitcointalk will be refreshed every x seconds -->
 					<li><a script="$('#newsFeed').load('load_bitcointalk.php');
 						news_flag = 'bitcointalk';">Bitcointalk</a></li>
-				</ul>
-			</div>
-		<div class="col-4"> <!-- Column 2 -->
-			<div class="object shadow" id="newsFeed">
+					</ul>
+				</div>
 				<script type="text/javascript">
 					$('#newsFeed').load('load_tweets.php');
 				</script>
