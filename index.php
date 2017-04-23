@@ -19,8 +19,7 @@
 		var active_color = "SlateGrey";
 		var passive_color = "Snow";
 		    
-		// Make it a different color
-		$('#li_twitter').css('background-color', active_color);
+		// The twitter's color is changed on page load (located in the body tag)
 
 		$(function() {
 		    refreshBtcPrice(30);
@@ -169,7 +168,7 @@
 
 </head>
 
-<body class="color-0">
+<body class="color-0" onload="$('#li_twitter').css('background-color', active_color);">
 			
 	<div class="row"></div>
 	
