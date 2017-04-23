@@ -66,7 +66,7 @@ function make_timestamp($timestamp)
   }
   else
   {
-    $new_time = $timestamp[2];
+    $new_time = $time;
   }
   (string)$new_time;
   return $new_time;
