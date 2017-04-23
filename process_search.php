@@ -49,8 +49,10 @@
             ?>
 			
 			<article>
-				<div class="row">
-					<div class="col-4 empty">
+				<div class="row center">
+					<div class="col-4">
+						<div class="empty">
+						</div>
 					</div>
 					<div class="col-4">
 						<?php

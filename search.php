@@ -63,7 +63,7 @@
 								Twitter <input type="checkbox" name="twitter" value="1">
 								Reddit <input type="checkbox" name="reddit" value="1">
 								Bitcointalk.org <input type="checkbox" name="forum" value="1">
-                            	Username <input type="checkbox" name="user" value="1">
+                            	Search by Username <input type="checkbox" name="user" value="1">
 								<input type="submit" name="submit_search" value="Search">
 							</p>
 						</form>

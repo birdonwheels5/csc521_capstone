@@ -98,8 +98,8 @@ input {
 	font-size: 24px;
 }
 
-input[type="checkbox"]{
-	width = 10px;
+input[type="checkbox"] {
+	width: 10px;
 }
 
 input[type="submit"] {
