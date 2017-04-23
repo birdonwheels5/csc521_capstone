@@ -55,7 +55,7 @@ function scrape_bitcointalk()
 function make_timestamp($timestamp)
 {
   //timestamp format: 02:19:08 AM"
-  if ( count($timestamp) = 4)
+  if ( count($timestamp) == 4)
   {
     $time = explode(":", $timestamp[2]);
   }
