@@ -52,7 +52,7 @@ function scrape_bitcointalk()
 function make_timestamp($timestamp)
 {
   //timestamp format: 02:19:08 AM"
-  $time = explode(":", (string)$timestamp);
+  $time = explode(":", $timestamp[2]);
   //print($hours);
   $hours = (int)$time[0];
   if ($timestamp[3] == 'PM')
