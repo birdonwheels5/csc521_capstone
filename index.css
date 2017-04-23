@@ -22,11 +22,7 @@
 }
 
 input.chart{
-	width: 60px;
-	text-align: center;
-}
-
-form.chart{
+	width: 50px;
 	text-align: left;
 }
 
@@ -112,7 +108,7 @@ input[type="submit"]:hover {
     The topnav code is from W3Schools, which can be found at: https://www.w3schools.com/howto/howto_js_topnav.asp
 */
 
-ul.topnav {
+ul.topnav ul.newsnav {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -120,9 +116,13 @@ ul.topnav {
     background-color: #333;
 }
 
-ul.topnav li {float: left;}
+ul.newsnav {
+    background-color: #FFFFFF;
+}
 
-ul.topnav li a {
+ul.topnav ul.newsnav li {float: left;}
+
+ul.topnav ul.newsnav li a {
     display: block;
     color: white;
     text-align: center;
@@ -130,15 +130,19 @@ ul.topnav li a {
     text-decoration: none;
 }
 
-ul.topnav li a:hover:not(.active) {background-color: #111;}
+ul.newsnav li a {
+    color: black;
+}
 
-ul.topnav li a.active {background-color: #4CAF50;}
+ul.topnav ul.newsnav li a:hover:not(.active) {background-color: #111;}
 
-ul.topnav li.right {float: right;}
+ul.topnav ul.newsnav li a.active {background-color: #4CAF50;}
+
+ul.topnav ul.newsnav li.right {float: right;}
 
 @media screen and (max-width: 900px){
-    ul.topnav li.right, 
-    ul.topnav li {float: none;}
+    ul.topnav ul.newsnav li.right, 
+    ul.topnav ul.newsnav li {float: none;}
 }
 
 @media only screen and (min-width: 901px){
