@@ -59,7 +59,6 @@ function make_timestamp($timestamp)
   {
     $time = explode(":", $timestamp[2]);
     $hours = (int)$time[0];
-    //print($hours);
     if ($timestamp[3] == 'PM')
     {
       $hours = $hours + 12;
@@ -80,7 +79,6 @@ function make_timestamp($timestamp)
     $time = explode(":", $timestamp[3]);
     
     $hours = (int)$time[0];
-    print($hours);
     if ($timestamp[4] == 'PM')
     {
       $hours = $hours + 12;
