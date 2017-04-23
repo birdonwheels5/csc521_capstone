@@ -60,7 +60,7 @@ function make_timestamp($timestamp)
   }
   if ($hours == '12' && $pieces[3] == 'AM')
   {
-    $new_time = '00' . $time[1] . time[2];
+    $new_time = '00' . $time[1] . $time[2];
   }
   else
   {
