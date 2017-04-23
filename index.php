@@ -122,7 +122,7 @@
 				max: Math.ceil(max_price)
 			    }
 		    },
-		    colors: ['#AB0D06', '#007329'],
+		    colors: ['snow', '#007329'],
 		    legend: {
 			alignment: 'right',
 			position: 'top',
