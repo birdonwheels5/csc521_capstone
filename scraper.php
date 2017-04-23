@@ -21,10 +21,13 @@ function scrape_bitcointalk()
   $threads['url'] = $match[1];
   $threads['date'] = $match[2];
   $threads['title'] = $match[3];
+  $number_of_threads = count($threads['url']);
   print_r($threads['url']);
   print_r($threads['date']);
   print_r($threads['title']);
-
+  print($number_of_threads)
+  
+  //for ($i = 0; $i < 
 }
 
 function compare_threads($processed_tweets, $database_connection)
