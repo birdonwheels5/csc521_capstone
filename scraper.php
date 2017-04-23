@@ -31,7 +31,7 @@ function scrape_bitcointalk()
   $thread = make_curl($threads['url'][0]);
   print($threads['url'][0]);
   preg_match('~<div class="smalltext">(.*)</div></td>~', $thread, $match2);
-  print($match2)
+  print($match2);
   
   //for ($i = 0; $i < $number_of_threads; $i++)
   //{
