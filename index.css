@@ -108,7 +108,7 @@ input[type="submit"]:hover {
     The topnav code is from W3Schools, which can be found at: https://www.w3schools.com/howto/howto_js_topnav.asp
 */
 
-ul.topnav ul.newsnav {
+ul.topnav {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -116,13 +116,13 @@ ul.topnav ul.newsnav {
     background-color: #333;
 }
 
-ul.newsnav {
+#newsnav {
     background-color: #FFFFFF;
 }
 
-ul.topnav ul.newsnav li {float: left;}
+ul.topnav li {float: left;}
 
-ul.topnav ul.newsnav li a {
+ul.topnav li a {
     display: block;
     color: white;
     text-align: center;
@@ -130,19 +130,19 @@ ul.topnav ul.newsnav li a {
     text-decoration: none;
 }
 
-ul.newsnav li a {
+#newsnav li a {
     color: black;
 }
 
-ul.topnav ul.newsnav li a:hover:not(.active) {background-color: #111;}
+ul.topnav li a:hover:not(.active) {background-color: #111;}
 
-ul.topnav ul.newsnav li a.active {background-color: #4CAF50;}
+ul.topnav li a.active {background-color: #4CAF50;}
 
-ul.topnav ul.newsnav li.right {float: right;}
+ul.topnav li.right {float: right;}
 
 @media screen and (max-width: 900px){
-    ul.topnav ul.newsnav li.right, 
-    ul.topnav ul.newsnav li {float: none;}
+    ul.topnav li.right, 
+    ul.topnav li {float: none;}
 }
 
 @media only screen and (min-width: 901px){
