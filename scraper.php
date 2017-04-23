@@ -25,7 +25,7 @@ function scrape_bitcointalk()
   print_r($threads['url']);
   print_r($threads['date']);
   print_r($threads['title']);
-  print($number_of_threads)
+  print($number_of_threads);
   
   //for ($i = 0; $i < 
 }
