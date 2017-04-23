@@ -25,14 +25,20 @@ function scrape_bitcointalk()
   print_r($threads['url']);
   print_r($threads['date']);
   print_r($threads['title']);
-  print($number_of_threads);
+  print($number_of_threads . "\n\n");
   
-  for ($i = 0; $i < $number_of_threads; $i++)
-  {
-    $thread = make_curl($threads['url'][$i]);
-    print $thread;
+  
+  $thread = make_curl($threads['url'][0]);
+  print($threads['url'][0]);
+  preg_match('~<div class="smalltext">(.*)</div></td>~', $thread, $match2);
+  print($match2)
+  
+  //for ($i = 0; $i < $number_of_threads; $i++)
+  //{
+    //$thread = make_curl($threads['url'][$i]);
     
-  }
+    
+  //}
 }
 
 function compare_threads($processed_tweets, $database_connection)
