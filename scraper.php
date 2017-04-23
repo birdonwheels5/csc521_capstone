@@ -57,6 +57,6 @@ function compare_threads($processed_tweets, $database_connection)
             }
         }
     }
-  
+}  
   
   ?>
