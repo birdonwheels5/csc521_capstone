@@ -1,8 +1,8 @@
 <?php
 
 scrape_bitcointalk();
-make_timestamp("today at 12:01:01 AM");
-make_timestamp("april 21, 2017, 2:30:57 PM");
+print make_timestamp("today at 12:01:01 AM");
+print make_timestamp("april 21, 2017, 2:30:57 PM");
 
 function make_curl($url)
 {
@@ -66,7 +66,8 @@ function make_timestamp($timestamp)
   {
     $new_time = $pieces[2];
   }
-  return $time;
+  (str)$new_time;
+  return $new_time;
 }
 
 function compare_threads($processed_tweets, $database_connection)
