@@ -23,7 +23,7 @@
 
 input.chart{
 	width: 50px;
-	text-align: justify;
+	text-align: left;
 }
 
 [class*="col-"] {
