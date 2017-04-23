@@ -116,10 +116,6 @@ ul.topnav {
     background-color: #333;
 }
 
-#newsnav {
-    background-color: #FFFFFF;
-}
-
 ul.topnav li {float: left;}
 
 ul.topnav li a {
@@ -130,15 +126,19 @@ ul.topnav li a {
     text-decoration: none;
 }
 
-#newsnav li a {
-    color: black;
-}
-
 ul.topnav li a:hover:not(.active) {background-color: #111;}
 
 ul.topnav li a.active {background-color: #4CAF50;}
 
 ul.topnav li.right {float: right;}
+
+#newsnav {
+    background-color: #FFFFFF;
+}
+
+#newsnav li a {
+    color: black;
+}
 
 @media screen and (max-width: 900px){
     ul.topnav li.right, 
