@@ -6,7 +6,7 @@ $test1 = explode(" ", "today at 12:01:01 AM");
 //print make_timestamp("april 21, 2017, 2:30:57 PM");
 $test2 = explode(" ", "april 21, 2017, 2:30:57 PM");
 print_r(make_timestamp($test1));
-print_r(make_timestamp($test2));
+//print_r(make_timestamp($test2));
 
 function make_curl($url)
 {
@@ -42,7 +42,7 @@ function scrape_bitcointalk()
   $pieces = explode( " ", $threads['time']);
   print_r($pieces);
   $time = make_timestamp($pieces);
-  print_r($time);
+  //print_r($time);
   
   //for ($i = 0; $i < $number_of_threads; $i++)
   //{
@@ -63,8 +63,9 @@ function make_timestamp($timestamp)
   {
     $time = explode(":", $timestamp[3]);
   }
-  //print($hours);
+  
   $hours = (int)$time[0];
+  print($hours);
   if ($timestamp[3] == 'PM')
   {
     $hours = $hours + 12;
