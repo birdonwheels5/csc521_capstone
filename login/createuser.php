@@ -251,7 +251,7 @@
         	<input type="password" name="password" placeholder="Password" required>
 			<input type="email" name="email" placeholder="Email" required>
 			<input type="submit" name="submit" value="Create User" required>
-			<div class="small"><a href="./login/reset_pwd.php">Reset your password</a>, <a href="login.php">Login</a> or <a href="./../index.php">Continue as Guest</a></div>
+			<div class="small"><a href="reset_pwd.php">Reset your password</a>, <a href="login.php">Login</a> or <a href="./../index.php">Continue as Guest</a></div>
 		</form>
 		</div>
 		<div class="col-4 empty">
