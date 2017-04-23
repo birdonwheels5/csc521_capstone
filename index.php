@@ -20,7 +20,7 @@
 		var passive_color = "Snow";
 		    
 		// Make it a different color
-		$("#li_twitter").css('background-color', active_color);
+		$('#li_twitter').css('background-color', active_color);
 
 		$(function() {
 		    refreshBtcPrice(30);
