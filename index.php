@@ -176,9 +176,9 @@
 				<div id="chart_div"></div>
 				
 				<form action="" name="chart" method="get" onkeyup="" class="row">
-					<input type="number" name="x-axis" min="1">
-					<input type="radio" name="unit" value="1" checked> Hours <br>
-					<input type="radio" name="unit" value="24" checked> Days <br>
+					<input class="chart" type="number" name="x-axis" min="1">
+					<input class="chart" type="radio" name="unit" value="1" checked> Hours <br>
+					<input class="chart" type="radio" name="unit" value="24" checked> Days <br>
 					
 				</form>
 				
