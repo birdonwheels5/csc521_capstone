@@ -5,7 +5,8 @@ scrape_bitcointalk();
 $test1 = explode(" ", "today at 12:01:01 AM");
 //print make_timestamp("april 21, 2017, 2:30:57 PM");
 $test2 = explode(" ", "april 21, 2017, 2:30:57 PM");
-
+print make_timestamp($test1);
+print make_timestamp($test2);
 
 function make_curl($url)
 {
