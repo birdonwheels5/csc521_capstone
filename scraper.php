@@ -1,6 +1,8 @@
 <?php
 
 scrape_bitcointalk();
+//make_timestamp()
+//make_timestamp()
 
 function make_curl($url)
 {
@@ -32,14 +34,9 @@ function scrape_bitcointalk()
   //print($threads['url'][0] . " \n");
   preg_match('~<div class="smalltext">(.*)</div></td>~', $thread, $match2);
   $threads['time'] = $match2[1];
-  //print_r($threads['time']);
-  $pieces = explode( " ", $threads['time']);
-  //pieces[2][3] format: 02:19:08 AM"
-  $time = explode(":", $pieces[2]);
-  $hours = (int)$time[0];
-  print($hours);
-  //if ($pieces[3] == 'PM')
-  //print_r($pieces);
+  print_r($threads['time']);
+  //$time = make_timestamp($threads['time']);
+  //print $time;
   
   //for ($i = 0; $i < $number_of_threads; $i++)
   //{
@@ -47,6 +44,29 @@ function scrape_bitcointalk()
     
     
   //}
+}
+
+function make_timestamp($timestamp)
+{
+  $pieces = explode( " ", $timestamp);
+  //pieces[2][3] format: 02:19:08 AM"
+  $time = explode(":", $pieces[2]);
+  //print($hours);
+  $hours = (int)$time[0];
+  if ($pieces[3] == 'PM')
+  {
+    $hours += 12;
+    $new_time = $hours . $time[1] . $time[2];
+  }
+  if ($hours == '12' && $pieces[3] == 'AM')
+  {
+    $new_time = '00' . $time[1] . time[2];
+  }
+  else
+  {
+    $new_time = $pieces[2];
+  }
+  return $time;
 }
 
 function compare_threads($processed_tweets, $database_connection)
