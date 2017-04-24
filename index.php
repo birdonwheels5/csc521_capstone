@@ -140,13 +140,13 @@
 		      direction: '-1',
 		      gridlines: 
 		      {
-			  count: (h_scale - 1)
+			  count: (h_scale)
 		      },
 		      viewWindowMode: 'explicit',
 		      viewWindow: 
 		      {
 			  min: 0,
-			  max: (h_scale - 1)
+			  max: (h_scale)
 		      }
 		  },
 
@@ -181,7 +181,8 @@
 			
 			if(time_unit == "Days")
 			{
-			    timespan = (chart_settings.timespan.value) * (24);
+			    timespan = chart_settings.timespan.value;
+			    timespan = timespan * 24;
 			}
 			else // Hours
 			{
