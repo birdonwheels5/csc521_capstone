@@ -77,7 +77,7 @@
 
 	      if(time_unit == "Days")
 	      {
-		  h_scale = (timespan * 24);
+		  h_scale = (timespan / 24);
 	      }
 	      else
 	      {
@@ -178,7 +178,15 @@
 			chart_settings = document.forms.chart_settings;
 			
 			time_unit = chart_settings.unit.value;
-			timespan = chart_settings.timespan.value;
+			
+			if(time_unit == "Days")
+			{
+			    timespan = chart_settings.timespan.value * 24;
+			}
+			else // Hours
+			{
+			    timespan = chart_settings.timespan.value;
+			}
 			
 			drawTrendlines();
 		    }
