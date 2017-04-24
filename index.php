@@ -179,6 +179,8 @@
 			
 			time_unit = chart_settings.unit.value;
 			timespan = chart_settings.timespan.value;
+			
+			drawTrendlines();
 		    }
 
 	</script>
