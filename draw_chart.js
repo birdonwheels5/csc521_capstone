@@ -1,12 +1,32 @@
-void function draw_chart(var chart_div, var timespan)
-{
+
     google.charts.load('current', {packages: ['corechart', 'line']});
-		google.charts.setOnLoadCallback(drawTrendlines);
-	  function drawTrendlines() {
-		  var data = new google.visualization.DataTable();
-		  data.addColumn('number', 'X');
-		  data.addColumn('number', 'BTCChina');
-		  data.addColumn('number', 'BTC-e');
+    google.charts.setOnLoadCallback(drawTrendlines);
+
+/* Draws a bitcoin chart based on the given parameters:
+ * (String) chart_div: The div to write the chart to.
+ * (Int) timespan:     The number of hours of price data to display
+ * (String) time_unit: "Days" or "Hours"
+ */
+function drawTrendlines(var chart_div, var timespan, var time_unit) 
+{     
+      // Set the correct scale for the horizontal axis if time_unit is in days
+      var h_scale = timespan;
+      
+      if(time_unit == "Days")
+      {
+          h_scale = (timespan / 24);
+      }
+      else
+      {
+          // So the hours will display correctly
+          h_scale = h_scale - 1;
+      }
+      
+      var data = new google.visualization.DataTable();
+	
+      data.addColumn('number', 'X');
+      data.addColumn('number', 'BTCChina');
+      data.addColumn('number', 'BTC-e');
       data.addColumn('number', 'Bitfinex');
       data.addColumn('number', 'Bitstamp');
       data.addColumn('number', 'Coinbase');
@@ -51,27 +71,37 @@ void function draw_chart(var chart_div, var timespan)
         // Give a little wiggle room
         max_price = max_price * 1.05;
         min_price = min_price * 0.95;
-        var options = {
-          hAxis: {
-          title: 'Time (Hours)',
-          direction: '-1',
-          gridlines: {count: (timespan - 1)},
-          viewWindowMode: 'explicit',
-          viewWindow: {
-            min: 0,
-            max: (timespan - 1)
-          }
-       },
-		    vAxis: {
-			title: 'Bitcoin Price',
-			viewWindowMode: 'explicit',
-			viewWindow: {
-				min: Math.floor(min_price),
-				max: Math.ceil(max_price)
-			    }
-		    },
+        var options = 
+	{
+          hAxis: 
+	  {
+              title: 'Time (' + time_unit + ')',
+              direction: '-1',
+              gridlines: 
+	      {
+	          count: (h_scale)
+	      },
+              viewWindowMode: 'explicit',
+              viewWindow: 
+	      {
+                  min: 0,
+                  max: (h_scale)
+              }
+          },
+	  
+	  vAxis: 
+	  {
+		title: 'Bitcoin Price',
+		viewWindowMode: 'explicit',
+		viewWindow: 
+		{
+			min: Math.floor(min_price),
+			max: Math.ceil(max_price)
+	 	}
+	   },
 		    backgroundColor: "#FFFAFA",
-		    legend: {
+		    legend: 
+		    {
 			alignment: 'right',
 			position: 'top',
 			maxLines: '8'
