@@ -233,7 +233,7 @@
 				<div id="chart_div"></div>
 				
 				<form action="" name="chart_settings" method="get" onchange="update_chart()" class="row chart">
-					<input class="chart" type="number" name="timespan" min="8" value="1">
+					<input class="chart" type="number" name="timespan" min="1" value="1">
 					<input class="chart" type="radio" name="unit" value="Hours"> Hours
 					<input class="chart" type="radio" name="unit" value="Days" checked> Days
 					
