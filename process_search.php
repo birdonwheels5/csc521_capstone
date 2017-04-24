@@ -46,68 +46,197 @@
             <?php 
                 // Authenticate user
                 authenticate_user(100);
+                
+                // Get the form field values from the form
+                // Flags will either be NULL or 1
+                $search_term = trim(htmlspecialchars($_POST["search_term"]));
+                $twitter_flag = $_POST["twitter"];
+                $reddit_flag = $_POST["reddit"];
+                $forum_flag = $_POST["forum"];
+                $user_flag = $_POST["user"];
+                
+                // Count how many rows we will have by adding the three flags together
+                // If they aren't checked, they are null, but PHP doesn't seem to mind adding NULL to a number...
+                $num_columns = $twitter_flag + $reddit_flag + $forum_flag;
+                print $num_columns;
+                
+                // Get search results
+                if($twitter_flag == 1 || $reddit_flag == 1 || $forum_flag == 1)
+                {
+                    $search_results = search_database_posts($search_term, $twitter_flag, $reddit_flag, $forum_flag, $user_flag);
+                }
+                
             ?>
 			
 			<article>
-				<div class="row">
-					<div class="col-4">
-						<div class="empty">
-						</div>
-					</div>
-					<div class="col-4">
-						<?php
+                <?php 
+                    // We need to print out the divs correctly based on how many rows we will be displaying
+                    if($num_columns == 1)
+                    {
+                        print '
+                            <div class="row center">
+                                <div class="empty col-4">
+                                </div>';
+                    }
+                    else if($num_columns == 2)
+                    {
+                        print '
+                            <div class="row center">
+                                <div class="empty col-2">
+                                </div>';
+                    }
+                    else if($num_columns == 3)
+                    {
+                        print '
+                            <div class="row center">';
+                    }
                             
-                            $search_term = trim(htmlspecialchars($_POST["search_term"]));
-                            $twitter_flag = $_POST["twitter"];
-                            $reddit_flag = $_POST["reddit"];
-                            $forum_flag = $_POST["forum"];
-                            $user_flag = $_POST["user"];
+                            
                             
                             if($twitter_flag == 0 && $reddit_flag == 0 && $forum_flag == 0 && $user_flag == 0)
                             {
-                                print '<div class="object shadow">
-					Please check a box to search. Press the back button to try again.
-				    </div>';
+                                print '
+                                        <div class="object shadow">
+					                        Please check a box to search. Press the back button to try again.
+                                        </div>';
                             }
-                            else
+                            else if($twitter_flag == 1)
                             {
-                                $search_results = search_database_posts($search_term, $twitter_flag, $reddit_flag, $forum_flag, $user_flag);
-                                
                                 $twitter_search_results_length = count($search_results[0][0]); // We care about the length of the third (last array) in the package of arrays
-                                
-                                print "Twitter Results";
                                 
                                 if($twitter_search_results_length == 0)
                                 {
-                                    print '<div class="row center">
-                                                    <div class="object shadow">
-                                                        <p>';
-                                                        
-                                    print "No results found for query '$search_term'.";
+                                    print_column_div($num_columns);
+                                    print '
+                                                <p>';
                                     
-                                    print '</p>
-                                                    </div>
-                                                </div>';
+                                    print "No results found in Twitter posts for query '$search_term'."; if($user_flag ==1){ print " (Usernames)";}
+                                    
+                                    print '
+                                                </p>
+                                            </div>';
                                 }
                                 else
                                 {
+                                    print_column_div($num_columns);
+                                    print '
+                                                    <p> <h2>Twitter Results'; if($user_flag ==1){ print " (Usernames)";} print "</h2>";
+                                                        
                                     for($i = 0; $i < $twitter_search_results_length; $i++)
                                     {
+                                        print '<hr/>';
+                                        
                                         $time_since_post = time_since($search_results[0][2][$i]);
-                                                                        
-                                        print '<div class="row center">
-                                                    <div class="object shadow">
-                                                        <p>';
                                         
                                         print "Username: " . $search_results[0][0][$i] . " <br/><br/>\n
                                                Post: " . $search_results[0][1][$i] . " <br/><br/>\n
                                                Posted $time_since_post ago. <br/><br/>\n";
-                                        
-                                        print '</p>
-                                                    </div>
-                                                </div>';
                                     }
+                                    
+                                    print '</p>
+                                                    </div>';
                                 }
+                            }
+                            
+                            if($reddit_flag == 1)
+                            {                                
+                                $reddit_search_results_length = count($search_results[1][0]); // We care about the length of the third (last array) in the package of arrays
+                                
+                                if($reddit_search_results_length == 0)
+                                {
+                                    print_column_div($num_columns);
+                                    print '
+                                                <p>';
+                                    
+                                    print "No results found in Reddit posts for query '$search_term'."; 
+                                    if($user_flag ==1){ print " (Usernames)";}
+                                    
+                                    print '
+                                                </p>
+                                            </div>';
+                                }
+                                else
+                                {
+                                    print_column_div($num_columns);
+                                    print '
+                                                    <p> <h2>Reddit Results'; if($user_flag ==1){ print " (Usernames)";} print "</h2>";
+                                                        
+                                    for($i = 0; $i < $reddit_search_results_length; $i++)
+                                    {
+                                        print '<hr/>';
+                                        
+                                        $time_since_post = time_since($search_results[1][2][$i]);
+                                        $post_url = $search_results[1][3][$i];
+                                        
+                                        print "Username: " . $search_results[1][0][$i] . " <br/><br/>\n
+                                               Post: " . $search_results[1][1][$i] . " <br/><br/>\n
+                                               Posted $time_since_post ago. <br/><br/>\n
+                                               URL to original post: <a href=\"$post_url\">$post_url</a> <br/><br/>\n";
+                                    }
+                                    
+                                    print '</p>
+                                                    </div>';
+                                }
+                            }
+                            
+                            if($forum_flag == 1)
+                            {                                
+                                $forum_search_results_length = count($search_results[2][0]); // We care about the length of the third (last array) in the package of arrays
+                                
+                                if($forum_search_results_length == 0)
+                                {
+                                    print_column_div($num_columns);
+                                    print '
+                                                <p>';
+                                    
+                                    print "No results found in Bitcointalk posts for query '$search_term'."; if($user_flag ==1){ print " (Usernames)";}
+                                    
+                                    print '
+                                                </p>
+                                            </div>';
+                                }
+                                else
+                                {
+                                    print_column_div($num_columns);
+                                    print '
+                                                    <p> <h2>Bitcointalk Results'; if($user_flag ==1){ print " (Usernames)";} print "</h2>";
+                                                        
+                                    for($i = 0; $i < $forum_search_results_length; $i++)
+                                    {
+                                        print '<hr/>';
+                                        
+                                        $time_since_post = time_since($search_results[2][2][$i]);
+                                        $post_url = $search_results[2][3][$i];
+                                        
+                                        print "Username: " . $search_results[2][0][$i] . " <br/><br/>\n
+                                               Post: " . $search_results[2][1][$i] . " <br/><br/>\n
+                                               Posted $time_since_post ago. <br/><br/>\n
+                                               URL to original post: <a href=\"$post_url\">$post_url</a> <br/><br/>\n";
+                                    }
+                                    
+                                    print '</p>
+                                                    </div>';
+                                }
+                            }
+                            
+                            if($num_columns == 1)
+                            {
+                                print '
+                                        <div class="empty col-4">
+                                        </div>
+                                    </div>';
+                            }
+                            else if($num_columns == 2)
+                            {
+                                print '
+                                        <div class="empty col-2">
+                                        </div>
+                                    </div>';
+                            }
+                            else if($num_columns == 3)
+                            {
+                                print '
+                                    </div>';
                             }
                             
                             // DATABASE SEARCH FUNCTIONS
@@ -310,13 +439,18 @@
                                     
                                     return $posts;
                                 }
-                            
+                                
+                                // This prints out the correct div depending on how many columns we currently have in the search display (values range from 1 to 3)
+                                // I was going to use this to make the 3 columns case have a shorter div, but the padding does not line up... For now it will just print the same
+                                // thing for everything.
+                                function print_column_div($num_columns)
+                                {
+                                    if($num_columns == 1 || $num_columns == 2 || $num_columns == 3)
+                                    {
+                                        print '<div class="col-4 object shadow">';
+                                    }
+                                }
                         ?>
-					</div>
-					<div class="col-4 empty">
-					</div>
-				</div>	
-			
 			</article>
 			
 		</div>
