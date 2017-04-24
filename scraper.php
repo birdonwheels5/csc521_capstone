@@ -88,7 +88,9 @@ function make_timestamp($timestamp, $date)
       $new_time = implode(":", $new_time);
     }
   }
-  return $new_time;
+  $date = preg_match('~\[(.*)\]~', $date, $match);
+  $tstamp = $date . " " . $new_time; 
+  print $tstamp
 }
 
 function compare_threads($processed_tweets, $database_connection)
