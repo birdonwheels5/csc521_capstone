@@ -71,6 +71,7 @@
 	 */
 	function drawTrendlines() 
 	{     
+	      var data = new google.visualization.DataTable();
 	      // Set the correct scale for the horizontal axis if time_unit is in days
 	      var h_scale = timespan;
 
@@ -83,8 +84,6 @@
 		  // So the hours will display correctly
 		  h_scale = h_scale - 1;
 	      }
-
-	      var data = new google.visualization.DataTable();
 
 	      data.addColumn('number', 'X');
 	      data.addColumn('number', 'BTCChina');
