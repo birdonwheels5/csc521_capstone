@@ -140,13 +140,13 @@
 		      direction: '-1',
 		      gridlines: 
 		      {
-			  count: (h_scale)
+			  count: (h_scale - 1)
 		      },
 		      viewWindowMode: 'explicit',
 		      viewWindow: 
 		      {
 			  min: 0,
-			  max: (h_scale)
+			  max: (h_scale - 1)
 		      }
 		  },
 
@@ -181,7 +181,7 @@
 			
 			if(time_unit == "Days")
 			{
-			    timespan = chart_settings.timespan.value * 24;
+			    timespan = (chart_settings.timespan.value) * (24);
 			}
 			else // Hours
 			{
@@ -232,7 +232,7 @@
 				<div id="chart_div"></div>
 				
 				<form action="" name="chart_settings" method="get" onchange="update_chart()" class="row chart">
-					<input class="chart" type="number" name="timespan" min="1" value="1">
+					<input class="chart" type="number" name="timespan" min="8" value="1">
 					<input class="chart" type="radio" name="unit" value="Hours"> Hours
 					<input class="chart" type="radio" name="unit" value="Days" checked> Days
 					
