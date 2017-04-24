@@ -31,7 +31,7 @@ function scrape_bitcointalk()
   {
     $thread = make_curl($threads['url'][$i]);
     preg_match('~<div class="smalltext">(.*)</div></td>~', $thread, $match2);
-    $threads['time'] = $match2[1];
+    $threads['time'] = $match2;
     //print_r($threads['time']);
     $pieces = explode( " ", $threads['time']);
     print_r($pieces);
@@ -83,6 +83,10 @@ function make_timestamp($timestamp, $date)
       $new_time = $time;
       $new_time = implode(":", $new_time);
     }
+  }
+  else
+  {
+    $new_time = null;
   }
   preg_match('~\[(.*)\]~', $date, $match);
   $tstamp = $match[1] . " " . $new_time; 
