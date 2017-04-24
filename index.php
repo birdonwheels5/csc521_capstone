@@ -77,7 +77,7 @@
 
 	      if(time_unit == "Days")
 	      {
-		  h_scale = (timespan / 24);
+		  h_scale = (timespan);
 	      }
 	      else
 	      {
