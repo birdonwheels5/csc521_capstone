@@ -90,7 +90,7 @@ function make_timestamp($timestamp, $date)
   }
   $date = preg_match('~\[(.*)\]~', $date, $match);
   $tstamp = $date . " " . $new_time; 
-  print $tstamp
+  print $tstamp;
 }
 
 function compare_threads($processed_tweets, $database_connection)
