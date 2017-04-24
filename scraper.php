@@ -31,14 +31,12 @@ function scrape_bitcointalk()
   {
     $thread = make_curl($threads['url'][$i]);
     preg_match('~<div class="smalltext">(.*)</div></td>~', $thread, $match2);
-    $threads['time'] = $match2;
-    //print_r($threads['time']);
+    $threads['time'] = $match2[1];
+    print_r($threads['time']);
     $pieces = explode( " ", $threads['time']);
-    print_r($pieces);
-    echo " ";
     $timestamp = make_timestamp($pieces, $threads['date'][$i]);
-    $threads['time'][$i] = $timestamp;
-    print_r($threads['time']); 
+    $threads['timestamp'][$i] = $timestamp;
+    print_r($threads['timestamp']); 
   }
 }
 
