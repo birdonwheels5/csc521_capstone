@@ -172,6 +172,14 @@
 				chart.draw(data, options);
 			});
 		    }
+		    
+		    function update_chart()
+		    {
+			chart_settings = document.forms.chart_settings;
+			
+			time_unit = chart_settings.unit.value;
+			timespan = chart_settings.timespan.value;
+		    }
 
 	</script>
 	<?php 
@@ -213,10 +221,10 @@
 			
 				<div id="chart_div"></div>
 				
-				<form action="" name="chart" method="get" onkeyup="" class="row chart">
-					<input class="chart" type="number" name="x-axis" min="1" value="1">
-					<input class="chart" type="radio" name="unit" value="1"> Hours
-					<input class="chart" type="radio" name="unit" value="24" checked> Days
+				<form action="" name="chart_settings" method="get" onkeyup="update_chart()" class="row chart">
+					<input class="chart" type="number" name="timespan" min="1" value="1">
+					<input class="chart" type="radio" name="unit" value="Hours"> Hours
+					<input class="chart" type="radio" name="unit" value="Days" checked> Days
 					
 				</form>
 				
