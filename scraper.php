@@ -88,8 +88,8 @@ function make_timestamp($timestamp, $date)
       $new_time = implode(":", $new_time);
     }
   }
-  $date = preg_match('~\[(.*)\]~', $date);
-  $tstamp = $date . " " . $new_time; 
+  preg_match('~\[(.*)\]~', $date, $match);
+  $tstamp = $match[0][0] . " " . $new_time; 
   print $tstamp;
 }
 
