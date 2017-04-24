@@ -62,7 +62,7 @@
 
 		
 	    google.charts.load("visualization", "1", {packages:["corechart"]});
-	    google.charts.setOnLoadCallback(drawTrendlines());
+	    
 
 	/* Draws a bitcoin chart based on the given parameters:
 	 * (String) chart_div: The div to write the chart to.
@@ -173,7 +173,7 @@
 			});
 		    }
 
-		
+		google.charts.setOnLoadCallback(drawTrendlines());
 
 	</script>
 	<?php 
