@@ -33,9 +33,6 @@
                     $session_id = get_session($uuid);
                     $cookie_handler->validate_cookie($user_cookie, $session_id);
                     
-                    // So we can personalize the page a little for the user
-                    $user_data = get_user_data($uuid);
-                    
                     update_last_login($uuid);
                 }
                 
