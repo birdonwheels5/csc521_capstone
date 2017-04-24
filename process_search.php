@@ -49,7 +49,7 @@
             ?>
 			
 			<article>
-				<div class="row center">
+				<div class="row">
 					<div class="col-4">
 						<div class="empty">
 						</div>
