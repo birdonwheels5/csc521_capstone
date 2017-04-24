@@ -75,15 +75,15 @@
 	      // Set the correct scale for the horizontal axis if time_unit is in days
 	      var h_scale = timespan;
 
-	      if(time_unit == "Days")
-	      {
+	      //if(time_unit == "Days")
+	      //{
 		  h_scale = (timespan) - 1;
-	      }
+	      /*}
 	      else
 	      {
 		  // So the hours will display correctly
-		  //h_scale = h_scale - 1;
-	      }
+		  h_scale = h_scale - 1;
+	      }*/
 
 	      data.addColumn('number', 'X');
 	      data.addColumn('number', 'BTCChina');
