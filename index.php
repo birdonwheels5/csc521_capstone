@@ -77,12 +77,12 @@
 
 	      if(time_unit == "Days")
 	      {
-		  h_scale = (timespan);
+		  h_scale = (timespan) - 1;
 	      }
 	      else
 	      {
 		  // So the hours will display correctly
-		  h_scale = h_scale - 1;
+		  //h_scale = h_scale - 1;
 	      }
 
 	      data.addColumn('number', 'X');
