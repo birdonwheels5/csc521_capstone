@@ -36,7 +36,7 @@ function scrape_bitcointalk()
     $pieces = explode( " ", $threads['time']);
     //print_r($pieces);
     $timestamp = make_timestamp($pieces, $threads['date'][$i]);
-    print_r($timestamp); 
+    print($timestamp . "\n"); 
   }
 }
 
