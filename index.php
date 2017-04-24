@@ -167,7 +167,6 @@
 				chart.draw(data, options);
 			});
 		    }
-	}
 
 		
 
