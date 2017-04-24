@@ -1,4 +1,4 @@
-# csc521_capstone
+# Bitquote (CSC521 Capstone Project)
 
 This project aims to design and create a database-driven website that
 compiles and displays a variety of information and data related to the digital
