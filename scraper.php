@@ -1,12 +1,6 @@
 <?php
 
 scrape_bitcointalk();
-//print make_timestamp("today at 12:01:01 AM");
-$test1 = explode(" ", "today at 12:01:01 AM");
-//print make_timestamp("april 21, 2017, 2:30:57 PM");
-$test2 = explode(" ", "april 21, 2017, 2:30:57 PM");
-print_r(make_timestamp($test1));
-print_r(make_timestamp($test2));
 
 function make_curl($url)
 {
@@ -29,7 +23,7 @@ function scrape_bitcointalk()
   $threads['title'] = $match[3];
   $number_of_threads = count($threads['url']);
   //print_r($threads['url']);
-  //print_r($threads['date']);
+  print_r($threads['date']);
   //print_r($threads['title']);
   //print($number_of_threads . " \n\n");
   
@@ -41,8 +35,8 @@ function scrape_bitcointalk()
   //print_r($threads['time']);
   $pieces = explode( " ", $threads['time']);
   print_r($pieces);
-  $time = make_timestamp($pieces);
-  print_r($time);
+  $timestamp = make_timestamp($pieces, $threads['date'][0]);
+  print_r($timestamp);
   
   //for ($i = 0; $i < $number_of_threads; $i++)
   //{
@@ -52,26 +46,26 @@ function scrape_bitcointalk()
   //}
 }
 
-function make_timestamp($timestamp)
+function make_timestamp($timestamp, $date)
 {
   //timestamp format: 02:19:08 AM"
   if ( count($timestamp) == 4)
   {
     $time = explode(":", $timestamp[2]);
     $hours = (int)$time[0];
-    if ($timestamp[3] == 'PM')
+    if ( $hours != 12 && $timestamp[3] == 'PM')
     {
       $hours = $hours + 12;
-      $new_time = $hours . $time[1] . $time[2];
+      $new_time = $hours . ":" . $time[1] . ":" . $time[2];
     }
     else if ($hours == '12' && $timestamp[3] == 'AM')
     {
-      $new_time = '00' . $time[1] . $time[2];
+      $new_time = '00' . ":" . $time[1] . ":" . $time[2];
     }
     else
     {
       $new_time = $time;
-      $new_time = implode("", $new_time);
+      $new_time = implode(":", $new_time);
     }
   }
   else
@@ -79,22 +73,24 @@ function make_timestamp($timestamp)
     $time = explode(":", $timestamp[3]);
     
     $hours = (int)$time[0];
-    if ($timestamp[4] == 'PM')
+    if ($hours != 12 && $timestamp[4] == 'PM')
     {
       $hours = $hours + 12;
-      $new_time = $hours . $time[1] . $time[2];
+      $new_time = $hours . ":" . $time[1] . ":" . $time[2];
     }
     else if ($hours == '12' && $timestamp[4] == 'AM')
     {
-      $new_time = '00' . $time[1] . $time[2];
+      $new_time = '00' . ":" . $time[1] . ":" .  $time[2];
     }
     else
     {
       $new_time = $time;
-      $new_time = implode("", $new_time);
+      $new_time = implode(":", $new_time);
     }
   }
-  return $new_time;
+  preg_match('~\[(.*)\]~', $date, $match);
+  $tstamp = $match[0][1] . " " . $new_time; 
+  print $tstamp;
 }
 
 function compare_threads($processed_tweets, $database_connection)
