@@ -55,7 +55,12 @@
                 // Count how many rows we will have by adding the three flags together
                 // If they aren't checked, they are null, but PHP doesn't seem to mind adding NULL to a number...
                 $num_columns = $twitter_flag + $reddit_flag + $forum_flag;
-                print $num_columns;
+                
+                // No boxes are checked, set um_columns to 1 so the error displays properly
+                if($num_columns == 0)
+                {
+                    $num_columns = 1;
+                }
                 
                 // Get search results
                 if($twitter_flag == 1 || $reddit_flag == 1 || $forum_flag == 1)
@@ -66,35 +71,34 @@
             ?>
 			
 			<article>
+                <div class="row center">
+                
                 <?php 
                     // We need to print out the divs correctly based on how many rows we will be displaying
                     if($num_columns == 1)
                     {
                         print '
-                            <div class="row center">
                                 <div class="empty col-4">
                                 </div>';
                     }
                     else if($num_columns == 2)
                     {
                         print '
-                            <div class="row center">
                                 <div class="empty col-2">
                                 </div>';
                     }
                     else if($num_columns == 3)
                     {
-                        print '
-                            <div class="row center">';
+                        // Print nothing because there are no margins on the page
                     }
                             
                             
                             
-                            if($twitter_flag == 0 && $reddit_flag == 0 && $forum_flag == 0 && $user_flag == 0)
+                            if($twitter_flag == 0 && $reddit_flag == 0 && $forum_flag == 0)
                             {
                                 print '
-                                        <div class="object shadow">
-					                        Please check a box to search. Press the back button to try again.
+                                        <div class="col-4 object shadow">
+					                        Please check a box under "Data select" to search. Press the back button to try again.
                                         </div>';
                             }
                             else if($twitter_flag == 1)
