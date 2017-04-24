@@ -63,7 +63,7 @@
 	 * (Int) timespan:     The number of hours of price data to display
 	 * (String) time_unit: "Days" or "Hours"
 	 */
-	function drawTrendlines(var chart_div, var timespan, var time_unit) 
+	function drawTrendlines(chart_div, timespan, time_unit) 
 	{     
 	      // Set the correct scale for the horizontal axis if time_unit is in days
 	      var h_scale = timespan;
