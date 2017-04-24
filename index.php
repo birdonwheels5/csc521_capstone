@@ -15,6 +15,12 @@
 		// Defaults to twitter on page load
 		var news_flag = "twitter";
 		
+		// Chart variables for customizability.
+		// These are the default values.
+		var chart_div = "chart_div";
+		var timespan = 24;
+		var time_unit = "Hours";
+		
 		// Colors
 		var active_color = "SlateGrey";
 		var passive_color = "Snow";
@@ -56,14 +62,14 @@
 
 		
 	    google.charts.load('current', {packages: ['corechart', 'line']});
-	    google.charts.setOnLoadCallback(drawTrendlines("chart_div", 24, "Hours"));
+	    google.charts.setOnLoadCallback(drawTrendlines());
 
 	/* Draws a bitcoin chart based on the given parameters:
 	 * (String) chart_div: The div to write the chart to.
 	 * (Int) timespan:     The number of hours of price data to display
 	 * (String) time_unit: "Days" or "Hours"
 	 */
-	function drawTrendlines(chart_div, timespan, time_unit) 
+	function drawTrendlines() 
 	{     
 	      // Set the correct scale for the horizontal axis if time_unit is in days
 	      var h_scale = timespan;
