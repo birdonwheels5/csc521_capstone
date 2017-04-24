@@ -22,7 +22,7 @@ function scrape_bitcointalk()
   $threads['date'] = $match[2];
   $threads['title'] = $match[3];
   $number_of_threads = count($threads['url']);
-  //print_r($threads['url']);
+  print_r($threads['url']);
   //print_r($threads['date']);
   //print_r($threads['title']);
   //print($number_of_threads . " \n\n");
@@ -34,7 +34,8 @@ function scrape_bitcointalk()
     $threads['time'] = $match2[1];
     //print_r($threads['time']);
     $pieces = explode( " ", $threads['time']);
-    //print_r($pieces);
+    print_r($pieces);
+    echo " ";
     $timestamp = make_timestamp($pieces, $threads['date'][$i]);
     print($timestamp . "\n"); 
   }
@@ -62,7 +63,7 @@ function make_timestamp($timestamp, $date)
       $new_time = implode(":", $new_time);
     }
   }
-  else
+  else if (count($timestamp) == 5)
   {
     $time = explode(":", $timestamp[3]);
     
