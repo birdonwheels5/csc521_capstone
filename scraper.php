@@ -23,7 +23,7 @@ function scrape_bitcointalk()
   $threads['title'] = $match[3];
   $number_of_threads = count($threads['url']);
   //print_r($threads['url']);
-  print_r($threads['date']);
+  //print_r($threads['date']);
   //print_r($threads['title']);
   //print($number_of_threads . " \n\n");
   
@@ -90,7 +90,8 @@ function make_timestamp($timestamp, $date)
   }
   preg_match('~\[(.*)\]~', $date, $match);
   $tstamp = $match[1] . " " . $new_time; 
-  print $tstamp;
+  $tstamp = strtotime($tstamp);
+  return $tstamp;
 }
 
 function compare_threads($processed_tweets, $database_connection)
