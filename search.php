@@ -52,13 +52,18 @@
 				<div class="row center">
 					
 					<div class="col-4 empty"></div>
-					
+                    
+                    
 					<div class="col-4 search">
 						
+                        
+                        
 						<form action="process_search.php" name="search" method="post" onkeyup="" class="object shadow search">
 							<p class="search">
-								Search the Database
-								Search term: <input type="text" name="search_term">
+								<h2>Database Search</h2>
+                                <hr/>
+                                <br/>
+                                Search term: <input type="text" name="search_term">
 								Data select:<br>
 								Twitter <input type="checkbox" name="twitter" value="1">
 								Reddit <input type="checkbox" name="reddit" value="1">

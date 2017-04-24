@@ -275,19 +275,58 @@ function authenticate_user($required_authority_level)
             // Check authentication level
             if($user_authority_level < $required_authority_level)
             {
-                print "<div class=\"box\" style=\"background-color:" . $color . ";margin-top:25px;\">You are not authorized to view this page.</div>";
+                print "
+                    <div class=\"row center\">
+                        <div class=\"col-4 empty\">
+                        </div>
+                        
+                        
+					    <div class=\"col-4 search\">
+                            <div class=\"object shadow search\" style=\"background-color:" . $color . ";margin-top:25px;\">
+                                You are not authorized to view this page.
+                            </div>
+                        </div>
+                        <div class=\"col-4 empty\">
+                        </div>
+                    </div>";
                 exit;
             }
         }
         else
         {
-            print "<div class=\"box\" style=\"background-color:" . $color . ";margin-top:25px;\">Invalid cookie. You need a valid login with the appropriate permissions in order to access this page.</div>";
+            print "
+                    <div class=\"row center\">
+                        <div class=\"col-4 empty\">
+                        </div>
+                        
+                        
+					    <div class=\"col-4 search\">
+                            <div class=\"object shadow search\" style=\"background-color:" . $color . ";margin-top:25px;\">
+                                Invalid cookie. You need a valid login with the appropriate permissions in order to access this page.
+                            </div>
+                        </div>
+                        <div class=\"col-4 empty\">
+                        </div>
+                    </div>";
             exit;
         }
     }
     else
     {
-        print "<div class=\"box\" style=\"background-color:" . $color . ";margin-top:25px;\">You need to be logged in to access this resource.</div>";
+        print "
+                    <div class=\"row center\">
+                        <div class=\"col-4 empty\">
+                        </div>
+                        
+                        
+					    <div class=\"col-4 search\">
+                            <div class=\"object shadow search\" style=\"background-color:" . $color . ";margin-top:25px;\">
+                                You need to be logged in to access this resource.
+                            </div>
+                        </div>
+                        <div class=\"col-4 empty\">
+                        </div>
+                    </div>";
         exit;
     }
 }
