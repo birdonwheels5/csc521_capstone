@@ -146,8 +146,8 @@
 		
 		var max_price = Math.max(Math, max_array);
 		
-		console.log(min_price);
-		console.log(max_price);
+		var min_max_array = [min_price, max_price];
+		console.log(mn_max_array);
 
 		// Give a little wiggle room
 		max_price = max_price * 1.05;
