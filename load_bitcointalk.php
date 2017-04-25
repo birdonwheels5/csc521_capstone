@@ -29,9 +29,7 @@
     
     $database_posts = get_database_forum_posts($con, $num_posts, "Bitcointalk");
     
-    var_dump($database_posts);
-    
-    // List the tweets. The order is taken care of by the database.
+    // List the posts. The order is taken care of by the database.
     for($i = 0; $i < $num_posts; $i++)
     {
         $time_since_post = time_since($database_posts[3][$i]);
