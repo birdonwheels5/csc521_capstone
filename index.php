@@ -127,11 +127,11 @@
 		    json_data.okcoin[2].max
 		];
 		
-		console.log(min_array);
-		console.log(max_array);
+		//console.log(min_array);
+		//console.log(max_array);
 		
 		var min_price = Math.min(Math, min_array);
-		while(min_price == 0)
+		/*while(min_price == 0)
 		{
 			for(var i = 0; i < (min_array.length); i++)
 			{
@@ -142,9 +142,12 @@
 			}
 			
 			min_price = Math.min(Math, min_array);
-		}
+		}*/
 		
 		var max_price = Math.max(Math, max_array);
+		
+		console.log(min_price);
+		console.log(max_price);
 
 		// Give a little wiggle room
 		max_price = max_price * 1.05;
