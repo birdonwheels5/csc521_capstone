@@ -129,6 +129,10 @@
 		
 		var min_price = Math.min.apply(Math, min_array);
 		var max_price = Math.max.apply(Math, max_array);
+		
+		console.log(min_array);
+		console.log(max_array);
+		
 
 		// Give a little wiggle room
 		max_price = max_price * 1.05;
