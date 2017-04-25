@@ -181,7 +181,7 @@ function get_database_forum_posts($database_connection, $post_limit, $forum_name
     // Get an array of all values for each field
     for($i = 0; $i < $size_of_array_of_rows; $i++)
     {
-        $post_urls[$i] = $array_of_rows[$i]["post_urls"];
+        $post_urls[$i] = $array_of_rows[$i]["post_url"];
         $usernames[$i] = $array_of_rows[$i]["username"];
         $titles[$i] = $array_of_rows[$i]["post_text"];
         $timestamps[$i] = $array_of_rows[$i]["tstamp"];
