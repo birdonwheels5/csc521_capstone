@@ -99,8 +99,8 @@ function get_price_data($con, $exchange, $timespan)
     }
     
     // Query database for min exchange price. The queries are structured this way because MYSQL orders then limits the results, but we need to limit then order, and limit again.
-    $max_result = mysqli_query($con, "SELECT `$exchange` FROM (SELECT `$exchange` FROM Price_History ORDER BY tstamp DESC LIMIT 16, 8) `$exchange` ORDER BY `$exchange` ASC LIMIT 1;");
-    $min_result = mysqli_query($con, "SELECT `$exchange` FROM (SELECT `$exchange` FROM Price_History LIMIT 16,8) `$exchange` ORDER BY `$exchange` DESC LIMIT 1;");
+    $max_result = mysqli_query($con, "SELECT `$exchange` FROM (SELECT `$exchange` FROM Price_History ORDER BY tstamp DESC LIMIT $timespan) `$exchange` ORDER BY `$exchange` ASC LIMIT 1;");
+    $min_result = mysqli_query($con, "SELECT `$exchange` FROM (SELECT `$exchange` FROM Price_History ORDER BY tstamp DESC LIMIT $timespan) `$exchange` ORDER BY `$exchange` DESC LIMIT 1;");
     
     $min_array = mysqli_fetch_array($min_result);
     $max_array = mysqli_fetch_array($max_result);
