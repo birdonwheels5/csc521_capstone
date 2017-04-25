@@ -1,7 +1,5 @@
 <?php
 
-scrape_bitcointalk();
-
 function make_curl($url)
 {
   $ch = curl_init();
