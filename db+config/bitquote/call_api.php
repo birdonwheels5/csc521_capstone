@@ -101,6 +101,11 @@
     
     $unique_threads = compare_threads($threads, $con);
 
+    // Debug
+    print "\n Unique Bitcointalk Threads \n";
+    var_dump($unique_threads);
+    print "\n";
+
     for ($f = 0; $f < $number_of_threads; $f++)
     {
         $unique_threads['url'][$f] = mysqli_real_escape_string($con, $threads['url'][$f]);
