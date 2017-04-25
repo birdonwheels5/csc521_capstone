@@ -101,7 +101,8 @@
 
     for ($f = 0; $f < $number_of_threads; $f++)
     {
-        var_dump(add_post($threads['url'][$f], $threads['title'][$f], $threads['timestamp'][$f], $threads['names'][$f], 'Bitcointalk', $con));
+        // Compare function doesn't work
+        //add_post($threads['url'][$f], $threads['title'][$f], $threads['timestamp'][$f], $threads['names'][$f], 'Bitcointalk', $con);
     }
 
     mysqli_close($con);
