@@ -135,7 +135,7 @@
 			{
 				if(min_array[i] == 0 || min_array[i] == -1)
 				{
-					min_array[i] = Infinity; // Make this a really big number so it will not be the minimum value in the array
+					min_array[i] = "1000000000000"; // Make this a really big number (1 trillion) so it will not be the minimum value in the array
 				}
 			}
 			
