@@ -114,7 +114,7 @@ function compare_threads($threads, $database_connection)
     
     $results = array();
     
-    for($i = 0; $i < $number_of_users; $i++)
+    for($i = 0; $i < $number_of_threads; $i++)
     {
         $unique_threads = array();
         
