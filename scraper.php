@@ -41,6 +41,7 @@ function scrape_bitcointalk()
     else
     {
       $timestamp = time();
+      $threads['timestamp'][$i] = $timestamp;
     }
 
   }
