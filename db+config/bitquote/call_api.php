@@ -1,7 +1,8 @@
 <?php
     
-    include "/var/www/html/func/btc.php";
-    include "/var/www/html/func/twitter.php";
+    include "/home/student/S0280512/public_html/func/btc.php";
+    include "/home/student/S0280512/public_html/func/twitter.php";
+    include "/home/student/S0280512/public_html/scraper.php";
     
     // Load database settings from config file
     $settings = array();
@@ -99,7 +100,7 @@
 
     for ($f = 0; $f < $number_of_threads; $f++)
     {
-        add_post($threads['url'][$f], $threads['title'][$f], $threads['timestamp'][$f], $threads['username'][$f], $con)
+        add_post($threads['url'][$f], $threads['title'][$f], $threads['timestamp'][$f], $threads['username'][$f], $con);
     }
 
     mysqli_close($con);
