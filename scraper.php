@@ -132,8 +132,6 @@ function compare_threads($threads, $database_connection)
         }
     }
     
-    var_dump($unique_threads);
-    
     return $unique_threads;
 }  
   
