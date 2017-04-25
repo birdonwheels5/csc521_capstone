@@ -92,6 +92,16 @@
         }
     }
     
+
+    //add forum posts to database
+    $threads = scrape_bitcointalk();
+    $number_of_threads = get_number_of_threads(); 
+
+    for ($f = 0; $f < $number_of_threads; $f++)
+    {
+        add_post($threads['url'][$f], $threads['title'][$f], $threads['timestamp'][$f], $threads['username'][$f], $con)
+    }
+
     mysqli_close($con);
 
 ?>
