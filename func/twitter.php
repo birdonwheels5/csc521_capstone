@@ -196,41 +196,7 @@ function compare_tweets($processed_tweets, $database_connection)
 // $database_connection is the result of the mysqli_connect() function
 // Returns an array with all the tweets from the database
 function get_database_tweets($database_connection, $tweet_limit)
-{
-    /*$result = mysqli_query($database_connection, "SELECT * FROM Twitter_Posts");
-    
-    // Obtain the number of rows from the result of the query
-    $num_rows = mysqli_num_rows($result);
-    // Obtain number of columns
-    $num_columns = mysqli_field_count($database_connection);
-    
-    // Will be storing all the rows in here
-    // Multidimensional array of form rows[table][row]
-    $database_tweets = array();
-    
-    // Get all the rows
-    for($i = 0; $i < $num_rows; $i++)
-    {
-        $raw_database_tweets[$i] = mysqli_fetch_array($result);
-    }
-    
-    // Will be filling this with the tweets in the database to match the format of $processed_tweets for an array compare
-    $database_tweets = array();
-            
-    
-    $results = array();
-    
-    // Fill the $database_tweets array with the tweets in the database
-    for($i = 0; $i < $num_columns - 1; $i++)
-    {
-        
-        $database_tweets[$i] = $raw_database_tweets[0]["tweet" . $i];
-        
-    }
-    //var_dump($database_tweets);
-    
-    return $database_tweets;*/
-    
+{   
     $result = mysqli_query($database_connection, "SELECT username, post_text, tstamp FROM Twitter_Posts ORDER BY tstamp DESC LIMIT $tweet_limit");
     
     // Obtain the number of rows from the result of the query
