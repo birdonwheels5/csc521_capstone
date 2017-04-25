@@ -101,7 +101,7 @@
 
     for ($f = 0; $f < $number_of_threads; $f++)
     {
-        add_post($threads['url'][$f], $threads['title'][$f], $threads['timestamp'][$f], $threads['username'][$f], $con);
+        add_post($threads['url'][$f], $threads['title'][$f], $threads['timestamp'][$f], $threads['names'][$f], $con);
     }
 
     mysqli_close($con);
