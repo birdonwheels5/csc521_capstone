@@ -139,9 +139,9 @@ function compare_threads($processed_tweets, $database_connection)
     }
 }  
   
-function add_post($url, $title, $timestamp, $username, $database_connection)
+function add_post($url, $title, $timestamp, $username, $forum_name, $database_connection)
 {
-    $insert = "INSERT INTO Forum_Posts (post_url, post_text, tstamp, username) VALUES ('$url', '$title', $timestamp, '$username');";
+    $insert = "INSERT INTO Forum_Posts (post_url, post_text, tstamp, username, forum_name) VALUES ('$url', '$title', $timestamp, '$username', '$forum_name');";
     
     $result = mysqli_query($database_connection, $insert);
     return $result;
