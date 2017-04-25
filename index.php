@@ -134,7 +134,7 @@
 			{
 				if(min_array[i] == 0)
 				{
-					min_array[i] = Infinity;
+					min_array[i] = 1000000000000;
 				}
 			}
 			
