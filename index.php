@@ -132,7 +132,7 @@
 		{
 			for(var i = 0; i < (min_array.length); i++)
 			{
-				if(i == 0)
+				if(min_array[i] == 0)
 				{
 					min_array[i] = Infinity;
 				}
