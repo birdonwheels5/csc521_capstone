@@ -24,9 +24,7 @@ function scrape_bitcointalk()
   preg_match_all('~<a href="https:\/\/bitcointalk\.org\/index\.php\?action=profile;u=\d*" title="View the profile of .*">(.*)<\/a>~', $data, $names);
   $threads['names'] = $names[1];
   $number_of_threads = count($threads['url']);
-  unset($threads['names'][0]);
-  unset($threads['names'][1]);
-  unset($threads['names'][2]);
+  $threads['names'] = array_slice($threads['names'], 3, $number_of_threads);
   //print_r($threads['url']);
   //print_r($threads['date']);
   //print_r($threads['title']);
