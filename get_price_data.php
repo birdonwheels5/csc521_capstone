@@ -109,7 +109,7 @@ function get_price_data($con, $exchange, $timespan)
     // Seriously, why is 1000000 equal to NaN? Or even "1000000" equal to NaN? It doesn't make any sense...
     if($min_price == 0)
     {
-        $min_price = -1; // If it is 0, set it very high (1 billion) so that it will not (hopefully) show up as the chart window
+        $min_price = $max_price; // If it is 0, set it to the max price so it will not influecnce the chart window
     }
     
     $max_price = max($data[0]);
