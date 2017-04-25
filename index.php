@@ -129,11 +129,11 @@
 		
 		var min_price = Math.min.apply(Math, min_array);
 		var max_price = Math.max.apply(Math, max_array);
-		      
+		
+		var zero_count = 0;
+		
 		for(i = 0; i < min_array.length; i++)
 			{
-				var zero_count = 0;
-				
 				// If all exchanges have the same price for both min and max, we know that their true min price is 0
 				if(min_array[i] == max_array[i])
 				   {
