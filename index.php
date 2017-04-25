@@ -130,7 +130,7 @@
 		var min_price = Math.min(Math, min_array);
 		while(min_price == 0)
 		{
-			for(i = 0; i < min_array.length); i++)
+			for(var i = 0; i < (min_array.length); i++)
 			{
 				if(i == 0)
 				{
