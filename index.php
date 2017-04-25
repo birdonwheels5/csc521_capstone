@@ -130,7 +130,14 @@
 		var min_price = Math.min(Math, min_array);
 		while(min_price == 0)
 		{
-			min_array[min_price] = Infinity;
+			for(var i = 0, i < min_array.length), i++)
+			{
+				if(i == 0)
+				{
+					min_array[i] = Infinity;
+				}
+			}
+			
 			min_price = Math.min(Math, min_array);
 		}
 		
