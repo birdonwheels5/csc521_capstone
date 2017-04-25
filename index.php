@@ -128,6 +128,7 @@
 		];
 		
 		console.log(min_array);
+		console.log(max_array);
 		
 		var min_price = Math.min(Math, min_array);
 		while(min_price == 0)
