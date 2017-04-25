@@ -192,7 +192,7 @@ function get_database_forum_posts($database_connection, $post_limit, $forum_name
     
     $database_posts[0] = $post_urls;
     $database_posts[1] = $usernames;
-    $database_posts[2] = $post_texts;
+    $database_posts[2] = $titles;
     $database_posts[3] = $timestamps;
     
     return $database_posts;
