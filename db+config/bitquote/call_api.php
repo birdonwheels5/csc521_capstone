@@ -102,7 +102,7 @@
     for ($f = 0; $f < $number_of_threads; $f++)
     {
         // Compare function doesn't work
-        //add_post($threads['url'][$f], $threads['title'][$f], $threads['timestamp'][$f], $threads['names'][$f], 'Bitcointalk', $con);
+        add_post($threads['url'][$f], $threads['title'][$f], $threads['timestamp'][$f], $threads['names'][$f], 'Bitcointalk', $con);
     }
 
     mysqli_close($con);
