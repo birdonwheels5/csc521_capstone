@@ -129,6 +129,32 @@
 		
 		var min_price = Math.min.apply(Math, min_array);
 		var max_price = Math.max.apply(Math, max_array);
+		      
+		if(
+			for(i = 0; i < min_array.length; i++)
+			{
+				var zero_count = 0;
+				
+				// If all exchanges have the same price for both min and max, we know that their true min price is 0
+				if(min_array[i] == max_array[i])
+				   {
+				   	zero_count++;
+				   }
+			}
+		      	
+		      	// If all exchanges have a true min price of 0, set min price to 0.
+		      	// The reason this happens is because normally we ignore the 0 prices and set them to the max price, so the window
+		     	// doesn't get messed up. But, if this is true for all of them, that means we hit the end of the database's data.
+		      	// That means the min really is 0.
+		      	if(zero_count == 8)
+			{
+				true;
+			}
+		)
+		{
+		   min_price = 0;
+		   
+		}
 
 		// Give a little wiggle room
 		max_price = max_price * 1.05;
