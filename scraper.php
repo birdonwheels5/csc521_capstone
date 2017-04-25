@@ -56,7 +56,7 @@ function scrape_bitcointalk()
   return $threads;
 }
 
-get_number_of_threads($threads)
+function get_number_of_threads($threads)
 {
     $number_of_threads = count($threads['url']);
     return $number_of_threads;
