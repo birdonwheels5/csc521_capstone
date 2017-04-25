@@ -126,7 +126,14 @@
 		    json_data.kraken[2].max,
 		    json_data.okcoin[2].max
 		];
+		
 		var min_price = Math.min(Math, min_array);
+		while(min_price == 0)
+		{
+			min_array.splice(min_array.indexOf(min_price), 1);
+			min_price = Math.min(Math, min_array);
+		}
+		
 		var max_price = Math.max(Math, max_array);
 
 		// Give a little wiggle room
@@ -165,7 +172,8 @@
 			    {
 				alignment: 'right',
 				position: 'top',
-				maxLines: '8'
+				maxLines: '8',
+				minLines: '1'
 			    },
 			    colors: ['black', 'red', 'blue', 'green', 'orange', 'purple', 'yellow', 'gray']
 			};
