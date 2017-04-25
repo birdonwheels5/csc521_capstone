@@ -130,7 +130,7 @@
 		//console.log(min_array);
 		//console.log(max_array);
 		
-		var min_price = Math.min.Apply(Math, min_array);
+		var min_price = Math.min.apply(Math, min_array);
 		/*while(min_price == 0)
 		{
 			for(var i = 0; i < (min_array.length); i++)
@@ -144,7 +144,7 @@
 			min_price = Math.min(Math, min_array);
 		}*/
 		
-		var max_price = Math.max.Apply(Math, max_array);
+		var max_price = Math.max.apply(Math, max_array);
 		
 		window.alert(min_price, max_price);
 
