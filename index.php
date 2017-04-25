@@ -128,6 +128,20 @@
 		];
 		
 		var min_price = Math.min.apply(Math, min_array);
+		
+		while(min_price == 0)
+		{
+			for(var i = 0; i < (min_array.length); i++)
+			{
+				if(min_array[i] == 0 || min_array[i] == -1)
+				{
+					min_array[i] = 1000000000000; // Make this a really big number so it will not be the minimum value in the array
+				}
+			}
+			
+			min_price = Math.min(Math, min_array);
+		}
+		
 		var max_price = Math.max.apply(Math, max_array);
 		
 		console.log(min_array);
