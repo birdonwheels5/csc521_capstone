@@ -98,6 +98,8 @@
     $threads = array();
     $threads = scrape_bitcointalk();
     $number_of_threads = count($threads['url']);
+    
+    $unique_threads = compare_threads($threads);
 
     for ($f = 0; $f < $number_of_threads; $f++)
     {
