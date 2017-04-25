@@ -141,7 +141,7 @@ function compare_threads($processed_tweets, $database_connection)
   
 function add_post($url, $title, $timestamp, $username, $database_connection)
 {
-    $insert = "INSERT INTO Forum_Posts (post_url, post_text, tstamp, username) VALUES ('$url', '$post_text', $timestamp, $username);";
+    $insert = "INSERT INTO Forum_Posts (post_url, post_text, tstamp, username) VALUES ('$url', '$title', $timestamp, '$username');";
     
     $result = mysqli_query($database_connection, $insert);
     return $result;
