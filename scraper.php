@@ -14,9 +14,10 @@ function make_curl($url)
 
 function scrape_bitcointalk()
 {
+  $url = "https://bitcointalk.org/index.php?board=77.0";
   $threads = array();
   $match = array();
-  $data = make_curl("https://bitcointalk.org/index.php?board=77.0");
+  $data = make_curl($url);
   preg_match_all('~(https:\/\/bitcointalk\.org\/index\.php\?topic=.*)\.0..(\[\d\d\d\d-\d\d-\d\d\])(.*)</a>~', $data, $match);
   $threads['url'] = $match[1];
   $threads['date'] = $match[2];
@@ -25,11 +26,6 @@ function scrape_bitcointalk()
   $threads['names'] = $names[1];
   $number_of_threads = count($threads['url']);
   $threads['names'] = array_slice($threads['names'], 3, $number_of_threads);
-  //print_r($threads['url']);
-  //print_r($threads['date']);
-  //print_r($threads['title']);
-  print_r($threads['names']);
-  //print($number_of_threads . " \n\n");
   
   for ($i = 0; $i < $number_of_threads; $i++)
   {
@@ -49,7 +45,8 @@ function scrape_bitcointalk()
     }
 
   }
-  //print_r($threads['timestamp']); 
+  print_r($threads);
+  return $threads;
 }
 
 function make_timestamp($timestamp, $date)
@@ -135,5 +132,14 @@ function compare_threads($processed_tweets, $database_connection)
     }
 }  
   
+function add_post($url, $title, $timestamp, $username, $database_connection)
+{
+    $insert = "INSERT INTO Forum_Posts (post_url, post_text, tstamp, username) VALUES ('$url', '$post_text', $timestamp, $username);";
+    
+    $result = mysqli_query($database_connection, $insert);
+    return $result;
+}
+
+
   ?>
 
