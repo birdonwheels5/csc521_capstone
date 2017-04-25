@@ -108,10 +108,10 @@
 
     for ($f = 0; $f < $number_of_threads; $f++)
     {
-        $unique_threads['url'][$f] = mysqli_real_escape_string($con, $threads['url'][$f]);
-        $unique_threads['title'][$f] = mysqli_real_escape_string($con, $threads['title'][$f]);
-        $unique_threads['timestamp'][$f] = mysqli_real_escape_string($con, $threads['timestamp'][$f]);
-        $unique_threads['names'][$f] = mysqli_real_escape_string($con, $threads['names'][$f]);
+        $unique_threads['url'][$f] = mysqli_real_escape_string($con, $unique_threads['url'][$f]);
+        $unique_threads['title'][$f] = mysqli_real_escape_string($con, $unique_threads['title'][$f]);
+        $unique_threads['timestamp'][$f] = mysqli_real_escape_string($con, $unique_threads['timestamp'][$f]);
+        $unique_threads['names'][$f] = mysqli_real_escape_string($con, $unique_threads['names'][$f]);
         
         // Compare function doesn't work
         add_post($unique_threads['url'][$f], $unique_threads['title'][$f], $unique_threads['timestamp'][$f], $unique_threads['names'][$f], 'Bitcointalk', $con);
