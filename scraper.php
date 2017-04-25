@@ -118,7 +118,7 @@ function compare_threads($threads, $database_connection)
     {
         $unique_threads = array();
         
-        // Escaped because the tweets in the database are escaped, and we will be comparing to those
+        // Escaped because the posts in the database are escaped, and we will be comparing to those
         $post_url = mysqli_real_escape_string($database_connection, $threads['url'][$i]);
         $username = $threads['names'][$i];
         $timestamp = $threads['timestamp'][$i];
