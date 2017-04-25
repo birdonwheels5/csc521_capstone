@@ -103,6 +103,11 @@
 
     for ($f = 0; $f < $number_of_threads; $f++)
     {
+        $threads['url'][$f] = mysqli_real_escape_string($database_connection, $threads['url'][$f]);
+        $threads['title'][$f] = mysqli_real_escape_string($database_connection, $threads['title'][$f]);
+        $threads['timestamp'][$f] = mysqli_real_escape_string($database_connection, $threads['timestamp'][$f]);
+        $threads['names'][$f] = mysqli_real_escape_string($database_connection, $threads['names'][$f]);
+        
         // Compare function doesn't work
         add_post($threads['url'][$f], $threads['title'][$f], $threads['timestamp'][$f], $threads['names'][$f], 'Bitcointalk', $con);
     }
