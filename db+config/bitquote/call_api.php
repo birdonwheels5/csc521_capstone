@@ -97,16 +97,17 @@
     //add forum posts to database
     $threads = array();
     $threads = scrape_bitcointalk();
-    $number_of_threads = count($threads['url']);
     
     $unique_threads = compare_threads($threads, $con);
-
+    
+    $number_of__unique_threads = count($unique_threads['url']);
+    
     // Debug
     print "\n Unique Bitcointalk Threads \n";
     var_dump($unique_threads);
     print "\n";
 
-    for ($f = 0; $f < $number_of_threads; $f++)
+    for ($f = 0; $f < $number_of_unique_threads; $f++)
     {
         $unique_threads['url'][$f] = mysqli_real_escape_string($con, $unique_threads['url'][$f]);
         $unique_threads['title'][$f] = mysqli_real_escape_string($con, $unique_threads['title'][$f]);
