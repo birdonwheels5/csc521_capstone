@@ -21,7 +21,7 @@ function scrape_bitcointalk()
   $threads['url'] = $match[1];
   $threads['date'] = $match[2];
   $threads['title'] = $match[3];
-  preg_match_all('~<a href="https:\/\/bitcointalk\.org\/index\.php\?action=profile;u=\d*" title="View the profile of .*">(.*)<\/a>)~', $data, $names);
+  preg_match_all('~<a href="https:\/\/bitcointalk\.org\/index\.php\?action=profile;u=\d*" title="View the profile of .*">(.*)<\/a>~', $data, $names);
   $threads['names'] = $names[1];
   $number_of_threads = count($threads['url']);
   //print_r($threads['url']);
@@ -48,7 +48,7 @@ function scrape_bitcointalk()
     }
 
   }
-  print_r($threads['timestamp']); 
+  //print_r($threads['timestamp']); 
 }
 
 function make_timestamp($timestamp, $date)
