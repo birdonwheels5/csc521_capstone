@@ -104,6 +104,7 @@ function get_price_data($con, $exchange, $timespan)
     
     // Use PHP instead of MySQL to figure the min and max array values. I don't know why I never did this in the first place
     $min_price = min($data[0]);
+    $max_price = max($data[0]);
     
     // Checking for 0 here because JavaScript is an awful language.
     // Seriously, why is 1000000 equal to NaN? Or even "1000000" equal to NaN? It doesn't make any sense...
@@ -112,7 +113,7 @@ function get_price_data($con, $exchange, $timespan)
         $min_price = $max_price; // If it is 0, set it to the max price so it will not influecnce the chart window
     }
     
-    $max_price = max($data[0]);
+    
     
     $min_max_values = [
         "min" => $min_price,
