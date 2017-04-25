@@ -61,6 +61,7 @@ function scrape_bitcointalk()
 get_number_of_threads($threads)
 {
     $number_of_threads = count($threads['url']);
+    return $number_of_threads;
 }
 
 function make_timestamp($timestamp, $date)
