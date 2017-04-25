@@ -100,7 +100,7 @@
     
     $unique_threads = compare_threads($threads, $con);
     
-    $number_of__unique_threads = count($unique_threads['url']);
+    $number_of_unique_threads = count($unique_threads['url']);
     
     // Debug
     print "\n Unique Bitcointalk Threads \n";
