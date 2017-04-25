@@ -143,6 +143,11 @@ function add_post($url, $title, $timestamp, $username, $forum_name, $database_co
     return $result;
 }
 
+function get_database_forum_posts($con, $num_posts)
+{
+  
+}
 
-  ?>
+
+?>
 
