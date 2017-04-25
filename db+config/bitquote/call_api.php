@@ -95,6 +95,7 @@
     
 
     //add forum posts to database
+    $threads = array();
     $threads = scrape_bitcointalk();
     $number_of_threads = get_number_of_threads(); 
 
