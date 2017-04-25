@@ -136,9 +136,9 @@
 			{
 				if(min_array[i] == 0 || min_array[i] == -1)
 				{
-					// Copy the max value so it will not be the minimum value in the array
+					// Copy a max value to this position so it will not be the minimum value in the array
 					// You'd better hope that the min_array and the max_array are the same size. They always should be
-					min_array[i] = max_price; 
+					min_array[i] = max_array[i]; 
 				}
 			}
 			
