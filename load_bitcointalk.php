@@ -40,7 +40,7 @@
         
         // Print the rest of the post and the time since it was posted
         print "<div class='tweet'>";
-        print "$username: $post_title \n<br/> Topic link: $post_url </n><br/> <i> $time_since_post ago </i>";
+        print "$username: $post_title \n<br/> Topic link: <a href=$post_url>$post_url</a> </n><br/> <i> $time_since_post ago </i>";
         print "</div>";
         print "<br/><br/>";
     }
