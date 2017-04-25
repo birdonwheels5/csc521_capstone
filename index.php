@@ -128,7 +128,7 @@
 		];
 		
 		var min_price = Math.min(Math, min_array);
-		while(min_price == 0)
+		while(min_price == 1)
 		{
 			min_array.splice(min_array.indexOf(min_price), 1);
 			min_price = Math.min(Math, min_array);
