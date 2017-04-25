@@ -17,16 +17,23 @@ function scrape_bitcointalk()
   $url = "https://bitcointalk.org/index.php?board=77.0";
   $threads = array();
   $match = array();
+  
+  //make curl
   $data = make_curl($url);
+  
+  //get urls, dates, and titles of threads
   preg_match_all('~(https:\/\/bitcointalk\.org\/index\.php\?topic=.*)\.0..(\[\d\d\d\d-\d\d-\d\d\])(.*)</a>~', $data, $match);
   $threads['url'] = $match[1];
   $threads['date'] = $match[2];
   $threads['title'] = $match[3];
+  
+  //get username of thread creator
   preg_match_all('~<a href="https:\/\/bitcointalk\.org\/index\.php\?action=profile;u=\d*" title="View the profile of .*">(.*)<\/a>~', $data, $names);
   $threads['names'] = $names[1];
   $number_of_threads = count($threads['url']);
   $threads['names'] = array_slice($threads['names'], 3, $number_of_threads);
   
+  //get a timestamp of when the thread was created
   for ($i = 0; $i < $number_of_threads; $i++)
   {
     $thread = make_curl($threads['url'][$i]);
@@ -45,8 +52,15 @@ function scrape_bitcointalk()
     }
 
   }
-  print_r($threads);
+  
+  //return all the data
+  //print_r($threads);
   return $threads;
+}
+
+get_number_of_threads($threads)
+{
+    $number_of_threads = count($threads['url']);
 }
 
 function make_timestamp($timestamp, $date)
