@@ -158,7 +158,7 @@ function add_post($url, $title, $timestamp, $username, $forum_name, $database_co
  */
 function get_database_forum_posts($database_connection, $post_limit, $forum_name)
 {
-    $result = mysqli_query($database_connection, "SELECT post_url, username, post_text, tstamp FROM Forum_Posts WHERE (forum_name=$forum_name) ORDER BY tstamp DESC LIMIT $post_limit");
+    $result = mysqli_query($database_connection, "SELECT post_url, username, post_text, tstamp FROM Forum_Posts WHERE (forum_name='$forum_name') ORDER BY tstamp DESC LIMIT $post_limit");
     
     // Obtain the number of rows from the result of the query
     $num_rows = mysqli_num_rows($result);
