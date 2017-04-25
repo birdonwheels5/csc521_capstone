@@ -130,8 +130,7 @@
 		var min_price = Math.min.apply(Math, min_array);
 		var max_price = Math.max.apply(Math, max_array);
 		      
-		if(
-			for(i = 0; i < min_array.length; i++)
+		for(i = 0; i < min_array.length; i++)
 			{
 				var zero_count = 0;
 				
@@ -148,13 +147,8 @@
 		      	// That means the min really is 0.
 		      	if(zero_count == 8)
 			{
-				true;
+				min_price = 0;
 			}
-		)
-		{
-		   min_price = 0;
-		   
-		}
 
 		// Give a little wiggle room
 		max_price = max_price * 1.05;
