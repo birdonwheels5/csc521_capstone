@@ -2,7 +2,7 @@
     
     include "/home/student/S0280512/public_html/func/btc.php";
     include "/home/student/S0280512/public_html/func/twitter.php";
-    include "/home/student/S0280512/public_html/scraper.php";
+    include "/home/student/S0280512/public_html/func/scraper.php";
     
     // Load database settings from config file
     $settings = array();
