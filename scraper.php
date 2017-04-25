@@ -123,14 +123,14 @@ function compare_threads($threads, $database_connection)
         $username = $threads['names'][$i];
         $timestamp = $threads['timestamp'][$i];
 
-        $result = mysqli_query($database_connection, "SELECT post_url FROM Forum_Posts WHERE (post_url='$post_url' AND tstamp=$timestamp)");
+        $result = mysqli_query($database_connection, "SELECT post_url FROM Forum_Posts WHERE (post_url='$post_url')");
 
         if(mysqli_fetch_array($result) == null)
         {
             $unique_threads['url'][$i] = $threads['url'][$i];
             $unique_threads['title'][$i] = $threads['title'][$i];
             $unique_threads['timestamp'][$i] = $threads['timestamp'][$i];
-            $user_array['names'][$i] = $threads['names'][$i];
+            $unique_threads['names'][$i] = $threads['names'][$i];
         }
     }
 }  
