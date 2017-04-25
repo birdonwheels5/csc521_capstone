@@ -130,23 +130,6 @@
 		var min_price = Math.min.apply(Math, min_array);
 		var max_price = Math.max.apply(Math, max_array);
 		
-		while(min_price == 0)
-		{
-			for(var i = 0; i < (min_array.length); i++)
-			{
-				if(min_array[i] == 0 || min_array[i] == -1)
-				{
-					// Copy a max value to this position so it will not be the minimum value in the array
-					// You'd better hope that the min_array and the max_array are the same size. They always should be
-					min_array[i] = max_array[i]; 
-				}
-			}
-			
-			min_price = Math.min(Math, min_array);
-		}
-		
-		
-		
 		console.log(min_array);
 		console.log("Min");
 		console.log(min_price);
