@@ -165,13 +165,13 @@
 		      direction: '-1',
 		      gridlines: 
 		      {
-			  count: (h_scale)
+			  count: (timespan)
 		      },
 		      viewWindowMode: 'explicit',
 		      viewWindow: 
 		      {
 			  min: 0,
-			  max: (h_scale)
+			  max: (timespan)
 		      }
 		  },
 
