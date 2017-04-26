@@ -74,7 +74,7 @@
 	      var data = new google.visualization.DataTable();
 	      
 	      // Add one to timespan to make it show the correct number of hours (24 instead of 23)
-	      timespan = timespan + 1;
+	      timespan = timespan;
 	      
 	      // Set the correct scale for the horizontal axis if time_unit is in days
 	      /*var h_scale = timespan;
