@@ -18,7 +18,7 @@
 		// Chart variables for customizability.
 		// These are the default values.
 		var chart_div = "chart_div";
-		var timespan = 24;
+		var timespan = 25;
 		var time_unit = "Hours";
 		
 		// Colors
@@ -72,6 +72,10 @@
 	function drawTrendlines() 
 	{     
 	      var data = new google.visualization.DataTable();
+	      
+	      // Add one to timespan to make it show the correct number of hours (24 instead of 23)
+	      timespan = timespan + 1;
+	      
 	      // Set the correct scale for the horizontal axis if time_unit is in days
 	      var h_scale = timespan;
 
@@ -99,7 +103,7 @@
 
 	      $.when($.getJSON('get_price_data.php?span=' + timespan)).done( function(json_data) 
 	      {
-		for(i = 0; i <= timespan; i++) 
+		for(i = 0; i < timespan; i++) 
 		{
 		    data.addRow(
 		  [i, parseFloat(json_data.btcchina[0][i]), parseFloat(json_data.btce[0][i]), parseFloat(json_data.bitfinex[0][i]), parseFloat(json_data.bitstamp[0][i]), 
