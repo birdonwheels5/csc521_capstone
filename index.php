@@ -77,7 +77,7 @@
 
 	      //if(time_unit == "Days")
 	      //{
-		  h_scale = (timespan) - 1;
+		  h_scale = (timespan);
 	      /*}
 	      else
 	      {
@@ -157,7 +157,7 @@
 		{
 		  hAxis: 
 		  {
-		      title: 'Time (' + time_unit + ')',
+		      title: 'Time (Hours' + /* time_unit */ + ')',
 		      direction: '-1',
 		      gridlines: 
 		      {
