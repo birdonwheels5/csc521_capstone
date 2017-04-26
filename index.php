@@ -62,14 +62,9 @@
 
 		
 	    google.charts.load("visualization", "1", {packages:["corechart"]});
-	    google.charts.setOnLoadCallback(drawTrendlines);
+	    google.charts.setOnLoadCallback(drawBitcoinPriceChart);
 
-	/* Draws a bitcoin chart based on the given parameters:
-	 * (String) chart_div: The div to write the chart to.
-	 * (Int) timespan:     The number of hours of price data to display
-	 * (String) time_unit: "Days" or "Hours"
-	 */
-	function drawTrendlines() 
+	function drawBitcoinPriceChart() 
 	{     
 	      var data = new google.visualization.DataTable();
 	      
