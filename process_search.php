@@ -51,6 +51,9 @@
                 $reddit_flag = $_POST["reddit"];
                 $forum_flag = $_POST["forum"];
                 $user_flag = $_POST["user"];
+		
+		// Flag to prevent searching if we have an empty search term
+		$empty_flag = false;
                 
                 // Count how many rows we will have by adding the three flags together
                 // If they aren't checked, they are null, but PHP doesn't seem to mind adding NULL to a number...
@@ -113,6 +116,7 @@
 					                        Please enter a search term. Press the back button to try again.
                                         </div>
 					</div>';
+				$empty_flag = true;
 			    }
                             else if($twitter_flag == 1)
                             {
@@ -154,7 +158,7 @@
                                 }
                             }
                             
-                            if($reddit_flag == 1)
+                            if($reddit_flag == 1 && $empt_flag == false)
                             {                                
                                 $reddit_search_results_length = count($search_results[1][0]); // We care about the length of the third (last array) in the package of arrays
                                 
@@ -197,7 +201,7 @@
                                 }
                             }
                             
-                            if($forum_flag == 1)
+                            if($forum_flag == 1 && $empty_flag == false)
                             {                                
                                 $forum_search_results_length = count($search_results[2][0]); // We care about the length of the third (last array) in the package of arrays
                                 
