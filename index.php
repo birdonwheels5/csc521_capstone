@@ -88,12 +88,6 @@
 		  // So the hours will display correctly
 		  h_scale = h_scale - 1;
 	      }*/
-	      
-	      // Divide timespan by 10 if time_unit is hours. I don't know why it's multiplying by 10 now
-	      if(time_unit == "Hours")
-	      {
-		      timespan = timespan / 10;
-	      }
 
 	      data.addColumn('number', 'X');
 	      data.addColumn('number', 'BTCChina');
@@ -219,7 +213,8 @@
 			}
 			else // Hours
 			{
-			    timespan = chart_settings.timespan.value;
+			    // Divide timespan by 10 if time_unit is hours. I don't know why it's multiplying by 10 now
+			    timespan = chart_settings.timespan.value / 10;
 			}
 			
 			drawTrendlines();
