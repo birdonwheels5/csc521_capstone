@@ -103,7 +103,7 @@
 					                        Please check a box under "Data select" to search. Press the back button to try again.
                                         </div>';
                             }
-			    else if(empty($search_term)
+			    else if(empty($search_term))
 			    {
 			        print '
                                         <div class="col-4 object shadow">
