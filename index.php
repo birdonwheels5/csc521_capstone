@@ -174,7 +174,8 @@
 			  min: 0,
 			  max: (timespan - 1)
 		      },
-		      format: '#,' + (Math.round(timespan / 24)),
+		      maxValue: 1, 
+		      format: '0'
 		  },
 
 		  vAxis: 
