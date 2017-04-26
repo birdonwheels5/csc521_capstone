@@ -140,8 +140,9 @@
 		// Give a little wiggle room
 		max_price = max_price * 1.05;
 		min_price = min_price * 0.95;
+		      var height = screen.availHeight
 		var options = 
-		{
+		{'height':height,
 		  hAxis: 
 		  {
 		      //title: 'Time (Hours' + time_unit + ')',
