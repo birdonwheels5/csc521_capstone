@@ -174,7 +174,7 @@
 			  min: 0,
 			  max: (timespan - 1)
 		      },
-		      format: '#,' + (timespan / 24) +'%',
+		      format: '#,' + (Math.round(timespan / 24)),
 		  },
 
 		  vAxis: 
@@ -216,7 +216,7 @@
 			{
 			    // Divide timespan by 10 if time_unit is hours. I don't know why it's multiplying by 10 now
 			    timespan = chart_settings.timespan.value;
-		 	    timespan++; // I don't trust javascript to do math properly
+		 	    timespan++; // Because timespan = timespan + 1; would instead multiply timespan by 10, for some unknown reason
 			}
 			
 			drawTrendlines();
