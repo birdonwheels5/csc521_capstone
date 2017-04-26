@@ -71,7 +71,7 @@
             ?>
 			
 			<article>
-                <div class="row center">
+                <div class="row">
                 
                 <?php 
                     // We need to print out the divs correctly based on how many rows we will be displaying
