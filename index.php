@@ -99,7 +99,7 @@
 
 	      $.when($.getJSON('get_price_data.php?span=' + timespan)).done( function(json_data) 
 	      {
-		for(i = 0; i < timespan; i++) 
+		for(i = 0; i <= timespan; i++) 
 		{
 		    data.addRow(
 		  [i, parseFloat(json_data.btcchina[0][i]), parseFloat(json_data.btce[0][i]), parseFloat(json_data.bitfinex[0][i]), parseFloat(json_data.bitstamp[0][i]), 
