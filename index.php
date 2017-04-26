@@ -256,7 +256,7 @@
 			
 			<div class="object shadow">
 			
-				<a href="chart.php" id="chart_div"></a>
+				<a class="chart" href="chart.php" id="chart_div"></a>
 				
 				<form action="" name="chart_settings" method="post" onchange="update_chart()" class="row chart">
 					<input class="chart" type="number" name="timespan" min="1" value="1">
