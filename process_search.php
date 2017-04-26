@@ -53,7 +53,7 @@
                 $user_flag = $_POST["user"];
 		
 		// Flag to prevent searching if we have an empty search term
-		$empty_flag = false;
+		$empty_flag = empty($search_term);
                 
                 // Count how many rows we will have by adding the three flags together
                 // If they aren't checked, they are null, but PHP doesn't seem to mind adding NULL to a number...
@@ -108,7 +108,7 @@
                                         </div>
 					</div>';
                             }
-			    else if(empty($search_term))
+			    else if($empty_flag)
 			    {
 			        print '
                                         <div class="col-4">
@@ -158,7 +158,7 @@
                                 }
                             }
                             
-                            if($reddit_flag == 1 && $empt_flag == false)
+                            if($reddit_flag == 1 && $empty_flag == false)
                             {                                
                                 $reddit_search_results_length = count($search_results[1][0]); // We care about the length of the third (last array) in the package of arrays
                                 
