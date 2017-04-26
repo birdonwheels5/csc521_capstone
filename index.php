@@ -174,8 +174,7 @@
 			  min: 0,
 			  max: (timespan - 1)
 		      },
-		      maxValue: 1, 
-		      format: '0'
+		      maxValue: 1
 		  },
 
 		  vAxis: 
