@@ -103,6 +103,13 @@
 					                        Please check a box under "Data select" to search. Press the back button to try again.
                                         </div>';
                             }
+			    else if(empty($search_term)
+			    {
+			        print '
+                                        <div class="col-4 object shadow">
+					                        Please enter a search term. Press the back button to try again.
+                                        </div>';
+			    }
                             else if($twitter_flag == 1)
                             {
                                 $twitter_search_results_length = count($search_results[0][0]); // We care about the length of the third (last array) in the package of arrays
@@ -171,7 +178,7 @@
                                         $time_since_post = time_since($search_results[1][2][$i]);
                                         $post_url = $search_results[1][3][$i];
                                         
-                                        print "Username: " . $search_results[1][0][$i] . " <br/><br/>\n
+                                        print "Username: <b>" . $search_results[1][0][$i] . "</b> <br/><br/>\n
                                                Post: " . $search_results[1][1][$i] . " <br/><br/>\n
                                                Posted $time_since_post ago. <br/><br/>\n
                                                URL to original post: <a href=\"$post_url\">$post_url</a> <br/><br/>\n";
@@ -211,7 +218,7 @@
                                         $time_since_post = time_since($search_results[2][2][$i]);
                                         $post_url = $search_results[2][3][$i];
                                         
-                                        print "Username: " . $search_results[2][0][$i] . " <br/><br/>\n
+                                        print "Username: <b>" . $search_results[2][0][$i] . "</b> <br/><br/>\n
                                                Post: " . $search_results[2][1][$i] . " <br/><br/>\n
                                                Posted $time_since_post ago. <br/><br/>\n
                                                URL to original post: <a href=\"$post_url\">$post_url</a> <br/><br/>\n";
@@ -454,6 +461,9 @@
                                     }
                                 }
                         ?>
+			
+			<div class="row">
+			</div>
 			</article>
 			
 		</div>
