@@ -203,7 +203,7 @@
 			
 			timespan++; // Because timespan = timespan + 1; would instead multiply timespan by 10, for some unknown reason
 			
-			drawTrendlines();
+			drawBitcoinPriceChart();
 		    }
 	</script>
 	<?php 
