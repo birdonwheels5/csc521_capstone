@@ -74,7 +74,7 @@
 	      var data = new google.visualization.DataTable();
 	      
 	      // Add one to timespan to make it show the correct number of hours (24 instead of 23)
-	      timespan = timespan;
+	      //timespan = timespan + 1; // WHY DOES THIS MULTIPLY BY TEN WHEN time_unit IS HOURS?????
 	      
 	      // Set the correct scale for the horizontal axis if time_unit is in days
 	      /*var h_scale = timespan;
@@ -215,7 +215,7 @@
 			{
 			    // Divide timespan by 10 if time_unit is hours. I don't know why it's multiplying by 10 now
 			    timespan = chart_settings.timespan.value;
-		 	    //timespan = (timespan / 10); // I don't trust javascript to do math properly
+		 	    timespan = (timespan + 1); // I don't trust javascript to do math properly
 			}
 			
 			drawTrendlines();
