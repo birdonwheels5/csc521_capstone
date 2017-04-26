@@ -161,7 +161,8 @@
 		{
 		  hAxis: 
 		  {
-		      title: 'Time (Hours' + /* time_unit */ + ')',
+		      //title: 'Time (Hours' + time_unit + ')',
+		      title: 'Time (Hours)',
 		      direction: '-1',
 		      gridlines: 
 		      {
