@@ -77,12 +77,12 @@
 	      timespan = timespan + 1;
 	      
 	      // Set the correct scale for the horizontal axis if time_unit is in days
-	      var h_scale = timespan;
+	      /*var h_scale = timespan;
 
-	      //if(time_unit == "Days")
-	      //{
+	      if(time_unit == "Days")
+	      {
 		  h_scale = (timespan);
-	      /*}
+	      }
 	      else
 	      {
 		  // So the hours will display correctly
@@ -171,7 +171,7 @@
 		      viewWindow: 
 		      {
 			  min: 0,
-			  max: (timespan)
+			  max: (timespan - 1)
 		      }
 		  },
 
