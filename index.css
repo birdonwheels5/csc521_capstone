@@ -26,8 +26,8 @@ input.chart{
 	text-align: left;
 }
 
-div.chart{
-	height: 1000px;
+a.chart{
+	width: 100%;
 }
 
 [class*="col-"] {
