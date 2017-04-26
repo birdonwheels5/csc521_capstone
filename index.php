@@ -215,10 +215,10 @@
 			}
 			else // Hours
 			{
-			    // Divide timespan by 10 if time_unit is hours. I don't know why it's multiplying by 10 now
 			    timespan = chart_settings.timespan.value;
-		 	    timespan++; // Because timespan = timespan + 1; would instead multiply timespan by 10, for some unknown reason
 			}
+			
+			timespan++; // Because timespan = timespan + 1; would instead multiply timespan by 10, for some unknown reason
 			
 			drawTrendlines();
 		    }
