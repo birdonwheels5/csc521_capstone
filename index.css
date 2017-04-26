@@ -27,7 +27,7 @@ input.chart{
 }
 
 div.chart{
-	height: 100%;
+	height: 1000px;
 }
 
 [class*="col-"] {
