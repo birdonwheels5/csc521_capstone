@@ -99,16 +99,20 @@
                             if($twitter_flag == 0 && $reddit_flag == 0 && $forum_flag == 0)
                             {
                                 print '
-                                        <div class="col-4 object shadow">
+                                        <div class="col-4">
+					<div class="object shadow">
 					                        Please check a box under "Data select" to search. Press the back button to try again.
-                                        </div>';
+                                        </div>
+					</div>';
                             }
 			    else if(empty($search_term))
 			    {
 			        print '
-                                        <div class="col-4 object shadow">
+                                        <div class="col-4">
+					<div class="object shadow">
 					                        Please enter a search term. Press the back button to try again.
-                                        </div>';
+                                        </div>
+					</div>';
 			    }
                             else if($twitter_flag == 1)
                             {
@@ -124,7 +128,8 @@
                                     
                                     print '
                                                 </p>
-                                            </div>';
+                                            </div>
+					    </div>';
                                 }
                                 else
                                 {
@@ -144,7 +149,8 @@
                                     }
                                     
                                     print '</p>
-                                                    </div>';
+                                                    </div>
+						    </div>';
                                 }
                             }
                             
@@ -163,7 +169,8 @@
                                     
                                     print '
                                                 </p>
-                                            </div>';
+                                            </div>
+					    </div>';
                                 }
                                 else
                                 {
@@ -185,7 +192,8 @@
                                     }
                                     
                                     print '</p>
-                                                    </div>';
+                                                    </div>
+						    </div>';
                                 }
                             }
                             
@@ -203,7 +211,8 @@
                                     
                                     print '
                                                 </p>
-                                            </div>';
+                                            </div>
+					    </div>';
                                 }
                                 else
                                 {
@@ -225,7 +234,8 @@
                                     }
                                     
                                     print '</p>
-                                                    </div>';
+                                                    </div>
+						    </div>';
                                 }
                             }
                             
@@ -457,7 +467,8 @@
                                 {
                                     if($num_columns == 1 || $num_columns == 2 || $num_columns == 3)
                                     {
-                                        print '<div class="col-4 object shadow">';
+                                        print '<div class="col-4">
+						<div class="object shadow">';
                                     }
                                 }
                         ?>
