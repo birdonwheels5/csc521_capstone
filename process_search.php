@@ -58,6 +58,12 @@
                 // Count how many rows we will have by adding the three flags together
                 // If they aren't checked, they are null, but PHP doesn't seem to mind adding NULL to a number...
                 $num_columns = $twitter_flag + $reddit_flag + $forum_flag;
+		
+		// If search box is empty, set num_columns to 0 to neatly display the error message
+		if($empty_flag)
+		{
+			$num_columns = 0;
+		}
                 
                 // No boxes are checked, set um_columns to 1 so the error displays properly
                 if($num_columns == 0)
