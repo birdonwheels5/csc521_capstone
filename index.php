@@ -174,7 +174,7 @@
 			  min: 0,
 			  max: (timespan - 1)
 		      },
-		      format: '#,#/24'
+		      format: '#,' + (timespan / 24) +'%',
 		  },
 
 		  vAxis: 
