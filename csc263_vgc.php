@@ -5,8 +5,8 @@
 		<title>VGC Database</title>
 	    <link rel='stylesheet' type="text/css" href="../main.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <?php include "CookieHandler.php";
-              include "../func/login.php"; ?>
+        <?php include "login/CookieHandler.php";
+              include "func/login.php"; ?>
 	</head>
 	
 	<body>
