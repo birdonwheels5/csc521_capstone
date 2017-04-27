@@ -51,7 +51,7 @@
 					<?PHP		
 						$queries = array();
 						$queries = 
-						(
+						[
 							"SELECT comp.Name as CompanyName, cons.Name as ConsoleName FROM Company as comp, Console as cons, Makes as m WHERE ((cons.Console_ID=m.Console_ID) AND (comp.Company_ID=m.Company_ID))",
 							"",
 							"",
@@ -63,7 +63,7 @@
 							"",
 							"",
 							""
-						);
+						];
 						
 						$num_queries = count($queries);
 						
