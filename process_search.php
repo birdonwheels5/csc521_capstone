@@ -6,7 +6,8 @@
 		<link rel="stylesheet" type="text/css" href="main.css" title="Default Styles" media="screen"/>
 		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans" title="Font Styles"/>
 		<?php include "login/CookieHandler.php";
-              include "func/login.php"; ?>
+              include "func/login.php";
+	      include "func/twitter.php"; ?>
         <style>
             footer
             {
