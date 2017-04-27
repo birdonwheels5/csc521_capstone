@@ -18,28 +18,39 @@
 						// Separate PHP block because this is executed separately from the rest of the code
 						if ($_SERVER["REQUEST_METHOD"] == "POST") 
 						{
+							// Report all PHP errors
+							ini_set('display_errors', 1);
+							error_reporting(E_ALL);
+
+							$host="127.0.0.1";
+							$username="vgc";
+							$password="vgc17";
+							$database="vgc";
+
+							// Create a new database connect object
+							$dbcon=new mysqli($host, $username, $password, $database);
+
+							// Check connection
+							if($dbcon->connect_error) die ($dbcon->connect_error);
+
+							// Make the database connection globally
+							global $dbcon;
 							
+							$queries = array();
+							$queries = // This is copy pasted from the $queries array below
+							[
+								"SELECT comp.Name as CompanyName, cons.Name as ConsoleName FROM Company as comp, Console as cons, Makes as m WHERE ((cons.Console_ID=m.Console_ID) AND (comp.Company_ID=m.Company_ID))",
+								"",
+								"",
+								"",
+								"",
+								"",
+								"",
+								"",
+								"",
+								""
+							];
 						}
-					?>
-					<?php	
-						// Report all PHP errors
-						ini_set('display_errors', 1);
-						error_reporting(E_ALL);
-
-						$host="127.0.0.1";
-						$username="vgc";
-						$password="vgc17";
-						$database="vgc";
-
-						// Create a new database connect object
-						$dbcon=new mysqli($host, $username, $password, $database);
-
-					  	// Check connection
-						if($dbcon->connect_error) die ($dbcon->connect_error);
-
-						// Make the database connection globally
-						global $dbcon;
-
 					?>
 
 					<h4>Please choose a query:</h4>
@@ -53,8 +64,8 @@
 						$queries = 
 						[
 							"SELECT comp.Name as CompanyName, cons.Name as ConsoleName FROM Company as comp, Console as cons, Makes as m WHERE ((cons.Console_ID=m.Console_ID) AND (comp.Company_ID=m.Company_ID))",
-							"",
-							"",
+							"SELECT cons.Name as ConsoleName FROM Console as cons ORDER BY cons.Release_Date DESC",
+							"SELECT comp.Name as CompanyName, cons.Name as ConsoleName FROM Company as comp, Console as cons, Makes as m, Console_Colors as color WHERE ((cons.Console_ID=m.Console_ID) AND (comp.Company_ID=m.Company_ID) AND (cons.Console_ID=color.Console_ID) AND (color.Color="white") AND (Release_Date LIKE "%2000%"))",
 							"",
 							"",
 							"",
@@ -70,7 +81,7 @@
 						$query_names = 
 						[
 							"Companies who make consoles",
-							"Consoles ordered by release date",
+							"Consoles ordered by release date descending",
 							"White consoles released by Sony in 2000", // Can change the year so we get a result
 							"Xbox exculsive games released in 2009", // Again the date is flexible
 							"Number of games released for Xbox One and PS4 in 2016",
