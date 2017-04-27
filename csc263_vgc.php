@@ -46,7 +46,7 @@
 
 					<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 
-					<select name="dname">
+					<select name="query">
 
 					<?PHP		
 						$queries = array();
@@ -66,13 +66,9 @@
 						];
 						
 						$num_queries = count($queries);
-						
-						// Form SQL query string
-						$query= "SELECT dname FROM department";
 
 						for($i = 0; $i < $num_queries; $i++)
 						{
-							echo "<option>",$dname,"\n";
 							print '<option value="' . $i . '">' . $queries[$i] . '</option>';
 						}
 					?>
