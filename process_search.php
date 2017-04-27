@@ -152,9 +152,10 @@
                                         print '<hr/>';
                                         
                                         $time_since_post = time_since($search_results[0][2][$i]);
+					$html_converted_tweet = convert_tweet_to_html($search_results[0][1][$i]);
                                         
                                         print "Username: " . $search_results[0][0][$i] . " <br/><br/>\n
-                                               Post: " . $search_results[0][1][$i] . " <br/><br/>\n
+                                               Post: $html_converted_tweet <br/><br/>\n
                                                Posted $time_since_post ago. <br/><br/>\n";
                                     }
                                     
