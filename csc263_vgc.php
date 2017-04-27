@@ -90,6 +90,7 @@
 							"PS4 exclusive games rated 8/10, released between 2015 and 2017", // Rating and year are flexible
 							"All games released by Nintendo in 2016",
 							"Games developed by 343 Industries and Bungie between 2000 and 2016 that are first person shooters"
+							// Should add the admin queries, like add game, delete game, update game
 						];
 						
 						
