@@ -86,7 +86,7 @@
 
 						for($i = 0; $i < $num_queries; $i++)
 						{
-							print '<option value="' . $i . '">' . $queries[$i] . '</option>';
+							print '<option value="' . $i . '">' . $query_names[$i] . '</option>';
 						}
 					?>
 
