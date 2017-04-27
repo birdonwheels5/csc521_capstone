@@ -27,9 +27,9 @@
 						error_reporting(E_ALL);
 
 						$host="127.0.0.1";
-						$username="S0276910";
-						$password="New2017";
-						$database="S0276910";
+						$username="vgc";
+						$password="vgc17";
+						$database="vgc";
 
 						// Create a new database connect object
 						$dbcon=new mysqli($host, $username, $password, $database);
@@ -52,7 +52,7 @@
 						$queries = array();
 						$queries = 
 						(
-							0 => "SELECT ";
+							0 => "SELECT comp.Name, cons.Name FROM Company as comp, Console as cons, Makes as m WHERE ((cons.Console_ID=m.Console_ID) AND (comp.Company_ID=m.Company_ID))";
 							1 => "";
 							2 => "";
 							3 => "";
