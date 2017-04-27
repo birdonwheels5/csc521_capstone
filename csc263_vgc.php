@@ -92,7 +92,7 @@
 
 					</select>
 
-					<input type="submit" value="Display Employee Details">
+					<input type="submit" value="Display Query Results">
 
 					</form>
 					</p>
