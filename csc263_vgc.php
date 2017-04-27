@@ -61,9 +61,26 @@
 							"",
 							"",
 							"",
-							"",
 							""
 						];
+						
+						// Needs to be the same length as the $queries array
+						// Gives the queries names to be displayed
+						$query_names = array();
+						$query_names = 
+						[
+							"Companies who make consoles",
+							"Consoles ordered by release date",
+							"White consoles released by Sony in 2000", // Can change the year so we get a result
+							"Xbox exculsive games released in 2009", // Again the date is flexible
+							"Number of games released for Xbox One and PS4 in 2016",
+							"Net worth of Nintendo",
+							"WiiU exclusive games",
+							"PS4 exclusive games rated 8/10, released between 2015 and 2017", // Rating and year are flexible
+							"All games released by Nintendo in 2016",
+							"Games developed by 343 Industries and Bungie between 200 and 2016 that are first person shooters"
+						]
+						
 						
 						$num_queries = count($queries);
 
