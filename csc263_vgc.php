@@ -94,9 +94,7 @@
 
 										// free result set
 										$result->close();
-										}
-								}
-									
+									}
 									
 									break;
 								
