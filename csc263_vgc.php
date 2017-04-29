@@ -205,6 +205,8 @@
 								
 								case 4:
 									// Display 1 column: Number of Games
+									$query = $queries[$query_num];
+									
 									//Execute SQL query and try to receive result
 									if ($result = $dbcon->query($query)) 
 									{
@@ -239,6 +241,8 @@
 								
 								case 5: 
 									// Display 1 column: Number of net worth
+									$query = $queries[$query_num];
+									
 									//Execute SQL query and try to receive result
 									if ($result = $dbcon->query($query)) 
 									{
@@ -273,6 +277,8 @@
 								
 								default:
 									// All attributes in the Game table (minus the id number)
+									$query = $queries[$query_num];
+									
 									//Execute SQL query and try to receive result
 									if ($result = $dbcon->query($query)) 
 									{
