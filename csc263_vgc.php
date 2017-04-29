@@ -51,6 +51,76 @@
 								""
 							];
 							
+							$query_num = $_POST['query_num'];
+							
+							// Handle the different cases for the different queries
+							switch($case_num)
+							{
+								case 0:
+									// Display 2 columns: Companies, Consoles
+									$query = $queries[$query_num];
+									
+									//Execute SQL query and try to receive result
+									if ($result = $dbcon->query($query)) 
+									{
+										// Create table and table header
+										echo '<table border="2" cellspacing="2" cellpadding="2">';
+										echo '<tr>';
+										echo '<th><font face="Arial,Helvetica,sans-serif">Companies</font></th>';
+										echo '<th><font face="Arial,Helvetica,sans-serif">Consoles</font></th>';
+										echo '</tr>';
+
+										// Fetch object array
+										while ($obj = $result->fetch_object()) 
+										{
+											//Get employee information
+											$company_name = $obj->CompanyName;
+											$console_name = $obj->ConsoleName;
+
+											//Display employee information in a table
+
+											echo '<tr>';
+											echo '<td><font face="Arial, Helvetica, sans-serif">';
+											echo $company_name;
+											echo '</font></td>';
+											echo '<td><font face="Arial, Helvetica, sans-serif">';
+											echo $console_name;
+											echo '</font></td>';
+											echo '</tr>';
+
+										}
+
+										echo '</table>';
+
+										// free result set
+										$result->close();
+										}
+								}
+									
+									
+									break;
+								
+								case 1:
+									// Display 1 column: Consoles
+									break;
+								
+								case 2: 
+									// Display 1 column: Consoles
+									break;
+								
+								case 4:
+									// Display 1 column: Number of Games
+									break;
+								
+								case 5: 
+									// Display 1 column: Number of net worth
+									break;
+								
+								case default:
+									// All attributes in the Game table (minus the id number)
+									break;
+							}
+							
 							//Execute SQL query and try to receive result
 							if ($result = $dbcon->query($query)) 
 							{
@@ -108,7 +178,7 @@
 
 					<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 
-					<select name="query">
+					<select name="query_num">
 
 					<?PHP		
 						$queries = array();
@@ -131,25 +201,25 @@
 						$query_names = array();
 						$query_names = 
 						[
-							// 1 // 2 columns : Companies, consoles
+							// 0 // 2 columns : Companies, consoles
 							"Companies who make consoles",
-							// 2 // 1 column: Consoles
+							// 1 // 1 column: Consoles
 							"Consoles ordered by release date descending",
-							// 3 // 1 column: Consoles
+							// 2 // 1 column: Consoles
 							"White consoles released by Sony in 2000", // Can change the year so we get a result
-							// 4 // All attributes for Game table
+							// 3 // All attributes for Game table
 							"Xbox exclusive games released in 2009", // Again the date is flexible
-							// 5 // 1 column: Number of games
+							// 4 // 1 column: Number of games
 							"Number of games released for Xbox One and PS4 in 2016",
-							// 6 // 1 column: Number of net worth
+							// 5 // 1 column: Number of net worth
 							"Net worth of Nintendo",
-							// 7 // All attributes for Game table
+							// 6 // All attributes for Game table
 							"WiiU exclusive games",
-							// 8 // All attributes for Game table
+							// 7 // All attributes for Game table
 							"PS4 exclusive games rated 8/10, released between 2015 and 2017", // Rating and year are flexible
-							// 9 // All attributes for Game table
+							// 8 // All attributes for Game table
 							"All games released by Nintendo in 2016",
-							// 10 // All attributes for Game table
+							// 9 // All attributes for Game table
 							"Games developed by 343 Industries and Bungie between 2000 and 2016 that are first person shooters"
 							// Should add the admin queries, like add game, delete game, update game
 						];
@@ -159,7 +229,7 @@
 
 						for($i = 0; $i < $num_queries; $i++)
 						{
-							print '<option value="' . $i . '">' . $query_names[$i] . '</option>';
+							print '<option value="' . $i . '" name="">' . $query_names[$i] . '</option>';
 						}
 					?>
 
