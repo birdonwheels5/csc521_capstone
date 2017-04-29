@@ -54,7 +54,7 @@
 							$query_num = $_POST['query_num'];
 							
 							// Handle the different cases for the different queries
-							switch($case_num)
+							switch($query_num)
 							{
 								case 0:
 									// Display 2 columns: Companies, Consoles
