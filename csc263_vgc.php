@@ -118,6 +118,7 @@
 							];
 							
 							$query_num = $_POST['query_num'];
+							print $query_num;
 							// Debugging
 							$query = "NULL";
 							
@@ -328,7 +329,7 @@
 										// free result set
 										$result->close();
 									}
-									print $query[$query_num];
+									print $queries[$query_num];
 							}
 						}
 					?>
