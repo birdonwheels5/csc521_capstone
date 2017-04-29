@@ -329,9 +329,9 @@
 										// free result set
 										$result->close();
 									}
-									print $queries[$query_num];
 							}
 						}
+						print $queries[$query_num];
 					?>
 					
 				</div>
