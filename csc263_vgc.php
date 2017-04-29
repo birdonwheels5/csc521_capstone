@@ -14,164 +14,6 @@
 				<div class="object shadow">
 					<center><h1>Query VGC Database</h1></center>
 					<p>
-					<?php
-						// Separate PHP block because this is executed separately from the rest of the code
-						if ($_SERVER["REQUEST_METHOD"] == "POST") 
-						{
-							// Report all PHP errors
-							ini_set('display_errors', 1);
-							error_reporting(E_ALL);
-
-							$host="127.0.0.1";
-							$username="vgc";
-							$password="vgc17";
-							$database="vgc";
-
-							// Create a new database connect object
-							$dbcon=new mysqli($host, $username, $password, $database);
-
-							// Check connection
-							if($dbcon->connect_error) die ($dbcon->connect_error);
-
-							// Make the database connection globally
-							global $dbcon;
-							
-							$queries = array();
-							$queries = // This is copy pasted from the $queries array below
-							[
-								"SELECT comp.Name as CompanyName, cons.Name as ConsoleName FROM Company as comp, Console as cons, Makes as m WHERE ((cons.Console_ID=m.Console_ID) AND (comp.Company_ID=m.Company_ID))",
-								"",
-								"",
-								"",
-								"",
-								"",
-								"",
-								"",
-								"",
-								""
-							];
-							
-							$query_num = $_POST['query_num'];
-							
-							// Handle the different cases for the different queries
-							switch($query_num)
-							{
-								case 0:
-									// Display 2 columns: Companies, Consoles
-									$query = $queries[$query_num];
-									
-									//Execute SQL query and try to receive result
-									if ($result = $dbcon->query($query)) 
-									{
-										// Create table and table header
-										echo '<table border="2" cellspacing="2" cellpadding="2">';
-										echo '<tr>';
-										echo '<th><font face="Arial,Helvetica,sans-serif">Companies</font></th>';
-										echo '<th><font face="Arial,Helvetica,sans-serif">Consoles</font></th>';
-										echo '</tr>';
-
-										// Fetch object array
-										while ($obj = $result->fetch_object()) 
-										{
-											//Get employee information
-											$company_name = $obj->CompanyName;
-											$console_name = $obj->ConsoleName;
-
-											//Display employee information in a table
-
-											echo '<tr>';
-											echo '<td><font face="Arial, Helvetica, sans-serif">';
-											echo $company_name;
-											echo '</font></td>';
-											echo '<td><font face="Arial, Helvetica, sans-serif">';
-											echo $console_name;
-											echo '</font></td>';
-											echo '</tr>';
-
-										}
-
-										echo '</table>';
-
-										// free result set
-										$result->close();
-									}
-									
-									break;
-								
-								case 1:
-									// Display 1 column: Consoles
-									break;
-								
-								case 2: 
-									// Display 1 column: Consoles
-									break;
-								
-								case 4:
-									// Display 1 column: Number of Games
-									break;
-								
-								case 5: 
-									// Display 1 column: Number of net worth
-									break;
-								
-								default:
-									// All attributes in the Game table (minus the id number)
-									break;
-							}
-							
-							//Execute SQL query and try to receive result
-							if ($result = $dbcon->query($query)) 
-							{
-							    	// Create table and table header
-								echo '<table border="2" cellspacing="2" cellpadding="2">';
-							   	echo '<tr>';
-							    	echo '<th><font face="Arial,Helvetica,sans-serif">Last Name</font></th>';
-							    	echo '<th><font face="Arial,Helvetica,sans-serif">First Name</font></th>';
-							    	echo '<th><font face="Arial,Helvetica,sans-serif">Address</font></th>';
-							    	echo '<th><font face="Arial,Helvetica,sans-serif">Salary</font></th>';
-							    	echo '<th><font face="Arial,Helvetica,sans-serif">Department</font></th>';
-							    	echo '</tr>';
-								
-								// Fetch object array
-								while ($obj = $result->fetch_object()) 
-								{
-									//Get employee information
-									$firstName = $obj->fname;
-									$lastName = $obj->lname;
-									$address = $obj->address;
-									$salary = $obj->salary;
-									$dname = $obj->dname;
-									
-									//Display employee information in a table
-									
-									echo '<tr>';
-									echo '<td><font face="Arial, Helvetica, sans-serif">';
-									echo $lastName;
-									echo '</font></td>';
-									echo '<td><font face="Arial, Helvetica, sans-serif">';
-									echo $firstName;
-									echo '</font></td>';
-									echo '<td><font face="Arial, Helvetica, sans-serif">';
-									echo $address;
-									echo '</font></td>';
-									echo '<td><font face="Arial, Helvetica, sans-serif">';
-									echo $salary;
-									echo '</font></td>';
-									echo '<td><font face="Arial, Helvetica, sans-serif">';
-									echo $dname;
-									echo '</font></td>';
-									echo '</tr>';
-
-									}
-								
-							    	echo '</table>';
-							    	
-								// free result set
-							    	$result->close();
-								}
-						}
-					?>
-
 					<h4>Please choose a query:</h4>
 
 					<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
@@ -237,6 +79,250 @@
 
 					</form>
 					</p>
+					
+					<?php
+						// Separate PHP block because this is executed separately from the rest of the code
+						if ($_SERVER["REQUEST_METHOD"] == "POST") 
+						{
+							// Report all PHP errors
+							ini_set('display_errors', 1);
+							error_reporting(E_ALL);
+
+							$host="127.0.0.1";
+							$username="vgc";
+							$password="vgc17";
+							$database="vgc";
+
+							// Create a new database connect object
+							$dbcon=new mysqli($host, $username, $password, $database);
+
+							// Check connection
+							if($dbcon->connect_error) die ($dbcon->connect_error);
+
+							// Make the database connection globally
+							global $dbcon;
+							
+							$queries = array();
+							$queries = // This is copy pasted from the $queries array below
+							[
+								"SELECT comp.Name as CompanyName, cons.Name as ConsoleName FROM Company as comp, Console as cons, Makes as m WHERE ((cons.Console_ID=m.Console_ID) AND (comp.Company_ID=m.Company_ID))",
+								"",
+								"",
+								"",
+								"",
+								"",
+								"",
+								"",
+								"",
+								""
+							];
+							
+							$query_num = $_POST['query_num'];
+							
+							// Handle the different cases for the different queries
+							switch($query_num)
+							{
+								case 0:
+									// Display 2 columns: Companies, Consoles
+									$query = $queries[$query_num];
+									
+									//Execute SQL query and try to receive result
+									if ($result = $dbcon->query($query)) 
+									{
+										// Create table and table header
+										echo '<table border="2" cellspacing="2" cellpadding="2">';
+										echo '<tr>';
+										echo '<th><font face="Arial,Helvetica,sans-serif">Companies</font></th>';
+										echo '<th><font face="Arial,Helvetica,sans-serif">Consoles</font></th>';
+										echo '</tr>';
+
+										// Fetch object array
+										while ($obj = $result->fetch_object()) 
+										{
+											//Get information
+											$company_name = $obj->CompanyName;
+											$console_name = $obj->ConsoleName;
+
+											//Display information in a table
+
+											echo '<tr>';
+											echo '<td><font face="Arial, Helvetica, sans-serif">';
+											echo $company_name;
+											echo '</font></td>';
+											echo '<td><font face="Arial, Helvetica, sans-serif">';
+											echo $console_name;
+											echo '</font></td>';
+											echo '</tr>';
+
+										}
+
+										echo '</table>';
+
+										// free result set
+										$result->close();
+									}
+									
+									break;
+								
+								case 1: // Same as case 2, so skip to case 2
+								case 2: 
+									// Display 1 column: Consoles
+									//Execute SQL query and try to receive result
+									if ($result = $dbcon->query($query)) 
+									{
+										// Create table and table header
+										echo '<table border="2" cellspacing="2" cellpadding="2">';
+										echo '<tr>';
+										echo '<th><font face="Arial,Helvetica,sans-serif">Consoles</font></th>';
+										echo '</tr>';
+
+										// Fetch object array
+										while ($obj = $result->fetch_object()) 
+										{
+											// Get information
+											$console_name = $obj->ConsoleName;
+
+											// Display information in a table
+
+											echo '<tr>';
+											echo '<td><font face="Arial, Helvetica, sans-serif">';
+											echo $console_name;
+											echo '</font></td>';
+											echo '</tr>';
+
+										}
+
+										echo '</table>';
+
+										// free result set
+										$result->close();
+									}
+									break;
+								
+								case 4:
+									// Display 1 column: Number of Games
+									//Execute SQL query and try to receive result
+									if ($result = $dbcon->query($query)) 
+									{
+										// Create table and table header
+										echo '<table border="2" cellspacing="2" cellpadding="2">';
+										echo '<tr>';
+										echo '<th><font face="Arial,Helvetica,sans-serif">Number of Games</font></th>';
+										echo '</tr>';
+
+										// Fetch object array
+										while ($obj = $result->fetch_object()) 
+										{
+											// Get information
+											$num_games = $obj->Num_Games;
+
+											// Display information in a table
+
+											echo '<tr>';
+											echo '<td><font face="Arial, Helvetica, sans-serif">';
+											echo $num_games;
+											echo '</font></td>';
+											echo '</tr>';
+
+										}
+
+										echo '</table>';
+
+										// free result set
+										$result->close();
+									}
+									break;
+								
+								case 5: 
+									// Display 1 column: Number of net worth
+									//Execute SQL query and try to receive result
+									if ($result = $dbcon->query($query)) 
+									{
+										// Create table and table header
+										echo '<table border="2" cellspacing="2" cellpadding="2">';
+										echo '<tr>';
+										echo '<th><font face="Arial,Helvetica,sans-serif">Net Worth</font></th>';
+										echo '</tr>';
+
+										// Fetch object array
+										while ($obj = $result->fetch_object()) 
+										{
+											// Get information
+											$net_worth = $obj->Net_Worth;
+
+											// Display information in a table
+
+											echo '<tr>';
+											echo '<td><font face="Arial, Helvetica, sans-serif">';
+											echo $net_worth;
+											echo '</font></td>';
+											echo '</tr>';
+
+										}
+
+										echo '</table>';
+
+										// free result set
+										$result->close();
+									}
+									break;
+								
+								default:
+									// All attributes in the Game table (minus the id number)
+									//Execute SQL query and try to receive result
+									if ($result = $dbcon->query($query)) 
+									{
+										// Create table and table header
+										echo '<table border="2" cellspacing="2" cellpadding="2">';
+										echo '<tr>';
+										echo '<th><font face="Arial,Helvetica,sans-serif">Title</font></th>';
+										echo '<th><font face="Arial,Helvetica,sans-serif">Release Date</font></th>';
+										echo '<th><font face="Arial,Helvetica,sans-serif">Publisher</font></th>';
+										echo '<th><font face="Arial,Helvetica,sans-serif">Genre</font></th>';
+										echo '<th><font face="Arial,Helvetica,sans-serif">Rating</font></th>';
+										echo '</tr>';
+
+										// Fetch object array
+										while ($obj = $result->fetch_object()) 
+										{
+											//Get information
+											$title = $obj->Title;
+											$release_date = $obj->Release_Date;
+											$publisher = $obj->Publisher;
+											$genre = $obj->Genre;
+											$rating = $obj->Rating;
+
+											//Display information in a table
+
+											echo '<tr>';
+											echo '<td><font face="Arial, Helvetica, sans-serif">';
+											echo $Title;
+											echo '</font></td>';
+											echo '<td><font face="Arial, Helvetica, sans-serif">';
+											echo $release_date;
+											echo '</font></td>';
+											echo '<td><font face="Arial, Helvetica, sans-serif">';
+											echo $publisher;
+											echo '</font></td>';
+											echo '<td><font face="Arial, Helvetica, sans-serif">';
+											echo $genre;
+											echo '</font></td>';
+											echo '<td><font face="Arial, Helvetica, sans-serif">';
+											echo $rating;
+											echo '</font></td>';
+											echo '</tr>';
+
+										}
+
+										echo '</table>';
+
+										// free result set
+										$result->close();
+									}
+							}
+						}
+					?>
+					
 				</div>
 			</div>
 			<div class="col-3 empty">	</div>
