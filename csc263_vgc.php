@@ -167,16 +167,10 @@
 									
 									break;
 								
-								case 1: // Same as case 2, so skip to case 2
-									$query = $queries[$query_num];
-								case 2: 
+								case ($query_num == 1 || $query_num == 2):
 									// Display 1 column: Consoles
+									$query = $queries[$query_num];
 									
-									// Check to see if case 1 happened
-									if($query_num != 1)
-									{
-										$query = $queries[$query_num];
-									}
 									//Execute SQL query and try to receive result
 									if ($result = $dbcon->query($query)) 
 									{
