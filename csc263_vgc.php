@@ -165,8 +165,15 @@
 									break;
 								
 								case 1: // Same as case 2, so skip to case 2
+									$query = $queries[$query_num];
 								case 2: 
 									// Display 1 column: Consoles
+									
+									// Check to see if case 1 happened
+									if($query != 1)
+									{
+										$query = $queries[$query_num];
+									}
 									//Execute SQL query and try to receive result
 									if ($result = $dbcon->query($query)) 
 									{
@@ -319,6 +326,7 @@
 										// free result set
 										$result->close();
 									}
+									print $query;
 							}
 						}
 					?>
