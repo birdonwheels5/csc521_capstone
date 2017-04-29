@@ -118,6 +118,8 @@
 							];
 							
 							$query_num = $_POST['query_num'];
+							// Debugging
+							$query = "NULL";
 							
 							// Handle the different cases for the different queries
 							switch($query_num)
@@ -170,7 +172,7 @@
 									// Display 1 column: Consoles
 									
 									// Check to see if case 1 happened
-									if($query != 1)
+									if($query_num != 1)
 									{
 										$query = $queries[$query_num];
 									}
@@ -326,7 +328,7 @@
 										// free result set
 										$result->close();
 									}
-									print $query;
+									print $query[$query_num];
 							}
 						}
 					?>
