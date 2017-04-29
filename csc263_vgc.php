@@ -114,7 +114,7 @@
 									// Display 1 column: Number of net worth
 									break;
 								
-								case default:
+								default:
 									// All attributes in the Game table (minus the id number)
 									break;
 							}
