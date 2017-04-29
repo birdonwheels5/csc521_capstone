@@ -50,6 +50,57 @@
 								"",
 								""
 							];
+							
+							//Execute SQL query and try to receive result
+							if ($result = $dbcon->query($query)) 
+							{
+							    	// Create table and table header
+								echo '<table border="2" cellspacing="2" cellpadding="2">';
+							   	echo '<tr>';
+							    	echo '<th><font face="Arial,Helvetica,sans-serif">Last Name</font></th>';
+							    	echo '<th><font face="Arial,Helvetica,sans-serif">First Name</font></th>';
+							    	echo '<th><font face="Arial,Helvetica,sans-serif">Address</font></th>';
+							    	echo '<th><font face="Arial,Helvetica,sans-serif">Salary</font></th>';
+							    	echo '<th><font face="Arial,Helvetica,sans-serif">Department</font></th>';
+							    	echo '</tr>';
+								
+								// Fetch object array
+								while ($obj = $result->fetch_object()) 
+								{
+									//Get employee information
+									$firstName = $obj->fname;
+									$lastName = $obj->lname;
+									$address = $obj->address;
+									$salary = $obj->salary;
+									$dname = $obj->dname;
+									
+									//Display employee information in a table
+									
+									echo '<tr>';
+									echo '<td><font face="Arial, Helvetica, sans-serif">';
+									echo $lastName;
+									echo '</font></td>';
+									echo '<td><font face="Arial, Helvetica, sans-serif">';
+									echo $firstName;
+									echo '</font></td>';
+									echo '<td><font face="Arial, Helvetica, sans-serif">';
+									echo $address;
+									echo '</font></td>';
+									echo '<td><font face="Arial, Helvetica, sans-serif">';
+									echo $salary;
+									echo '</font></td>';
+									echo '<td><font face="Arial, Helvetica, sans-serif">';
+									echo $dname;
+									echo '</font></td>';
+									echo '</tr>';
+
+									}
+								
+							    	echo '</table>';
+							    	
+								// free result set
+							    	$result->close();
+								}
 						}
 					?>
 
@@ -80,15 +131,25 @@
 						$query_names = array();
 						$query_names = 
 						[
+							// 1 // 2 columns : Companies, consoles
 							"Companies who make consoles",
+							// 2 // 1 column: Consoles
 							"Consoles ordered by release date descending",
+							// 3 // 1 column: Consoles
 							"White consoles released by Sony in 2000", // Can change the year so we get a result
+							// 4 // All attributes for Game table
 							"Xbox exclusive games released in 2009", // Again the date is flexible
+							// 5 // 1 column: Number of games
 							"Number of games released for Xbox One and PS4 in 2016",
+							// 6 // 1 column: Number of net worth
 							"Net worth of Nintendo",
+							// 7 // All attributes for Game table
 							"WiiU exclusive games",
+							// 8 // All attributes for Game table
 							"PS4 exclusive games rated 8/10, released between 2015 and 2017", // Rating and year are flexible
+							// 9 // All attributes for Game table
 							"All games released by Nintendo in 2016",
+							// 10 // All attributes for Game table
 							"Games developed by 343 Industries and Bungie between 2000 and 2016 that are first person shooters"
 							// Should add the admin queries, like add game, delete game, update game
 						];
