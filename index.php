@@ -152,9 +152,9 @@
 		// Give a little wiggle room
 		max_price = max_price * 1.05;
 		min_price = min_price * 0.95;
-		      var width = document.getElementById('chart_div').offsetWidth;
+		      var height = 250;
 		var options = 
-		{'width':width,
+		{'height':height,
 		  hAxis: 
 		  {
 		      //title: 'Time (Hours' + time_unit + ')',
