@@ -271,7 +271,7 @@
 						$('#BtcPrice').load('load_exchanges.php');
 					</script>
 				</div>
-						
+				<div class="row"></div>		
 			</div>
 		</div>
 			
@@ -320,13 +320,10 @@
 					</script>
 				</div>
 			</div>
+			<div class="row"></div>
 		</div>
 		
 		<div class="empty col-2"> <!-- Right Margin -->
 		</div>
-		
-		<div class="row">
-		</div>
-		
-	
+
 </body>
