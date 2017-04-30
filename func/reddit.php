@@ -23,7 +23,7 @@ class RedditPost
         
         $json = json_decode(stream_get_contents($url));
         
-        var_dump($json->["data"]->["children"][1]);
+        var_dump($json->{"data"}->{"children"}[1]);
         
         print "\n\n";
         var_dump($json);
