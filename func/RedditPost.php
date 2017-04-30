@@ -16,9 +16,7 @@ class RedditPost
         if($is_fetching_new_posts)
         {
             $this->get_json_post();
-        }
-        
-        
+        }        
     }
     
     // Constructor for creating new posts, populated with predefined data
