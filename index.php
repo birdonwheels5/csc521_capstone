@@ -207,16 +207,19 @@
 			
 			time_unit = chart_settings.unit.value;
 			
+			    timespan = chart_settings.timespan.value;
+			    
 			if(time_unit == "Days")
 			{
-			    timespan = chart_settings.timespan.value;
+				if(timespan > 365){
+					timespan = 365;
+				}
 			    timespan = timespan * 24;
 			}
-			else // Hours
-			{
-			    timespan = chart_settings.timespan.value;
-			}
-			
+			    else if(timespan > (365*24) ) {
+				    timespan = (365*24);
+			    }
+			    			
 			timespan++; // Because timespan = timespan + 1; would instead multiply timespan by 10, for some unknown reason
 			
 			drawBitcoinPriceChart();
