@@ -89,7 +89,7 @@ class RedditPost
         $this->post_text = $post_text;
     }
     
-    function set_post_text($subreddit)
+    function set_subreddit($subreddit)
     {
         $this->subreddit = $subreddit;
     }
