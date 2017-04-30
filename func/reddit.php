@@ -27,8 +27,8 @@ class RedditPost
         
         $json = json_decode(stream_get_contents($url));
         
-        $this->tstamp = var_dump($json->{'data'}->{'children'}[$this->post_number]->{'data'}->{'created_utc'});
-        $this->post_url = "https://www.reddit.com" . $json->{"data"}->{"children"}[$this->post_number]->{'permalink'};
+        $this->tstamp = $json->{'data'}->{'children'}[$this->post_number]->{'data'}->{'created_utc'};
+        $this->post_url = "https://www.reddit.com" . $json->{"data"}->{"children"}[$this->post_number]->{'data'}->{'permalink'};
         $this->post_text = $json->{'data'}->{'children'}[$this->post_number]->{'data'}->{'title'};
       
         
@@ -38,6 +38,8 @@ class RedditPost
 }
 
 $post = new RedditPost("bitcoin", 5, true);
+
+var_dump($post);
 
 
 
