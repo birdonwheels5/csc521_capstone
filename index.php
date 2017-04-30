@@ -185,7 +185,7 @@
 			{
 				min: Math.floor(min_price),
 				max: Math.ceil(max_price)
-			}
+			},
 			  gridlines: {color: 'transparent'}
 		   },
 			    backgroundColor: "#FFFAFA",
