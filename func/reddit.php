@@ -9,7 +9,7 @@ class RedditPost
     private $post_text = "";		
     private $post_number;
     
-    function RedditPost($post_number)
+    //function RedditPost($post_number)
     {
         
     }
