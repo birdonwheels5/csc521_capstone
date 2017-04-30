@@ -263,7 +263,7 @@
 				<a href="chart.php"><div class="chart" id="chart_div"></div></a>
 				
 				<form action="javascript:void(0);" onsubmit="update_chart()" name="chart_settings" method="post" onchange="update_chart()" onclick="update_chart()" onkeyup="update_chart()" class="row chart">
-					<input class="chart" type="number" name="timespan" min="1" max="512" value="7">
+					<input class="chart" type="number" name="timespan" min="1" max="365" value="7">
 					<input class="chart" type="radio" name="unit" value="Hours"> Hours
 					<input class="chart" type="radio" name="unit" value="Days" checked> Days
 					
