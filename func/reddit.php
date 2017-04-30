@@ -2,10 +2,10 @@
 
 class RedditPost		
 {		
-    private $tstamp = "";	
-    private $post_url = "";		
-    private $OP = "";		
-    private $post_text = "";		
+    private $tstamp = "";
+    private $post_url = "";
+    private $OP = "";
+    private $post_text = "";
     private $post_number = 0;
     
     function __construct($subreddit, $post_number, $is_fetching_new_posts)
@@ -28,11 +28,9 @@ class RedditPost
         $json = json_decode(stream_get_contents($url));
         
         $this->tstamp = $json->{'data'}->{'children'}[$this->post_number]->{'data'}->{'created_utc'};
-        $this->post_url = "https://www.reddit.com" . $json->{"data"}->{"children"}[$this->post_number]->{'data'}->{'permalink'};
+        $this->post_url = "https://en.reddit.com" . $json->{"data"}->{"children"}[$this->post_number]->{'data'}->{'permalink'};
+        $this->post_text = $json->{'data'}->{'children'}[$this->post_number]->{'data'}->{'author'};
         $this->post_text = $json->{'data'}->{'children'}[$this->post_number]->{'data'}->{'title'};
-      
-        
-        print "\n\n";
     }
 
 }
