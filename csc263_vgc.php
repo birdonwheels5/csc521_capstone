@@ -22,6 +22,16 @@
 
 					<?PHP		
 						$queries = array();
+                        
+                        // This one is special because I'm not gonna write out g.year LIKE %20xx% a million times.
+                        // This would be avoided if our database only stored years for release dates instead of mm/dd/yyyy format.
+                        $query10 = "SELECT Title, Release_Date, Publisher, Genre, Rating FROM Developer as d, Develops as devs, Game as g WHERE (((devs.Developer_ID=1) OR (devs.Developer_ID=4)) AND ";
+                        for($i = 2000; $i <= 2016; $i++)
+                        {
+                            $query10 .= " (g.year LIKE '%$i%')";
+                        }
+                        $query10 .= ");"
+                        
 						$queries = 
 						[
 							"SELECT comp.Name as CompanyName, cons.Name as ConsoleName FROM Company as comp, Console as cons, Makes as m WHERE ((cons.Console_ID=m.Console_ID) AND (comp.Company_ID=m.Company_ID))",
@@ -32,8 +42,8 @@
 							"",
 							"",
 							"",
-							"",
-							""
+							"SELECT Title, Release_Date, Publisher, Genre, Rating FROM Developer as d, Develops as devs, Game as g WHERE ((devs.Developer_ID=13) AND (g.year LIKE '%2016%'))",
+							$query10;
 						];
 						
 						// Needs to be the same length as the $queries array
