@@ -19,7 +19,6 @@ class RedditPost
         
     }
     
-    
     function get_json_post($subreddit)
     {
         $url_text = "https://www.reddit.com/r/$subreddit/new/.json?count=20";
@@ -52,7 +51,19 @@ class RedditPost
     {
         return $this->post_text;
     }
+    
+    function add_post($database_connection)
+    {
+        $insert = "INSERT INTO Forum_Posts (post_url, post_text, tstamp, OP) VALUES ('$this->post_url', '$this->post_text', '$this->tstamp', '$this->OP');";
+    
+        $result = mysqli_query($database_connection, $insert);
+        return $result;
+    }
+        
+        
 }
+
+
 
 $post = new RedditPost("bitcoin", 5, true);
 
