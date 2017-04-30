@@ -143,9 +143,6 @@
 		      var height = screen.availHeight*0.75;
 		var options = 
 		{
-			animation: {"startup": true,
-				    duration: 1000,
-				    easing: 'out',},
 			crosshair: { trigger: 'both' },
 			'height':height,
 		  hAxis: 
