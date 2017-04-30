@@ -3,7 +3,8 @@
     include "/home/student/S0280512/public_html/func/btc.php";
     include "/home/student/S0280512/public_html/func/twitter.php";
     include "/home/student/S0280512/public_html/func/scraper.php";
-    
+    include "/home/student/S0280512/public_html/func/RedditPost.php";
+
     // Load database settings from config file
     $settings = array();
     $settings = load_config();
@@ -117,6 +118,20 @@
         // Compare function doesn't work
         add_post($unique_threads['url'][$f], $unique_threads['title'][$f], $unique_threads['timestamp'][$f], $unique_threads['names'][$f], 'Bitcointalk', $con);
     }
+    
+    //Add Reddit posts to the database
+    $reddit_posts = array();
+    for ($r = 0; $r < 10; $r++)
+    {
+        $reddit_posts[$r] = new RedditPost("Bitcoin", $r, true)
+    }
+
+    $unique_reddit_posts = compare_posts($reddit_posts, $con);
+    
+    $number_of_unique_posts = count($unique_reddit_posts);
+
+    
+    
 
     mysqli_close($con);
 
