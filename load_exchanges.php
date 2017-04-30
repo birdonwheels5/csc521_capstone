@@ -41,7 +41,7 @@
     print '<tr>
                 <td>Exchange</td>
                 <td>Price</td>
-            </tr>
+            </tr>';
     
     for($i = 0;$i < $num_exchanges; $i++)
     {
