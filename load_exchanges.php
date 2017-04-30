@@ -37,6 +37,12 @@
     $num_exchanges = count($exchanges);
     
     print "<table>\n";
+    
+    print '<tr>
+                <td>Exchange</td>
+                <td>Price</td>
+            </tr>
+    
     for($i = 0;$i < $num_exchanges; $i++)
     {
         $exchange_price = get_btc_price_from_database(strtolower($exchanges[$i]), $con);
