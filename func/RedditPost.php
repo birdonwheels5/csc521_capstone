@@ -96,7 +96,7 @@ class RedditPost
     
     function add_post($database_connection)
     {
-        $insert = "INSERT INTO Forum_Posts (post_url, post_text, tstamp, OP, subreddit) VALUES ('$this->post_url', '$this->post_text', '$this->tstamp', '$this->OP', '$this->subreddit');";
+        $insert = "INSERT INTO Reddit_Posts (post_url, post_text, tstamp, OP, subreddit) VALUES ('$this->post_url', '$this->post_text', '$this->tstamp', '$this->OP', '$this->subreddit');";
     
         $result = mysqli_query($database_connection, $insert);
         return $result;
