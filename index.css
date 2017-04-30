@@ -27,7 +27,7 @@ input.chart{
 }
 
 input.chart[type="number"]{
-	width: 100px;
+	width: 75px;
 }
 
 [class*="col-"] {
