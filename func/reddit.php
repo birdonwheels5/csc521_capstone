@@ -29,7 +29,7 @@ class RedditPost
         
         $this->tstamp = $json->{'data'}->{'children'}[$this->post_number]->{'data'}->{'created_utc'};
         $this->post_url = "https://en.reddit.com" . $json->{"data"}->{"children"}[$this->post_number]->{'data'}->{'permalink'};
-        $this->post_text = $json->{'data'}->{'children'}[$this->post_number]->{'data'}->{'author'};
+        $this->OP = $json->{'data'}->{'children'}[$this->post_number]->{'data'}->{'author'};
         $this->post_text = $json->{'data'}->{'children'}[$this->post_number]->{'data'}->{'title'};
     }
 
