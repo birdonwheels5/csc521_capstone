@@ -197,7 +197,4 @@ function get_database_forum_posts($database_connection, $post_limit, $forum_name
     
     return $database_posts;
 }
-
-
 ?>
-
