@@ -22,8 +22,12 @@
 }
 
 input.chart{
-	width: 50px;
+	width: 25px;
 	text-align: left;
+}
+
+input.chart[type="number"]{
+	width: 100px;
 }
 
 [class*="col-"] {
