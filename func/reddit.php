@@ -26,7 +26,6 @@ class RedditPost
         var_dump($json->{"data"}->{"children"}[1]);
         
         print "\n\n";
-        var_dump($json);
     }
 
 }
