@@ -22,6 +22,10 @@ class RedditPost
         $url = fopen($url_text, "r");
         
         $json = json_decode(stream_get_contents($url));
+        
+        var_dump($json->["data"]->["children][1]);
+        
+        print "\n\n";
         var_dump($json);
     }
 
