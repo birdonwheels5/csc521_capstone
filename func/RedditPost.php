@@ -24,12 +24,12 @@ class RedditPost
     // Constructor for creating new posts, populated with predefined data
     public function create_post($tstamp, $post_url, $OP, $post_text, $subreddit)
     {
-        $post = new RedditPost($subreddit, 0, false); // Says that we are not fetching new posts, and the post
-        $this->tstamp = $tstamp;
-        $this->post_url = $post_url;
-        $this->OP = $OP;
-        $this->post_text = $post_text;
-        $this->subreddit = $subreddit;
+        $post = new RedditPost($subreddit, 0, false); // Says that we are not fetching new posts, and the post number does not matter
+        $post->set_tstamp($tstamp);
+        $post->set_post_url($post_url);
+        $post->set_OP($OP);
+        $post->set_post_text($post_text);
+        // Subreddit is already set from default constructor
         return $post;
     }
     
@@ -69,6 +69,26 @@ class RedditPost
     function get_subreddit()
     {
         return $this->subreddit;
+    }
+    
+    function set_tstamp($tstamp)
+    {
+        $this->tstamp = $tstamp;
+    }
+    
+    function set_post_url($post_url)
+    {
+        $this->post_url = $post_url;
+    }
+    
+    function set_OP($OP)
+    {
+        $this->OP = $OP;
+    }
+    
+    function set_post_text($post_text)
+    {
+        $this->post_text = $post_text;
     }
     
     function add_post($database_connection)
