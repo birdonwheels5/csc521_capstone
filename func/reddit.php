@@ -10,9 +10,9 @@ class RedditPost
     private $post_number;
     
     //function RedditPost($post_number)
-    {
+    //{
         
-    }
+    //}
                             
     
     
