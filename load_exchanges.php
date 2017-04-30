@@ -39,9 +39,9 @@
     print "<table>\n";
     
     print '<tr>
-                <td>Exchange</td>
-                <td>Price</td>
-            </tr>';
+                <td><h3>Exchange</h3></td>
+                <td><h3>Price</h3></td>
+            </tr><hr/>';
     
     for($i = 0;$i < $num_exchanges; $i++)
     {
