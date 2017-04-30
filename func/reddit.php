@@ -11,7 +11,7 @@ class RedditPost
     function __construct($subreddit, $post_number)
     {
         $this->post_number = $post_number;
-        get_json_post($subreddit);
+        $this->get_json_post($subreddit);
         
         
     }
