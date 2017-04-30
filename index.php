@@ -152,7 +152,7 @@
 		// Give a little wiggle room
 		max_price = max_price * 1.05;
 		min_price = min_price * 0.95;
-		      var height = 250;
+		      var height = 400;
 		var options = 
 		{'height':height,
 		  hAxis: 
