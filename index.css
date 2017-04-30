@@ -26,10 +26,6 @@ input.chart{
 	text-align: left;
 }
 
-a.chart{
-	width: 100%;
-}
-
 [class*="col-"] {
 	width: 100%;
     float: left;
