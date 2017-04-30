@@ -18,7 +18,7 @@ class RedditPost
     
     function get_json_post($subreddit)
     {
-        $url_text = "https://www.reddit.com/r/$subreddit/new/.json?count=20"
+        $url_text = "https://www.reddit.com/r/$subreddit/new/.json?count=20";
         $url = fopen($url_text, "r");
         
         $json = json_decode(stream_get_contents($url));
@@ -28,7 +28,7 @@ class RedditPost
 }
 
 $post = new RedditPost();
-post.get_json_post("bitcoin");
+$post.get_json_post("bitcoin");
 
 
 
