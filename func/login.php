@@ -535,7 +535,7 @@ function send_password_validation_email($user_id_num, $uuid, $email, $new_hashed
     }
     else
     {
-        $email_text = 'Hello, thank you for using ' . $site_name . '. Your password has been reset. To verify the new password, visit the following link: ' . $verification_url . '. If you did not request the password reset, do not click this link.;
+        $email_text = 'Hello, thank you for using ' . $site_name . '. Your password has been reset. To verify the new password, visit the following link: ' . $verification_url . '. If you did not request the password reset, do not click this link.';
     }
     
     mail($email, 'Password Verification for ' . $site_name, $email_text);
