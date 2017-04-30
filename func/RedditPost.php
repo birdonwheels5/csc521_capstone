@@ -176,7 +176,7 @@ function compare_posts($posts, $database_connection)
         $result = mysqli_query($database_connection, "SELECT post_url FROM Reddit_Posts WHERE (post_url='$post_url')");
         if(mysqli_fetch_array($result) == null)
         {
-            $unique_posts[$i] = RedditPost::create_post($posts[$i]->get_tstamp, $posts[$i]->get_post_url, $posts[$i]->get_OP, $posts[$i]->get_post_text, $posts[$i]->get_subreddit);
+            $unique_posts[$i] = RedditPost::create_post($posts[$i]->get_tstamp(), $posts[$i]->get_post_url(), $posts[$i]->get_OP(), $posts[$i]->get_post_text(), $posts[$i]->get_subreddit());
         }
     }
     
