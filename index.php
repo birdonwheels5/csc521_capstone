@@ -154,7 +154,9 @@
 		min_price = min_price * 0.95;
 		      var height = 350;
 		var options = 
-		{'height':height,
+		{
+			crosshair: { trigger: 'both' },
+			'height':height,
 		  hAxis: 
 		  {
 		      //title: 'Time (Hours' + time_unit + ')',
