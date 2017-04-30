@@ -25,7 +25,8 @@ class RedditPost
         
         $json = json_decode(stream_get_contents($url));
         
-        var_dump($json->{"data"}->{"children"}[$this->post_number]);
+        $this->tstamp = $json->{"data"}->{"children"}[$this->post_number]->{'created_utc'};
+        $this->$post_url = $json->{"data"}->{"children"}[$this->post_number]->{'created_utc'};
         
         print "\n\n";
     }
