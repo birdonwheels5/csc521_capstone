@@ -17,7 +17,7 @@
 		// Chart variables for customizability.
 		// These are the default values.
 		var chart_div = "chart_div";
-		var timespan = 25;
+		var timespan = (7*24)+1;
 		var time_unit = "Hours";
 		
 		// Colors
