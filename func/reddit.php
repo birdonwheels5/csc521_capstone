@@ -8,14 +8,16 @@ class RedditPost
     private $post_text = "";		
     private $post_number = 0;
     
-    function __construct($subreddit, $post_number)
+    function __construct($subreddit, $post_number, $is_fetching_new_posts)
     {
         $this->post_number = $post_number;
-        $this->get_json_post($subreddit);
+        if($is_fetching_new_posts)
+        {
+            $this->get_json_post($subreddit);
+        }
         
         
     }
-                            
     
     
     function get_json_post($subreddit)
@@ -34,7 +36,7 @@ class RedditPost
 
 }
 
-$post = new RedditPost("bitcoin", 5);
+$post = new RedditPost("bitcoin", 5, true);
 
 
 
