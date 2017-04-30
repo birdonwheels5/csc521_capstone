@@ -231,7 +231,7 @@
 	    	<link rel='stylesheet' type="text/css" href="index.css">
 
 </head>
-<body>
+<body onresize="update_chart()">
 	<div class="row"></div>
 	<div class="col-12">
 		<div class="object shadow">
