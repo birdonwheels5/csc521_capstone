@@ -28,7 +28,7 @@ class RedditPost
 }
 
 $post = new RedditPost();
-$post.get_json_post("bitcoin");
+$post->get_json_post("bitcoin");
 
 
 
