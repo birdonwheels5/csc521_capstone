@@ -90,9 +90,16 @@
 		for(i = 0; i < timespan; i++) 
 		{
 		    data.addRow(
-		  [i, parseFloat(json_data.btcchina[0][i]), parseFloat(json_data.btce[0][i]), parseFloat(json_data.bitfinex[0][i]), parseFloat(json_data.bitstamp[0][i]), 
-		      parseFloat(json_data.coinbase[0][i]), parseFloat(json_data.huobi[0][i]), parseFloat(json_data.kraken[0][i]), parseFloat(json_data.okcoin[0][i])]
-		    );
+		  [i, 
+		   parseFloat(json_data.btcchina[0][i]), 
+		   parseFloat(json_data.btce[0][i]), 
+		   parseFloat(json_data.bitfinex[0][i]), 
+		   parseFloat(json_data.bitstamp[0][i]), 
+		   parseFloat(json_data.coinbase[0][i]), 
+		   parseFloat(json_data.huobi[0][i]), 
+		   parseFloat(json_data.kraken[0][i]), 
+		   parseFloat(json_data.okcoin[0][i])
+		  ]);
 		}
 		var min_array = [
 		    json_data.btcchina[2].min,
@@ -242,7 +249,7 @@
 			<div id="chart_div" class="chart"></div>
 
 			<form action="javascript:void(0);" onsubmit="update_chart()" name="chart_settings" method="post" onchange="update_chart()" onclick="update_chart()" onkeyup="update_chart()" class="row chart">
-				<input class="chart" type="number" name="timespan" min="1" max="512" value="7">
+				<input class="chart" type="number" name="timespan" min="1" max="365" value="7">
 			    <input class="chart" type="radio" name="unit" value="Hours"> Hours
 			    <input class="chart" type="radio" name="unit" value="Days" checked> Days
 			</form>
