@@ -25,8 +25,9 @@ class RedditPost
         
         $json = json_decode(stream_get_contents($url));
         
-        $this->tstamp = $json->{"data"}->{"children"}[$this->post_number]->{'created_utc'};
-        $this->$post_url = $json->{"data"}->{"children"}[$this->post_number]->{'created_utc'};
+        $this->$tstamp = $json->{"data"}->{"children"}[$this->post_number]->{'created_utc'};
+        $this->$post_url = $json->{"data"}->{"children"}[$this->post_number]->{'permalink'};
+        $this->$post
         
         print "\n\n";
     }
