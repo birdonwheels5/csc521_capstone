@@ -142,7 +142,10 @@
 		min_price = min_price * 0.95;
 		      var height = screen.availHeight*0.75;
 		var options = 
-		{'height':height,
+		{
+			animation: {"startup": true},
+			crosshair: { trigger: 'both' },
+			'height':height,
 		  hAxis: 
 		  {
 		      //title: 'Time (Hours' + time_unit + ')',
