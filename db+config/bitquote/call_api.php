@@ -138,11 +138,11 @@
     // Escape Reddit posts and add to the database
     for ($r = 0; $r < $number_of_unique_posts; $r++)
     {
-        $unique_reddit_posts[$r]->get_post_url() = mysqli_real_escape_string($con, $unique_reddit_posts[$r]->get_post_url());
-        $unique_reddit_posts[$r]->get_post_text() = mysqli_real_escape_string($con, $unique_reddit_posts[$r]->get_post_text());
-        $unique_reddit_posts[$r]->get_tstamp() = mysqli_real_escape_string($con, $unique_reddit_posts[$r]->get_tstamp());
-        $unique_reddit_posts[$r]->get_OP() = mysqli_real_escape_string($con, $unique_reddit_posts[$r]->get_OP());
-        $unique_reddit_posts[$r]->get_subreddit() = mysqli_real_escape_string($con, $unique_reddit_posts[$r]->get_subreddit());
+        $unique_reddit_posts[$r]->set_post_url(mysqli_real_escape_string($con, $unique_reddit_posts[$r]->get_post_url()));
+        $unique_reddit_posts[$r]->set_post_text(mysqli_real_escape_string($con, $unique_reddit_posts[$r]->get_post_text()));
+        $unique_reddit_posts[$r]->set_tstamp(mysqli_real_escape_string($con, $unique_reddit_posts[$r]->get_tstamp()));
+        $unique_reddit_posts[$r]->set_OP(mysqli_real_escape_string($con, $unique_reddit_posts[$r]->get_OP()));
+        $unique_reddit_posts[$r]->set_subreddit(mysqli_real_escape_string($con, $unique_reddit_posts[$r]->get_subreddit()));
         
         $unique_reddit_posts[$r]->add_post($con);
     }
