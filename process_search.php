@@ -81,6 +81,7 @@
             ?>
 			
 			<article>
+
 		<div class="row">
 		</div>
                 <div class="row">
@@ -103,7 +104,6 @@
                     {
                         // Print nothing because there are no margins on the page
                     }
-                            
                             
                             
                             if($twitter_flag == 0 && $reddit_flag == 0 && $forum_flag == 0)
