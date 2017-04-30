@@ -91,6 +91,11 @@ class RedditPost
         $this->post_text = $post_text;
     }
     
+    function set_post_text($subreddit)
+    {
+        $this->subreddit = $subreddit;
+    }
+    
     function add_post($database_connection)
     {
         $insert = "INSERT INTO Forum_Posts (post_url, post_text, tstamp, OP, subreddit) VALUES ('$this->post_url', '$this->post_text', '$this->tstamp', '$this->OP', '$this->subreddit');";
