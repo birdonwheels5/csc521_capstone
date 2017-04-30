@@ -32,7 +32,26 @@ class RedditPost
         $this->OP = $json->{'data'}->{'children'}[$this->post_number]->{'data'}->{'author'};
         $this->post_text = $json->{'data'}->{'children'}[$this->post_number]->{'data'}->{'title'};
     }
-
+    
+    function get_tstamp()
+    {
+        return $this->tstamp;
+    }
+    
+    function get_post_url()
+    {
+        return $this->post_url;
+    }
+    
+    function get_OP()
+    {
+        return $this->OP;
+    }
+    
+    function get_post_text()
+    {
+        return $this->post_text;
+    }
 }
 
 $post = new RedditPost("bitcoin", 5, true);
