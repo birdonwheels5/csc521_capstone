@@ -164,6 +164,7 @@
 		      direction: '-1',
 		      gridlines: 
 		      {
+			      color: 'transparent',
 			  count: (timespan)
 		      },
 		      viewWindowMode: 'explicit',
@@ -185,6 +186,7 @@
 				min: Math.floor(min_price),
 				max: Math.ceil(max_price)
 			}
+			  gridlines: {color: 'transparent'}
 		   },
 			    backgroundColor: "#FFFAFA",
 			    legend: 
