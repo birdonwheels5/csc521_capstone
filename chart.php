@@ -152,6 +152,7 @@
 		      direction: '-1',
 		      gridlines: 
 		      {
+			      color: 'transparent',
 			  count: (timespan)
 		      },
 		      viewWindowMode: 'explicit',
