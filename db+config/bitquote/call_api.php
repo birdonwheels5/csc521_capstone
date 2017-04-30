@@ -108,6 +108,7 @@
     var_dump($unique_threads);
     print "\n";
 
+    // Escape threads and add threads to database
     for ($f = 0; $f < $number_of_unique_threads; $f++)
     {
         $unique_threads['url'][$f] = mysqli_real_escape_string($con, $unique_threads['url'][$f]);
@@ -115,22 +116,36 @@
         $unique_threads['timestamp'][$f] = mysqli_real_escape_string($con, $unique_threads['timestamp'][$f]);
         $unique_threads['names'][$f] = mysqli_real_escape_string($con, $unique_threads['names'][$f]);
         
-        // Compare function doesn't work
         add_post($unique_threads['url'][$f], $unique_threads['title'][$f], $unique_threads['timestamp'][$f], $unique_threads['names'][$f], 'Bitcointalk', $con);
     }
     
-    //Add Reddit posts to the database
+    // Create Reddit post objects
     $reddit_posts = array();
     for ($r = 0; $r < 10; $r++)
     {
-        $reddit_posts[$r] = new RedditPost("Bitcoin", $r, true)
+        $reddit_posts[$r] = new RedditPost("Bitcoin", $r, true);
     }
 
     $unique_reddit_posts = compare_posts($reddit_posts, $con);
     
     $number_of_unique_posts = count($unique_reddit_posts);
 
+    // Debug
+    print "\n Unique Reddit Posts \n";
+    var_dump($unique_reddit_posts);
+    print "\n";
     
+    // Escape Reddit posts and add to the database
+    for ($r = 0; $r < $number_of_unique_posts; $r++)
+    {
+        $unique_reddit_posts[$r]->post_url = mysqli_real_escape_string($con, $unique_reddit_posts[$r]->post_url);
+        $unique_reddit_posts[$r]->post_text = mysqli_real_escape_string($con, $unique_reddit_posts[$r]->post_text);
+        $unique_reddit_posts[$r]->tstamp = mysqli_real_escape_string($con, $unique_reddit_posts[$r]->tstamp);
+        $unique_reddit_posts[$r]->OP = mysqli_real_escape_string($con, $unique_reddit_posts[$r]->OP);
+        $unique_reddit_posts[$r]->subreddit = mysqli_real_escape_string($con, $unique_reddit_posts[$r]->subreddit);
+        
+        $unique_reddit_posts[$r]->add_post($con);
+    }
     
 
     mysqli_close($con);
