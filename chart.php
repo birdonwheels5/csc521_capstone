@@ -213,6 +213,8 @@
 			    else if(timespan > (365*24) ) {
 				    timespan = (365*24);
 			    }
+			    
+			    chart_settings.timespan.value = timespan;
 			
 			timespan++; // Because timespan = timespan + 1; would instead multiply timespan by 10, for some unknown reason
 			
