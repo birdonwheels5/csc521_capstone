@@ -1,22 +1,14 @@
 <?php
 
-class Post
-{
-  private $tstamp = "";
-  private $rp_id = "";
-  private $post_url = "";
-  private $OP = "";
-  private $post_text = "";
-  
-}
-
-
 function get_reddit_posts($subreddit)
 {
   
 }
 
-
+        $url = fopen("https://cex.io/api/ticker/BTC/USD", "r");
+        
+        $json = json_decode(stream_get_contents($url));
+        var_dump($json);
 
 
 ?>
