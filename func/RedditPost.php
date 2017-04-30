@@ -21,6 +21,18 @@ class RedditPost
         
     }
     
+    // Constructor for creating new posts, populated with predefined data
+    public function create_post($tstamp, $post_url, $OP, $post_text, $subreddit)
+    {
+        $post = new RedditPost($subreddit, 0, false); // Says that we are not fetching new posts, and the post
+        $this->tstamp = $tstamp;
+        $this->post_url = $post_url;
+        $this->OP = $OP;
+        $this->post_text = $post_text;
+        $this->subreddit = $subreddit;
+        return $post;
+    }
+    
     function get_json_post()
     {
         $url_text = "https://www.reddit.com/r/$this->subreddit/new/.json?count=20";
@@ -125,6 +137,27 @@ function get_database_reddit_posts($database_connection, $post_limit, $subreddit
     return $database_posts;
 }
 
-
+// $posts is an array of RedditPost objects
+function compare_posts($posts, $database_connection)
+{
+    $number_of_posts = count($posts);
+    
+    $unique_posts = array();
+    
+    for($i = 0; $i < $number_of_posts; $i++)
+    {
+        // Escaped because the posts in the database are escaped, and we will be comparing to those
+        $post_url = mysqli_real_escape_string($database_connection, $posts[$i]->get_post_url());
+        $username = $posts[$i]->get_OP();
+        $timestamp = $posts[$i]->get_tstamp();
+        $result = mysqli_query($database_connection, "SELECT post_url FROM Reddit_Posts WHERE (post_url='$post_url')");
+        if(mysqli_fetch_array($result) == null)
+        {
+            $unique_posts[$i] = RedditPost::create_post($posts[$i]->get_tstamp, $posts[$i]->get_post_url, $posts[$i]->get_OP, $posts[$i]->get_post_text, $posts[$i]->get_subreddit);
+        }
+    }
+    
+    return $unique_posts;
+}  
 
 ?>
