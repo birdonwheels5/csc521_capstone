@@ -200,7 +200,7 @@
                                         print "Username: <b>" . $search_results[1][0][$i] . "</b> <br/><br/>\n
                                                Post: " . $search_results[1][1][$i] . " <br/><br/>\n
                                                Posted $time_since_post ago. <br/><br/>\n
-                                               URL to original post: <a href=\"$post_url\">$post_url</a> <br/><br/>\n";
+                                               URL to original post: <a href=\"$post_url\" target=\"_blank\">$post_url</a> <br/><br/>\n";
                                     }
                                     
                                     print '</p>
@@ -242,7 +242,7 @@
                                         print "Username: <b>" . $search_results[2][0][$i] . "</b> <br/><br/>\n
                                                Post: " . $search_results[2][1][$i] . " <br/><br/>\n
                                                Posted $time_since_post ago. <br/><br/>\n
-                                               URL to original post: <a href=\"$post_url\">$post_url</a> <br/><br/>\n";
+                                               URL to original post: <a href=\"$post_url\" target=\"_blank\">$post_url</a> <br/><br/>\n";
                                     }
                                     
                                     print '</p>
@@ -443,7 +443,7 @@
                                             $posts[1] = $post_texts;
                                             $posts[2] = $tstamps;
                                     }
-                                    else
+                                    else if($table_name == "Forum_Posts")
                                     {
                                         $usernames = array();
                                         $post_texts = array();
@@ -463,6 +463,31 @@
                                             $posts = array();
                                             
                                             $posts[0] = $usernames;
+                                            $posts[1] = $post_texts;
+                                            $posts[2] = $tstamps;
+                                            $posts[3] = $post_urls;
+                                            
+                                    }
+				    else if($table_name == "Reddit_Posts")
+                                    {
+                                        $ops = array();
+                                        $post_texts = array();
+                                        $tstamps = array();
+                                        $post_urls = array();
+                                        
+                                        // Get an array of all values for each field
+                                        for($i = 0; $i < $size_of_array_of_rows; $i++)
+                                        {
+                                            $ops[$i] = $array_of_rows[$i]["OP"];
+                                            $post_texts[$i] = $array_of_rows[$i]["post_text"];
+                                            $tstamps[$i] = $array_of_rows[$i]["tstamp"];
+                                            $post_urls[$i] = $array_of_rows[$i]["post_url"];
+                                        }
+                                            
+                                            // Package the data in an array
+                                            $posts = array();
+                                            
+                                            $posts[0] = $ops;
                                             $posts[1] = $post_texts;
                                             $posts[2] = $tstamps;
                                             $posts[3] = $post_urls;
