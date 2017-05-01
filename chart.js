@@ -1,4 +1,4 @@
-function drawBitcoinPriceChart(big) 
+function drawBitcoinPriceChart() 
 {
 	var chart_div = "chart_div";
 	var timespan = (7*24)+1;
