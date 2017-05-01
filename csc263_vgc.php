@@ -8,7 +8,7 @@
 	</head>
 	
 	<body>
-		<div class="row center">
+		<div class="row">
 			<div class="col-3 empty"></div>
 			<div class="col-6">
 				<div class="object shadow">
