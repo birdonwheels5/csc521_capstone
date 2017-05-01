@@ -139,6 +139,7 @@
 		var height = screen.availHeight*0.75;
 		var options = 
 		{
+			axisTitlesPosition: 'in',
 			crosshair: { trigger: 'both' },
 			'height':height,
 		  hAxis: 
