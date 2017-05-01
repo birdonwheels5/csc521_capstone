@@ -1,18 +1,16 @@
-// Chart variables for customizability.
-// These are the default values.
-var chart_div = "chart_div";
-var timespan = (7*24)+1;
-var time_unit = "Hours";
-
-// Colors
-var active_color = "SlateGrey";
-var passive_color = "Snow";
-
-google.charts.load("visualization", "1", {packages:["corechart"]});
-google.charts.setOnLoadCallback(drawBitcoinPriceChart);
-
 function drawBitcoinPriceChart(big) 
-{     
+{
+	var chart_div = "chart_div";
+	var timespan = (7*24)+1;
+	var time_unit = "Hours";
+
+	// Colors
+	var active_color = "SlateGrey";
+	var passive_color = "Snow";
+
+	google.charts.load("visualization", "1", {packages:["corechart"]});
+	google.charts.setOnLoadCallback(drawBitcoinPriceChart);
+	
 	var data = new google.visualization.DataTable();
 
 	data.addColumn('number', 'X');
