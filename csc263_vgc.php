@@ -97,7 +97,7 @@
 							{
 							    $query10 .= " OR (g.Release_Date LIKE '%$i%')";
 							}
-							$query10 .= ")) GROUP BY g.Game_ID;";
+							$query10 .= ")) GROUP BY g.Game_ID ORDER BY g.Release_Date ASC;";
 
 							$queries = 
 							[
