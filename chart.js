@@ -126,7 +126,7 @@
 		var height = screen.availHeight*0.75;
 		var options = 
 		{
-			
+			reverseCategories,
 			chartArea:{width:'85%',height:'85%'},
 			axisTitlesPosition: 'in',
 			crosshair: { trigger: 'both' },
