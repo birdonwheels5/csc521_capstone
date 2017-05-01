@@ -140,7 +140,6 @@
 		var options = 
 		{
 			crosshair: { trigger: 'both' },
-			'width':height,
 			'height':height,
 		  hAxis: 
 		  {
