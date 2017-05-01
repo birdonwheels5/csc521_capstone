@@ -43,7 +43,7 @@
 							"",
 							"",
 							"SELECT Title, Release_Date, Publisher, Genre, Rating FROM Developer as d, Develops as devs, Game as g WHERE ((devs.Developer_ID=13) AND (g.year LIKE '%2016%'))",
-							$query10;
+							$query10
 						];
 						
 						// Needs to be the same length as the $queries array
