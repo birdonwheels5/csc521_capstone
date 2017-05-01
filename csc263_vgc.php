@@ -92,12 +92,12 @@
                         
 							// This one is special because I'm not gonna write out g.year LIKE %20xx% a million times.
 							// This would be avoided if our database only stored years for release dates instead of mm/dd/yyyy format.
-							$query10 = "SELECT Title, Release_Date, Publisher, Genre, Rating FROM Developer as d, Develops as devs, Game as g WHERE ((((devs.Dev_ID=1) OR (devs.Dev_ID=4) AND (devs.Game_ID=g.Game_ID))) AND ((g.Release_Date LIKE '%$2000%')";
+							$query10 = "SELECT Title, Release_Date, Publisher, Genre, Rating FROM Developer as d, Develops as devs, Game as g WHERE ((devs.Dev_ID=1 OR devs.Dev_ID=4 AND devs.Game_ID=g.Game_ID) AND ((g.Release_Date LIKE '%$2000%')";
 							for($i = 2001; $i <= 2016; $i++)
 							{
 							    $query10 .= " OR (g.Release_Date LIKE '%$i%')";
 							}
-							$query10 .= ")) GROUP BY g.Game_ID ORDER BY g.Title ASC;";
+							$query10 .= ") GROUP BY g.Game_ID ORDER BY g.Title ASC;";
 
 							$queries = 
 							[
@@ -119,9 +119,6 @@
 							"Net worth of Nintendo",
 							// 6 // All attributes for Game table
 							"WiiU exclusive games",
-							// 7 // All attributes for Game table
-							"PS4 exclusive games rated 8/10, released between 2015 and 2017", // Rating and year are flexible
-							*/
 							
 							$query_num = $_POST['query_num'];
 							print $query_num;
