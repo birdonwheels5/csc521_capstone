@@ -41,7 +41,7 @@
 
 			<div id="chart_div" class="chart">
 				<script>
-					drawBitcoinPriceChart(true);
+					drawBitcoinPriceChart();
 				</script>
 			</div>
 
