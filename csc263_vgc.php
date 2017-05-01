@@ -116,16 +116,38 @@
 								$query10
 							];
 							
-							/*// 4 // 1 column: Number of games
-							"Number of games released for Xbox One and PS4 in 2016",
-							// 5 // 1 column: Number of net worth
-							"Net worth of Nintendo",
-							// 6 // All attributes for Game table
-							"WiiU exclusive games",
-							*/
+							// Needs to be the same length as the $queries array
+							// Gives the queries names to be displayed
+							$query_names = array();
+							$query_names = 
+							[
+								// 0 // 2 columns : Companies, consoles
+								"Companies who make consoles",
+								// 1 // 1 column: Consoles
+								"Consoles ordered by release date descending",
+								// 2 // 1 column: Consoles
+								"White consoles released by Sony in 2000", // Can change the year so we get a result
+								// 3 // All attributes for Game table
+								"Xbox exclusive games released in 2009", // Again the date is flexible
+								// 4 // 1 column: Number of games
+								"Number of games released for Xbox One and PS4 in 2016",
+								// 5 // 1 column: Number of net worth
+								"Net worth of Nintendo",
+								// 6 // All attributes for Game table
+								"WiiU exclusive games",
+								// 7 // All attributes for Game table
+								"PS4 exclusive games rated 8/10 or higher, released between 2015 and 2017", // Rating and year are flexible
+								// 8 // All attributes for Game table
+								"All games released by Nintendo in 2017",
+								// 9 // All attributes for Game table
+								"Games developed by 343 Industries and Bungie between 2000 and 2016 that are first person shooters"
+								// Should add the admin queries, like add game, delete game, update game
+							];
 							
 							$query_num = $_POST['query_num'];
 							print $query_num;
+							print "<br/>\n";
+							print $query_names[$query_num];
 							// Debugging
 							$query = "NULL";
 							
