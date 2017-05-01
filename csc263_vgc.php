@@ -51,7 +51,7 @@
 						];
 						
 						
-						$num_queries = count($queries);
+						$num_queries = count($query_names);
 
 						for($i = 0; $i < $num_queries; $i++)
 						{
