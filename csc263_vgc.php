@@ -148,6 +148,7 @@
 							print $query_num;
 							print "<br/>\n";
 							print $query_names[$query_num];
+							print "<br/>\n";
 							// Debugging
 							$query = "NULL";
 							
