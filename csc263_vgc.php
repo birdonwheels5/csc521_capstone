@@ -92,12 +92,12 @@
                         
 							// This one is special because I'm not gonna write out g.year LIKE %20xx% a million times.
 							// This would be avoided if our database only stored years for release dates instead of mm/dd/yyyy format.
-							$query10 = "SELECT Title, Release_Date, Publisher, Genre, Rating FROM Developer as d, Develops as devs, Game as g WHERE (((devs.Developer_ID=1) OR (devs.Developer_ID=4)) AND ((g.year LIKE '%$2000%')";
+							$query10 = "SELECT Title, Release_Date, Publisher, Genre, Rating FROM Developer as d, Develops as devs, Game as g WHERE (((devs.Dev_ID=1) OR (devs.Dev_ID=4)) AND ((g.year LIKE '%$2000%')";
 							for($i = 2001; $i <= 2016; $i++)
 							{
-							    $query10 .= " OR (g.year LIKE '%$i%')";
+							    $query10 .= " OR (g.Release_Date LIKE '%$i%')";
 							}
-							$query10 .= ");";
+							$query10 .= "));";
 
 							$queries = 
 							[
