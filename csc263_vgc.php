@@ -113,7 +113,7 @@
 								$query10
 							];
 							
-							// 4 // 1 column: Number of games
+							/*// 4 // 1 column: Number of games
 							"Number of games released for Xbox One and PS4 in 2016",
 							// 5 // 1 column: Number of net worth
 							"Net worth of Nintendo",
@@ -121,6 +121,7 @@
 							"WiiU exclusive games",
 							// 7 // All attributes for Game table
 							"PS4 exclusive games rated 8/10, released between 2015 and 2017", // Rating and year are flexible
+							*/
 							
 							$query_num = $_POST['query_num'];
 							print $query_num;
