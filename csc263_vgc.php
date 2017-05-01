@@ -119,6 +119,7 @@
 							"Net worth of Nintendo",
 							// 6 // All attributes for Game table
 							"WiiU exclusive games",
+							*/
 							
 							$query_num = $_POST['query_num'];
 							print $query_num;
