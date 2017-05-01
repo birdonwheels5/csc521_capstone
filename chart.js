@@ -12,7 +12,7 @@
 	google.charts.load("visualization", "1", {packages:["corechart"]});
 	google.charts.setOnLoadCallback(drawBitcoinPriceChart);
 	
-	function drawBitcoinPriceChart() 
+	function drawBitcoinPriceChart(big) 
 	{     
 		var data = new google.visualization.DataTable();
 
@@ -95,7 +95,9 @@
 			max_price = max_price * 1.05;
 			min_price = min_price * 0.95;
 
-			var height = screen.availHeight*0.75;
+			var height;
+			if( big ) { height = screen.availHeight*0.75; }
+			else { height = 350;
 			var options = {
 				crosshair: { trigger: 'both' },
 				'height':height,
