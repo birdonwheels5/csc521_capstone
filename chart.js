@@ -44,7 +44,7 @@
 		    }, seconds * 1000)
 		}
 		
-	    google.charts.load("visualization", "1", {packages:["line"]});
+	    google.charts.load("visualization", "1", {packages:["corechart"]});
 	    google.charts.setOnLoadCallback(drawBitcoinPriceChart);
 	function drawBitcoinPriceChart() 
 	{     
@@ -60,7 +60,7 @@
 	      data.addColumn('number', 'Huobi');
 	      data.addColumn('number', 'Kraken');
 	      data.addColumn('number', 'OKCoin');
-	      var chart = new google.charts.Line(document.getElementById(chart_div));
+	      var chart = new google.visualization.LineChart(document.getElementById(chart_div));
 	      $.when($.getJSON('get_price_data.php?span=' + timespan)).done( function(json_data) 
 	      {
 		for(i = 0; i < timespan; i++) 
@@ -126,7 +126,6 @@
 		var height = screen.availHeight*0.75;
 		var options = 
 		{
-			reverseCategories,
 			chartArea:{width:'85%',height:'85%'},
 			axisTitlesPosition: 'in',
 			crosshair: { trigger: 'both' },
