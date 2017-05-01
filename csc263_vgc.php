@@ -20,31 +20,7 @@
 
 					<select name="query_num">
 
-					<?PHP		
-						$queries = array();
-                        
-						// This one is special because I'm not gonna write out g.year LIKE %20xx% a million times.
-						// This would be avoided if our database only stored years for release dates instead of mm/dd/yyyy format.
-						$query10 = "SELECT Title, Release_Date, Publisher, Genre, Rating FROM Developer as d, Develops as devs, Game as g WHERE (((devs.Developer_ID=1) OR (devs.Developer_ID=4)) AND ";
-						for($i = 2000; $i <= 2016; $i++)
-						{
-						    $query10 .= " (g.year LIKE '%$i%')";
-						}
-						$query10 .= ");";
-                        
-						$queries = 
-						[
-							"SELECT comp.Name as CompanyName, cons.Name as ConsoleName FROM Company as comp, Console as cons, Makes as m WHERE ((cons.Console_ID=m.Console_ID) AND (comp.Company_ID=m.Company_ID))",
-							"SELECT cons.Name as ConsoleName FROM Console as cons ORDER BY cons.Release_Date DESC",
-							"SELECT comp.Name as CompanyName, cons.Name as ConsoleName FROM Company as comp, Console as cons, Makes as m, Console_Colors as color WHERE ((cons.Console_ID=m.Console_ID) AND (m.Company_ID=SONY) AND (cons.Console_ID=color.Console_ID) AND (color.Color='white') AND (Release_Date LIKE '%2000%'))",
-							"SELECT cons.Name as ConsoleName, g.Name as GameName FROM Game as g, Console as cons, Compat_With as cw WHERE ((cw.Console_ID=30) AND (g.Game_ID=cw.Game_ID) AND (Release_Date LIKE '%2009%'))", // 30 is the console ID for the original XBOX
-							"",
-							"",
-							"",
-							"",
-							"SELECT Title, Release_Date, Publisher, Genre, Rating FROM Developer as d, Develops as devs, Game as g WHERE ((devs.Developer_ID=13) AND (g.year LIKE '%2016%'))",
-							$query10
-						];
+					<?PHP
 						
 						// Needs to be the same length as the $queries array
 						// Gives the queries names to be displayed
@@ -116,10 +92,10 @@
                         
 							// This one is special because I'm not gonna write out g.year LIKE %20xx% a million times.
 							// This would be avoided if our database only stored years for release dates instead of mm/dd/yyyy format.
-							$query10 = "SELECT Title, Release_Date, Publisher, Genre, Rating FROM Developer as d, Develops as devs, Game as g WHERE (((devs.Developer_ID=1) OR (devs.Developer_ID=4)) AND ";
-							for($i = 2000; $i <= 2016; $i++)
+							$query10 = "SELECT Title, Release_Date, Publisher, Genre, Rating FROM Developer as d, Develops as devs, Game as g WHERE (((devs.Developer_ID=1) OR (devs.Developer_ID=4)) AND ((g.year LIKE '%$2000%')";
+							for($i = 2001; $i <= 2016; $i++)
 							{
-							    $query10 .= " (g.year LIKE '%$i%')";
+							    $query10 .= " OR (g.year LIKE '%$i%')";
 							}
 							$query10 .= ");";
 
