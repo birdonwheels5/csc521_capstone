@@ -48,22 +48,12 @@
 	    google.charts.setOnLoadCallback(drawBitcoinPriceChart);
 	function drawBitcoinPriceChart() 
 	{     
-	      var data = new google.visualization.DataTable();
+	      /*var data = new google.visualization.DataTable();
 	      
 	      // Add one to timespan to make it show the correct number of hours (24 instead of 23)
 	      //timespan = timespan + 1; // WHY DOES THIS MULTIPLY BY TEN WHEN time_unit IS HOURS?????
 	      
-	      // Set the correct scale for the horizontal axis if time_unit is in days
-	      /*var h_scale = timespan;
-	      if(time_unit == "Days")
-	      {
-		  h_scale = (timespan);
-	      }
-	      else
-	      {
-		  // So the hours will display correctly
-		  h_scale = h_scale - 1;
-	      }*/
+	      // Set the correct scale for the horizontal axis if time_unit is in day
 	      data.addColumn('number', 'X');
 	      data.addColumn('number', 'BTCChina');
 	      data.addColumn('number', 'BTC-e');
@@ -136,6 +126,15 @@
 		// Give a little wiggle room
 		max_price = max_price * 1.05;
 		min_price = min_price * 0.95;
+	*/
+		var jsonData = $.ajax({
+          		url: "get_price_data.php",
+         		 dataType: "json",
+         		 async: false
+        		  }).responseText;
+		
+		var data = new google.visualization.DataTable(jsonData);
+		
 		var height = screen.availHeight*0.75;
 		var options = 
 		{
