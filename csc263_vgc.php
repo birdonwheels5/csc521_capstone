@@ -97,7 +97,7 @@
 							{
 							    $query10 .= " OR (g.Release_Date LIKE '%$i%')";
 							}
-							$query10 .= "));";
+							$query10 .= ")) GROUP BY g.Title;";
 
 							$queries = 
 							[
