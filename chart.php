@@ -8,7 +8,7 @@
 	?>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-	<script src="chart.js"></script>
+	
 	<?php 
             
                 $cookie_handler = new CookieHandler();
@@ -40,7 +40,7 @@
 		<div class="object shadow">
 
 			<div id="chart_div" class="chart">
-				<script>
+				<script src="chart.js">
 					drawBitcoinPriceChart();
 				</script>
 			</div>
