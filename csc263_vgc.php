@@ -101,13 +101,16 @@
 
 							$queries = 
 							[
+								// These first four are untested, and probably do not work as is
 								"SELECT comp.Name as CompanyName, cons.Name as ConsoleName FROM Company as comp, Console as cons, Makes as m WHERE ((cons.Console_ID=m.Console_ID) AND (comp.Company_ID=m.Company_ID))",
 								"SELECT cons.Name as ConsoleName FROM Console as cons ORDER BY cons.Release_Date DESC",
 								"SELECT comp.Name as CompanyName, cons.Name as ConsoleName FROM Company as comp, Console as cons, Makes as m, Console_Colors as color WHERE ((cons.Console_ID=m.Console_ID) AND (m.Company_ID=SONY) AND (cons.Console_ID=color.Console_ID) AND (color.Color='white') AND (Release_Date LIKE '%2000%'))",
 								"SELECT cons.Name as ConsoleName, g.Name as GameName FROM Game as g, Console as cons, Compat_With as cw WHERE ((cw.Console_ID=30) AND (g.Game_ID=cw.Game_ID) AND (Release_Date LIKE '%2009%'))", // 30 is the console ID for the original XBOX
-								"",
+								"SELECT SUM(g.Game_ID) as Num_Games FROM Compat_with as cw, Game as g WHERE (((cw.Console_ID=32 AND cw.Game_ID=g.Game_ID) OR (cw.Console_ID=20 AND cw.Game_ID=g.Game_ID) AND cw.Game_ID=g.Game_ID) AND ((g.Release_Date LIKE '%$2016%'))) GROUP BY g.Game_ID ORDER BY g.Title ASC;",
 								"SELECT d.Net_Worth FROM Developer as d WHERE d.Dev_ID=13;",
+								// Idk if this works because I can't insert the data for Compat_With without the Consoles data
 								"SELECT Title, Release_Date, Publisher, Genre, Rating FROM Developer as d, Compat_With as cw, Game as g WHERE (((cw.Console_ID=29) AND (cw.Game_ID=g.Game_ID))) GROUP BY g.Game_ID ORDER BY g.Title ASC",
+								// Idk if this works because I can't insert the data for Compat_With without the Consoles data
 								"SELECT Title, Release_Date, Publisher, Genre, Rating FROM Developer as d, Compat_With as cw, Game as g WHERE (((cw.Console_ID=20) AND (cw.Game_ID=g.Game_ID)) AND ((g.Release_Date LIKE '%2015%') OR (g.Release_Date LIKE '%2016%') OR (g.Release_Date LIKE '%2017%')) AND (g.Rating>=8)) GROUP BY g.Game_ID ORDER BY g.Title ASC",
 								"SELECT Title, Release_Date, Publisher, Genre, Rating FROM Developer as d, Develops as devs, Game as g WHERE (((devs.Dev_ID=13) AND (devs.Game_ID=g.game_ID)) AND (g.Release_Date LIKE '%2017%')) GROUP BY g.Game_ID ORDER BY g.Title ASC",
 								$query10
