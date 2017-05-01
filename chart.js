@@ -136,7 +136,7 @@
 		// Give a little wiggle room
 		max_price = max_price * 1.05;
 		min_price = min_price * 0.95;
-		var height = screen.availHeight*0.85;
+		var height = screen.availHeight*0.8;
 		var options = 
 		{
 			chartArea:{width:'85%',height:'85%'},
