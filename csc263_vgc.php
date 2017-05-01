@@ -108,7 +108,7 @@
 								"",
 								"",
 								"",
-								"SELECT Title, Release_Date, Publisher, Genre, Rating FROM Developer as d, Compat_With as cw, Game as g WHERE ((cw.Console_ID=20) AND (((g.Release_Date LIKE '%2015%') OR (g.Release_Date LIKE '%2016%') OR (g.Release_Date LIKE '%2017%')) AND (g.Rating>=8)) GROUP BY g.Game_ID ORDER BY g.Title ASC",
+								"SELECT Title, Release_Date, Publisher, Genre, Rating FROM Developer as d, Compat_With as cw, Game as g WHERE ((cw.Console_ID=20) AND ((g.Release_Date LIKE '%2015%') OR (g.Release_Date LIKE '%2016%') OR (g.Release_Date LIKE '%2017%')) AND (g.Rating>=8)) GROUP BY g.Game_ID ORDER BY g.Title ASC",
 								"SELECT Title, Release_Date, Publisher, Genre, Rating FROM Developer as d, Develops as devs, Game as g WHERE ((devs.Dev_ID=13) AND (g.Release_Date LIKE '%2017%')) GROUP BY g.Game_ID ORDER BY g.Title ASC",
 								$query10
 							];
