@@ -42,7 +42,7 @@
 							// 6 // All attributes for Game table
 							"WiiU exclusive games",
 							// 7 // All attributes for Game table
-							"PS4 exclusive games rated 8/10, released between 2015 and 2017", // Rating and year are flexible
+							"PS4 exclusive games rated 8/10 or higher, released between 2015 and 2017", // Rating and year are flexible
 							// 8 // All attributes for Game table
 							"All games released by Nintendo in 2017",
 							// 9 // All attributes for Game table
@@ -108,10 +108,19 @@
 								"",
 								"",
 								"",
-								"",
+								"SELECT Title, Release_Date, Publisher, Genre, Rating FROM Developer as d, Compat_With as cw, Game as g WHERE ((cw.Console_ID=20) AND (((g.Release_Date LIKE '%2015%') OR (g.Release_Date LIKE '%2016%') OR (g.Release_Date LIKE '%2017%')) AND (g.Rating>=8)) GROUP BY g.Game_ID ORDER BY g.Title ASC",
 								"SELECT Title, Release_Date, Publisher, Genre, Rating FROM Developer as d, Develops as devs, Game as g WHERE ((devs.Dev_ID=13) AND (g.Release_Date LIKE '%2017%')) GROUP BY g.Game_ID ORDER BY g.Title ASC",
 								$query10
 							];
+							
+							// 4 // 1 column: Number of games
+							"Number of games released for Xbox One and PS4 in 2016",
+							// 5 // 1 column: Number of net worth
+							"Net worth of Nintendo",
+							// 6 // All attributes for Game table
+							"WiiU exclusive games",
+							// 7 // All attributes for Game table
+							"PS4 exclusive games rated 8/10, released between 2015 and 2017", // Rating and year are flexible
 							
 							$query_num = $_POST['query_num'];
 							print $query_num;
