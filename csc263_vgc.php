@@ -302,7 +302,7 @@
 
 											echo '<tr>';
 											echo '<td><font face="Arial, Helvetica, sans-serif">';
-											echo $Title;
+											echo $title;
 											echo '</font></td>';
 											echo '<td><font face="Arial, Helvetica, sans-serif">';
 											echo $release_date;
