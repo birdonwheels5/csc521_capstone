@@ -35,7 +35,7 @@
 	    	<link rel='stylesheet' type="text/css" href="index.css">
 	
 </head>
-<body onresize="update_chart()">
+<body onload="drawBitcoinPriceChart(true)" onresize="update_chart()">
 	<div class="row"></div>
 	<div class="col-12">
 		<div class="object shadow">
