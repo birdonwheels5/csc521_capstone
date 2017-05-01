@@ -139,7 +139,7 @@
 		var height = screen.availHeight*0.75;
 		var options = 
 		{
-			chartArea:{width:'100%',height:'100%'},
+			chartArea:{width:'85%',height:'85%'},
 			axisTitlesPosition: 'in',
 			crosshair: { trigger: 'both' },
 			'height':height,
