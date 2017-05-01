@@ -65,8 +65,7 @@
 	      {
 		for(i = 0; i < timespan; i++) 
 		{
-		    data.addRow(
-		  [i, 
+		   data.addRow([i,
 		   parseFloat(json_data.btcchina[0][i]), 
 		   parseFloat(json_data.btce[0][i]), 
 		   parseFloat(json_data.bitfinex[0][i]), 
@@ -128,7 +127,6 @@
 		var options = 
 		{
 			
-			theme: 'maximized',
 			chartArea:{width:'85%',height:'85%'},
 			axisTitlesPosition: 'in',
 			crosshair: { trigger: 'both' },
