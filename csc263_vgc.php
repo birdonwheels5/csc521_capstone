@@ -30,7 +30,7 @@
                         {
                             $query10 .= " (g.year LIKE '%$i%')";
                         }
-                        $query10 .= ");"
+                        $query10 .= ");";
                         
 						$queries = 
 						[
