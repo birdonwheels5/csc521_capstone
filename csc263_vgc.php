@@ -44,7 +44,7 @@
 							// 7 // All attributes for Game table
 							"PS4 exclusive games rated 8/10, released between 2015 and 2017", // Rating and year are flexible
 							// 8 // All attributes for Game table
-							"All games released by Nintendo in 2016",
+							"All games released by Nintendo in 2017",
 							// 9 // All attributes for Game table
 							"Games developed by 343 Industries and Bungie between 2000 and 2016 that are first person shooters"
 							// Should add the admin queries, like add game, delete game, update game
@@ -109,7 +109,7 @@
 								"",
 								"",
 								"",
-								"SELECT Title, Release_Date, Publisher, Genre, Rating FROM Developer as d, Develops as devs, Game as g WHERE ((devs.Dev_ID=13) AND (g.Release_Date LIKE '%2016%'))",
+								"SELECT Title, Release_Date, Publisher, Genre, Rating FROM Developer as d, Develops as devs, Game as g WHERE ((devs.Dev_ID=13) AND (g.Release_Date LIKE '%2017%'))",
 								$query10
 							];
 							
