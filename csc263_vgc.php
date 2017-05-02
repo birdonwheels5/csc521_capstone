@@ -333,13 +333,13 @@
 											$rating = $obj->Rating;
 
 											//Display information in a table
-
+											
 											echo '<tr>';
 											echo '<td><font face="Arial, Helvetica, sans-serif">';
 											echo $title;
 											echo '</font></td>';
 											echo '<td><font face="Arial, Helvetica, sans-serif">';
-											echo $release_date;
+											echo substr($release_date, 6);
 											echo '</font></td>';
 											echo '<td><font face="Arial, Helvetica, sans-serif">';
 											echo $publisher;
