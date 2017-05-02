@@ -103,8 +103,7 @@
 							[
 								"SELECT comp.Name as CompanyName, cons.Name as ConsoleName FROM Company as comp, Console as cons, Makes as m WHERE ((cons.Console_ID=m.Console_ID) AND (comp.Company_ID=m.Company_ID))",
 								"SELECT cons.Name as ConsoleName FROM Console as cons ORDER BY cons.Release_Date DESC",
-								// Last one that is untested
-								"SELECT comp.Name as CompanyName, cons.Name as ConsoleName FROM Company as comp, Console as cons, Makes as m, Console_Colors as color WHERE ((cons.Console_ID=m.Console_ID) AND (m.Company_ID=10) AND (cons.Console_ID=color.Console_ID) AND (color.Color='white') AND (Release_Date LIKE '%2000%'))",
+								"SELECT comp.Name as CompanyName, cons.Name as ConsoleName FROM Company as comp, Console as cons, Makes as m, Console_Colors as color WHERE ((cons.Release_Date LIKE '%2000%') AND (color.Color LIKE '%white%') AND ((cons.Console_ID=m.Console_ID) AND (m.Company_ID=10) AND comp.Company_ID=m.Company_ID) AND (cons.Console_ID=color.Console_ID));",
 								"SELECT g.Title, g.Release_Date, g.Publisher, g.Genre, g.Rating FROM Game as g, Console as cons, Compat_With as cw WHERE (((cw.Console_ID=34) AND (g.Game_ID=cw.Game_ID) AND (cw.Console_ID=cons.Console_ID)) AND (g.Release_Date LIKE '%2004%')) GROUP BY g.Game_ID;", // 34 is the console ID for the original XBOX
 								"SELECT COUNT(g.Game_ID) as Num_Games FROM Compat_With as cw, Game as g WHERE g.Release_Date LIKE '%$2015%' AND cw.Console_ID=36 AND cw.Game_ID=g.Game_ID OR cw.Console_ID=22 AND cw.Game_ID=g.Game_ID;",
 								"SELECT comp.Net_Worth FROM Company as comp WHERE comp.Company_ID=7;",
