@@ -331,8 +331,6 @@
 											$publisher = $obj->Publisher;
 											$genre = $obj->Genre;
 											$rating = $obj->Rating;
-											
-											var_dump($release_date);
 
 											//Display information in a table
 											
