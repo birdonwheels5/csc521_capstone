@@ -150,7 +150,7 @@
 							print "<br/><br/>\n";
 							// Debugging
 							$query = "NULL";
-							
+							print "<center>";
 							// Handle the different cases for the different queries
 							switch($query_num)
 							{
@@ -360,6 +360,8 @@
 										$result->close();
 									}
 							}
+							
+							print "</center>";
 							
 							print "<br/><br/>\n <h2>MySQL Query: </h2>" . $queries[$query_num];
 						}
