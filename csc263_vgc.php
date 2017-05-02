@@ -28,7 +28,7 @@
 						$query_names = 
 						[
 							// 0 // 2 columns : Companies, consoles
-							"Companies who make consoles",
+							"Consoles and the companies who make them",
 							// 1 // 1 column: Consoles
 							"Consoles ordered by release date descending",
 							// 2 // 1 column: Consoles
@@ -120,7 +120,7 @@
 							$query_names = 
 							[
 								// 0 // 2 columns : Companies, consoles
-								"Companies who make consoles",
+								"Consoles and the companies who make them",
 								// 1 // 1 column: Consoles
 								"Consoles ordered by release date descending",
 								// 2 // 1 column: Consoles
