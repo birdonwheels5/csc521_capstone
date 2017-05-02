@@ -105,7 +105,7 @@
 								"SELECT comp.Name as CompanyName, cons.Name as ConsoleName FROM Company as comp, Console as cons, Makes as m WHERE ((cons.Console_ID=m.Console_ID) AND (comp.Company_ID=m.Company_ID))",
 								"SELECT cons.Name as ConsoleName FROM Console as cons ORDER BY cons.Release_Date DESC",
 								"SELECT comp.Name as CompanyName, cons.Name as ConsoleName FROM Company as comp, Console as cons, Makes as m, Console_Colors as color WHERE ((cons.Console_ID=m.Console_ID) AND (m.Company_ID=10) AND (cons.Console_ID=color.Console_ID) AND (color.Color='white') AND (Release_Date LIKE '%2000%'))",
-								"SELECT cons.Name as ConsoleName, g.Title as GameName FROM Game as g, Console as cons, Compat_With as cw WHERE (((cw.Console_ID=34) AND (g.Game_ID=cw.Game_ID) AND (cw.Console_ID=cons.Console_ID)) AND (g.Release_Date LIKE '%2004%')) GROUP BY g.Game_ID;", // 34 is the console ID for the original XBOX
+								"SELECT g.Title, g.Release_Date, g.Publisher, g.Genre, g.Rating FROM Game as g, Console as cons, Compat_With as cw WHERE (((cw.Console_ID=34) AND (g.Game_ID=cw.Game_ID) AND (cw.Console_ID=cons.Console_ID)) AND (g.Release_Date LIKE '%2004%')) GROUP BY g.Game_ID;", // 34 is the console ID for the original XBOX
 								"SELECT SUM(g.Game_ID) as Num_Games FROM Compat_with as cw, Game as g WHERE (((cw.Console_ID=32 AND cw.Game_ID=g.Game_ID) OR (cw.Console_ID=20 AND cw.Game_ID=g.Game_ID) AND cw.Game_ID=g.Game_ID) AND ((g.Release_Date LIKE '%$2016%'))) GROUP BY g.Game_ID ORDER BY g.Title ASC;",
 								"SELECT comp.Net_Worth FROM Company as comp WHERE comp.Company_ID=7;",
 								// Idk if this works because I can't insert the data for Compat_With without the Consoles data
