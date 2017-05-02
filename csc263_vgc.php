@@ -339,8 +339,8 @@
 											echo $title;
 											echo '</font></td>';
 											echo '<td><font face="Arial, Helvetica, sans-serif">';
-											//echo substr($release_date, 6);
-											echo $release_date;
+											//echo $release_date;
+											echo substr($release_date, 6);
 											echo '</font></td>';
 											echo '<td><font face="Arial, Helvetica, sans-serif">';
 											echo $publisher;
