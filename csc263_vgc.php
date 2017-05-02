@@ -362,7 +362,7 @@
 									}
 							}
 						}
-						print $queries[$query_num];
+						print "<br/><br/>\n MySQL Query:" . $queries[$query_num];
 					?>
 					
 				</div>
