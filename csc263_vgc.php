@@ -145,10 +145,9 @@
 							];
 							
 							$query_num = $_POST['query_num'];
-							print $query_num;
 							print "<br/>\n";
 							print $query_names[$query_num];
-							print "<br/>\n";
+							print "<br/><br/>\n";
 							// Debugging
 							$query = "NULL";
 							
