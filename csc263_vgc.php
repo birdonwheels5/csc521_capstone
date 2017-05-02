@@ -361,8 +361,10 @@
 										$result->close();
 									}
 							}
+							
+							print "<br/><br/>\n <h2>MySQL Query: </h2>" . $queries[$query_num];
 						}
-						print "<br/><br/>\n MySQL Query:" . $queries[$query_num];
+						
 					?>
 					
 				</div>
