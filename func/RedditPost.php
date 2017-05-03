@@ -31,6 +31,7 @@ class RedditPost
         return $post;
     }
     
+    // Method that does the actual work of getting new reddit posts
     private function get_json_post()
     {
         $url_text = "https://www.reddit.com/r/$this->subreddit/new/.json?count=20";
