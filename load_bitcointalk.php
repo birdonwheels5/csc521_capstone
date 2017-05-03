@@ -34,15 +34,22 @@
     {
         $time_since_post = time_since($database_posts[3][$i]);
         
-        $post_url = $database_posts[0][$i];
-        $username = $database_posts[1][$i];
-        $post_title = $database_posts[2][$i];
-        
-        // Print the rest of the post and the time since it was posted
-        print "<div class='tweet'>";
-        print "<b>$username</b>: <a href=$post_url target=\"_blank\">$post_title</a> </n><br/> <i> $time_since_post ago </i>";
-        print "</div>";
-        print "<br/><br/>";
+        if($time_since_post > 0)
+        {
+            $post_url = $database_posts[0][$i];
+            $username = $database_posts[1][$i];
+            $post_title = $database_posts[2][$i];
+
+            // Print the rest of the post and the time since it was posted
+            print "<div class='tweet'>";
+            print "<b>$username</b>: <a href=$post_url target=\"_blank\">$post_title</a> </n><br/> <i> $time_since_post ago </i>";
+            print "</div>";
+            print "<br/><br/>";
+        }
+        else
+        {
+            // Don't display the post
+        }
     }
     
 ?>
