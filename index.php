@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    	<title>Welcome</title>
+    	<title>Bitquote</title>
 	<?php
 		include "login/CookieHandler.php";
 		include "func/login.php";
