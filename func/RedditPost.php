@@ -31,7 +31,7 @@ class RedditPost
         return $post;
     }
     
-    function get_json_post()
+    private function get_json_post()
     {
         $url_text = "https://www.reddit.com/r/$this->subreddit/new/.json?count=20";
         $url = fopen($url_text, "r");
