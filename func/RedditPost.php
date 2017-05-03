@@ -162,6 +162,8 @@ function get_database_reddit_posts($database_connection, $post_limit, $subreddit
 }
 
 // $posts is an array of RedditPost objects
+// Compares posts from the array of RedditPost objects to the data in the database.
+// Only the unique posts are kept, and reconstructed as a new array of RedditPosts that is then returned.
 function compare_posts($posts, $database_connection)
 {
     $number_of_posts = count($posts);
