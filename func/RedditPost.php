@@ -111,7 +111,7 @@ class RedditPost
  * 
  * $database_connection is the result of the mysqli_connect() function.
  * (Int) post_limit: The number of posts to return.
- * (String) subreddit: The name of the forum that you want to get the posts from. Currently the only supported forum is Bitcointalk.
+ * (String) subreddit: The name of the subreddit that you want to get the posts from.
  *
  * Returns a multidimensional array in the following format:
  * Position [0] = Post urls;
