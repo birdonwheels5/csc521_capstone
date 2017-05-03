@@ -198,9 +198,8 @@
                                         $post_url = $search_results[1][3][$i];
                                         
                                         print "Username: <b>" . $search_results[1][0][$i] . "</b> <br/><br/>\n
-                                               Post: " . $search_results[1][1][$i] . " <br/><br/>\n
-                                               Posted $time_since_post ago. <br/><br/>\n
-                                               URL to original post: <a href=\"$post_url\" target=\"_blank\">$post_url</a> <br/><br/>\n";
+                                               Post: <a href=\"$post_url\" target=\"_blank\">" . $search_results[1][1][$i] . "</a> <br/><br/>\n
+                                               Posted $time_since_post ago. <br/><br/>\n";
                                     }
                                     
                                     print '</p>
@@ -241,8 +240,7 @@
                                         
                                         print "Username: <b>" . $search_results[2][0][$i] . "</b> <br/><br/>\n
                                                Post: " . $search_results[2][1][$i] . " <br/><br/>\n
-                                               Posted $time_since_post ago. <br/><br/>\n
-                                               URL to original post: <a href=\"$post_url\" target=\"_blank\">$post_url</a> <br/><br/>\n";
+                                               Post: <a href=\"$post_url\" target=\"_blank\">" . $search_results[2][1][$i] . "</a> <br/><br/>\n";
                                     }
                                     
                                     print '</p>
