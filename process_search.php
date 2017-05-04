@@ -140,6 +140,8 @@
                                     print '
                                                 </p>
                                             </div>
+					    </div>
+					    <div class="row">
 					    </div>';
                                 }
                                 else
@@ -162,7 +164,9 @@
                                     
                                     print '</p>
                                                     </div>
-						    </div>';
+						    </div>
+						    <div class="row">
+					            </div>';
                                 }
                             }
                             
@@ -182,6 +186,8 @@
                                     print '
                                                 </p>
                                             </div>
+					    </div>
+					    <div class="row">
 					    </div>';
                                 }
                                 else
@@ -204,7 +210,9 @@
                                     
                                     print '</p>
                                                     </div>
-						    </div>';
+						    </div>
+						    <div class="row">
+					   	    </div>';
                                 }
                             }
                             
@@ -223,6 +231,8 @@
                                     print '
                                                 </p>
                                             </div>
+					    </div>
+					    <div class="row">
 					    </div>';
                                 }
                                 else
@@ -244,7 +254,9 @@
                                     
                                     print '</p>
                                                     </div>
-						    </div>';
+						    </div>
+						    <div class="row">
+					    	    </div>';
                                 }
                             }
                             
