@@ -120,6 +120,10 @@ input[type="submit"]:hover {
 	background-color: deepskyblue;
 }
 
+/*
+    The topnav code is from W3Schools, which can be found at: https://www.w3schools.com/howto/howto_js_topnav.asp
+*/
+
 ul.topnav {
     list-style-type: none;
     margin: 0;

@@ -22,6 +22,8 @@
                     $session_id = get_session($user_cookie->get_uuid());
                     $cookie_handler->validate_cookie($user_cookie, $session_id);
                 }            
+		
+		print_header($cookie_handler, $cookie_name);
             ?>
 			
 					<!-- <center><img src="logo_big.png"></center> Insert Main Logo here -->

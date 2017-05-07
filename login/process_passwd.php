@@ -23,6 +23,8 @@
                     $session_id = get_session($user_cookie->get_uuid());
                     $cookie_handler->validate_cookie($user_cookie, $session_id);
                 }            
+		
+		print_header($cookie_handler, $cookie_name);
             ?>
             
             <?php
@@ -33,7 +35,7 @@
 			<div class="col-3 empty"></div>
 			<div class="col-6">
 				<div class="object shadow">
-				<center><h1>Password Change Error</h1></center>
+				<center><h1>Password Change Results</h1></center>
 				<p>
 					<?php
                                     $old_password = trim(htmlspecialchars($_POST["old_password"]));

@@ -4,7 +4,8 @@
     // When opened, this file will fetch all tweets from the database and print them out to the webpage.
     // The output is HTML formatted.
     
-    include "func/twitter.php";
+    include "func/general.php";
+    include "func/RedditPost.php";
     
     // Load database settings from config file
     $settings = array();
@@ -16,7 +17,7 @@
     $mysql_database = $settings[3];
     
     // This is also the size of the array
-    $num_tweets = 8;
+    $num_posts = 8;
     
     // Establish connection to the database
     $con = mysqli_connect($mysql_host, $mysql_user, $mysql_pass, $mysql_database);
@@ -26,21 +27,21 @@
         echo "Failed to connect to MySQL: " . mysqli_connect_error();
     }
     
-    $database_tweets = get_database_tweets($con, $num_tweets);
     
-    // List the tweets. The order is taken care of by the database.
-    for($i = 0; $i < $num_tweets; $i++)
+    $database_posts = get_database_reddit_posts($con, $num_posts, "Bitcoin");
+    
+    // List the posts. The order is taken care of by the database.
+    for($i = 0; $i < $num_posts; $i++)
     {
-        // Position [2] is the timestamp
-        $time_since_post = time_since($database_tweets[2][$i]);
+        $time_since_post = time_since($database_posts[3][$i]);
         
-        // Position [0] is the username, and position [1] is the tweet text
-        $username = $database_tweets[0][$i];
-        $html_converted_tweet = convert_tweet_to_html($database_tweets[1][$i]);
+        $post_url = $database_posts[0][$i];
+        $username = $database_posts[1][$i];
+        $post_title = $database_posts[2][$i];
         
-        // Print the rest of the tweet and the time since it was tweeted
+        // Print the rest of the post and the time since it was posted
         print "<div class='tweet'>";
-        print "$username: $html_converted_tweet \n<br/><i> $time_since_post ago </i>";
+        print "<b>$username</b>: <a href=$post_url target=\"_blank\">$post_title</a> </n><br/> <i> $time_since_post ago </i>";
         print "</div>";
         print "<br/><br/>";
     }

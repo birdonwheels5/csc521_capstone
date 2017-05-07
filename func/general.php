@@ -236,4 +236,78 @@ function get_string_between($string, $start, $end)
     return substr($string,$ini,$len);
 }
 
+// TODO Documentation
+
+// Computes the time difference between a given timestamp and the current time.
+// Returns a string with the time difference in units of minutes, hours, days or months.
+function time_since($create_time)
+{
+    $time_unit = "minutes";
+    
+    // Get time since posted in minutes
+    $time_since = round((time() - $create_time) / 60, 0);
+    
+    if($time_since == 1)
+    {
+        $time_unit = "minute";
+    }
+    
+    // Change unit from minutes to hours
+    if($time_since >= 60 and $time_since < 1440)
+    {
+        $time_unit = "hours";
+        $time_since = round($time_since / 60);
+        
+        if($time_since == 1)
+        {
+            $time_unit = "hour";
+        }
+    }
+    // Change unit from minutes to days
+    else if($time_since >= 1440 and $time_since < 43805)
+    {
+        $time_unit = "days";
+        $time_since = round($time_since / 1440);
+        
+        if($time_since == 1)
+        {
+            $time_unit = "day";
+        }
+    }
+    // Change unit from minutes to months
+    else if($time_since >= 43805)
+    {
+        $time_unit = "months";
+        $time_since = round($time_since / 43805);
+        
+        if($time_since == 1)
+        {
+            $time_unit = "month";
+        }
+    }
+    
+    $time_string = $time_since . " " . $time_unit;
+    
+    return $time_string;
+}
+
+// TODO Documentation
+
+// Separates a string of multiple words into their individual words. Strings are split on commas and spaces.
+// For example, "Hello, world foo" would return "Hello", "world" and "foo".
+function split_string($string)
+{
+    $results = array();
+    
+    //if(stristr(",", $string) != false)
+    {
+        // Remove commas, they just complicate things
+        $string = str_replace(",", "", $string);
+    }
+    
+    $results = explode(" ", $string);
+    
+    return $results;
+}
+
 ?>

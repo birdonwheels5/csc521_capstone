@@ -1,8 +1,10 @@
 <?php
     
-    include "/var/www/html/func/btc.php";
-    include "/var/www/html/func/twitter.php";
-    
+    include "/home/student/S0280512/public_html/func/btc.php";
+    include "/home/student/S0280512/public_html/func/twitter.php";
+    include "/home/student/S0280512/public_html/func/scraper.php";
+    include "/home/student/S0280512/public_html/func/RedditPost.php";
+
     // Load database settings from config file
     $settings = array();
     $settings = load_config();
@@ -92,6 +94,60 @@
         }
     }
     
+
+    //add forum posts to database
+    $threads = array();
+    $threads = scrape_bitcointalk();
+    
+    $unique_threads = compare_threads($threads, $con);
+    
+    $number_of_unique_threads = count($unique_threads['url']);
+    
+    // Debug
+    print "\n Unique Bitcointalk Threads \n";
+    var_dump($unique_threads);
+    print "\n";
+
+    // Escape threads and add threads to database
+    for ($f = 0; $f < $number_of_unique_threads; $f++)
+    {
+        $unique_threads['url'][$f] = mysqli_real_escape_string($con, $unique_threads['url'][$f]);
+        $unique_threads['title'][$f] = mysqli_real_escape_string($con, $unique_threads['title'][$f]);
+        $unique_threads['timestamp'][$f] = mysqli_real_escape_string($con, $unique_threads['timestamp'][$f]);
+        $unique_threads['names'][$f] = mysqli_real_escape_string($con, $unique_threads['names'][$f]);
+        
+        add_post($unique_threads['url'][$f], $unique_threads['title'][$f], $unique_threads['timestamp'][$f], $unique_threads['names'][$f], 'Bitcointalk', $con);
+    }
+    
+    // Create Reddit post objects
+    $reddit_posts = array();
+    for ($r = 0; $r < 10; $r++)
+    {
+        $reddit_posts[$r] = new RedditPost("Bitcoin", $r, true);
+    }
+
+    $unique_reddit_posts = compare_posts($reddit_posts, $con);
+    
+    $number_of_unique_posts = count($unique_reddit_posts);
+
+    // Debug
+    print "\n Unique Reddit Posts \n";
+    var_dump($unique_reddit_posts);
+    print "\n";
+    
+    // Escape Reddit posts and add to the database
+    for ($r = 0; $r < $number_of_unique_posts; $r++)
+    {
+        $unique_reddit_posts[$r]->set_post_url(mysqli_real_escape_string($con, $unique_reddit_posts[$r]->get_post_url()));
+        $unique_reddit_posts[$r]->set_post_text(mysqli_real_escape_string($con, $unique_reddit_posts[$r]->get_post_text()));
+        $unique_reddit_posts[$r]->set_tstamp(mysqli_real_escape_string($con, $unique_reddit_posts[$r]->get_tstamp()));
+        $unique_reddit_posts[$r]->set_OP(mysqli_real_escape_string($con, $unique_reddit_posts[$r]->get_OP()));
+        $unique_reddit_posts[$r]->set_subreddit(mysqli_real_escape_string($con, $unique_reddit_posts[$r]->get_subreddit()));
+        
+        $unique_reddit_posts[$r]->add_post($con);
+    }
+    
+
     mysqli_close($con);
 
 ?>

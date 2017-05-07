@@ -29,8 +29,10 @@ CREATE TABLE Reddit_Posts
 (
 	tstamp BIGINT NOT NULL,
 	rp_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	post_url VARCHAR(2085) NOT NULL, -- 2085 characters because IE can only only handle URLS with max 2083 characters
 	OP VARCHAR(20) NOT NULL,
-	post_text VARCHAR(65536) NOT NULL
+	post_text VARCHAR(65536) NOT NULL,
+	subreddit VARCHAR(128) NOT NULL
 );
 
 CREATE TABLE Twitter_Posts
@@ -45,7 +47,8 @@ CREATE TABLE Forum_Posts
 (
 	tstamp BIGINT NOT NULL,
 	fp_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	username VARCHAR(22) NOT NULL,
+	post_url VARCHAR(2085) NOT NULL, -- 2085 characters because IE can only only handle URLS with max 2083 characters
+	username VARCHAR(2) NOT NULL,
 	post_text VARCHAR(65536) NOT NULL,
 	forum_name VARCHAR(256) NOT NULL
 );
@@ -56,7 +59,7 @@ CREATE TABLE users
 	username VARCHAR(25) NOT NULL,
 	uuid VARCHAR(256) NOT NULL,
 	hashed_password VARCHAR(512) NOT NULL,
-	new_hashed_pasword VARCHAR(512),
+	new_hashed_password VARCHAR(512),
 	salt BLOB NOT NULL,
 	authority_level INT NOT NULL,
 	creation_time BIGINT NOT NULL,

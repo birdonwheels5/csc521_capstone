@@ -6,6 +6,7 @@
     <link rel='stylesheet' type="text/css" href="../main.css">
 	<?php include "CookieHandler.php";
           include "../func/login.php"; ?>
+	
 </head>
 
 		<script>
@@ -235,6 +236,8 @@
                     $session_id = get_session($user_cookie->get_uuid());
                     $cookie_handler->validate_cookie($user_cookie, $session_id);
                 }
+		
+		print_header($cookie_handler, $cookie_name);
             
             ?>
 
@@ -248,7 +251,7 @@
         	<input type="password" name="password" placeholder="Password" required>
 			<input type="email" name="email" placeholder="Email" required>
 			<input type="submit" name="submit" value="Create User" required>
-			<div class="small"><a href="./login/reset_pwd.php">Reset your password</a>, <a href="login.php">Login</a> or <a href="view.php">Continue as Guest</a></div>
+			<div class="small"><a href="reset_pwd.php">Reset your password</a>, <a href="login.php">Login</a> or <a href="./../index.php">Continue as Guest</a></div>
 		</form>
 		</div>
 		<div class="col-4 empty">

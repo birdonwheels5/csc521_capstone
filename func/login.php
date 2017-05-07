@@ -30,7 +30,7 @@ function create_user($username, $password, $email, $authority_level)
     // For some reason this doesn't work after adding the email to the end
     //$insert = "INSERT INTO `" . $GLOBALS['mysql_database'] . "`.`users` (`user_id_num`, `username`, `uuid`, `hashed_password`, `new_hashed_password`, `salt`, `authority_level`, `creation_time`, `last_login`, `email`, `validate`, `session_id`) VALUES (0, '$username', '$uuid', '$hashed_password', NULL, '$salt', '$authority_level', '$creation_time', '0', '$email', '0', NULL);";
     
-    $insert = "INSERT INTO `users` (`user_id_num`, `username`, `uuid`, `hashed_password`, `new_hashed_pasword`, `salt`, `authority_level`, `creation_time`, `last_login`, `email`, `validate`, `session_id`) VALUES ('0', '$username', '$uuid', '$hashed_password', NULL, '$salt', '100', '$creation_time', NULL, '$email', '0', NULL);";
+    $insert = "INSERT INTO `users` (`user_id_num`, `username`, `uuid`, `hashed_password`, `new_hashed_password`, `salt`, `authority_level`, `creation_time`, `last_login`, `email`, `validate`, `session_id`) VALUES ('0', '$username', '$uuid', '$hashed_password', NULL, '$salt', '100', '$creation_time', NULL, '$email', '0', NULL);";
     
     // Add user to the database
     $result = mysqli_query($con, $insert);
@@ -275,19 +275,58 @@ function authenticate_user($required_authority_level)
             // Check authentication level
             if($user_authority_level < $required_authority_level)
             {
-                print "<div class=\"box\" style=\"background-color:" . $color . ";margin-top:25px;\">You are not authorized to view this page.</div>";
+                print "
+                    <div class=\"row center\">
+                        <div class=\"col-4 empty\">
+                        </div>
+                        
+                        
+					    <div class=\"col-4 search\">
+                            <div class=\"object shadow search\" style=\"background-color:" . $color . ";margin-top:25px;\">
+                                You are not authorized to view this page.
+                            </div>
+                        </div>
+                        <div class=\"col-4 empty\">
+                        </div>
+                    </div>";
                 exit;
             }
         }
         else
         {
-            print "<div class=\"box\" style=\"background-color:" . $color . ";margin-top:25px;\">Invalid cookie. You need a valid login with the appropriate permissions in order to access this page.</div>";
+            print "
+                    <div class=\"row center\">
+                        <div class=\"col-4 empty\">
+                        </div>
+                        
+                        
+					    <div class=\"col-4 search\">
+                            <div class=\"object shadow search\" style=\"background-color:" . $color . ";margin-top:25px;\">
+                                Invalid cookie. You need a valid login with the appropriate permissions in order to access this page.
+                            </div>
+                        </div>
+                        <div class=\"col-4 empty\">
+                        </div>
+                    </div>";
             exit;
         }
     }
     else
     {
-        print "<div class=\"box\" style=\"background-color:" . $color . ";margin-top:25px;\">You need to be logged in to access this resource.</div>";
+        print "
+                    <div class=\"row center\">
+                        <div class=\"col-4 empty\">
+                        </div>
+                        
+                        
+					    <div class=\"col-4 search\">
+                            <div class=\"object shadow search\" style=\"background-color:" . $color . ";margin-top:25px;\">
+                                You need to be logged in to access this resource.
+                            </div>
+                        </div>
+                        <div class=\"col-4 empty\">
+                        </div>
+                    </div>";
         exit;
     }
 }
@@ -496,7 +535,7 @@ function send_password_validation_email($user_id_num, $uuid, $email, $new_hashed
     }
     else
     {
-        $email_text = 'Hello, thank you for using ' . $site_name . '. In order to reset your password, visit the following link: ' . $verification_url;
+        $email_text = 'Hello, thank you for using ' . $site_name . '. Your password has been reset. To verify the new password, visit the following link: ' . $verification_url . '. If you did not request the password reset, do not click this link.';
     }
     
     mail($email, 'Password Verification for ' . $site_name, $email_text);

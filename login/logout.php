@@ -23,6 +23,8 @@
                     $session_id = get_session($uuid);
                     $cookie_handler->validate_cookie($user_cookie, $session_id);
                 }            
+		
+                print_header($cookie_handler, $cookie_name);
             ?>
 		
 		<div class="row center">

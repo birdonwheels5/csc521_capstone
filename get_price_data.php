@@ -98,21 +98,29 @@ function get_price_data($con, $exchange, $timespan)
         $timestamps[$i] = $rows[$i]["tstamp"];
     }
     
-    // Query database for min exchange price. The queries are structured this way because MYSQL orders then limits the results, but we need to limit then order, and limit again.
-    $max_result = mysqli_query($con, "SELECT `$exchange` FROM (SELECT `$exchange` FROM Price_History LIMIT " . ($size_of_rows - $timespan) . ", $timespan) `$exchange` ORDER BY `$exchange` ASC LIMIT 1;");
-    $min_result = mysqli_query($con, "SELECT `$exchange` FROM (SELECT `$exchange` FROM Price_History LIMIT 16,8) `$exchange` ORDER BY `$exchange` DESC LIMIT 1;");
-    
-    $min_array = mysqli_fetch_array($min_result);
-    $max_array = mysqli_fetch_array($max_result);
-    
-    $min_max_values = [
-        "min" => $min_array[0],
-        "max" => $max_array[0]
-    ];
-    
     $data = array();
     $data[0] = array_values($prices);
     $data[1] = array_values($timestamps);
+    
+    // Use PHP instead of MySQL to figure the min and max array values. I don't know why I never did this in the first place
+    $min_price = min($data[0]);
+    $max_price = max($data[0]);
+    
+    // Checking for 0 here because JavaScript is an awful language.
+    // Seriously, why is 1000000 equal to NaN? Or even "1000000" equal to NaN? It doesn't make any sense...
+    if($min_price == 0)
+    {
+        $min_price = $max_price; // If it is 0, set it to the max price so it will not influecnce the chart window
+    }
+    
+    
+    
+    $min_max_values = [
+        "min" => $min_price,
+        "max" => $max_price
+    ];
+    
+    
     $data[2] = $min_max_values;
     
     //var_dump($data[0]);
